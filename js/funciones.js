@@ -1,6 +1,6 @@
 //var api_url='http://www.turismoavila.com/api/';
 var api_url='http://hoopale.com/DIP_PRUEBAS/api.php';
-var kml_url='http://hoopale.com/DIP_PRUEBAS/resources/avila20.kml';
+var kml_url='http://hoopale.com/DIP_PRUEBAS/resources/avila.kml';
 //var api_url='../../server/api.php';
 var extern_url='http://www.turismoavila.com/';
 var local_url='../../resources/json/';

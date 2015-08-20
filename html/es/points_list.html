@@ -108,7 +108,7 @@
 				<script>
 					$('#ov_box_12_1').click(function(e){
 						//Mostrar puntos cercanos
-						ajax_recover_data("near_points_list", "", "point_list", "ov_zone_21_nearest");
+						ajax_recover_data("near_points_list", "", "point_list", "ov_zone_21_nearest", [['element','points']]);
 						
 						$('.ov_box_11_active').attr("class","ov_box_12");
 						$(this).attr("class","ov_box_11_active");			
