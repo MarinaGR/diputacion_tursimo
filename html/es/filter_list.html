@@ -1,0 +1,188 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<title>Ávila Guía del Visitante - Excma. Diputación de Ávila</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, maximum-scale=2.0, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+		<meta name="robots" content="NOINDEX,NOFOLLOW,NOARCHIVE,NOODP,NOSNIPPET">
+		
+		<link href="../../styles/estilos_01.css" rel="stylesheet" type="text/css">
+		
+		<script src="../../js/jquery.js"></script>
+		<script src="../../js/jqueryui.js"></script>
+		<script src="../../js/jquery.ui.touch-punch.min.js"></script>
+		<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+		<script src="../../resources/langs/langs.js"></script>
+		<script src="../../js/funciones.js"></script>
+		<script src="../../cordova.js"></script>
+		
+		<script>
+		var identificador=get_var_url("id"); 
+		var tipo=get_var_url("tipo"); 
+		
+		var start=get_var_url("start"); 
+		var limit=get_var_url("limit"); 
+		
+		if(start==false)
+			start=0;
+			
+		if(limit==false)
+			limit=16;
+		
+		$(document).ready(function() {
+			$("#ov_view_container_01").css("background-color","#F2F2F3");
+			$('#ov_view_container_01').css("min-height",$(window).innerHeight()+"px");
+			
+			$('#ov_curtain_1_1').hide('fade', function() {
+				$("#ov_view_container_01").show();
+			}, 100);
+			
+			//Mostrar listado de búsqueda si hay valor en el cuadro, si no mostrar listado general
+			if($("#search_filter_list").val()!="")
+			{
+				search_string_in_cat($("#search_filter_list").val(), 'ov_zone_21_search', identificador);
+				$('.ov_box_11_b_active').attr("class","ov_box_12_b");
+			}
+			else
+			{
+				ajax_recover_data("filter_list", "", "point_list", "ov_zone_21_all", [['id',identificador],['start',start],['limit',limit]]);
+			}
+			
+			//Mostrar favoritos 
+			show_localstorage_data("filter_fav_list", "ov_zone_21_featured", [['id',identificador]]);
+			
+			
+			$("#search_filter_list").keypress(function(event){
+				
+				if (event.keyCode == '13') {
+				
+					event.preventDefault();
+			   
+					if($(this).val()!="")
+					{
+						search_string_in_cat($(this).val(), 'ov_zone_21_search', identificador);
+						$('.ov_box_11_b_active').attr("class","ov_box_12_b");			
+					}
+					
+					document.activeElement.blur();
+					$("input").blur();
+					window.Keyboard.hide(); 
+					
+				}
+			});
+			
+		});
+		
+		$(window).load(function() {
+			
+		});
+		</script>		
+	</head>
+
+	<body id="ov_body_01" class="ov_body_01" onload="onBodyLoad()">
+	
+		<div id="ov_curtain_1_1" class="ov_curtain_1"> </div>
+		
+		<div id="ov_view_container_01" class="ov_view_container_01">
+			
+			<div class="ov_vertical_space_01">&nbsp;</div>
+
+			<div id="ov_zone_20" class="ov_zone_20" >
+				<div id="ov_box_11_1" class="ov_box_12_b" onclick="go_to_page('main_menu', '');"  >
+					<img src="../../styles/images/icons/menu.png" alt="menu" class="ov_image_13"/>
+					<div id="ov_text_23_1" class="ov_text_23">
+						Ir a menú
+					</div>		
+				</div>
+				<div id="ov_box_12_1" class="ov_box_12_b" onclick="go_to_page('points_list', '');" >
+					<img src="../../styles/images/icons/back.png" alt="back" class="ov_image_13"/>
+					<div id="ov_text_23_2" class="ov_text_23">
+						Volver
+					</div>
+				</div>
+				<div id="ov_box_13_1" class="ov_box_11_b_active">
+					<img src="../../styles/images/icons/categories.png" alt="list" class="ov_image_13"/>
+					<div id="ov_text_23_3" class="ov_text_23">
+						Listado
+					</div>
+				</div>
+				<script>
+					$('#ov_box_13_1').click(function(e){
+						$('.ov_box_11_b_active').attr("class","ov_box_12_b");
+						$(this).attr("class","ov_box_11_b_active");			
+						$('.ov_zone_21').attr("class","ov_zone_21_b");
+						$('#ov_zone_21_all').attr("class","ov_zone_21");
+						if($("#search_filter_list").val()!="")
+						{
+							ajax_recover_data("filter_list", "", "point_list", "ov_zone_21_all", [['id',identificador],['start',start],['limit',limit]]);						
+						
+							$("#search_filter_list").val("");						
+						}
+					});		
+				</script>
+				<div id="ov_box_11_2" class="ov_box_12_b">
+					<img src="../../styles/images/icons/nearest.png" alt="near" class="ov_image_13"/>
+					<div id="ov_text_23_4" class="ov_text_23">
+						Cercanos
+					</div>
+				</div>
+				<script>
+					$('#ov_box_11_2').click(function(e){
+						//Mostrar puntos cercanos
+						ajax_recover_data("near_filter_list", "", "point_list", "ov_zone_21_nearest", [['id',identificador]]);
+						
+						$('.ov_box_11_b_active').attr("class","ov_box_12_b");
+						$(this).attr("class","ov_box_11_b_active");			
+						$('.ov_zone_21').attr("class","ov_zone_21_b");
+						$('#ov_zone_21_nearest').attr("class","ov_zone_21");			
+					});		
+				</script>
+				<div id="ov_box_12_2" class="ov_box_12_b">
+					<img src="../../styles/images/icons/heart.png" alt="fav" class="ov_image_13"/>
+					<div id="ov_text_23_5" class="ov_text_23">
+						Favoritos
+					</div>
+				</div>
+				<script>
+					$('#ov_box_12_2').click(function(e){
+						$('.ov_box_11_b_active').attr("class","ov_box_12_b");
+						$(this).attr("class","ov_box_11_b_active");			
+						$('.ov_zone_21').attr("class","ov_zone_21_b");
+						$('#ov_zone_21_featured').attr("class","ov_zone_21");			
+					});		
+				</script>
+				<div class="ov_clear_floats_01">&nbsp;</div>
+			</div>
+			
+			<div class="ov_vertical_space_01">&nbsp;</div>
+
+			<div id="ov_zone_19" class="ov_zone_19">
+				<input id="search_filter_list" type="text" value="" placeholder="buscar..." class="ov_search_input_01" />
+			</div>
+
+			<div class="ov_vertical_space_01">&nbsp;</div>
+			
+			<div id="ov_zone_21_all" class="ov_zone_21">
+				<img src='../../styles/images/icons/loader.gif' style='margin:0 5px;width:25px' />
+			</div>
+
+			<div id="ov_zone_21_nearest" class="ov_zone_21_b">
+				<img src='../../styles/images/icons/loader.gif' style='margin:0 5px;width:25px' />
+			</div>
+			
+			<div id="ov_zone_21_featured" class="ov_zone_21_b" >
+				<img src='../../styles/images/icons/loader.gif' style='margin:0 5px;width:25px' />
+			</div>
+			
+			<div id="ov_zone_21_search" class="ov_zone_21_b">
+				<img src='../../styles/images/icons/loader.gif' style='margin:0 5px;width:25px' />
+			</div>
+			
+			<div class="ov_vertical_space_01">&nbsp;</div>
+		
+		</div>
+		
+	</body>
+	
+</html>

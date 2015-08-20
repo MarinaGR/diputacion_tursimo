@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<title>Ávila Guía del Visitante - Excma. Diputación de Ávila</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, maximum-scale=2.0, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+		<meta name="robots" content="NOINDEX,NOFOLLOW,NOARCHIVE,NOODP,NOSNIPPET">
+		
+		<link href="../../styles/estilos_01.css" rel="stylesheet" type="text/css">
+			
+		<script src="../../js/jquery.js"></script>
+		<script src="../../js/jqueryui.js"></script>
+		<script src="../../js/jquery.ui.touch-punch.min.js"></script>
+		<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+		<script src="../../js/gmap3.js"></script>
+		<script src="../../resources/langs/langs.js"></script>
+		<script src="../../js/funciones.js"></script>
+		<script src="../../cordova.js"></script>
+		
+		<script>		
+		var identificador=get_var_url("id"); 
+		$(document).ready(function() {
+			$("#ov_view_container_01").css("background-color","#F2F2F3");
+			
+			$('#ov_view_container_01').css("min-height",$(window).innerHeight()+"px");
+			
+			$('#map_location').css("height",($('#ov_view_container_01').height()-$("#title_location").height())+"px");
+			
+			$('#ov_curtain_1_1').hide('fade', function() {
+				$("#ov_view_container_01").show();
+			}, 100);	
+			
+			ajax_recover_data("location_point", "points", identificador, "map_location");
+			
+		});
+
+		</script>		
+		
+	</head>
+
+	<body id="ov_body_01" class="ov_body_01" onload="onBodyLoad()">
+	
+		<div id="ov_curtain_1_1" class="ov_curtain_1"> </div>
+		
+		<div id="ov_view_container_01" class="ov_view_container_01">
+			
+			<div id="title_location">
+			
+				<div class="ov_vertical_space_01">&nbsp;</div>
+				
+				<div id="ov_zone_20" class="ov_zone_20">
+					<div id="ov_box_11_1" class="ov_box_12" onclick="go_to_page('main_menu', '');">
+						<img src="../../styles/images/icons/menu.png" alt="menu" class="ov_image_13">
+						<div id="ov_text_23_1" class="ov_text_23">
+							Ir a menú
+						</div>		
+					</div>
+					<div id="ov_box_12_1" class="ov_box_12" onclick="window.history.back();">
+						<img src="../../styles/images/icons/back.png" alt="back" class="ov_image_13">
+						<div id="ov_text_23_2" class="ov_text_23">
+							Volver
+						</div>
+					</div>
+					<div id="ov_box_11_2" class="ov_box_12">
+						<img src="../../styles/images/icons/include_point.png" alt="route" class="ov_image_13">
+						<div id="ov_text_23_4" class="ov_text_23">
+							Ir desde mi posición
+						</div>
+					</div>
+					<script>
+						$('#ov_box_11_2').click(function(e){
+							$('.ov_box_11_active').attr("class","ov_box_12");
+							$(this).attr("class","ov_box_11_active");			
+							ajax_recover_data("geolocation_point", "points", identificador, "map_location");
+						});		
+					</script>
+					
+					<div class="ov_clear_floats_01">&nbsp;</div>
+				</div>
+
+				<div class="ov_zone_15">
+					<h3>MAPA</h3>	
+				</div>
+				
+				<div class="ov_clear_floats_01">&nbsp;</div>
+			
+			</div>		
+			
+			<div id="datos_geo_position"> </div>			
+						
+			<div id="map_location" class="location_map_01">
+				Se necesita conexión para mostrar el mapa.
+				<img src='../../styles/images/icons/loader.gif' style='margin:0 5px;width:25px' />
+			</div>		
+			
+		</div>
+		
+	</body>
+	
+</html>

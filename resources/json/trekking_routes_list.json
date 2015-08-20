@@ -1,0 +1,18 @@
+{
+"result":
+	{
+		"routes": [
+			{
+				"id":"gr180",
+				"es":{"nombre":"GR-180: Senderos del Sistema Central"},
+				"en":{"nombre":"GR-180: Paths of the Central System"}
+			},
+			{
+				"id":"caminos_teresianos",
+				"es":{"nombre":"Caminos Teresianos: De la cuna al sepulcro"},
+				"en":{"nombre":"Caminos Teresianos: From the cradle to the sepulcher"}
+			}
+		],
+		"total":2
+	}
+}

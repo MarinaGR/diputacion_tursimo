@@ -1,0 +1,16 @@
+{
+	"result":
+	{
+		"items":	
+			[
+				{"id":"cat_1","es":"Interés histórico","en":"Historical interest"},
+				{"id":"cat_2","es":"Interés cultural","en":"Cultural interest"},
+				{"id":"cat_3","es":"Naturaleza","en":"Nature"},
+				{"id":"cat_4","es":"Gastronomía","en":"Gastronomy"},
+				{"id":"cat_5","es":"Alojamientos","en":"Accommodation"},
+				{"id":"cat_6","es":"Museos y exposiciones","en":"Museums and exhibitions"},
+				{"id":"cat_7","es":"Ocio","en":"Entertainment"}
+			],
+		"total":7
+	}
+}

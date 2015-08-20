@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<title>Ávila Guía del Visitante - Excma. Diputación de Ávila</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, maximum-scale=2.0, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+		<meta name="robots" content="NOINDEX,NOFOLLOW,NOARCHIVE,NOODP,NOSNIPPET">
+		
+		<link href="../../styles/estilos_01.css" rel="stylesheet" type="text/css">
+
+		<script src="../../js/jquery.js"></script>
+		<script src="../../js/jqueryui.js"></script>
+		<script src="../../js/jquery.ui.touch-punch.min.js"></script>		
+		<script src="../../js/jquery.mobile.min.js"></script>
+		<script src="../../resources/langs/langs.js"></script>
+		<script src="../../js/funciones.js"></script>
+		<script src="../../cordova.js"></script>
+		
+		<script>
+		var identificador=get_var_url("id"); 
+		var current_pic=1;
+		
+		//Recoger máximo 4 imágenes
+		var num_pics=4;
+		var number_of_pics=0;
+		
+		//Precarga
+		var images = new Array();
+		function preload() {
+			var current=1;
+			for(i=0;i<num_pics;i++)
+			{
+				current=i+1;
+				images[i] = new Image();
+				images[i].src = "../../resources/galleries/points/"+identificador+"/"+current+".jpg";
+				
+				images[i].onload = function() {
+					number_of_pics++;
+				}
+				
+			}
+			
+			if(number_of_pics>num_pics)
+				number_of_pics=num_pics;
+			
+		}
+		preload();
+		
+		function show_next_pic(direction)
+		{
+			if(direction=="right")
+			{
+				if (current_pic==number_of_pics){current_pic=0;}
+				current_pic++;
+				$("#ov_zone_27").css("background-image","url(../../resources/galleries/points/"+identificador+"/"+current_pic+".jpg)");
+				
+			}
+			if(direction=="left")
+			{
+				if (current_pic==1){current_pic=number_of_pics+1;}
+				current_pic--;			
+				$("#ov_zone_27").css("background-image","url(../../resources/galleries/points/"+identificador+"/"+current_pic+".jpg)");
+				
+				
+			}
+		}
+		
+		$(document).ready(function() {
+
+			$('#ov_view_container_01').css("min-height",$(window).innerHeight()+"px");
+			
+			$('#ov_curtain_1_1').hide('fade', function() {
+				$("#ov_view_container_01").show();
+			}, 100);	
+			
+			ajax_recover_data("gallery_point", "points", identificador, "info_point");
+			
+		});
+		
+		$(window).load(function() {
+			
+			$("#ov_zone_27").css("height",$(window).innerHeight()+"px");
+				$("#ov_box_22").css("height",($(window).innerHeight()-110)+"px");
+				$("#ov_zone_27").css("background-image","url(../../resources/galleries/points/"+identificador+"/1.jpg)");
+				$(window).resize(function(){
+					$("#ov_zone_27").css("height",$(window).innerHeight()+"px");
+					$("#ov_box_22").css("height",($(window).innerHeight()-110)+"px");
+				});	
+				/*$('#ov_box_22').click(function(e){
+					$('#ov_box_15').toggle();
+					$('#info_point').toggle();					
+				});*/
+				$('#point_num_imgs').html(number_of_pics+' <img src="../../styles/images/icons/viewgallery.png" alt="gal" style="width:20px;vertical-align:top; margin:4px 0 0 4px;" >');
+				
+				if(number_of_pics<=0)
+				{
+					$('#ov_box_16_1 div').hide();
+					$('#ov_box_16_3 div').hide();
+					$('#ov_box_16_1 img').hide();
+					$('#ov_box_16_3 img').hide();
+				}
+		
+		});
+		
+		$(document).on("swipeleft",function(){
+			show_next_pic("right");
+		});        
+		$(document).on("swiperight",function(){
+			show_next_pic("left");
+		}); 
+
+		</script>		
+		
+	</head>
+
+	<body id="ov_body_01" class="ov_body_01" onload="onBodyLoad()">
+	
+		<div id="ov_curtain_1_1" class="ov_curtain_1"> </div>
+		
+		<div id="ov_view_container_01" class="ov_view_container_01">
+		
+			<div id="ov_zone_27" class="ov_zone_27">
+				<div class="ov_box_15" id="ov_box_15">
+					<div class="ov_box_16" id="ov_box_16_1">
+						<img src="../../styles/images/icons/left_arrow.png" alt="left" class="ov_image_15"/>
+						<div id="ov_text_26_1" class="ov_text_26">
+						Previous
+						</div>
+					</div>
+					<script>
+						$('#ov_box_16_1').click(function(e){
+							show_next_pic("left");
+						});		
+					</script>
+					<div class="ov_box_16" id="ov_box_16_2" onclick="window.history.back();" >
+						<img src="../../styles/images/icons/back.png" alt="back" class="ov_image_15" style="height:25px"/>
+						<div id="ov_text_26_2" class="ov_text_26">
+						Back
+						</div>
+					</div>
+					
+					<div class="ov_box_16" id="ov_box_16_3">
+						<img src="../../styles/images/icons/right_arrow.png" alt="right" class="ov_image_15"/>
+						<div id="ov_text_26_3" class="ov_text_26">
+						Next
+						</div>
+					</div>
+					<script>
+						$('#ov_box_16_3').click(function(e){
+							show_next_pic("right");
+						});		
+					</script>
+					<div class="ov_clear_floats_01">&nbsp;</div>		
+				</div>
+				<div class="ov_box_22" id="ov_box_22">
+					
+				</div>
+				<div class="ov_box_17" id="info_point">
+					<div id="point_name" class="ov_text_27"> </div>
+					<div id="point_num_imgs" class="ov_text_19"> </div>
+				</div>
+			</div>
+		
+		</div>
+		
+	</body>
+	
+</html>

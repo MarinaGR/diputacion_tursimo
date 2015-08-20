@@ -1,0 +1,237 @@
+﻿{
+	"result": 
+	{
+		"items": 
+			[
+				{
+					"id":  "MUNI-00000000251-AYTO",
+					"es": {"nombre": "Ayuntamiento de Ávila"},
+					"en": {"nombre": "Ayuntamiento de Ávila"},
+					"categoria": [{"id": "cat_0_1"}],
+					"tlf": "920350000",
+					"fax": null,
+					"email": null,
+					"web": "http://www.avila.es",
+					"direccion": "Plaza Mercado Chico 1, 05001 Ávila",
+					"geolocalizacion": null,
+					"municipio": "MUNI-00000000251"
+				},
+				{
+					"id":  "MUNI-00000000251-BOMBEROS",
+					"es": {"nombre": "Bomberos Ávila"},
+					"en": {"nombre": "Bomberos Ávila"},
+					"categoria": [{"id": "cat_0_4"}],
+					"tlf": "080 / 920211080",
+					"fax": null,
+					"email": null,
+					"web": null,
+					"direccion": "C/ Jorge Santayana s/n, Ávila",
+					"geolocalizacion": null,
+					"municipio": "MUNI-00000000251"
+				},
+				{
+					"id":  "MUNI-00000000251-POLICIA",
+					"es": {"nombre": "Policía Local Ávila"},
+					"en": {"nombre": "Policía Local Ávila"},
+					"categoria": [{"id": "cat_0_3"}],
+					"tlf": "920352424",
+					"fax": null,
+					"email": null,
+					"web": null,
+					"direccion": "C/ Molino del Carril 1, 05005, Ávila",
+					"geolocalizacion": null,
+					"municipio": "MUNI-00000000251"
+				},
+				{
+					"id":  "MUNI-00000000251-TURISMO",
+					"es": {"nombre": "Centro de Recepción de visitantes de Ávila"},
+					"en": {"nombre": "Centro de Recepción de visitantes de Ávila"},
+					"categoria": [{"id": "cat_0_2"}],
+					"tlf": "920350000",
+					"fax": null,
+					"email": null,
+					"web": null,
+					"direccion": "Avda. de Madrid 39, 05001, Ávila",
+					"geolocalizacion": null,
+					"municipio": "MUNI-00000000251"
+				},
+				{
+					"id":  "MUNI-00000000251-BUS",
+					"es": {"nombre": "Estación de autobuses de Ávila"},
+					"en": {"nombre": "Estación de autobuses de Ávila"},
+					"categoria": [{"id": "cat_0_6"}],
+					"tlf": "920220154",
+					"fax": null,
+					"email": null,
+					"web": "http://www.estacionautobusesavila.com",
+					"direccion": "Ctra. Villacastín-Vigo 5, 05004, Ávila",
+					"geolocalizacion": null,
+					"municipio": "MUNI-00000000251"
+				},
+				{
+					"id":  "MUNI-00000000251-TREN",
+					"es": {"nombre": "Estación de trenes de Ávila"},
+					"en": {"nombre": "Estación de trenes de Ávila"},
+					"categoria": [{"id": "cat_0_6"}],
+					"tlf": "902432343 / 902320320",
+					"fax": null,
+					"email": null,
+					"web": null,
+					"direccion": "Paseo de la Estación 50, 05001, Ávila",
+					"geolocalizacion": null,
+					"municipio": "MUNI-00000000251"
+				},
+			
+			
+				{
+					"id":  "MUNI-00000000007-AYTO",
+					"es": {"nombre": "Ayuntamiento de Arévalo"},
+					"en": {"nombre": "Ayuntamiento de Arévalo"},
+					"categoria": [{"id": "cat_0_1"}],
+					"tlf": "920300001",
+					"fax": "920300852",
+					"email": null,
+					"web": "http://www.ayuntamientoarevalo.es",
+					"direccion": "Plaza del Real 12, 05200, Arévalo",
+					"geolocalizacion": null,
+					"municipio": "MUNI-00000000007"
+				},
+				{
+					"id":  "MUNI-00000000007-TURISMO",
+					"es": {"nombre": "Oficina de turismo de Arévalo"},
+					"en": {"nombre": "Oficina de turismo de Arévalo"},
+					"categoria": [{"id": "cat_0_2"}],
+					"tlf": "920301380",
+					"fax": null,
+					"email": null,
+					"web": null,
+					"direccion": "Plaza del Real 20, 05200, Arévalo",
+					"geolocalizacion": null,
+					"municipio": "MUNI-00000000007"
+				},
+			
+						
+				{
+					"id":  "MUNI-00000000218-AYTO",
+					"es": {"nombre": "Ayuntamiento de El Barco de Ávila"},
+					"en": {"nombre": "Ayuntamiento de El Barco de Ávila"},
+					"categoria": [{"id": "cat_0_1"}],
+					"tlf": "902340013",
+					"fax": "920340701",
+					"email": "ayto@aytobarcodeavila.com",
+					"web": "http://www.aytobarcodeavila.com",
+					"direccion": "C/ Arco 2, 05600, El Barco de Ávila",
+					"geolocalizacion": null,
+					"municipio": "MUNI-00000000218"
+				},
+				{
+					"id":  "MUNI-00000000218-TURISMO",
+					"es": {"nombre": "Oficina de turismo de El Barco de Ávila"},
+					"en": {"nombre": "Oficina de turismo de El Barco de Ávila"},
+					"categoria": [{"id": "cat_0_2"}],
+					"tlf": "920340888",
+					"fax": null,
+					"email": null,
+					"web": null,
+					"direccion": "Plaza de España, El Barco de Ávila",
+					"geolocalizacion": null,
+					"municipio": "MUNI-00000000218"
+				},
+				{
+					"id":  "MUNI-00000000218-MEDICO",
+					"es": {"nombre": "Centro de Salud Urgencias médicas de El Barco de Ávila"},
+					"en": {"nombre": "Centro de Salud Urgencias médicas de El Barco de Ávila"},
+					"categoria": [{"id": "cat_0_5"}],
+					"tlf": "920340027",
+					"fax": null,
+					"email": null,
+					"web": null,
+					"direccion": "C/ Eras 2, El Barco de Ávila",
+					"geolocalizacion": null,
+					"municipio": "MUNI-00000000218"
+				},
+				{
+					"id":  "MUNI-00000000218-BUSES",
+					"es": {"nombre": "Estación de Autobuses de El Barco de Ávila"},
+					"en": {"nombre": "Estación de Autobuses de El Barco de Ávila"},
+					"categoria": [{"id": "cat_0_6"}],
+					"tlf": "920371755",
+					"fax": null,
+					"email": null,
+					"web": null,
+					"direccion": "C/ Júpiter 2, El Barco de Ávila",
+					"geolocalizacion": null,
+					"municipio": "MUNI-00000000218"
+				},
+				{
+					"id":  "MUNI-00000000218-GUARDIA",
+					"es": {"nombre": "Guardia Civil de El Barco de Ávila"},
+					"en": {"nombre": "Guardia Civil de El Barco de Ávila"},
+					"categoria": [{"id": "cat_0_3"}],
+					"tlf": "920342002",
+					"fax": null,
+					"email": null,
+					"web": null,
+					"direccion": "Avda de Gredos 2, El Barco de Ávila",
+					"geolocalizacion": null,
+					"municipio": "MUNI-00000000218"
+				},
+				
+				
+				{
+					"id":  "MUNI-00000000070-AYTO",
+					"es": {"nombre": "Ayuntamiento de Arenas de San Pedro"},
+					"en": {"nombre": "Ayuntamiento de Arenas de San Pedro"},
+					"categoria": [{"id": "cat_0_1"}],
+					"tlf": "920370005",
+					"fax": "920372170",
+					"email": null,
+					"web": "http://arenasdesanpedro.es",
+					"direccion": "Plaza del Ayuntamiento 1, 05400, Arenas de San Pedro",
+					"geolocalizacion": null,
+					"municipio": "MUNI-00000000070"
+				},
+				{
+					"id":  "MUNI-00000000070-TURISMO",
+					"es": {"nombre": "Oficina de turismo de Arenas de San Pedro"},
+					"en": {"nombre": "Oficina de turismo de Arenas de San Pedro"},
+					"categoria": [{"id": "cat_0_2"}],
+					"tlf": "920370245 / 673120714",
+					"fax": null,
+					"email": "turismo@aytoarenas.es",
+					"web": null,
+					"direccion": "C/Triste Condesa 1, Arenas de San Pedro",
+					"geolocalizacion": null,
+					"municipio": "MUNI-00000000070"
+				},
+				
+				
+				{
+					"id":  "MUNI-00000000177-AYTO",
+					"es": {"nombre": "Ayuntamiento de Las Navas del Marqués"},
+					"en": {"nombre": "Ayuntamiento de Las Navas del Marqués"},
+					"categoria": [{"id": "cat_0_1"}],
+					"tlf": "918972000",
+					"fax": "918972120",
+					"email": "ayuntamiento@lasnavasdelmarques.es",
+					"web": "https://lasnavasdelmarques.es",
+					"direccion": "Plaza de la Villa 1, Las Navas del Marqués",
+					"geolocalizacion": null,
+					"municipio": "MUNI-00000000177"
+				},
+				{
+					"id":  "MUNI-00000000177-TURISMO",
+					"es": {"nombre": "Oficina de turismo de Las Navas del Marqués"},
+					"en": {"nombre": "Oficina de turismo de Las Navas del Marqués"},
+					"categoria": [{"id": "cat_0_2"}],
+					"tlf": "918972000 / 610027421",
+					"fax": null,
+					"email": "",
+					"web": "http://turismolasnavas.com",
+					"direccion": "Paseo de las Damas s/n., Las Navas del Marqués",
+					"geolocalizacion": null,
+					"municipio": "MUNI-00000000177"
+				}
+			]
+	}
+}

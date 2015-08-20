@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<title>Ávila Guía del Visitante - Excma. Diputación de Ávila</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, maximum-scale=2.0, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+		<meta name="robots" content="NOINDEX,NOFOLLOW,NOARCHIVE,NOODP,NOSNIPPET">
+		
+		<link href="../../styles/estilos_01.css" rel="stylesheet" type="text/css">
+		
+		<script src="../../js/jquery.js"></script>
+		<script src="../../js/jqueryui.js"></script>
+		<script src="../../js/jquery.ui.touch-punch.min.js"></script>
+		<script src="../../resources/langs/langs.js"></script>
+		<script src="../../js/funciones.js"></script>
+		<script src="../../cordova.js"></script>
+		
+		<script>
+		$(document).ready(function() {
+			$("#ov_view_container_01").css("background-color","#F2F2F3");
+			$('#ov_view_container_01').css("min-height",$(window).innerHeight()+"px");
+			
+			$('#ov_curtain_1_1').hide('fade', function() {
+				$("#ov_view_container_01").show();
+			}, 100);
+		});
+		
+		$(window).load(function() {
+			
+		});
+		</script>		
+	</head>
+
+	<body id="ov_body_01" class="ov_body_01" onload="onBodyLoad()">
+	
+		<div id="ov_curtain_1_1" class="ov_curtain_1"> </div>
+		
+		<div id="ov_view_container_01" class="ov_view_container_01">
+
+			<div class="ov_zone_15">
+			
+				<div class="ov_box_18" onclick="window.location.href='../'+getLocalStorage('current_language')+'/main_menu.html'" >
+					<img src="../../styles/images/icons/back.png" alt="back" class="ov_image_15">
+					<div class="ov_text_26">
+					Back
+					</div>
+				</div>
+		
+				<div class="ov_box_03">	
+					<div id="ov_text_08" class="ov_text_08">
+						ABOUT
+					</div>
+					<div id="geoloc_map_text" class="ov_text_09"> </div>
+				</div>
+				<div class="ov_clear_floats_01">&nbsp;</div>
+				
+				<h3><b>Diputación de Ávila © 2015</b></h3>
+				<p>
+					<b>Texts and photography:</b> Provided by Diputación de Ávila<br>
+					<b>Design and development:</b> Grupo Ovnyline Comunicación<br>
+					<b>Satellite images:</b> Google Maps<br>
+				</p>
+				
+				<p>
+					This mobile application has been developed with the objective of spreading and allow fast access to all information in the province of Ávila.
+				</p>
+				<p>
+					Application Supports Android 4 or higher, iPhone, iPad, and other mobile devices via webApp.
+				</p>	
+				
+			</div>
+		</div>
+		
+	</body>
+	
+</html>

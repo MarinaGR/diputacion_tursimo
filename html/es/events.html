@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<title>Ávila Guía del Visitante - Excma. Diputación de Ávila</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, maximum-scale=2.0, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+		<meta name="robots" content="NOINDEX,NOFOLLOW,NOARCHIVE,NOODP,NOSNIPPET">
+		
+		<link href="../../styles/estilos_01.css" rel="stylesheet" type="text/css">
+		
+		<script src="../../js/jquery.js"></script>
+		<script src="../../js/jqueryui.js"></script>
+		<script src="../../js/jquery.ui.touch-punch.min.js"></script>
+		<script src="../../resources/langs/langs.js"></script>
+		<script src="../../js/funciones.js"></script>
+		<script src="../../cordova.js"></script>
+		
+		<script>
+		$(document).ready(function() {
+			$("#ov_view_container_01").css("background-color","#F2F2F3");
+			$('#ov_view_container_01').css("min-height",$(window).innerHeight()+"px");
+			
+			$('#ov_curtain_1_1').hide('fade', function() {
+				$("#ov_view_container_01").show();
+			}, 100);
+		});
+		
+		$(window).load(function() {
+			
+		});
+		</script>		
+	</head>
+
+	<body id="ov_body_01" class="ov_body_01" onload="onBodyLoad()">
+	
+		<div id="ov_curtain_1_1" class="ov_curtain_1"> </div>
+		
+		<div id="ov_view_container_01" class="ov_view_container_01">
+
+			<div class="ov_zone_15">
+			
+				<div class="ov_box_18" onclick="go_to_page('main_menu','')">
+					<img src="../../styles/images/icons/back.png" alt="back" class="ov_image_15">
+					<div class="ov_text_26">
+					Volver
+					</div>
+				</div>
+		
+				<div class="ov_box_03">	
+					<div id="ov_text_08" class="ov_text_08">
+						EVENTOS
+					</div>
+					<div id="geoloc_map_text" class="ov_text_09"> </div>
+				</div>
+				<div class="ov_clear_floats_01">&nbsp;</div>
+				
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut lobortis eros eget tortor cursus, ut laoreet erat volutpat. Mauris in blandit libero, at rhoncus mi. In in ligula ante. Fusce a lacus efficitur, rhoncus lorem non, euismod est. Aenean commodo quam ac felis viverra, vitae bibendum mauris commodo. Etiam eleifend, dui eu congue fermentum, dolor quam posuere purus, ut finibus lorem ante sed ipsum. Aenean a urna vitae justo posuere scelerisque vitae eget ligula.</p>
+
+				<p>Nunc vestibulum est at arcu consequat maximus. Morbi suscipit in massa vel posuere. Donec non erat pellentesque, porttitor mauris ac, lacinia dui. Praesent nec sapien mi. Cras interdum eros porttitor gravida faucibus. Phasellus condimentum massa ante, non elementum dolor eleifend vitae. Etiam neque turpis, condimentum vitae vehicula fermentum, ultricies at elit. Cras elementum, erat aliquet dictum maximus, tellus nulla cursus urna, non porta eros arcu in felis.</p>
+
+				<p>Nullam euismod leo non felis tincidunt molestie. Vivamus accumsan nulla vel quam rhoncus vulputate. Etiam fermentum, leo a bibendum dictum, nisi tortor pharetra neque, vel feugiat nunc lorem sed orci. Aenean vel velit id lacus ultricies vestibulum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam vitae felis eu felis venenatis viverra. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam gravida sit amet risus quis efficitur. Pellentesque laoreet aliquam nunc, at vulputate libero congue fringilla.</p>
+				
+			</div>
+		</div>
+		
+	</body>
+	
+</html>

@@ -1,0 +1,134 @@
+{
+"result":
+	{
+		"routes": [{
+			"Ruta_Castillos_1":{
+				"id":"Ruta_Castillos_1",
+				"es":{
+						"nombre":"Castillos en el Valle del Tormes y del Corneja",
+						"descripcion": "<h4>Los castillos de la provincia. Tierra de historias, gestas y leyendas.</h4><p>La Baja Edad Media fue tiempo de conflictos entre reyes, ciudades y nobles. Para proteger sus posesiones, dominar los caminos o defender sus intereses respectivos, muchos nobles construyeron castillos en sus tierras, aldeas o villas de señorío. A finales del siglo XV las tierras de Ávila se poblaron de castillos.</p><p>En la actualidad la provincia cuenta con 19 fortificaciones de este tipo distribuidas por todo su territorio. Aparte de servir de reclamo y de signo de identidad de algunos de los municipios más renombrados, su visita sirve de guía para asomarse a varios de los rincones más insólitos y emblemáticos de la provincia.</p>"
+					},
+				"en":{
+						"nombre":"Castillos en el Valle del Tormes y del Corneja",
+						"descripcion": "<h4>Los castillos de la provincia. Tierra de historias, gestas y leyendas.</h4><p>La Baja Edad Media fue tiempo de conflictos entre reyes, ciudades y nobles. Para proteger sus posesiones, dominar los caminos o defender sus intereses respectivos, muchos nobles construyeron castillos en sus tierras, aldeas o villas de señorío. A finales del siglo XV las tierras de Ávila se poblaron de castillos.</p><p>En la actualidad la provincia cuenta con 19 fortificaciones de este tipo distribuidas por todo su territorio. Aparte de servir de reclamo y de signo de identidad de algunos de los municipios más renombrados, su visita sirve de guía para asomarse a varios de los rincones más insólitos y emblemáticos de la provincia.</p>"
+					},
+				"items":[{	
+					"LUGA-00000000005": {
+						"id":"LUGA-00000000005","es":{"nombre":"Castillo de Valdecorneja"},"en":{"nombre":"Castillo de Valdecorneja"},"geolocalizacion":"(40.358947, -5.525265)17"
+					},
+					"LUGA-00000000474": {
+						"id":"LUGA-00000000474","es":{"nombre":"Castillo de los Moros"},"en":{"nombre":"Castillo de los Moros"},"geolocalizacion":"(40.53051667, -5.406647222)17"
+					},	
+					"LUGA-00000000013": {
+						"id":"LUGA-00000000013","es":{"nombre":"Castillo de Bonilla de la Sierra"},"en":{"nombre":"Castillo de Bonilla de la Sierra"},"geolocalizacion":"(40.531382, -5.264071)17"
+					},					
+					"LUGA-00000000014": {
+						"id":"LUGA-00000000014","es":{"nombre":"Torre de Villatoro"},"en":{"nombre":"Torre de Villatoro"},"geolocalizacion":"(40.55501, -5.108954)17"
+					},
+					"LUGA-00000000012": {
+						"id":"LUGA-00000000012","es":{"nombre":"Castillo de Serrano de la Torre"},"en":{"nombre":"Castillo de Serrano de la Torre"},"geolocalizacion":"(40.593091, -5.308971)17"
+					}
+				}]
+			},
+			"Ruta_Castillos_2":{
+				"id":"Ruta_Castillos_2",
+				"es":{
+						"nombre":"Castillos en el Valle Amblés y La Moraña",
+						"descripcion": "<h4>Los castillos de la provincia. Tierra de historias, gestas y leyendas.</h4><p>La Baja Edad Media fue tiempo de conflictos entre reyes, ciudades y nobles. Para proteger sus posesiones, dominar los caminos o defender sus intereses respectivos, muchos nobles construyeron castillos en sus tierras, aldeas o villas de señorío. A finales del siglo XV las tierras de Ávila se poblaron de castillos.</p><p>En la actualidad la provincia cuenta con 19 fortificaciones de este tipo distribuidas por todo su territorio. Aparte de servir de reclamo y de signo de identidad de algunos de los municipios más renombrados, su visita sirve de guía para asomarse a varios de los rincones más insólitos y emblemáticos de la provincia.</p>"
+					},
+				"en":{
+						"nombre":"Castillos en el Valle Amblés y La Moraña",
+						"descripcion": "<h4>Los castillos de la provincia. Tierra de historias, gestas y leyendas.</h4><p>La Baja Edad Media fue tiempo de conflictos entre reyes, ciudades y nobles. Para proteger sus posesiones, dominar los caminos o defender sus intereses respectivos, muchos nobles construyeron castillos en sus tierras, aldeas o villas de señorío. A finales del siglo XV las tierras de Ávila se poblaron de castillos.</p><p>En la actualidad la provincia cuenta con 19 fortificaciones de este tipo distribuidas por todo su territorio. Aparte de servir de reclamo y de signo de identidad de algunos de los municipios más renombrados, su visita sirve de guía para asomarse a varios de los rincones más insólitos y emblemáticos de la provincia.</p>"
+					},
+				"items":[{	
+					"LUGA-00000000008": {
+						"id":"LUGA-00000000008","es":{"nombre":"Castillo del Duque de Montellano"},"en":{"nombre":"Castillo del Duque de Montellano"},"geolocalizacion":"(40.873975, -4.867834)17"
+					},
+					"LUGA-00000000010": {
+						"id":"LUGA-00000000010","es":{"nombre":"Castillo de Castronuevo"},"en":{"nombre":"Castillo de Castronuevo"},"geolocalizacion":"(40.884854, -5.013864)17"
+					},
+					"LUGA-00000000004": {
+						"id":"LUGA-00000000004","es":{"nombre":"Castillo de Arévalo"},"en":{"nombre":"Castillo de Arévalo"},"geolocalizacion":"(41.0694956879, -4.7205901211)17"
+					}					
+				}]
+			},
+			"Ruta_Castillos_3":{
+				"id":"Ruta_Castillos_3",
+				"es":{
+						"nombre":"Castillos en el Valle del Alberche",
+						"descripcion": "<h4>Los castillos de la provincia. Tierra de historias, gestas y leyendas.</h4><p>La Baja Edad Media fue tiempo de conflictos entre reyes, ciudades y nobles. Para proteger sus posesiones, dominar los caminos o defender sus intereses respectivos, muchos nobles construyeron castillos en sus tierras, aldeas o villas de señorío. A finales del siglo XV las tierras de Ávila se poblaron de castillos.</p><p>En la actualidad la provincia cuenta con 19 fortificaciones de este tipo distribuidas por todo su territorio. Aparte de servir de reclamo y de signo de identidad de algunos de los municipios más renombrados, su visita sirve de guía para asomarse a varios de los rincones más insólitos y emblemáticos de la provincia.</p>"
+					},
+				"en":{
+						"nombre":"Castillos en el Valle del Alberche",
+						"descripcion": "<h4>Los castillos de la provincia. Tierra de historias, gestas y leyendas.</h4><p>La Baja Edad Media fue tiempo de conflictos entre reyes, ciudades y nobles. Para proteger sus posesiones, dominar los caminos o defender sus intereses respectivos, muchos nobles construyeron castillos en sus tierras, aldeas o villas de señorío. A finales del siglo XV las tierras de Ávila se poblaron de castillos.</p><p>En la actualidad la provincia cuenta con 19 fortificaciones de este tipo distribuidas por todo su territorio. Aparte de servir de reclamo y de signo de identidad de algunos de los municipios más renombrados, su visita sirve de guía para asomarse a varios de los rincones más insólitos y emblemáticos de la provincia.</p>"
+					},
+				"items":[{	
+					"LUGA-00000000009": {
+						"id":"LUGA-00000000009","es":{"nombre":"Castillo - Palacio de Magalia"},"en":{"nombre":"Castillo - Palacio de Magalia"},"geolocalizacion":"(40.604635880786326, -4.324863472402626)17"
+					},
+					"LUGA-00000000006": {
+						"id":"LUGA-00000000006","es":{"nombre":"Castillo de Manqueospese"},"en":{"nombre":"Castillo de Manqueospese"},"geolocalizacion":"(40.53380278, -4.838827778)17"
+					},
+					"LUGA-00000000011": {
+						"id":"LUGA-00000000011","es":{"nombre":"Castillo de Villaviciosa"},"en":{"nombre":"Castillo de Villaviciosa"},"geolocalizacion":"(40.535833, -4.899728)17"
+					}				
+				}]
+			},
+			"Ruta_Castillos_4":{
+				"id":"Ruta_Castillos_4",
+				"es":{
+						"nombre":"Castillos en el Valle del Tiétar",
+						"descripcion": "<h4>Los castillos de la provincia. Tierra de historias, gestas y leyendas.</h4><p>La Baja Edad Media fue tiempo de conflictos entre reyes, ciudades y nobles. Para proteger sus posesiones, dominar los caminos o defender sus intereses respectivos, muchos nobles construyeron castillos en sus tierras, aldeas o villas de señorío. A finales del siglo XV las tierras de Ávila se poblaron de castillos.</p><p>En la actualidad la provincia cuenta con 19 fortificaciones de este tipo distribuidas por todo su territorio. Aparte de servir de reclamo y de signo de identidad de algunos de los municipios más renombrados, su visita sirve de guía para asomarse a varios de los rincones más insólitos y emblemáticos de la provincia.</p>"
+					},
+				"en":{
+						"nombre":"Castillos en el Valle del Tiétar",
+						"descripcion": "<h4>Los castillos de la provincia. Tierra de historias, gestas y leyendas.</h4><p>La Baja Edad Media fue tiempo de conflictos entre reyes, ciudades y nobles. Para proteger sus posesiones, dominar los caminos o defender sus intereses respectivos, muchos nobles construyeron castillos en sus tierras, aldeas o villas de señorío. A finales del siglo XV las tierras de Ávila se poblaron de castillos.</p><p>En la actualidad la provincia cuenta con 19 fortificaciones de este tipo distribuidas por todo su territorio. Aparte de servir de reclamo y de signo de identidad de algunos de los municipios más renombrados, su visita sirve de guía para asomarse a varios de los rincones más insólitos y emblemáticos de la provincia.</p>"
+					},
+				"items":[{	
+					"LUGA-00000000002": {
+						"id":"LUGA-00000000002","es":{"nombre":"Castillo de La Adrada"},"en":{"nombre":"Castillo de La Adrada"},"geolocalizacion":"(40.219911, -4.639975)17"
+					},
+					"LUGA-00000000007": {
+						"id":"LUGA-00000000007","es":{"nombre":"Castillo de los Duques de Alburquerque"},"en":{"nombre":"Castillo de los Duques de Alburquerque"},"geolocalizacion":"(40.258094, -5.018386)17"
+					},
+					"LUGA-00000000003": {
+						"id":"LUGA-00000000003","es":{"nombre":"Castillo de La Triste Condesa"},"en":{"nombre":"Castillo de La Triste Condesa"},"geolocalizacion":"(40.209659, -5.091664)17"
+					}				
+				}]
+			},
+			"Ruta_arqueoturismo_1":{
+				"id":"Ruta_arqueoturismo_1",
+				"es":{
+						"nombre":"Arqueoturismo: Celtas y Vetones",
+						"descripcion":"<h4>Una cultura por descubrir.</h4><p>El Turismo Arqueológico, unido al disfrute de la naturaleza y a la buena gastronomía y hospitalidad de las áreas rurales, integra un trinomio que permite disfrutar de un turismo de la más alta calidad.</p><p>Para adentrarse, siquiera en un atisbo, en el mundo cultural y modus vivendi de los vetones, conviene iniciar este itinerario turístico con una visita a la exposición <i>“La Vetonia: Cultura y Naturaleza”</i>, ubicada en un espacio específico del Torreón de los Guzmanes, sede de la Diputación provincial.</p><p>Los principales vestigios de los vetones se conservan en sus castros, auténticas ciudades fortificadas, con murallas y fosos, en los que vivían entre 500 y 2000 personas como máximo. Las casas, de estructura rectangular, con la cubierta de paja o ramas, podían tener sólo una o varias habitaciones; en la más importante de ellas se situaba, como centro de referencia, el hogar.</p><p>Entre los castros mejor conservados, en los que la Diputación continúa realizando obras de excavación y de mantenimiento de murallas de los respectivos recintos, se encuentran el de Las Cogotas, en Cardeñosa, el de La Mesa de Miranda en Chamartín de la Sierra, el de Ulaca en Solosancho, y el Raso en Candelada.</p><p>A los recintos fortificados hay que añadir también el gran número de figuras zoomorfas, toros o verracos, diseminados por toda la provincia. Las más significadas de ellas son, sin duda, las que forman el grupo conocido como “Los Toros de Guisando” en el Tiemblo.</p>"
+					},
+				"en":{
+						"nombre":"Arqueoturismo: Celtas y Vetones",
+						"descripcion":"<h4>Una cultura por descubrir.</h4><p>El Turismo Arqueológico, unido al disfrute de la naturaleza y a la buena gastronomía y hospitalidad de las áreas rurales, integra un trinomio que permite disfrutar de un turismo de la más alta calidad.</p><p>Para adentrarse, siquiera en un atisbo, en el mundo cultural y modus vivendi de los vetones, conviene iniciar este itinerario turístico con una visita a la <b>exposición “La Vetonia: Cultura y Naturaleza”, ubicada en un espacio específico del Torreón de los Guzmanes</b>, sede de la Diputación provincial.</p><p>Los principales vestigios de los vetones se conservan en sus castros, auténticas ciudades fortificadas, con murallas y fosos, en los que vivían entre 500 y 2000 personas como máximo. Las casas, de estructura rectangular, con la cubierta de paja o ramas, podían tener sólo una o varias habitaciones; en la más importante de ellas se situaba, como centro de referencia, el hogar.</p><p>Entre los castros mejor conservados, en los que la Diputación continúa realizando obras de excavación y de mantenimiento de murallas de los respectivos recintos, se encuentran el de Las Cogotas, en Cardeñosa, el de La Mesa de Miranda en Chamartín de la Sierra, el de Ulaca en Solosancho, y el Raso en Candelada.</p><p>A los recintos fortificados hay que añadir también el gran número de figuras zoomorfas, toros o verracos, diseminados por toda la provincia. Las más significadas de ellas son, sin duda, las que forman el grupo conocido como “Los Toros de Guisando” en el Tiemblo.</p>"
+					},
+				"items":[{	
+					"LUGA-00000000051": {
+						"id":"LUGA-00000000051","es":{"nombre":"Toros de Guisando"},"en":{"nombre":"Toros de Guisando"},"geolocalizacion":"(40.360869, -4.441633)17"
+					},
+					"LUGA-00000000050": {
+						"id":"LUGA-00000000050","es":{"nombre":"Castro de Ulaca"},"en":{"nombre":"Castro de Ulaca"},"geolocalizacion":"(40.529621, -4.885612)17"
+					},
+					"LUGA-00000000045": {
+						"id":"LUGA-00000000045","es":{"nombre":"Castro de El Raso"},"en":{"nombre":"Castro de El Raso"},"geolocalizacion":"(40.178004, -5.359526)17"
+					},
+					"LUGA-00000000710": {
+						"id":"LUGA-00000000710","es":{"nombre":"Verraco de Villanueva del Campillo"},"en":{"nombre":"Verraco de Villanueva del Campillo"},"geolocalizacion":"(40.57701667, -5.179861111)17"
+					},
+					"LUGA-00000000048": {
+						"id":"LUGA-00000000048","es":{"nombre":"Castro de la Mesa de Miranda"},"en":{"nombre":"Castro de la Mesa de Miranda"},"geolocalizacion":"(40.720047, -4.9455)17"
+					},
+					"LUGA-00000000046": {
+						"id":"LUGA-00000000046","es":{"nombre":"Castro de las Cogotas"},"en":{"nombre":"Castro de las Cogotas"},"geolocalizacion":"(40.727901, -4.701537)17"
+					}				
+					
+				}]
+			}
+		}],
+		"total":5
+	}
+}

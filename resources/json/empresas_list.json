@@ -1,0 +1,59 @@
+﻿{
+"result":
+	{
+	"items":
+		[
+			{
+				"id":"EMPR-00000000001",
+				"es":
+					{
+						"nombre":"Bodegas y Viñedos Valhondo",
+						"descripcion":"<p>La calidad de los vinos de bodegas valhondo se debe principalmente a las cualidades de la materia prima y al escrupuloso proceso de elaboración, el cual busca desde sus inicios perfeccionar un método que permita obtener un vino de destacada personalidad.<br>Cuando los racimos muestran un grado óptimo de maduración, estos son recolectados de manera tradicional, recogiéndose manualmente en cajones para asegurar el traslado de la uva sin que esta sufra daños.<br>Después de ser clasificada según la edad del viñedo y la procedencia de la uva, los racimos son revisados por personal experimentado para eliminar los racimos que no cumplan con el nivel de maduración exigido. Cuidadosamente seleccionada, la uva es introducida en depósitos de acero inoxidable donde tras varios procesos sufrirá la llamada fermentación malo-láctica.<br>Seguidamente el vino es introducido en barricas de roble americano y roble fracés para su crianza en bodega. Aquí pasará tres años, trasvasándose transcurrido este periodo a barricas de madera nueva.<br>Finalmente, terminado el proceso de crianza, el caldo es embotellado para ser etiquetado, conservándose en las condiciones adecuadas de temperatura y humedad hasta alcanzar el punto más adecuado para su puesta en el mercado.</p>"
+					},
+				"en":
+					{
+						"nombre":"Bodegas y Viñedos Valhondo",
+						"descripcion":"<p>La calidad de los vinos de bodegas valhondo se debe principalmente a las cualidades de la materia prima y al escrupuloso proceso de elaboración, el cual busca desde sus inicios perfeccionar un método que permita obtener un vino de destacada personalidad.<br>Cuando los racimos muestran un grado óptimo de maduración, estos son recolectados de manera tradicional, recogiéndose manualmente en cajones para asegurar el traslado de la uva sin que esta sufra daños.<br>Después de ser clasificada según la edad del viñedo y la procedencia de la uva, los racimos son revisados por personal experimentado para eliminar los racimos que no cumplan con el nivel de maduración exigido. Cuidadosamente seleccionada, la uva es introducida en depósitos de acero inoxidable donde tras varios procesos sufrirá la llamada fermentación malo-láctica.<br>Seguidamente el vino es introducido en barricas de roble americano y roble fracés para su crianza en bodega. Aquí pasará tres años, trasvasándose transcurrido este periodo a barricas de madera nueva.<br>Finalmente, terminado el proceso de crianza, el caldo es embotellado para ser etiquetado, conservándose en las condiciones adecuadas de temperatura y humedad hasta alcanzar el punto más adecuado para su puesta en el mercado.</p>"
+					},
+				"categoria":[{"id":"cat_4"}],
+				"tlf": "920256559",
+				"fax": null,
+				"email": "info@restaurante.es",
+				"web": "www.vetone.es",
+				"direccion": "C/Arevalo 9, 05229, Castellanos de Zapardiel, Ávila",
+				"geolocalizacion":"(40.654499, -4.697245)17",
+				"municipio":"MUNICIPIO",
+				"destacado":"",
+				"activo":"si",
+				"imagen":"\/resources\/galleries\/empresas\/EMPR-00000000001\/1.jpg",
+				"QRlink":"empresa.html?id=EMPR-00000000001"
+			},
+			{
+				"id":"EMPR-00000000002",
+				"es":
+					{
+						"nombre":"Mi restaurante",
+						"descripcion":"asdf"
+					},
+				"en":
+					{
+						"nombre":"My restaurant",
+						"descripcion":"asdf"
+					},
+				"categoria":[{"id":"cat_4"}],
+				"tlf": "920 00 00 00",
+				"fax": "920 000 000",
+				"email": "info@pinchos.es",
+				"web": "www.pinchos.es",
+				"direccion": "C/Vieja,2 Ávila",
+				"geolocalizacion":"(40.654499, -4.697245)17",
+				"municipio":"MUNICIPIO",
+				"destacado":"",
+				"activo":"no",
+				"imagen":"\/resources\/galleries\/empresas\/EMPR-00000000002\/1.jpg",
+				"QRlink":"empresa.html?id=EMPR-00000000002"
+
+			}
+		]
+	}
+}

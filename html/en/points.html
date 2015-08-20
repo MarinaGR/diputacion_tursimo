@@ -1,0 +1,179 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<title>Ávila Guía del Visitante - Excma. Diputación de Ávila</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, maximum-scale=2.0, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+		<meta name="robots" content="NOINDEX,NOFOLLOW,NOARCHIVE,NOODP,NOSNIPPET">
+		
+		<link href="../../styles/estilos_01.css" rel="stylesheet" type="text/css">
+
+		<script src="../../js/jquery.js"></script>
+		<script src="../../js/jqueryui.js"></script>
+		<script src="../../js/jquery.ui.touch-punch.min.js"></script>
+		<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+		<script src="../../resources/langs/langs.js"></script>
+		<script src="../../js/funciones.js"></script>
+		<script src="../../cordova.js"></script>
+		
+		<script>
+		var identificador=get_var_url("id"); 
+		$(document).ready(function() {
+			$("#ov_view_container_01").css("background-color","#F2F2F3");
+			$('#ov_view_container_01').css("min-height",$(window).innerHeight()+"px");
+			
+			$('#ov_curtain_1_1').hide('fade', function() {
+				$("#ov_view_container_01").show();
+			}, 100);
+			
+			ajax_recover_data("points", "points", identificador, "ov_view_container_01");
+			
+		});
+		
+		document.addEventListener("deviceready", function()  {
+		
+			ttsPlugin.initTTS(function() {
+
+				var voice="es-ES";			
+				switch(getLocalStorage("current_language"))
+				{
+					default:
+					case "es":  voice="es-ES";
+								break;
+								
+					case "en":  voice="en-US";
+								break;					
+				}
+				
+				ttsPlugin.setLanguage(voice);
+				
+				$("#ov_box_21_2").on("click",function(e) {	
+				
+					ttsPlugin.speak($('#point_description').text());
+					
+					$("#ov_box_21_2").hide('fade', function() {
+						$("#ov_box_21_2_1").show();
+					});
+					
+				});
+				
+				$("#ov_box_21_2_1").on("click",function(e) {	
+			
+					ttsPlugin.stopSpeaking(); 
+					
+					$("#ov_box_21_2_1").hide('fade', function() {
+						$("#ov_box_21_2").show();
+					});
+				});
+			
+			}, function(jqXHR, textStatus, errorThrown) {
+				alert("Error: "+textStatus+" "+errorThrown);
+			}); // Init Plugin : failCallBack doesn't work yet
+
+		});
+
+
+		</script>		
+		
+	</head>
+
+	<body id="ov_body_01" class="ov_body_01" onload="onBodyLoad()">
+	
+		<div id="ov_curtain_1_1" class="ov_curtain_1"> </div>
+		
+		<div id="ov_view_container_01" class="ov_view_container_01">
+
+			<div id="container_point" class="ov_zone_22">
+				<div class="ov_box_15" id="ov_box_15">
+					<div class="ov_box_16" id="ov_box_16_1" onclick="window.history.back();" >
+						<img src="../../styles/images/icons/back.png" alt="back" class="ov_image_15"/>
+						<div id="ov_text_26_1" class="ov_text_26">
+						Back
+						</div>
+					</div>
+					<div class="ov_box_16" id="ov_box_16_2" onclick="go_to_page('main_menu', '');" >
+						<img src="../../styles/images/icons/menu.png" alt="menu" class="ov_image_15"/>
+						<div id="ov_text_26_2" class="ov_text_26">
+						Menu
+						</div>
+					</div>
+					<div class="ov_box_16" id="ov_box_16_3" onclick="add_fav_to_list(identificador,'ov_box_16_3','ov_text_26_3')">
+						<img src="../../styles/images/icons/heart.png" alt="like" class="ov_image_15" />
+						<div id="ov_text_26_3" class="ov_text_26">
+						Fav
+						</div>
+					</div>
+					<script>
+						var favorito=JSON.parse(getLocalStorage("fav_list"));
+
+						if(favorito!=null && typeof favorito[identificador]!="undefined")
+						{
+							$('#ov_text_26_3').html('no fav');
+							$('#ov_box_16_3').attr("onclick","remove_fav_to_list(identificador,'ov_box_16_3','ov_text_26_3')");	
+						}
+						else
+						{
+							$('#ov_text_26_3').html('fav');
+							$('#ov_box_16_3').attr("onclick","add_fav_to_list(identificador,'ov_box_16_3','ov_text_26_3')");
+						}	
+					</script>
+				</div>
+				<div class="ov_box_17" id="ov_box_17">
+					<div id="point_name" class="ov_text_27"> </div>
+					<div id="point_mini_description" class="ov_text_28"> </div>
+				</div>
+			</div>
+			
+			<div id="categories_point" class="ov_zone_23">
+				
+			</div>
+
+			<div id="ov_zone_24" class="ov_zone_24">
+				<div class="ov_box_20" id="ov_box_20">
+					<div class="ov_box_21" id="ov_box_21_1" onclick="go_to_page('gallery',identificador)" >
+						<img src="../../styles/images/icons/viewgallery.png" alt="gal" class="ov_image_16"/>
+						<div id="ov_text_29_1" class="ov_text_29">
+						Gallery
+						</div>
+					</div>
+					<div class="ov_box_21" id="ov_box_21_2">
+						<img src="../../styles/images/icons/info.png" alt="info" class="ov_image_16"/>
+						<div id="ov_text_29_2" class="ov_text_29">
+						Audio-guide
+						</div>
+					</div>
+					<div class="ov_box_21" id="ov_box_21_2_1" style="display:none">
+						<img src="../../styles/images/icons/info.png" alt="info" class="ov_image_16"/>
+						<div id="ov_text_29_2" class="ov_text_29">
+						Stop audio
+						</div>
+					</div>
+					<div class="ov_box_21" id="ov_box_21_3" onclick="go_to_page('add_point_route',identificador)">
+						<img src="../../styles/images/icons/include_point2.png" alt="like" class="ov_image_16"/>
+						<div id="ov_text_29_3" class="ov_text_29">
+						Include in my route
+						</div>
+					</div>
+					<div class="ov_clear_floats_01">&nbsp;</div>
+				</div>
+			</div>
+
+			<div id="ov_zone_25" class="ov_zone_25" onclick="go_to_page('location_point',identificador)" >
+				<div id="ov_text_30" class="ov_text_30">
+					<img src="../../styles/images/icons/mini_point.png" class="ov_image_17" alt="minipoint"/>
+					Where is. <span style="text-decoration: underline">View on map</span>
+				</div>
+			</div>
+
+			<div id="ov_zone_26" class="ov_zone_26">
+				<div id="point_description" class="ov_text_31">
+					
+				</div>
+			</div>
+			
+		</div>
+		
+	</body>
+	
+</html>

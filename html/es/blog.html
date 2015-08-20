@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<title>Ávila Guía del Visitante - Excma. Diputación de Ávila</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, maximum-scale=2.0, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+		<meta name="robots" content="NOINDEX,NOFOLLOW,NOARCHIVE,NOODP,NOSNIPPET">
+		
+		<link href="../../styles/estilos_01.css" rel="stylesheet" type="text/css">
+		<link href="../../styles/estilos_blog.css" rel="stylesheet" type="text/css">
+		
+		<script src="../../js/jquery.js"></script>
+		<script src="../../js/jqueryui.js"></script>
+		<script src="../../js/jquery.ui.touch-punch.min.js"></script>
+		<script src="../../resources/langs/langs.js"></script>
+		<script src="../../js/funciones.js"></script>
+		<script src="../../cordova.js"></script>
+		
+		<script>
+		$(document).ready(function() {
+			$("#ov_view_container_01").css("background-color","#F2F2F3");
+			$('#ov_view_container_01').css("min-height",$(window).innerHeight()+"px");
+			
+			$('#ov_curtain_1_1').hide('fade', function() {
+				$("#ov_view_container_01").show();
+			}, 100);
+		});
+		
+		$(window).load(function() {
+			$("a").on("click", function(e) {
+				var url = $(this).attr('href');
+				var containsHttp = new RegExp('http\\b'); 
+
+				if(containsHttp.test(url)) { 
+					e.preventDefault(); 
+					window.open(url, "_system", "location=yes"); // For iOS
+					//navigator.app.loadUrl(url, {openExternal: true}); //For Android
+				}
+			});	
+		});
+		</script>		
+	</head>
+
+	<body id="ov_body_01" class="ov_body_01" onload="onBodyLoad()">
+	
+		<div id="ov_curtain_1_1" class="ov_curtain_1"> </div>
+		
+		<div id="ov_view_container_01" class="ov_view_container_01">
+
+			<div class="ov_vertical_space_01">&nbsp;</div>
+
+				<div id="ov_zone_15" class="ov_zone_15" >
+					<div id="ov_box_11_1" class="ov_box_18" onclick="go_to_page('main_menu', '');"  >
+						<img src="../../styles/images/icons/back.png" alt="menu" class="ov_image_13"/>
+						<div id="ov_text_23_1" class="ov_text_23">
+							Volver
+						</div>		
+					</div>		
+					
+					<div class="ov_box_07">	
+						<div id="ov_text_08" class="ov_text_08">
+							BLOG
+						</div>
+						<div id="geoloc_map_text" class="ov_text_09"> </div>
+					</div>
+						
+					<div class="ov_clear_floats_01">&nbsp;</div>
+				</div>
+	
+				<div class="ov_vertical_space_01">&nbsp;</div>
+				
+				<div class="ov_zone_15">
+				
+				<script src="http://feeds.feedburner.com/blogturismoavilaaseG?format=sigpro&nItems=6&displayTitle=false&openLinks=new&excerptLength=36" type="text/javascript"></script>
+				
+			</div>
+		</div>
+		
+	</body>
+	
+</html>

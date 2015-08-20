@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<title>Ávila Guía del Visitante - Excma. Diputación de Ávila</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, maximum-scale=2.0, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+		<meta name="robots" content="NOINDEX,NOFOLLOW,NOARCHIVE,NOODP,NOSNIPPET">
+		
+		<link href="../../styles/estilos_01.css" rel="stylesheet" type="text/css">
+		
+		<script src="../../js/jquery.js"></script>
+		<script src="../../js/jqueryui.js"></script>
+		<script src="../../js/jquery.ui.touch-punch.min.js"></script>
+		<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+		<script src="../../resources/langs/langs.js"></script>
+		<script src="../../js/funciones.js"></script>
+		<script src="../../cordova.js"></script>
+		
+		<script>
+				
+		$(document).ready(function() {
+			$("#ov_view_container_01").css("background-color","#C0615F"); //#4D802B
+			var current_presentation_slide=1;
+			
+			$('#ov_curtain_1_1').hide('fade', function() {
+				$("#ov_view_container_01").show();
+			}, 100);
+		});
+		
+		$(window).load(function() {
+			
+		});
+		</script>		
+	</head>
+
+	<body id="ov_body_01" class="ov_body_01" onload="onBodyLoad()">
+	
+		<div id="ov_curtain_1_1" class="ov_curtain_1"> </div>
+		
+		<div id="ov_view_container_01" class="ov_view_container_01">
+		
+			<!-- Hacer la presentación en canvas -->
+
+			<div id="ov_zone_05" class="ov_zone_06">
+				<div id="ov_text_03" class="ov_text_03">
+					<img class="ov_image_03" src="../../styles/images/icons/close.png" alt="Cerrar"/> Saltar 
+				</div>
+				<script>
+				$('#ov_text_03').click(function(e){
+					if(!localStorage.getItem("skip_presentation") || localStorage.getItem("skip_presentation")=="")
+					{
+						localStorage.setItem("skip_presentation","1");
+					}
+					$('#ov_curtain_1_1').show('fade',500);
+					$("#ov_view_container_01").hide('drop',500,function(){
+						window.location.href='../'+getLocalStorage("current_language")+'/main_menu.html';
+					});
+				});
+				</script>
+			</div>
+
+			<div id="ov_zone_06" class="ov_zone_06">
+				<div id="ov_text_04" class="ov_text_04">
+					SOBRE LA PROVINCIA DE ÁVILA
+				</div>
+				<div id="ov_text_05" class="ov_text_05">
+					En esta presentación podrás encontrar algo de información relevante sobre nuestra provincia.
+				</div>
+			</div>
+
+			<div id="ov_zone_07" class="ov_zone_07">
+				<img src="../../styles/images/general/mapa_01.png" alt="map" class="ov_image_04"/>
+			</div>
+
+			<div id="ov_zone_08" class="ov_zone_08">
+				<img src="../../styles/images/icons/white_circle.png" alt="circle" class="ov_image_05_a"/>
+				<img id="ov_to_sheet_2" src="../../styles/images/icons/grey_circle.png" alt="circle" class="ov_image_05"/>
+				<script>
+				$('#ov_to_sheet_2').click(function(e){
+					$('#ov_curtain_1_1').show('fade',500);
+					$("#ov_view_container_01").hide('drop',500,function(){
+						$("#ov_view_container_01").load("./views/"+localStorage.getItem("current_language")+"/presentation/ov_view_presentation_02.html",function(){
+							$('#ov_curtain_1_1').hide('fade',500);
+							$("#ov_view_container_01").show('drop',{direction: "right"},500,function(){});
+						});
+					});
+				});
+				</script>
+				<img id="ov_to_sheet_3" src="../../styles/images/icons/grey_circle.png" alt="circle" class="ov_image_05"/>
+				<script>
+				$('#ov_to_sheet_3').click(function(e){
+					$('#ov_curtain_1_1').show('fade',500);
+					$("#ov_view_container_01").hide('drop',500,function(){
+						$("#ov_view_container_01").load("./views/"+localStorage.getItem("current_language")+"/presentation/ov_view_presentation_03.html",function(){
+							$('#ov_curtain_1_1').hide('fade',500);
+							$("#ov_view_container_01").show('drop',{direction: "right"},500,function(){});
+						});
+					});
+				});
+				</script>
+				<img id="ov_to_sheet_4" src="../../styles/images/icons/grey_circle.png" alt="circle" class="ov_image_05"/>
+				<script>
+				$('#ov_to_sheet_4').click(function(e){
+					$('#ov_curtain_1_1').show('fade',500);
+					$("#ov_view_container_01").hide('drop',500,function(){
+						$("#ov_view_container_01").load("./views/"+localStorage.getItem("current_language")+"/presentation/ov_view_presentation_04.html",function(){
+							$('#ov_curtain_1_1').hide('fade',500);
+							$("#ov_view_container_01").show('drop',{direction: "right"},500,function(){});
+						});
+					});
+				});
+				</script>
+				<img id="ov_to_sheet_5" src="../../styles/images/icons/grey_circle.png" alt="circle" class="ov_image_05"/>
+				<script>
+				$('#ov_to_sheet_5').click(function(e){
+					$('#ov_curtain_1_1').show('fade',500);
+					$("#ov_view_container_01").hide('drop',500,function(){
+						$("#ov_view_container_01").load("./views/"+localStorage.getItem("current_language")+"/presentation/ov_view_presentation_05.html",function(){
+							$('#ov_curtain_1_1').hide('fade',500);
+							$("#ov_view_container_01").show('drop',{direction: "right"},500,function(){});
+						});
+					});
+				});
+				</script>
+				<img id="ov_to_sheet_6" src="../../styles/images/icons/grey_circle.png" alt="circle" class="ov_image_05"/>
+				<script>
+				$('#ov_to_sheet_6').click(function(e){
+					$('#ov_curtain_1_1').show('fade',500);
+					$("#ov_view_container_01").hide('drop',500,function(){
+						$("#ov_view_container_01").load("./views/"+localStorage.getItem("current_language")+"/presentation/ov_view_presentation_06.html",function(){
+							$('#ov_curtain_1_1').hide('fade',500);
+							$("#ov_view_container_01").show('drop',{direction: "right"},500,function(){});
+						});
+					});
+				});
+				</script>
+			</div>
+
+			<div id="ov_zone_09" class="ov_zone_09">
+				<div id="ov_button_02" class="ov_button_02">
+					SIGUIENTE
+				</div>
+				<script>
+						
+						$('#ov_button_02').click(function(e){
+							$('#ov_curtain_1_1').show('fade',500);
+							$("#ov_view_container_01").hide('drop',500,function(){
+								$("#ov_view_container_01").load("./views/"+localStorage.getItem("current_language")+"/presentation/ov_view_presentation_02.html",function(){
+									$('#ov_curtain_1_1').hide('fade',500);
+									$("#ov_view_container_01").show('drop',{direction: "right"},500,function(){});
+								});
+							});
+						});
+						
+				</script>
+			</div>
+
+
+		</div>
+		
+	</body>
+	
+</html>

@@ -1,0 +1,20 @@
+{
+	"result":
+	{
+		"id":"cat_0",
+		"es":"Servicios",
+		"en":"Services", 
+		"items":
+			[
+				{"id":"cat_0_1","es":"Ayuntamientos","en":"Municipalities"},
+				{"id":"cat_0_2","es":"Oficinas de turismo","en":"Tourist Offices"},
+				{"id":"cat_0_3","es":"Policía/Guardia Civil","en":"Police/Guardia Civil"},
+				{"id":"cat_0_4","es":"Bomberos","en":"Firefighters"},
+				{"id":"cat_0_5","es":"Centros médicos","en":"Medical Centers"},
+				{"id":"cat_0_6","es":"Estaciones de trenes/autobuses","en":"Train/Bus stations"},
+				{"id":"cat_0_7","es":"Correos","en":"Post Office"},
+				{"id":"cat_0_8","es":"Bibliotecas","en":"Libraries"}				
+			],
+		"total":8
+	}
+}

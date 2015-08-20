@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    id="nz.co.beweb.ttsplugin"
+    version="0.3.0">
+    <name>TtsPlugin</name>
+	<description>Text to speech plugin</description>
+	<license>Apache 2.0</license>
+	<keywords>cordova,tts,text,speech</keywords>
+	<repo>https://github.com/cavej03/cordova3-ios-tts-plugin.git</repo>
+	<issue>https://github.com/cavej03/cordova3-ios-tts-plugin</issue>
+    <engines>
+      <engine name="cordova" version=">=3.1.0" />
+    </engines>
+    <!-- ios -->
+    <platform name="ios">    
+        <js-module src="www/TtsPlugin.js" name="TtsPlugin">
+            <clobbers target="ttsPlugin" />
+        </js-module>
+        <config-file target="config.xml" parent="/*">
+            <feature name="TtsPlugin">
+                <param name="ios-package" value="TtsPlugin" /> 
+            </feature>
+        </config-file>
+        <header-file src="src/ios/TtsPlugin.h" />
+        <source-file src="src/ios/TtsPlugin.m" />
+        <framework src="AVFoundation.framework" />
+        <framework src="Foundation.framework" />
+    </platform>
+
+    
+</plugin>

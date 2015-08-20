@@ -1,0 +1,218 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<title>Ávila Guía del Visitante - Excma. Diputación de Ávila</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, maximum-scale=2.0, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+		<meta name="robots" content="NOINDEX,NOFOLLOW,NOARCHIVE,NOODP,NOSNIPPET">
+		
+		<link href="../../styles/estilos_01.css" rel="stylesheet" type="text/css">
+		
+		<script src="../../js/jquery.js"></script>
+		<script src="../../js/jqueryui.js"></script>
+		<script src="../../js/jquery.ui.touch-punch.min.js"></script>
+		<script src="../../resources/langs/langs.js"></script>
+		<script src="../../js/funciones.js"></script>
+		<script src="../../cordova.js"></script>
+		
+		<script>
+		$(document).ready(function() {
+		
+			$("#ov_view_container_01").css("background-color","#F2F2F3");
+			
+			$('#ov_curtain_1_1').hide('fade', function() {
+				$("#ov_view_container_01").show();
+			}, 100);
+			
+			var fecha=new Date(); 
+			var dia=fecha.getDate();
+			var dia_semana=fecha.getDay();
+			
+			$("#ov_text_26_1").html(dias[getLocalStorage("current_language")][dia_semana]+"<div style='font-size:1.2em'>"+dia+"</div>");
+			
+			ajax_recover_extern_data('events', 'ov_zone_15_a') ;
+		});
+		
+		$(window).load(function() {
+			
+		});
+		</script>		
+	</head>
+
+	<body id="ov_body_01" class="ov_body_01" onload="onBodyLoad()">
+	
+		<div id="ov_curtain_1_1" class="ov_curtain_1"> </div>
+		
+		<div id="ov_view_container_01" class="ov_view_container_01">
+
+			<div id="ov_zone_05" class="ov_zone_02">
+				
+				<img src="../../styles/images/logos/logo_dip.png" style="height:70px" />
+				
+				<div class="ov_box_24">
+					<div id="ov_text_26_1" class="ov_text_26" style="text-transform:uppercase">
+					
+					</div>
+				</div>
+				
+			</div>
+			
+			<div class="ov_vertical_space_01">&nbsp;</div>
+
+			<div id="ov_zone_10" class="ov_zone_10" onclick="window.location.href='../'+getLocalStorage('current_language')+'/points_list.html'" >
+				<div id="ov_box_01" class="ov_box_01">
+					<img src="../../styles/images/icons/points.png" alt="points" class="ov_image_06"/>
+				</div>
+				<div id="ov_box_02" class="ov_box_02">
+					<div id="ov_text_06" class="ov_text_06">
+						POINTS OF INTEREST
+					</div>
+					<div id="ov_text_07" class="ov_text_07">
+						Access information on each place.
+					</div>
+				</div>
+				<div class="ov_clear_floats_01">&nbsp;</div>
+			</div>
+
+			<div class="ov_vertical_space_01">&nbsp;</div>
+
+			<div id="ov_zone_11" class="ov_zone_11" onclick="window.location.href='../'+getLocalStorage('current_language')+'/my_location.html'" >
+				<div id="ov_box_03" class="ov_box_03">		
+					<div id="ov_text_08" class="ov_text_08">
+						WHERE AM I?
+					</div>
+					<div id="ov_text_09" class="ov_text_09">
+						View map
+					</div>
+				</div>
+				<div id="ov_box_04" class="ov_box_04">
+					<img src="../../styles/images/icons/whereami.png" alt="points" class="ov_image_07"/>
+				</div>
+				<div class="ov_clear_floats_01">&nbsp;</div>
+			</div>
+
+			<div class="ov_vertical_space_01">&nbsp;</div>
+
+			<div id="ov_zone_12" class="ov_zone_12">
+				<div id="ov_text_10" class="ov_text_10">
+					ROUTES. <span class="ov_span_01">Plan your visit</span>
+				</div>
+				<img src="../../styles/images/icons/grey_triangle.png" alt="triangle" class="ov_image_12"/>
+			</div>
+
+			<div id="ov_zone_13" class="ov_zone_13" >
+				<div id="ov_box_05" class="ov_box_05" onclick="go_to_page('my_routes','')">
+					<img src="../../styles/images/general/routes.png" alt="points" class="ov_image_08"/>
+					<div id="ov_text_22" class="ov_text_22">
+					ROUTES
+					</div>
+				</div>
+				<div id="ov_box_06" class="ov_box_06" onclick="go_to_page('trekking_routes','')">
+					<img src="../../styles/images/general/routes_02.png" alt="points" class="ov_image_08"/>
+					<div id="ov_text_23" class="ov_text_22">
+					TREKKING
+					</div>
+				</div>
+				<div class="ov_clear_floats_01">&nbsp;</div>
+			</div>
+
+			<div class="ov_vertical_space_01">&nbsp;</div>
+
+			<div id="ov_zone_14" class="ov_zone_14">
+				<div id="ov_text_11" class="ov_text_11">
+					DIARY. <span class="ov_span_01">Calendar of events</span>
+				</div>
+				<img src="../../styles/images/icons/white_triangle.png" alt="triangle" class="ov_image_12"/>
+			</div>
+
+			<div id="ov_zone_15_a" class="ov_zone_15_a">
+				
+			</div>
+
+			<div class="ov_vertical_space_01">&nbsp;</div>
+			
+			<div class="ov_zone_29_c">			
+				<div class="ov_vertical_space_01">&nbsp;</div>
+				
+				<div class="ov_zone_14_a">
+					<div id="ov_text_12" class="ov_text_11">
+						BLOG. <span class="ov_span_01">Last news</span>
+					</div>
+					<img src="../../styles/images/icons/grey2_triangle.png" alt="triangle" class="ov_image_12"/>
+				</div>			
+				<div id="ov_zone_29" class="ov_zone_29" onclick="go_to_page('blog','')">
+					<img src="../../styles/images/logos/logo_avila_turismo.png" class="ov_image_08"/>
+				</div>
+			</div>
+			
+			<div class="ov_vertical_space_01">&nbsp;</div>
+
+			<!--<div id="ov_zone_18_1" class="ov_zone_18">
+				<div id="ov_text_21_1" class="ov_text_21">
+					<img src="../../styles/images/icons/servicios.png" alt="servicios" class="ov_image_11"/>
+					Services
+				</div>
+			</div>
+
+			<div class="ov_vertical_space_01">&nbsp;</div>
+
+			<div id="ov_zone_18_5" class="ov_zone_18" onclick="go_to_page('blog','')">
+				<div id="ov_text_21_5" class="ov_text_21">
+					<img src="../../styles/images/icons/news.png" alt="noticias" class="ov_image_11"/>
+					Noticias/Blog
+				</div>
+			</div>
+			
+			<div class="ov_vertical_space_01">&nbsp;</div>
+
+			<div id="ov_zone_18_7" class="ov_zone_18" onclick="go_to_page('events','')">
+				<div id="ov_text_21_5" class="ov_text_21">
+					<img src="../../styles/images/icons/news.png" alt="agenda" class="ov_image_11"/>
+					All events
+				</div>
+			</div>
+			
+			<div class="ov_vertical_space_01">&nbsp;</div>-->
+
+			<div id="ov_zone_18_2" class="ov_zone_18" onclick="window.location.href='../../index.html'">
+				<div id="ov_text_21_2" class="ov_text_21">
+					<img src="../../styles/images/icons/configuracion.png" alt="conf" class="ov_image_11"/>
+					Change language
+				</div>
+			</div>
+
+			<!--<div class="ov_vertical_space_01">&nbsp;</div>
+
+			<div id="ov_zone_18_3" class="ov_zone_18" onclick="scan_qr()">
+				<div id="ov_text_21_3" class="ov_text_21">
+					<img src="../../styles/images/icons/scanqr.png" alt="scan" class="ov_image_11"/>
+					Scan QR
+				</div>
+			</div>
+
+			<div class="ov_vertical_space_01">&nbsp;</div>
+
+			<div id="ov_zone_18_6" class="ov_zone_18" onclick="go_to_page('presentation','');" >
+				<div id="ov_text_21_6" class="ov_text_21">
+					<img src="../../styles/images/icons/sobreestaapp.png" alt="about" class="ov_image_11"/>
+					View presentation
+				</div>
+			</div>-->
+			
+			<div class="ov_vertical_space_01">&nbsp;</div>
+
+			<div id="ov_zone_18_4" class="ov_zone_18" onclick="go_to_page('about','');" >
+				<div id="ov_text_21_4" class="ov_text_21">
+					<img src="../../styles/images/icons/sobreestaapp.png" alt="about" class="ov_image_11"/>
+					About
+				</div>
+			</div>
+			
+			<div class="ov_vertical_space_01">&nbsp;</div>
+
+		</div>
+		
+	</body>
+	
+</html>

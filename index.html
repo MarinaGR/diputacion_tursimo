@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<title>Ávila Guía del Visitante - Excma. Diputación de Ávila</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, maximum-scale=2.0, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+		<meta name="robots" content="NOINDEX,NOFOLLOW,NOARCHIVE,NOODP,NOSNIPPET">
+		
+		<link href="./styles/estilos_01.css" rel="stylesheet" type="text/css">
+		
+		<script src="./js/jquery.js"></script>
+		<script src="./js/jqueryui.js"></script>
+		<script src="./js/jquery.ui.touch-punch.min.js"></script>
+		<script src="./resources/langs/langs.js"></script>
+		<script src="./js/funciones.js"></script>
+		<script src="./cordova.js"></script>
+		
+		<script>
+		$(document).ready(function() {
+			setLanguage();
+		});
+		
+		$(window).load(function() {
+			$('#ov_curtain_1_1').hide('fade', function() {
+			
+				$('#ov_view_container_01').show();
+				show_welcome_phrase(0);
+				show_lang_selector('ov_menu_01_container_01');
+				
+			}, 500);
+		});
+		</script>		
+	</head>
+
+	<body id="ov_body_01" class="ov_body_01" onload="onBodyLoad()">
+	
+		<div id="ov_curtain_1_1" class="ov_curtain_1"> </div>
+		
+		<div id="ov_view_container_01" class="ov_view_container_01">
+			<div id="ov_zone_01" class="ov_zone_01">
+				<img src="styles/images/logos/logoblanco_200x200.png" id="ov_main_logo" class="ov_image_01" alt="Logo"/>
+			</div>
+					
+			<div id="ov_zone_03" class="ov_zone_03">
+				<div id="ov_text_01" class="ov_text_01"> </div>
+				<div id="ov_line_01" class="ov_line_01"> </div>
+				<div id="ov_text_02" class="ov_text_02"> </div>
+			</div>
+					
+			<div id="ov_zone_02" class="ov_zone_02">
+				<div id="ov_menu_01_container_01" class="ov_menu_01_container">
+								
+				</div>
+			</div>
+					
+			<div id="ov_zone_04" class="ov_zone_04">
+				<div id="ov_button_01" class="ov_button_01" onclick="view_presentation_or_menu()">
+					OK
+				</div>
+			</div>
+			
+			<div id="ov_zone_05" class="ov_zone_05">
+				<img src="./styles/images/logos/logo_dip_blanco.png" height="75" />
+			</div>
+			
+		</div>
+		
+	</body>
+	
+</html>
