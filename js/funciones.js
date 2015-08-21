@@ -1648,12 +1648,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 						case "en":  var informacion=d.en;	
 									break;
 					}
-					
-					//Recoger número de imágenes en carpeta para la función que muestra imágenes.
-					
-					//cadena+=d.id+" *** "+d.galeria+" *** "+d.geolocalizacion+" *** "+d.QRlink;
-					//galeria="../../resources/gallery/castro_ulaca/"
-					
+
 					$("#point_name").html(informacion.nombre);
 					$("#point_mini_description").html(informacion.miniDescripcion);
 									

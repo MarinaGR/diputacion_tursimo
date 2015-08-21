@@ -149,6 +149,8 @@ a {color: #4D802B;}
 .ov_button_01:hover{background-color:#f2f2f2;color:#4D802B;border:8px solid #f2f2f2;cursor:pointer;}
 .ov_button_02{margin:auto;background-color:#333;color:#F2F2F2;font-family:"1", sans-serif;font-size:1.4em;border:8px solid #333;border-left-color:transparent;border-right-color:transparent;text-align:center;max-width:100px;}
 .ov_button_02:hover{background-color:#f2f2f2;color:#333;border:8px solid #f2f2f2;border-left-color:transparent;border-right-color:transparent;cursor:pointer;}
+.ov_button_03 { margin: auto 10px; background-color: #1F1F1F; color: #F2F2F2; text-align: center; padding: 2px 12px; display: inline-block;}
+.ov_button_03:hover{ cursor:pointer; background-color: #111;}
 
 .ov_box_01{float:left;padding:20px 5%;}
 .ov_box_02{float:right;padding:20px 5%;padding-left:0px;max-width:40%;}

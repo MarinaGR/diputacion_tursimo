@@ -19,49 +19,106 @@
 		
 		<script>
 		var identificador=get_var_url("id"); 
-		var current_pic=1;
+		var current_pic=0;
 		
-		//Recoger máximo 4 imágenes
-		var num_pics=4;
+		var num_pics=3;
 		var number_of_pics=0;
+		var array_total_pics=new Array();
 		
 		//Precarga
 		var images = new Array();
 		function preload() {
+
+			//Imagen en local
 			var current=1;
-			for(i=0;i<num_pics;i++)
-			{
-				current=i+1;
-				images[i] = new Image();
-				images[i].src = "../../resources/galleries/points/"+identificador+"/"+current+".jpg";
-				
-				images[i].onload = function() {
-					number_of_pics++;
-				}
-				
+			images[0] = new Image();
+			images[0].src = "../../resources/galleries/points/"+identificador+"/"+current+".jpg";
+	
+			images[0].onload = function() {
+				array_total_pics[number_of_pics]=images[0].src;
+				number_of_pics++;
 			}
-			
-			if(number_of_pics>num_pics)
-				number_of_pics=num_pics;
-			
+	
 		}
 		preload();
 		
+		function preload_extern(array_extern_pics, total) {
+
+			if(total>0)
+			{			
+				$.each(array_extern_pics, function(i, pic)
+				{
+					images[i+1] = new Image();
+					images[i+1].src = "../"+pic;
+					
+					images[i+1].onload = function() {
+						
+						array_total_pics[number_of_pics]=images[i+1].src;
+						number_of_pics++;					
+						
+						if(number_of_pics>num_pics)
+							number_of_pics=num_pics;
+						
+						$("#num_total_imgs").html(number_of_pics);
+							
+						if(number_of_pics>1)
+						{
+							$('#ov_box_16_1 div').show();
+							$('#ov_box_16_3 div').show();
+							$('#ov_box_16_1 img').show();
+							$('#ov_box_16_3 img').show();
+						}
+						
+						$("#imgs_online").hide();						
+					}
+				});
+				
+				$("#loading_online").hide();
+			}
+			else
+			{
+				$("#loading_online").html(TEXTOS[0]);
+				$("#loading_online").show();
+				$("#imgs_online").hide();
+			}
+				
+		}
+		
+		function tratar_imgs_recogidas(data) 
+		{			
+			console.log(data);
+			
+			if(data.status=="KO")
+			{
+				//No hay imágenes externas a descargar
+			}
+			if(data.status=="OK")
+			{
+				//Hay imágenes en el servidor para descargar
+			}
+			preload_extern(data.result, data.total);
+		}
+		
+		
 		function show_next_pic(direction)
 		{
+			if (current_pic==number_of_pics){current_pic=0;}
+			if (current_pic<0){current_pic=number_of_pics-1;}
+			
 			if(direction=="right")
 			{
-				if (current_pic==number_of_pics){current_pic=0;}
-				current_pic++;
-				$("#ov_zone_27").css("background-image","url(../../resources/galleries/points/"+identificador+"/"+current_pic+".jpg)");
+				console.log(current_pic);
+				//$("#ov_zone_27").css("background-image","url(../../resources/galleries/points/"+identificador+"/"+current_pic+".jpg)");
+				$("#ov_zone_27").css("background-image","url("+array_total_pics[current_pic]);	
+				current_pic++;				
 				
 			}
 			if(direction=="left")
 			{
-				if (current_pic==1){current_pic=number_of_pics+1;}
-				current_pic--;			
-				$("#ov_zone_27").css("background-image","url(../../resources/galleries/points/"+identificador+"/"+current_pic+".jpg)");
-				
+				console.log(current_pic);
+				//$("#ov_zone_27").css("background-image","url(../../resources/galleries/points/"+identificador+"/"+current_pic+".jpg)");
+				$("#ov_zone_27").css("background-image","url("+array_total_pics[current_pic]);		
+				current_pic--;	
 				
 			}
 		}
@@ -77,7 +134,7 @@
 			ajax_recover_data("gallery_point", "points", identificador, "info_point");
 			
 		});
-		
+
 		$(window).load(function() {
 			
 			$("#ov_zone_27").css("height",$(window).innerHeight()+"px");
@@ -87,20 +144,54 @@
 					$("#ov_zone_27").css("height",$(window).innerHeight()+"px");
 					$("#ov_box_22").css("height",($(window).innerHeight()-110)+"px");
 				});	
+				
 				/*$('#ov_box_22').click(function(e){
 					$('#ov_box_15').toggle();
-					$('#info_point').toggle();					
+					$('#info_point').toggle();						
 				});*/
-				$('#point_num_imgs').html(number_of_pics+' <img src="../../styles/images/icons/viewgallery.png" alt="gal" style="width:20px;vertical-align:top; margin:4px 0 0 4px;" >');
+
+				$('#point_num_imgs').html('<span id="num_total_imgs">'+number_of_pics+'</span> <img src="../../styles/images/icons/viewgallery.png" alt="gal" style="width:20px;vertical-align:top; margin:4px 0 0 4px;" > <div class="ov_button_03" id="imgs_online">VIEW ONLINE MORE</div> <span id="loading_online" style="display:none;"><img src="../../styles/images/icons/loader.gif" width="20" /></span>');
+				
+				//Mostramos un botón para dar la opción al usuario si quiere o no descargar mas imágenes online
+				//Ese botón debe desaparecer cuando se descarguen las imágenes.
+					
+				$("#imgs_online").on("click", function() {
+					
+					$("#loading_online").show(function() {
+					
+						$.ajax({
+							  url: api_url,
+							  data: 
+								{ 
+									o: "recover_images", 
+									p: [["id", identificador]]
+								},
+							  type: 'POST',
+							  dataType: 'json',
+							  crossDomain: true, 
+							  success: tratar_imgs_recogidas,
+							  error: function(jqXHR, textStatus, errorThrown) {
+										$("#ov_box_22").html("<div id='ov_zone_15' class='ov_zone_15'><br>"+TEXTOS[0]+"</div>");
+										$("#loading_online").hide();
+									},
+							  async:false,
+						});
+						
+					});
+					
+				});
 				
 				if(number_of_pics<=0)
+					$('#imgs_online').hide();
+				
+				if(number_of_pics<=1)
 				{
 					$('#ov_box_16_1 div').hide();
 					$('#ov_box_16_3 div').hide();
 					$('#ov_box_16_1 img').hide();
-					$('#ov_box_16_3 img').hide();
+					$('#ov_box_16_3 img').hide();					
 				}
-		
+									
 		});
 		
 		$(document).on("swipeleft",function(){
@@ -108,7 +199,7 @@
 		});        
 		$(document).on("swiperight",function(){
 			show_next_pic("left");
-		}); 
+		});  
 
 		</script>		
 		
