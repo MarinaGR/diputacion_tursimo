@@ -49,7 +49,7 @@
 				$.each(array_extern_pics, function(i, pic)
 				{
 					images[i+1] = new Image();
-					images[i+1].src = "../"+pic;
+					images[i+1].src = pic;
 					
 					images[i+1].onload = function() {
 						
@@ -168,8 +168,9 @@
 							  crossDomain: true, 
 							  success: tratar_imgs_recogidas,
 							  error: function(jqXHR, textStatus, errorThrown) {
-										$("#ov_box_22").html("<div id='ov_zone_15' class='ov_zone_15'><br>"+TEXTOS[0]+"</div>");
-										$("#loading_online").hide();
+										$("#loading_online").html(TEXTOS[7]);
+										$("#loading_online").show();
+										$("#imgs_online").hide();
 									},
 							  async:false,
 						});

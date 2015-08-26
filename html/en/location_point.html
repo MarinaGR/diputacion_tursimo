@@ -20,6 +20,8 @@
 		
 		<script>		
 		var identificador=get_var_url("id"); 
+		var element=get_var_url("folder"); 
+		
 		$(document).ready(function() {
 			$("#ov_view_container_01").css("background-color","#F2F2F3");
 			
@@ -31,10 +33,16 @@
 				$("#ov_view_container_01").show();
 			}, 100);	
 			
-			ajax_recover_data("location_point", "points", identificador, "map_location");
+			if(element!="")
+			{
+				ajax_recover_data("location_point", element, identificador, "map_location");
+			}
+			else
+			{
+				ajax_recover_data("location_point", "points", identificador, "map_location");
+			}
 			
 		});
-
 		</script>		
 		
 	</head>
@@ -72,7 +80,14 @@
 						$('#ov_box_11_2').click(function(e){
 							$('.ov_box_11_active').attr("class","ov_box_12");
 							$(this).attr("class","ov_box_11_active");			
-							ajax_recover_data("geolocation_point", "points", identificador, "map_location");
+							if(element!="")							
+							{
+								ajax_recover_data("geolocation_point", element, identificador, "map_location");
+							}
+							else
+							{
+								ajax_recover_data("geolocation_point", "points", identificador, "map_location");
+							}
 						});		
 					</script>
 					
