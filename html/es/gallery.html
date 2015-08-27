@@ -25,7 +25,7 @@
 		var number_of_pics=0;
 		var array_total_pics=new Array();
 		
-		//Precarga
+		//Precarga de la primera imagen
 		var images = new Array();
 		function preload() {
 
@@ -42,6 +42,7 @@
 		}
 		preload();
 		
+		//Carga de las imágenes online
 		function preload_extern(array_extern_pics, total) {
 
 			if(total>0)
@@ -52,6 +53,8 @@
 					images[i+1].src = pic;
 					
 					images[i+1].onload = function() {
+						
+						alert("preload_extern: "+images[i+1].src);
 						
 						array_total_pics[number_of_pics]=images[i+1].src;
 						number_of_pics++;					
@@ -104,6 +107,8 @@
 		{
 			if (current_pic==number_of_pics){current_pic=0;}
 			if (current_pic<0){current_pic=number_of_pics-1;}
+			
+			alert("next_pic: "+array_total_pics[current_pic]);
 			
 			if(direction=="right")
 			{

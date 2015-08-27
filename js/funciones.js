@@ -1378,12 +1378,12 @@ function ajax_recover_data(type, folder, values, container, params) {
 					cadena+='</div>';
 					
 					cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
-					cadena+='<div class="ov_vertical_space_01">&nbsp;</div>';
+					/*cadena+='<div class="ov_vertical_space_01">&nbsp;</div>';
 					
 					cadena+='<div onclick="window.location.href=\'../'+getLocalStorage('current_language')+'/services_list.html\'" >';
 					cadena+='<div id="ov_box_13_1_f" class="ov_box_13" ><img src="../../styles/images/icons/right_arrow.png" alt="menu" class="ov_image_14"/></div>';
 					cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24">'+TEXTOS[50]+'</div></div>';
-					cadena+='</div>';
+					cadena+='</div>';*/
 					
 					cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
 					cadena+='<div class="ov_vertical_space_02">&nbsp;</div>';					
