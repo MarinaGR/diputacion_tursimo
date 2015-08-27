@@ -53,9 +53,7 @@
 					images[i+1].src = pic;
 					
 					images[i+1].onload = function() {
-						
-						alert("preload_extern: "+images[i+1].src);
-						
+
 						array_total_pics[number_of_pics]=images[i+1].src;
 						number_of_pics++;					
 						
@@ -105,27 +103,20 @@
 		
 		function show_next_pic(direction)
 		{
-			if (current_pic==number_of_pics){current_pic=0;}
-			if (current_pic<0){current_pic=number_of_pics-1;}
-			
-			alert("next_pic: "+array_total_pics[current_pic]);
-			
 			if(direction=="right")
-			{
-				console.log(current_pic);
-				//$("#ov_zone_27").css("background-image","url(../../resources/galleries/points/"+identificador+"/"+current_pic+".jpg)");
-				$("#ov_zone_27").css("background-image","url("+array_total_pics[current_pic]);	
-				current_pic++;				
-				
+			{	
+				current_pic++;
 			}
 			if(direction=="left")
 			{
-				console.log(current_pic);
-				//$("#ov_zone_27").css("background-image","url(../../resources/galleries/points/"+identificador+"/"+current_pic+".jpg)");
-				$("#ov_zone_27").css("background-image","url("+array_total_pics[current_pic]);		
 				current_pic--;	
-				
 			}
+			
+			if (current_pic==number_of_pics){current_pic=0;}
+			if (current_pic<0){current_pic=number_of_pics-1;}
+			
+			//$("#ov_zone_27").css("background-image","url(../../resources/galleries/points/"+identificador+"/"+current_pic+".jpg)");
+			$("#ov_zone_27").css("background-image","url("+array_total_pics[current_pic]);
 		}
 		
 		$(document).ready(function() {

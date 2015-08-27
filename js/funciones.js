@@ -1,7 +1,6 @@
-var api_imgs='http://hoopale.com/DIP_PRUEBAS/api.php';
+var api_imgs='http://www.turismoavila.com/app/apiD.php';
 var api_url='http://www.turismoavila.com/app/apiD.php';
-var kml_url='http://hoopale.com/DIP_PRUEBAS/resources/avila.kml';
-//var api_url='../../server/api.php';
+var kml_url='http://www.turismoavila.com/app/resources/avila.kml';
 var extern_url='http://www.turismoavila.com/';
 var local_url='../../resources/json/';
 
@@ -31,9 +30,6 @@ var TEXTOS=texts_app[getLocalStorage("current_language")];
 function onBodyLoad()
 {		
 	document.addEventListener("deviceready", onDeviceReady, false);
-	/*document.getElementById("boton_menu").addEventListener("click", onMenuKeyDown, false);	
-	document.getElementById("boton_salir").addEventListener("click", onOutKeyDown, false);	
-	document.getElementById("boton_atras").addEventListener("click", onBackKeyDown, false);	*/
 	
 	//Desactivada de momento la presentación
 	setLocalStorage("skip_presentation","1");
@@ -113,10 +109,6 @@ function onOutKeyDown()
 }
 function onOnline()
 {
-	/*setTimeout(function(){
-		$("#contenido").attr("src",siteurl);
-	},250);
-	
 	/*var networkState = navigator.connection.type;
 
     var states = {};
@@ -135,9 +127,6 @@ function onOnline()
 function onOffline()
 {
 	//$(".contenedor").prepend("Necesita una conexión a internet para poder ver correctamente todos los contenidos de la aplicación");
-	/*setTimeout(function(){
-		$("#contenido").attr("src","offline.html");
-	},250);*/
 }
 
 function show_welcome_phrase(index)
