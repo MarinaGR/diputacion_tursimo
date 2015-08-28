@@ -664,78 +664,118 @@ function ajax_recover_data(type, folder, values, container, params) {
 					var cadena="";
 					var servicio=null;
 					var start_count=start;
-										
-					$.each(data.result.items, function(i, d) {
-						
+					
+					var objajax=$.getJSON("../../resources/json/municipios_list.json", function(municipios) {
+	
+						var filter_name="";
 						var filter_identificador="";
 						
 						var q = decodeURI(filter_id),
 								regex = new RegExp("^" + q + "$");
 								
 						var aBuscar=decodeURI(filter_id);
+						
+						$.each(municipios.result.items, function(i, mun) {
 							
-						if(d.municipio==aBuscar)
+							if(mun.id==aBuscar || mun.nombre==aBuscar)
+							{								
+								filter_name=mun.nombre;
+								filter_identificador=mun.id;
+							}
+							
+						});					
+
+						var filter_points=new Array();
+						var resultados=0;
+						
+						var start_count=start;
+									
+						$.each(data.result.items, function(index, d) {   
+								
+							if(d.municipio!=null)
+							{							
+								if(d.municipio==filter_identificador) 
+								{										
+									if($.inArray(d, filter_points)==-1)	
+									{										
+										filter_points.push(d);	
+										servicio=d;										
+									}
+								}
+							}
+		
+						});
+						
+						/////////////////////////
+										
+						$.each(filter_points, function(i, servicio) {
+
+							if(servicio!=null)
+							{
+								cadena+='<div class="ov_zone_15a">';
+
+								cadena+='<div onclick="show_info_map_services(\''+i+'\', \''+servicio.direccion+'\');" id="ov_box_13_1_f" class="ov_box_13" >+</div>';
+								
+								switch(getLocalStorage("current_language"))
+								{
+									default:
+									case "es":  cadena+='<div class="ov_box_14" onclick="show_info_map_services(\''+i+'\', \''+servicio.direccion+'\');"><div id="ov_text_24_1_f" class="ov_text_24">'+servicio.es.nombre+'</div></div>';
+												break;
+									
+									case "en":  cadena+='<div class="ov_box_14" onclick="show_info_map_services(\''+i+'\', \''+servicio.direccion+'\');"><div id="ov_text_24_1_f" class="ov_text_24">'+servicio.en.nombre+'</div></div>';
+												break;
+								}
+
+								cadena+='<div class="ov_box_14_d" id="info_service_'+i+'"><div class="ov_text_18">';
+								
+								if(servicio.tlf)
+									cadena+='<i class="fa fa-phone fa-fw"></i> '+servicio.tlf+'<br>';
+								if(servicio.fax)
+									cadena+='<i class="fa fa-fax fa-fw"></i> '+servicio.fax+'<br>';
+								
+								if(servicio.email)
+									cadena+='<i class="fa fa-envelope fa-fw"></i> <a href="mailto:'+servicio.email+'" >'+servicio.email+'</a><br>';
+								if(servicio.web)
+									cadena+='<i class="fa fa-globe fa-fw"></i> <a href="'+servicio.web+'" >'+servicio.web+'</a><br>';
+								
+								if(servicio.direccion)
+									cadena+='<i class="fa fa-home fa-fw"></i> '+servicio.direccion+'<br>';
+											
+								cadena+='</div>';
+								
+								if(servicio.direccion)
+									cadena+='<div id="map_'+i+'" class="location_map_01"></div>';
+								cadena+='<div class="ov_vertical_space_01">&nbsp;</div>';
+														
+								cadena+='</div>';
+								
+								cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
+
+								cadena+='</div>';
+								
+								servicio=null;
+							}	
+						
+						});	
+						
+						if(cadena=="")					
 						{
-							filter_identificador=d.municipio;
-							servicio=d;
+							cadena+='<div class="ov_zone_15"><p>'+TEXTOS[7]+'</p></div>';
 						}
 						
-						if(servicio!=null)
-						{
-							cadena+='<div class="ov_zone_15a">';
+						cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
 
-							cadena+='<div onclick="show_info_map_services(\''+i+'\', \''+servicio.direccion+'\');" id="ov_box_13_1_f" class="ov_box_13" >+</div>';
-							
-							switch(getLocalStorage("current_language"))
-							{
-								default:
-								case "es":  cadena+='<div class="ov_box_14" onclick="show_info_map_services(\''+i+'\', \''+servicio.direccion+'\');"><div id="ov_text_24_1_f" class="ov_text_24">'+servicio.es.nombre+'</div></div>';
-											break;
-								
-								case "en":  cadena+='<div class="ov_box_14" onclick="show_info_map_services(\''+i+'\', \''+servicio.direccion+'\');"><div id="ov_text_24_1_f" class="ov_text_24">'+servicio.en.nombre+'</div></div>';
-											break;
-							}
-
-							cadena+='<div class="ov_box_14_d" id="info_service_'+i+'"><div class="ov_text_18">';
-							
-							if(servicio.tlf)
-								cadena+='<i class="fa fa-phone fa-fw"></i> '+servicio.tlf+'<br>';
-							if(servicio.fax)
-								cadena+='<i class="fa fa-fax fa-fw"></i> '+servicio.fax+'<br>';
-							
-							if(servicio.email)
-								cadena+='<i class="fa fa-envelope fa-fw"></i> <a href="mailto:'+servicio.email+'" >'+servicio.email+'</a><br>';
-							if(servicio.web)
-								cadena+='<i class="fa fa-globe fa-fw"></i> <a href="'+servicio.web+'" >'+servicio.web+'</a><br>';
-							
-							if(servicio.direccion)
-								cadena+='<i class="fa fa-home fa-fw"></i> '+servicio.direccion+'<br>';
-										
-							cadena+='</div>';
-							
-							if(servicio.direccion)
-								cadena+='<div id="map_'+i+'" class="location_map_01"></div>';
-							cadena+='<div class="ov_vertical_space_01">&nbsp;</div>';
-													
-							cadena+='</div>';
-							
-							cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
-
-							cadena+='</div>';
-							
-							servicio=null;
-						}	
+						$("#"+container).html(cadena);
 					
-					});	
+					})
 					
-					if(cadena=="")					
-					{
-						cadena+='<div class="ov_zone_15"><p>'+TEXTOS[7]+'</p></div>';
-					}
-					
-					cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
-
-					$("#"+container).html(cadena);
+					//fail list servicios
+					.fail(function(jqXHR, textStatus, errorThrown) {
+						//alert('Error: "+textStatus+"  "+errorThrown);	
+						
+						$("#"+container).html("<p>"+TEXTOS[6]+"</p>");
+	
+					});
 					
 					break;
 					
