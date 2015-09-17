@@ -2,7 +2,8 @@
 <widget xmlns = "http://www.w3.org/ns/widgets"
 		xmlns:gap   = "http://phonegap.com/ns/1.0"
 		id          = "com.ovnyline.diputacion"
-		version     = "1.0.0" >
+		version     = "1.0.1" >
+		<!-- ios new version 1.0.1: delete reference other mobile plataforms -->
 
     <name>Diputación de Ávila - Turismo</name>
 
@@ -15,14 +16,9 @@
     </author>
 
 	<preference name="permissions" value="none"/>
-    <!-- Habilitar permisos individuales 
-    <feature name="http://api.phonegap.com/1.0/network"/>
-    <feature name="http://api.phonegap.com/1.0/notification"/>
-	 Fin habilitar permisos -->
 	
     <!-- Personalización -->
     <preference name="phonegap-version"           value="3.7.0" />          <!-- all: current version of PhoneGap -->
-	<!--<preference name='phonegap-version'			value='cli-5.1.1' />-->
 	
     <preference name="orientation"                value="portrait" />        <!-- all: default means both landscape and portrait are enabled -->
     <preference name="target-device"              value="universal" />      <!-- all: possible values handset, tablet, or universal -->
