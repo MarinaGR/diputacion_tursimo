@@ -4333,6 +4333,8 @@ function draw_near_geoloc(position)
 				
 			}	
 			
+			$("#my_location_map").height(parseInt($(window).height())-parseInt($("#title_location").height())+"px");
+			
 			$("#my_location_map").gmap3({
 				kmllayer:{
 					options:{
@@ -4598,6 +4600,8 @@ function draw_map_points(position)
 		}	
 		
 		$("#geoloc_map_text").append("<p>"+TEXTOS[19]+"</p>");
+		
+		$("#my_location_map").height(parseInt($(window).height())-parseInt($("#title_location").height())+"px");
 		
 		$("#my_location_map").gmap3({
 			  map:{
