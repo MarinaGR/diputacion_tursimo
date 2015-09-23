@@ -31,16 +31,15 @@
 				show_near_geoloc(identificador);
 			}, 500);
 			
-			show_localstorage_data("cat_services_list", "ov_zone_21_filter", [['id', identificador]]);
-			
+			show_localstorage_data("cat_services_list", "ov_zone_21_filter", [['id', identificador]]);			
 			
 		});
 		
 		$(window).load(function() {
 		
 			setTimeout(function() { 
-				$("#my_location_map").height(parseInt($(window).height())-parseInt($("#title_location").height())+"px");			 
-			}, 500);
+				$("#my_location_map").css("min-height",parseInt($(window).height())-parseInt($("#title_location").height())+"px");			 
+			}, 10000);
 			
 		});
 		</script>		

@@ -39,8 +39,8 @@
 		$(window).load(function() {
 		
 			setTimeout(function() { 
-				$("#my_location_map").height(parseInt($(window).height())-parseInt($("#title_location").height())+"px");			 
-			}, 500);
+				$("#my_location_map").css("min-height",parseInt($(window).height())-parseInt($("#title_location").height())+"px");			 
+			}, 10000);
 			
 		});
 		</script>		
