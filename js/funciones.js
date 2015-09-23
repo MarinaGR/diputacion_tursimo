@@ -1606,16 +1606,16 @@ function ajax_recover_data(type, folder, values, container, params) {
 						}
 					}
 					
-					if(d.tlf)
-						cadena+="<i class='fa fa-phone fa-fw'> </i> "+d.tlf;
+					if(d.tlfn)
+						cadena+="<i class='fa fa-phone fa-fw'> </i> "+d.tlfn+"<br>";
 					if(d.fax)
-						cadena+="<br><i class='fa fa-fax fa-fw'> </i> "+d.fax;
+						cadena+="<i class='fa fa-fax fa-fw'> </i> "+d.fax+"<br>";
 					if(d.direccion)
-						cadena+="<br><i class='fa fa-home fa-fw'> </i> "+d.direccion;
+						cadena+="<i class='fa fa-home fa-fw'> </i> "+d.direccion+"<br>";
 					if(d.email)
-						cadena+="<br><i class='fa fa-envelope fa-fw'> </i> <a href='mailto:"+d.email+"' >"+d.email+"</a>";
+						cadena+="<i class='fa fa-envelope fa-fw'> </i> <a href='mailto:"+d.email+"' >"+d.email+"</a><br>";
 					if(d.web)
-						cadena+="<br><i class='fa fa-globe fa-fw'> </i> <a href='http://"+d.web+"' >"+d.web+"</a>";
+						cadena+="<i class='fa fa-globe fa-fw'> </i> <a href='http://"+d.web+"' >"+d.web+"</a><br>";
 					
 					$("#data_info").html(cadena);					
 						
