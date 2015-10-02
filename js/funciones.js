@@ -4,6 +4,7 @@ var kml_url='http://www.turismoavila.com/app/resources/avila.kml';
 var extern_url='http://www.turismoavila.com/';
 var local_url='../../resources/json/';
 
+var ID_ROUTE_DOWNLOAD;
 var RADIO_DESDE_USER=10; //km
 var RADIO_DESDE_USER_MAPA_LOCATION=100; //km
 var DATOS, FILTRO, NOMBRE_FILTRO, CONTENEDOR, ES_MUNICIPIO, ES_SERVICIO;
@@ -206,7 +207,7 @@ function search_string(value, container) {
 			regex = new RegExp(q, "i");
 		
 		$.getJSON('../../resources/json/point_list.json', function (data) {
-
+			
 			 $.each(data.result.items, function (ind, point) {
 				
 				switch(getLocalStorage("current_language"))
@@ -242,11 +243,11 @@ function search_string(value, container) {
 			
 			/*EMPRESAS*/
 			$.getJSON('../../resources/json/empresas_list.json', function (data2) {
-	
-				 $.each(data2.result.items, function (ind, empr) {
+
+				 $.each(data2.result.items, function (ind, empr) {			
 					
 					if(empr.activo=="si")
-					{
+					{												
 						switch(getLocalStorage("current_language"))
 						{
 							default:
@@ -272,7 +273,7 @@ function search_string(value, container) {
 				$.each(sorted_empr, function(ind, empr) {
 					cadena+='<div onclick="window.location.href=\'../'+getLocalStorage('current_language')+'/empresa.html?id='+empr.id+'\'" >';
 										
-					cadena+='<div id="ov_box_13_1_f" class="ov_box_13" style="background-image:url(../..'+empr.imagen+');" ><img src="../../styles/images/icons/right_arrow.png" alt="menu" class="ov_image_14"/></div>';
+					cadena+='<div id="ov_box_13_1_f" class="ov_box_13" ><img src="../../styles/images/icons/right_arrow.png" alt="menu" class="ov_image_14"/></div>';
 	
 					cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24">'+empr.es.nombre+'</div></div>';
 				
@@ -329,7 +330,7 @@ function search_string_in_cat(value, container, type) {
 			});
 			
 			filter_points.sort(SortByLangName);
-	
+				
 			$.each(filter_points, function (ind, point) {
 				
 				switch(getLocalStorage("current_language"))
@@ -395,7 +396,7 @@ function search_string_in_cat(value, container, type) {
 				$.each(sorted_empr, function(ind, empr) {
 					cadena+='<div onclick="window.location.href=\'../'+getLocalStorage('current_language')+'/empresa.html?id='+empr.id+'\'" >';
 										
-					cadena+='<div id="ov_box_13_1_f" class="ov_box_13" style="background-image:url(../..'+empr.imagen+');" ><img src="../../styles/images/icons/right_arrow.png" alt="menu" class="ov_image_14"/></div>';
+					cadena+='<div id="ov_box_13_1_f" class="ov_box_13"><img src="../../styles/images/icons/right_arrow.png" alt="menu" class="ov_image_14"/></div>';
 	
 					cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24">'+empr.es.nombre+'</div></div>';
 				
@@ -1056,7 +1057,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 							
 						});					
 						
-						///////////////////							
+						//////////////////											
 						
 						var cadena="";
 						
@@ -1078,11 +1079,13 @@ function ajax_recover_data(type, folder, values, container, params) {
 							cadena+="<p>"+TEXTOS[1]+"</p></div>";
 						}
 						
+						///////////////////		
+						
 						var filter_points=new Array();
 						var resultados=0;
 						
 						var start_count=start;
-									
+			
 						$.each(data.result.items, function(index, d) {   
 								
 							if(d.municipio!=null)
@@ -1095,42 +1098,62 @@ function ajax_recover_data(type, folder, values, container, params) {
 							}
 		
 						});
-						
-						///////////////////
-						
-						resultados=filter_points.length;
-	
-						$.each(filter_points, function(i, fd) {
-	
-							cadena+='<div onclick="window.location.href=\'../'+getLocalStorage('current_language')+'/points.html?id='+fd.id+'\'" >';
-	
-							cadena+='<div id="ov_box_13_1_f" class="ov_box_13" style="background-image:url(../..'+fd.imagen+');" ><img src="../../styles/images/icons/right_arrow.png" alt="menu" class="ov_image_14"/></div>';
 							
-							switch(getLocalStorage("current_language"))
-							{
-								default:
-								case "es":  cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24">'+fd.es.nombre+'</div></div>';
-											break;
-								
-								case "en":  cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24">'+fd.en.nombre+'</div></div>';
-											break;
-							}
-	
-							cadena+='</div>';
-						});
-						
-						if(resultados==0)
-						{
-							cadena+="<p>"+TEXTOS[0]+"</p>";
-						}
-						
-						cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
-						
-						$("#"+container).html(cadena);
-						
 						///////////////////
 						
+						//También añadimos puntos de empresas
 						
+						$.getJSON("../../resources/json/empresas_list.json", function(empresas) {
+															
+							$.each(empresas.result.items, function(index, empr) {   
+								
+								if(empr.municipio!=null)
+								{										
+									if(empr.municipio==filter_name) 
+									{												
+										if($.inArray(empr, filter_points)==-1)					
+											filter_points.push(empr);			
+									}
+								}
+			
+							});
+																			
+							///////////////////			
+							
+							resultados=filter_points.length;
+		
+							$.each(filter_points, function(i, fd) {
+		
+								cadena+='<div onclick="window.location.href=\'../'+getLocalStorage('current_language')+'/points.html?id='+fd.id+'\'" >';
+		
+								cadena+='<div id="ov_box_13_1_f" class="ov_box_13" style="background-image:url(../..'+fd.imagen+');" ><img src="../../styles/images/icons/right_arrow.png" alt="menu" class="ov_image_14"/></div>';
+								
+								switch(getLocalStorage("current_language"))
+								{
+									default:
+									case "es":  cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24">'+fd.es.nombre+'</div></div>';
+												break;
+									
+									case "en":  cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24">'+fd.en.nombre+'</div></div>';
+												break;
+								}
+		
+								cadena+='</div>';
+							});
+							
+							if(resultados==0)
+							{
+								cadena+="<p>"+TEXTOS[0]+"</p>";
+							}
+							
+							cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
+							
+							$("#"+container).html(cadena);
+							
+							///////////////////
+						
+						});
+					
 					})
 					
 					//fail list municipios
@@ -1199,7 +1222,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 						filter_points.sort(SortByLangName);
 						
 						resultados=filter_points.length;
-
+						
 						$.each(filter_points, function(i, fd) {
 						
 							/*if(start_count>i)
@@ -1407,12 +1430,12 @@ function ajax_recover_data(type, folder, values, container, params) {
 					cadena+='</div>';
 					
 					cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
-					/*cadena+='<div class="ov_vertical_space_01">&nbsp;</div>';
+					cadena+='<div class="ov_vertical_space_01">&nbsp;</div>';
 					
 					cadena+='<div onclick="window.location.href=\'../'+getLocalStorage('current_language')+'/services_list.html\'" >';
 					cadena+='<div id="ov_box_13_1_f" class="ov_box_13" ><img src="../../styles/images/icons/right_arrow.png" alt="menu" class="ov_image_14"/></div>';
 					cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24">'+TEXTOS[50]+'</div></div>';
-					cadena+='</div>';*/
+					cadena+='</div>';
 					
 					cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
 					cadena+='<div class="ov_vertical_space_02">&nbsp;</div>';					
@@ -1591,7 +1614,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 					$("#point_name").html(informacion.nombre);
 					$("#point_mini_description").html(informacion.miniDescripcion);
 					$("#point_description").html(informacion.descripcion);
-					
+						
 					$("#container_point").css({"min-height": "60px", "height": "60px"});
 					
 					var image=new Image();
@@ -1617,7 +1640,10 @@ function ajax_recover_data(type, folder, values, container, params) {
 					if(d.web)
 						cadena+="<i class='fa fa-globe fa-fw'> </i> <a href='http://"+d.web+"' >"+d.web+"</a><br>";
 					
-					$("#data_info").html(cadena);					
+					$("#data_info").html(cadena);			
+					
+					if(d.municipio)
+						$("#categories_point").append('<div class="ov_box_19" onclick="window.location.href=\'../'+getLocalStorage('current_language')+'/filter_by_municipio.html?id='+d.municipio+'\'">'+d.municipio+'</div>');		
 						
 					categ_list=JSON.parse(getLocalStorage("categ_list"));
 					$.each(d.categoria, function(i, cat) {
@@ -1677,7 +1703,12 @@ function ajax_recover_data(type, folder, values, container, params) {
 						case "en":  var informacion=d.en;	
 									break;
 					}
-
+					
+					//Recoger número de imágenes en carpeta para la función que muestra imágenes.
+					
+					//cadena+=d.id+" *** "+d.galeria+" *** "+d.geolocalizacion+" *** "+d.QRlink;
+					//galeria="../../resources/gallery/castro_ulaca/"
+					
 					$("#point_name").html(informacion.nombre);
 					$("#point_mini_description").html(informacion.miniDescripcion);
 									
@@ -1848,10 +1879,212 @@ function ajax_recover_data(type, folder, values, container, params) {
 						
 					});			
 					
+	
+					window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem)
+					//window.webkitRequestFileSystem(PERSISTENT, 0, function(fileSystem) 
+					{
+						console.log("FileSystem OK");
+						//Cargado el sistema de archivos, recuperar ficheros
+						
+						fs=fileSystem.root;
+						setFilePath();
+						
+						console.log(file_path);							
+						
+						/***/
+						
+						fs.getDirectory(file_path+"/json/routes/", {}, function(dirEntry){
+							  var dirReader = dirEntry.createReader();
+														  
+							  var readEntries = function() {
+							   	
+								  dirReader.readEntries(function(entries) {
+								  	
+								    for(var i = 0; i < entries.length; i++) {
+								      var entry = entries[i];
+								      if (entry.isDirectory){
+								        console.log('Directory: ' + entry.fullPath);
+								      }
+								      else if (entry.isFile){
+								        console.log('File: ' + entry.fullPath);
+								        
+								        fs.root.getFile(entry.fullPath, {}, function(fileEntry) {
+
+										    // Get a File object representing the file,
+										    // then use FileReader to read its contents.
+										    fileEntry.file(function(file) {
+										       var reader = new FileReader();
+										
+										       reader.onloadend = function(e) {
+										       	
+										         	cadena+='<div onclick="go_to_page(\'troute\',\''+this.id+'\');" >';
+													cadena+='<div id="ov_box_13_1_f" class="ov_box_13" ><img src="../../styles/images/icons/right_arrow.png" alt="menu" class="ov_image_14" /></div>';
+																
+													switch(getLocalStorage("current_language"))
+													{
+														default:
+														case "es":  cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24" onclick="$(\'#'+indice+'_puntos\').toggle();">'+this.es.nombre+'</div></div>';	
+																	break;
+																	
+														case "en":  cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24" onclick="$(\'#'+indice+'_puntos\').toggle();">'+this.es.nombre+'</div></div>';	
+																	break;
+													}
+														
+													cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
+													cadena+='</div>';
+													
+													indice++;
+													
+										       };
+										
+										       reader.readAsText(file);
+										       
+										    }, function(jqXHR, textStatus, errorThrown) {		
+							
+												console.log("No se ha cargado el archivo "+fs.toURL()+file_path+"/json/route"+id+".json");
+										
+										  		});
+										
+										  }, function(jqXHR, textStatus, errorThrown) {		
+							
+												console.log("No se ha cargado el archivo "+fs.toURL()+file_path+"/json/route"+id+".json");
+										
+										  	});
+										  
+								      }
+								    }
+								
+								  }, function(jqXHR, textStatus, errorThrown) {		
+							
+										console.log("No se ha cargado el archivo "+fs.toURL()+file_path+"/json/route"+id+".json");
+								
+								  });
+								  
+								};
+						
+						  readEntries(); // Start reading dirs.
+						  
+						}, function(jqXHR, textStatus, errorThrown) {		
+						
+									console.log("No se ha cargado el archivo "+fs.toURL()+file_path+"/json/route"+id+".json");
+						});
+						
+						/***
+						
+						var dirReader = fs.createReader();
+						var entries = [];
+						
+						  // Call the reader.readEntries() until no more results are returned.
+						  var readEntries = function() {
+						     dirReader.readEntries (function(results) {
+						     	
+						     	console.log(results);
+						     	
+						      if (!results.length) {
+						        
+								entries.sort();
+														        
+						        //entries.forEach(function(entry, i) {
+						        $.each(entries, function(index, rutas) {
+						        	
+						        	console.log(rutas);
+						        	
+								    cadena+='<div onclick="go_to_page(\'troute\',\''+rutas.id+'\');" >';
+									cadena+='<div id="ov_box_13_1_f" class="ov_box_13" ><img src="../../styles/images/icons/right_arrow.png" alt="menu" class="ov_image_14" /></div>';
+												
+									switch(getLocalStorage("current_language"))
+									{
+										default:
+										case "es":  cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24" onclick="$(\'#'+indice+'_puntos\').toggle();">'+rutas.es.nombre+'</div></div>';	
+													break;
+													
+										case "en":  cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24" onclick="$(\'#'+indice+'_puntos\').toggle();">'+rutas.es.nombre+'</div></div>';	
+													break;
+									}
+										
+									cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
+									cadena+='</div>';
+									
+									indice++;
+								  });
+								
+						  
+						      } else {
+						        //entries = entries.concat(toArray(results));
+						        entries = entries.concat(Array.prototype.slice.call(results || [], 0));
+						        
+						        readEntries();
+						      }
+						    }, function(jqXHR, textStatus, errorThrown) {		
+						
+									console.log("No se ha cargado el archivo "+fs.toURL()+file_path+"/json/route"+id+".json");
+							
+								});
+						  };
+						
+						  readEntries(); // Start reading dirs.
+							
+						
+								
+						/*var objajax=$.getJSON(fs.toURL()+file_path+"/json/routes"+id+".json", f_success)
+						.fail(function(jqXHR, textStatus, errorThrown) {		
+						
+							console.log("No se ha cargado el archivo "+fs.toURL()+file_path+"/json/route"+id+".json");
+							
+						});*/
+
+					});
+					
+					
+					/*
+					 
+					 function toArray(list) {
+						  return Array.prototype.slice.call(list || [], 0);
+						}
+						
+						function listResults(entries) {
+						  // Document fragments can improve performance since they're only appended
+						  // to the DOM once. Only one browser reflow occurs.
+						  var fragment = document.createDocumentFragment();
+						
+						  entries.forEach(function(entry, i) {
+						    var img = entry.isDirectory ? '<img src="folder-icon.gif">' :
+						                                  '<img src="file-icon.gif">';
+						    var li = document.createElement('li');
+						    li.innerHTML = [img, '<span>', entry.name, '</span>'].join('');
+						    fragment.appendChild(li);
+						  });
+						
+						  document.querySelector('#filelist').appendChild(fragment);
+						}
+						
+						function onInitFs(fs) {
+						
+						  var dirReader = fs.root.createReader();
+						  var entries = [];
+						
+						  // Call the reader.readEntries() until no more results are returned.
+						  var readEntries = function() {
+						     dirReader.readEntries (function(results) {
+						      if (!results.length) {
+						        listResults(entries.sort());
+						      } else {
+						        entries = entries.concat(toArray(results));
+						        readEntries();
+						      }
+						    }, errorHandler);
+						  };
+						
+						  readEntries(); // Start reading dirs.
+						
+						} 
+					 
+					 */
+					
 					$("#"+container).html(cadena);						
 								
-					
 					break;
+					
 					
 			case "trekking_route_info": 			
 					var cadena="";
@@ -4121,7 +4354,6 @@ function draw_near_geoloc(position)
 	//Puntos de interés
 	$.getJSON(local_url+"point_list.json", function(data) {
 		
-		
 		if(typeof categ_list[FILTRO]!="undefined")
 		{
 			switch(getLocalStorage("current_language"))
@@ -4170,24 +4402,23 @@ function draw_near_geoloc(position)
 							
 		});
 		
-		
-		//Servicios
-		$.getJSON(local_url+"services_list.json", function(data2) {
+		//Empresas
+		$.getJSON(local_url+"empresas_list.json", function(data2) {
 			
-			if(typeof cat_services_list[FILTRO]!="undefined")
+			if(typeof categ_list[FILTRO]!="undefined")
 			{
 				switch(getLocalStorage("current_language"))
 				{
 					default:
-					case "es":  id_cat_ser=cat_services_list[FILTRO][0].es;
+					case "es":  id_cat=categ_list[FILTRO][0].es;
 								break;
 										
-					case "en":  id_cat_ser=cat_services_list[FILTRO][0].en;
+					case "en":  id_cat=categ_list[FILTRO][0].en;
 								break;
 				}
 			}
-
-			$("#geoloc_map_text").html("<h3>"+id_cat_ser+"</h3><p>"+TEXTOS[23]+" "+radio+" "+TEXTOS[24]);
+	
+			$("#geoloc_map_text").html("<h3>"+id_cat+"</h3><p>"+TEXTOS[23]+" "+radio+" "+TEXTOS[24]);
 			
 			$("#geoloc_map_text").append("<span id='geoloc_map_text_02' ><img src='../../styles/images/icons/loader.gif' style='margin:0 5px;width:25px' /></span>");
 			
@@ -4195,274 +4426,337 @@ function draw_near_geoloc(position)
 				regex = new RegExp(q, "i");
 				
 			$.each(data2.result.items, function(index, d) {   
+	
+				var geolocalizacion=d.geolocalizacion.split(/[(,)]/);
+				var lat2=parseFloat(geolocalizacion[1]);
+				var lon2=parseFloat(geolocalizacion[2]);
+				
+				var dLat = (lat2-lat1).toRad();
+				var dLon = (lon2-lon1).toRad();
+				
+				var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+						Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) *
+						Math.sin(dLon/2) * Math.sin(dLon/2);
+				var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+				var di = radioTierra * c;
 				
 				$.each(d.categoria, function(i, cat) {
 					if(cat.id.search(regex) != -1) 
 					{			
-						if($.inArray(d, near_services)==-1)	
+						if($.inArray(d, near_points)==-1)	
 						{			
-							near_services.push(d);
+							if(di<=radio)
+								near_points.push(d);
 						}	
 					}
-				});			
-				
+				});
+								
 			});
 			
-			
-			
-			//GMAP3
-			var myLocation=new google.maps.LatLng(lat1, lon1);	
-			var todos_puntos=new Array();
-			todos_puntos.push({latLng:myLocation,data:TEXTOS[25]});		
-			
-			var resultados=near_points.length+near_services.length;
-			var enlace_punto="";
-			$.each(near_points, function(i, near_d) {
+		
+			//Servicios
+			$.getJSON(local_url+"services_list.json", function(data3) {
+				
+				if(typeof cat_services_list[FILTRO]!="undefined")
+				{
 					switch(getLocalStorage("current_language"))
 					{
 						default:
-						case "es":  var informacion=near_d.es;	
+						case "es":  id_cat_ser=cat_services_list[FILTRO][0].es;
 									break;
-									
-						case "en":  var informacion=near_d.en;	
-									break;
-					}
-					
-					enlace_punto="<p><img src='../../styles/images/icons/nearest.png' alt='interes' style='vertical-align: middle;margin: 2px;' /> <a href='points.html?id="+near_d.id+"' >"+informacion.nombre+"</a></p>";
-						
-				var coord=near_d.geolocalizacion.split(/[(,)]/);
-				var lat=coord[1];
-				var lon=coord[2]; 			
-				todos_puntos.push(
-					{
-						latLng:new Array(lat, lon),
-						data: enlace_punto,
-						options:{
-						  icon: "../../styles/images/icons/my_point_interest.png"
-						},
-						events:
-						{
-				          click:function(marker, event, context)
-								{
-									var map = $(this).gmap3("get"),
-										infowindow = $(this).gmap3({get:{name:"infowindow"}});
-									if (infowindow)
-									{
-										infowindow.open(map, marker);
-										infowindow.setContent(context.data);
-									} 
-									else {
-										$(this).gmap3({
-											infowindow:{
-												anchor:marker, 
-												options:{content: context.data}
-											}
-										});
-									}
-								}
-				        }
-					}
-				);	
-							
-			});
-			
-			$.each(near_services, function(i, near_d) {
-					switch(getLocalStorage("current_language"))
-					{
-						default:
-						case "es":  var informacion=near_d.es;	
-									break;
-									
-						case "en":  var informacion=near_d.en;	
+											
+						case "en":  id_cat_ser=cat_services_list[FILTRO][0].en;
 									break;
 					}
-					
-					enlace_punto="<p><img src='../../styles/images/icons/servicios2.png' alt='servicios' style='vertical-align: middle;margin: 2px;' /> <a href='filter_by_municipio.html?id="+near_d.municipio+"&tab=services' >"+informacion.nombre+"</a></p>";
-						
-				//var coord=near_d.geolocalizacion.split(/[(,)]/);
-				//var lat=coord[1];
-				//var lon=coord[2]; 			
-				todos_puntos.push(
-					{
-						//latLng:new Array(lat, lon),
-						address: near_d.direccion,
-						data: enlace_punto,
-						options:{
-						  icon: "../../styles/images/icons/my_point_services.png"
-						},
-						events:
-						{
-				          click:function(marker, event, context)
-								{
-									var map = $(this).gmap3("get"),
-										infowindow = $(this).gmap3({get:{name:"infowindow"}});
-									if (infowindow)
-									{
-										infowindow.open(map, marker);
-										infowindow.setContent(context.data);
-									} 
-									else {
-										$(this).gmap3({
-											infowindow:{
-												anchor:marker, 
-												options:{content: context.data}
-											}
-										});
-									}
-								}
-				        }
-					}
-				);	
-							
-			});
+				}
+	
+				$("#geoloc_map_text").html("<h3>"+id_cat_ser+"</h3><p>"+TEXTOS[23]+" "+radio+" "+TEXTOS[24]);
 				
-			if(resultados==0)
-			{
-				if(id_cat=="" && id_cat_ser!="")
-				{
-					$("#geoloc_map_text").html("<h3>"+id_cat_ser+"</h3><p>"+TEXTOS[5]+"</p>"); 
-				}
-				else if(id_cat!="" && id_cat_ser=="")
-				{
-					$("#geoloc_map_text").html("<h3>"+id_cat+"</h3><p>"+TEXTOS[5]+"</p>"); 
-				}
-				else
-				{
-					$("#geoloc_map_text").html("<p>"+TEXTOS[5]+"</p>"); 
-				}
+				$("#geoloc_map_text").append("<span id='geoloc_map_text_02' ><img src='../../styles/images/icons/loader.gif' style='margin:0 5px;width:25px' /></span>");
 				
-			}	
-			
-			$("#my_location_map").height(parseInt($(window).height())-parseInt($("#title_location").height())+"px");
-			
-			$("#my_location_map").gmap3({
-				kmllayer:{
-					options:{
-					  url: kml_url+"?dummy="+(new Date()).getTime(),
-					  opts:{
-						suppressInfoWindows: true,
-						preserveViewport: true,
-						clickable: false,
-						zIndex: 1
-					  }
-					}
-				  },  
-				  map:{
-					options:{
-					  center: myLocation,
-					  zoom: 15,
-					  mapTypeId: google.maps.MapTypeId.ROADMAP
-					}
-				  },
-				  overlay:{
-					latLng: myLocation,
-					options:{
-						  content:  '<div style=" border-bottom: 8px solid #444; height: 0px; width: 0px; '+
-									'border-right: 8px solid transparent; margin: auto; border-left: 8px solid transparent;"></div>'+
-									'<div style="background-color:#fff;border:2px solid #444;text-align:center;padding:5px 10px;">'+
-									TEXTOS[25]+'</div>',
-						  offset:{
-							y:0,
-							x:-40
-						  }
-					  }
-				  },
-				  marker:{
-					values: todos_puntos,
-					events:{ // events trigged by markers 
-						click: function(marker, event, context)
-								{
-									var map = $(this).gmap3("get"),
-										infowindow = $(this).gmap3({get:{name:"infowindow"}});
-									if (infowindow)
-									{
-										infowindow.open(map, marker);
-										infowindow.setContent(context.data);
-									} 
-									else {
-										$(this).gmap3({
-											infowindow:{
-												anchor:marker, 
-												options:{content: context.data}
-											}
-										});
-									}
-								}
-					},
-					callback: function() {
-						 $("#geoloc_map_text_02").html("");
-					},
-					cluster:{
-					  radius: 90,
-					  events:{ // events trigged by clusters 
-							click: function(cluster, event, context)
-								{							
-									var info=new Object();
-									info.data="";
-									if(context.data.markers.length>6)
-									{
-										info.data=context.data.markers.length+" "+TEXTOS[41];
+				var q = FILTRO,
+					regex = new RegExp(q, "i");
+					
+				$.each(data3.result.items, function(index, d) {   
+					
+					$.each(d.categoria, function(i, cat) {
+						if(cat.id.search(regex) != -1) 
+						{			
+							if($.inArray(d, near_services)==-1)	
+							{			
+								near_services.push(d);
+							}	
+						}
+					});			
+					
+				});
+				
+				//GMAP3
+				var myLocation=new google.maps.LatLng(lat1, lon1);	
+				var todos_puntos=new Array();
+				todos_puntos.push({latLng:myLocation,data:TEXTOS[25]});		
+				
+				var resultados=near_points.length+near_services.length;
+				var enlace_punto="";
+				$.each(near_points, function(i, near_d) {
+						switch(getLocalStorage("current_language"))
+						{
+							default:
+							case "es":  var informacion=near_d.es;	
+										break;
 										
-									}
-									else
+							case "en":  var informacion=near_d.en;	
+										break;
+						}
+						
+						if((near_d.id).indexOf("EMPR")!=-1)
+						{
+							enlace_punto="<p><img src='../../styles/images/icons/nearest.png' alt='interes' style='vertical-align: middle;margin: 2px;' /> <a href='empresa.html?id="+near_d.id+"' >"+informacion.nombre+"</a></p>";
+						}
+						else
+						{
+							enlace_punto="<p><img src='../../styles/images/icons/nearest.png' alt='interes' style='vertical-align: middle;margin: 2px;' /> <a href='points.html?id="+near_d.id+"' >"+informacion.nombre+"</a></p>";
+						}
+							
+					var coord=near_d.geolocalizacion.split(/[(,)]/);
+					var lat=coord[1];
+					var lon=coord[2]; 			
+					todos_puntos.push(
+						{
+							latLng:new Array(lat, lon),
+							data: enlace_punto,
+							options:{
+							  icon: "../../styles/images/icons/my_point_interest.png"
+							},
+							events:
+							{
+					          click:function(marker, event, context)
 									{
-										$.each(context.data.markers, function(i, m) {
-											if((m.data).search("href")!=-1)
-												info.data+=m.data;
-										});
+										var map = $(this).gmap3("get"),
+											infowindow = $(this).gmap3({get:{name:"infowindow"}});
+										if (infowindow)
+										{
+											infowindow.open(map, marker);
+											infowindow.setContent(context.data);
+										} 
+										else {
+											$(this).gmap3({
+												infowindow:{
+													anchor:marker, 
+													options:{content: context.data}
+												}
+											});
+										}
 									}
-
-									var map = $(this).gmap3("get"),
-										infowindow = $(this).gmap3({get:{name:"infowindow"}});
-									if (infowindow)
+					        }
+						}
+					);	
+							
+				});
+			
+				$.each(near_services, function(i, near_d) {
+						switch(getLocalStorage("current_language"))
+						{
+							default:
+							case "es":  var informacion=near_d.es;	
+										break;
+										
+							case "en":  var informacion=near_d.en;	
+										break;
+						}
+						
+						enlace_punto="<p><img src='../../styles/images/icons/servicios2.png' alt='servicios' style='vertical-align: middle;margin: 2px;' /> <a href='filter_by_municipio.html?id="+near_d.municipio+"&tab=services' >"+informacion.nombre+"</a></p>";
+							
+					//var coord=near_d.geolocalizacion.split(/[(,)]/);
+					//var lat=coord[1];
+					//var lon=coord[2]; 			
+					todos_puntos.push(
+						{
+							//latLng:new Array(lat, lon),
+							address: near_d.direccion,
+							data: enlace_punto,
+							options:{
+							  icon: "../../styles/images/icons/my_point_services.png"
+							},
+							events:
+							{
+					          click:function(marker, event, context)
 									{
-										infowindow.open(map, cluster.main);
-										infowindow.setContent(info.data);
-									} 
-									else {
-										$(this).gmap3({
-											infowindow:{
-												anchor:cluster.main, 
-												options:{content: info.data}
-											}
-										});
+										var map = $(this).gmap3("get"),
+											infowindow = $(this).gmap3({get:{name:"infowindow"}});
+										if (infowindow)
+										{
+											infowindow.open(map, marker);
+											infowindow.setContent(context.data);
+										} 
+										else {
+											$(this).gmap3({
+												infowindow:{
+													anchor:marker, 
+													options:{content: context.data}
+												}
+											});
+										}
 									}
-								},
-						mouseover: function(cluster){
-						  $(cluster.main.getDOMElement()).css("border", "0px");
-						},
-						mouseout: function(cluster){
-						  $(cluster.main.getDOMElement()).css("border", "0px");
+					        }
+						}
+					);	
+								
+				});
+					
+				if(resultados==0)
+				{
+					if(id_cat=="" && id_cat_ser!="")
+					{
+						$("#geoloc_map_text").html("<h3>"+id_cat_ser+"</h3><p>"+TEXTOS[5]+"</p>"); 
+					}
+					else if(id_cat!="" && id_cat_ser=="")
+					{
+						$("#geoloc_map_text").html("<h3>"+id_cat+"</h3><p>"+TEXTOS[5]+"</p>"); 
+					}
+					else
+					{
+						$("#geoloc_map_text").html("<p>"+TEXTOS[5]+"</p>"); 
+					}
+					
+				}	
+				
+				$("#my_location_map").height(parseInt($(window).height())-parseInt($("#title_location").height())+"px");
+				
+				$("#my_location_map").gmap3({
+					kmllayer:{
+						options:{
+						  url: kml_url+"?dummy="+(new Date()).getTime(),
+						  opts:{
+							suppressInfoWindows: true,
+							preserveViewport: true,
+							clickable: false,
+							zIndex: 1
+						  }
+						}
+					  },  
+					  map:{
+						options:{
+						  center: myLocation,
+						  zoom: 15,
+						  mapTypeId: google.maps.MapTypeId.ROADMAP
 						}
 					  },
-					  0: {
-						content: "<div class='cluster cluster-1'>CLUSTER_COUNT</div>",
-						width: 40,
-						height: 55
+					  overlay:{
+						latLng: myLocation,
+						options:{
+							  content:  '<div style=" border-bottom: 8px solid #444; height: 0px; width: 0px; '+
+										'border-right: 8px solid transparent; margin: auto; border-left: 8px solid transparent;"></div>'+
+										'<div style="background-color:#fff;border:2px solid #444;text-align:center;padding:5px 10px;">'+
+										TEXTOS[25]+'</div>',
+							  offset:{
+								y:0,
+								x:-40
+							  }
+						  }
 					  },
-					  10: {
-						content: "<div class='cluster cluster-2'>CLUSTER_COUNT</div>",
-						width: 40,
-						height: 55
-					  },
-					  25: {
-						content: "<div class='cluster cluster-3'>CLUSTER_COUNT</div>",
-						width: 40,
-						height: 55
+					  marker:{
+						values: todos_puntos,
+						events:{ // events trigged by markers 
+							click: function(marker, event, context)
+									{
+										var map = $(this).gmap3("get"),
+											infowindow = $(this).gmap3({get:{name:"infowindow"}});
+										if (infowindow)
+										{
+											infowindow.open(map, marker);
+											infowindow.setContent(context.data);
+										} 
+										else {
+											$(this).gmap3({
+												infowindow:{
+													anchor:marker, 
+													options:{content: context.data}
+												}
+											});
+										}
+									}
+						},
+						callback: function() {
+							 $("#geoloc_map_text_02").html("");
+						},
+						cluster:{
+						  radius: 90,
+						  events:{ // events trigged by clusters 
+								click: function(cluster, event, context)
+									{							
+										var info=new Object();
+										info.data="";
+										if(context.data.markers.length>6)
+										{
+											info.data=context.data.markers.length+" "+TEXTOS[41];
+											
+										}
+										else
+										{
+											$.each(context.data.markers, function(i, m) {
+												if((m.data).search("href")!=-1)
+													info.data+=m.data;
+											});
+										}
+	
+										var map = $(this).gmap3("get"),
+											infowindow = $(this).gmap3({get:{name:"infowindow"}});
+										if (infowindow)
+										{
+											infowindow.open(map, cluster.main);
+											infowindow.setContent(info.data);
+										} 
+										else {
+											$(this).gmap3({
+												infowindow:{
+													anchor:cluster.main, 
+													options:{content: info.data}
+												}
+											});
+										}
+									},
+							mouseover: function(cluster){
+							  $(cluster.main.getDOMElement()).css("border", "0px");
+							},
+							mouseout: function(cluster){
+							  $(cluster.main.getDOMElement()).css("border", "0px");
+							}
+						  },
+						  0: {
+							content: "<div class='cluster cluster-1'>CLUSTER_COUNT</div>",
+							width: 40,
+							height: 55
+						  },
+						  10: {
+							content: "<div class='cluster cluster-2'>CLUSTER_COUNT</div>",
+							width: 40,
+							height: 55
+						  },
+						  25: {
+							content: "<div class='cluster cluster-3'>CLUSTER_COUNT</div>",
+							width: 40,
+							height: 55
+						  }
+						}
 					  }
-					}
-				  }
+				});
+			
+			
+			
+			}).fail(function(jqXHR, textStatus, errorThrown) {
+				//alert('Error: "+textStatus+"  "+errorThrown);	
+				
+				$("#geoloc_map_text").append("<p>"+TEXTOS[6]+"<br>Error: "+textStatus+"  "+errorThrown+"</p>");
+	
 			});
-		
-		
 			
 		}).fail(function(jqXHR, textStatus, errorThrown) {
-			//alert('Error: "+textStatus+"  "+errorThrown);	
-			
-			$("#geoloc_map_text").append("<p>"+TEXTOS[6]+"<br>Error: "+textStatus+"  "+errorThrown+"</p>");
-
-		});
-					
+				//alert('Error: "+textStatus+"  "+errorThrown);	
+				
+				$("#geoloc_map_text").append("<p>"+TEXTOS[6]+"<br>Error: "+textStatus+"  "+errorThrown+"</p>");
+	
+			});					
 		
 	}).fail(function(jqXHR, textStatus, errorThrown) {
 		//alert('Error: "+textStatus+"  "+errorThrown);	
@@ -4485,6 +4779,9 @@ function draw_map_points(position)
 	
 	//Recoger todos los puntos de interés
 	var near_points=new Array();
+	
+	//Recoger todos los servicios
+	var near_services=new Array();
 		
 	var objajax=$.getJSON(local_url+"point_list.json", function(data) {
 		
@@ -4533,172 +4830,275 @@ function draw_map_points(position)
 							near_points.push(d);
 					}	
 				}
-			});
-				
-			
+			});		
 			
 		});
-				
-		//GMAP3
-		var myLocation=new google.maps.LatLng(lat1, lon1);	
-		var todos_puntos=new Array();
-
-		var resultados=near_points.length;
-		var enlace_punto="";
-		$.each(near_points, function(i, near_d) {
+		
+		
+		
+		/*Empresas*/
+		$.getJSON(local_url+"empresas_list.json", function(data2) {
+		
+			var id_cat="";
+			if(typeof categ_list[FILTRO]!="undefined")
+			{
 				switch(getLocalStorage("current_language"))
 				{
 					default:
-					case "es":  var informacion=near_d.es;	
+					case "es":  id_cat=categ_list[FILTRO][0].es;
 								break;
-								
-					case "en":  var informacion=near_d.en;	
+										
+					case "en":  id_cat=categ_list[FILTRO][0].en;
 								break;
 				}
-				
-				enlace_punto="<p><a href='points.html?id="+near_d.id+"' >"+informacion.nombre+"</a></p>";
-					
-			var coord=near_d.geolocalizacion.split(/[(,)]/);
-			var lat=coord[1];
-			var lon=coord[2]; 			
-			todos_puntos.push(
-				{
-					latLng:new Array(lat, lon),
-					data: enlace_punto,
-					options:{
-					  icon: "../../styles/images/icons/my_point.png"
-					},
-					events:
-					{
-			          click:function(marker, event, context)
-							{
-								var map = $(this).gmap3("get"),
-									infowindow = $(this).gmap3({get:{name:"infowindow"}});
-								if (infowindow)
-								{
-									infowindow.open(map, marker);
-									infowindow.setContent(context.data);
-								} 
-								else {
-									$(this).gmap3({
-										infowindow:{
-											anchor:marker, 
-											options:{content: context.data}
-										}
-									});
-								}
-							}
-			        }
-				}
-			);	
-						
-		});
-		
-		if(resultados==0)
-		{
-			$("#geoloc_map_text").html("<h3>"+id_cat+"</h3><p>"+TEXTOS[5]+"</p>"); 
-		}	
-		
-		$("#geoloc_map_text").append("<p>"+TEXTOS[19]+"</p>");
-		
-		$("#my_location_map").height(parseInt($(window).height())-parseInt($("#title_location").height())+"px");
-		
-		$("#my_location_map").gmap3({
-			  map:{
-				options:{
-				  center: myLocation,
-				  zoom: 9,
-				  mapTypeId: google.maps.MapTypeId.ROADMAP
-				}
-			  },
-			  marker:{
-				values: todos_puntos,
-				events:{ // events trigged by markers 
-					click: function(marker, event, context)
-							{
-								var map = $(this).gmap3("get"),
-									infowindow = $(this).gmap3({get:{name:"infowindow"}});
-								if (infowindow)
-								{
-									infowindow.open(map, marker);
-									infowindow.setContent(context.data);
-								} 
-								else {
-									$(this).gmap3({
-										infowindow:{
-											anchor:marker, 
-											options:{content: context.data}
-										}
-									});
-								}
-							}
-				},
-				callback: function() {
-					 $("#geoloc_map_text_02").html("");
-				},
-				cluster:{
-				  radius: 100,
-				  events:{ // events trigged by clusters 
-						click: function(cluster, event, context)
-							{							
-								var info=new Object();
-								info.data="";
-								if(context.data.markers.length>6)
-								{
-									info.data=context.data.markers.length+" "+TEXTOS[41];
-									
-								}
-								else
-								{
-									$.each(context.data.markers, function(i, m) {
-										if((m.data).search("href")!=-1)
-											info.data+=m.data;
-									});
-								}
+			}
 	
-								var map = $(this).gmap3("get"),
-									infowindow = $(this).gmap3({get:{name:"infowindow"}});
-								if (infowindow)
-								{
-									infowindow.open(map, cluster.main);
-									infowindow.setContent(info.data);
-								} 
-								else {
-									$(this).gmap3({
-										infowindow:{
-											anchor:cluster.main, 
-											options:{content: info.data}
-										}
-									});
-								}
-							},
-					mouseover: function(cluster){
-					  $(cluster.main.getDOMElement()).css("border", "0px");
-					},
-					mouseout: function(cluster){
-					  $(cluster.main.getDOMElement()).css("border", "0px");
+			$("#geoloc_map_text").html("<h3>"+id_cat+"</h3><p>"+TEXTOS[23]+" "+radio+" "+TEXTOS[24]);
+			
+			$("#geoloc_map_text").append("<span id='geoloc_map_text_02' ><img src='../../styles/images/icons/loader.gif' style='margin:0 5px;width:25px' /></span>");
+			
+			var q = FILTRO,
+				regex = new RegExp(q, "i");
+				
+			$.each(data2.result.items, function(index, empr) {   
+	
+				var geolocalizacion=empr.geolocalizacion.split(/[(,)]/);
+				var lat2=parseFloat(geolocalizacion[1]);
+				var lon2=parseFloat(geolocalizacion[2]);
+				
+				var dLat = (lat2-lat1).toRad();
+				var dLon = (lon2-lon1).toRad();
+				
+				var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+						Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) *
+						Math.sin(dLon/2) * Math.sin(dLon/2);
+				var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+				var di = radioTierra * c;
+				
+				$.each(empr.categoria, function(i, cat) {
+					if(cat.id.search(regex) != -1) 
+					{			
+						if($.inArray(empr, near_points)==-1)	
+						{			
+							if(di<=radio)
+								near_points.push(empr);
+						}	
 					}
-				  },
-				  0: {
-					content: "<div class='cluster cluster-1'>CLUSTER_COUNT</div>",
-					width: 40,
-					height: 55
-				  },
-				  10: {
-					content: "<div class='cluster cluster-2'>CLUSTER_COUNT</div>",
-					width: 40,
-					height: 55
-				  },
-				  25: {
-					content: "<div class='cluster cluster-3'>CLUSTER_COUNT</div>",
-					width: 40,
-					height: 55
-				  }
-				}
-			  }
+				});
+				
 			});
+			
+			
+			/*Servicios*/
+			$.getJSON(local_url+"services_list.json", function(data3) {
+		
+				var id_cat="";
+				if(typeof categ_list[FILTRO]!="undefined")
+				{
+					switch(getLocalStorage("current_language"))
+					{
+						default:
+						case "es":  id_cat=cat_services_list[FILTRO][0].es;
+									break;
+											
+						case "en":  id_cat=cat_services_list[FILTRO][0].en;
+									break;
+					}
+				}
+		
+				$("#geoloc_map_text").html("<h3>"+id_cat+"</h3><p>"+TEXTOS[23]+" "+radio+" "+TEXTOS[24]);
+				
+				$("#geoloc_map_text").append("<span id='geoloc_map_text_02' ><img src='../../styles/images/icons/loader.gif' style='margin:0 5px;width:25px' /></span>");
+				
+				var q = FILTRO,
+					regex = new RegExp(q, "i");
+					
+				$.each(data3.result.items, function(index, serv) {   
+					
+					$.each(serv.categoria, function(i, cat) {
+						if(cat.id.search(regex) != -1) 
+						{			
+							if($.inArray(serv, near_services)==-1)	
+							{			
+								near_services.push(serv);
+							}	
+						}
+					});			
+					
+				});
 
-	})
+						
+				//GMAP3
+				var myLocation=new google.maps.LatLng(lat1, lon1);	
+				var todos_puntos=new Array();
+		
+				var resultados=near_points.length;
+				var enlace_punto="";
+				$.each(near_points, function(i, near_d) {
+					switch(getLocalStorage("current_language"))
+					{
+						default:
+						case "es":  var informacion=near_d.es;	
+									break;
+									
+						case "en":  var informacion=near_d.en;	
+									break;
+					}
+					
+					if((near_d.id).indexOf("EMPR")!=-1)
+					{
+						enlace_punto="<p><img src='../../styles/images/icons/nearest.png' alt='interes' style='vertical-align: middle;margin: 2px;' /> <a href='empresa.html?id="+near_d.id+"' >"+informacion.nombre+"</a></p>";
+					}
+					else
+					{
+						enlace_punto="<p><img src='../../styles/images/icons/nearest.png' alt='interes' style='vertical-align: middle;margin: 2px;' /> <a href='points.html?id="+near_d.id+"' >"+informacion.nombre+"</a></p>";
+					}
+	
+					var coord=near_d.geolocalizacion.split(/[(,)]/);
+					var lat=coord[1];
+					var lon=coord[2]; 			
+					todos_puntos.push(
+						{
+							latLng:new Array(lat, lon),
+							data: enlace_punto,
+							options:{
+							  icon: "../../styles/images/icons/my_point.png"
+							},
+							events:
+							{
+					          click:function(marker, event, context)
+									{
+										var map = $(this).gmap3("get"),
+											infowindow = $(this).gmap3({get:{name:"infowindow"}});
+										if (infowindow)
+										{
+											infowindow.open(map, marker);
+											infowindow.setContent(context.data);
+										} 
+										else {
+											$(this).gmap3({
+												infowindow:{
+													anchor:marker, 
+													options:{content: context.data}
+												}
+											});
+										}
+									}
+					        }
+						}
+					);	
+								
+				});
+				
+				if(resultados==0)
+				{
+					$("#geoloc_map_text").html("<h3>"+id_cat+"</h3><p>"+TEXTOS[5]+"</p>"); 
+				}	
+				
+				$("#geoloc_map_text").append("<p>"+TEXTOS[19]+"</p>");
+				
+				$("#my_location_map").height(parseInt($(window).height())-parseInt($("#title_location").height())+"px");		
+				
+				$("#my_location_map").gmap3({
+					  map:{
+						options:{
+						  center: myLocation,
+						  zoom: 9,
+						  mapTypeId: google.maps.MapTypeId.ROADMAP
+						}
+					  },
+					  marker:{
+						values: todos_puntos,
+						events:{ // events trigged by markers 
+							click: function(marker, event, context)
+									{
+										var map = $(this).gmap3("get"),
+											infowindow = $(this).gmap3({get:{name:"infowindow"}});
+										if (infowindow)
+										{
+											infowindow.open(map, marker);
+											infowindow.setContent(context.data);
+										} 
+										else {
+											$(this).gmap3({
+												infowindow:{
+													anchor:marker, 
+													options:{content: context.data}
+												}
+											});
+										}
+									}
+						},
+						callback: function() {
+							 $("#geoloc_map_text_02").html("");
+						},
+						cluster:{
+						  radius: 100,
+						  events:{ // events trigged by clusters 
+								click: function(cluster, event, context)
+									{							
+										var info=new Object();
+										info.data="";
+										if(context.data.markers.length>6)
+										{
+											info.data=context.data.markers.length+" "+TEXTOS[41];
+											
+										}
+										else
+										{
+											$.each(context.data.markers, function(i, m) {
+												if((m.data).search("href")!=-1)
+													info.data+=m.data;
+											});
+										}
+			
+										var map = $(this).gmap3("get"),
+											infowindow = $(this).gmap3({get:{name:"infowindow"}});
+										if (infowindow)
+										{
+											infowindow.open(map, cluster.main);
+											infowindow.setContent(info.data);
+										} 
+										else {
+											$(this).gmap3({
+												infowindow:{
+													anchor:cluster.main, 
+													options:{content: info.data}
+												}
+											});
+										}
+									},
+							mouseover: function(cluster){
+							  $(cluster.main.getDOMElement()).css("border", "0px");
+							},
+							mouseout: function(cluster){
+							  $(cluster.main.getDOMElement()).css("border", "0px");
+							}
+						  },
+						  0: {
+							content: "<div class='cluster cluster-1'>CLUSTER_COUNT</div>",
+							width: 40,
+							height: 55
+						  },
+						  10: {
+							content: "<div class='cluster cluster-2'>CLUSTER_COUNT</div>",
+							width: 40,
+							height: 55
+						  },
+						  25: {
+							content: "<div class='cluster cluster-3'>CLUSTER_COUNT</div>",
+							width: 40,
+							height: 55
+						  }
+						}
+					  }
+					});
+					
+				});
+					
+			});
+	
+		})
 		.fail(function(jqXHR, textStatus, errorThrown) {
 			//alert('Error: "+textStatus+"  "+errorThrown);	
 			
@@ -4823,6 +5223,174 @@ function SortByLangName(a, b){
     
 	//return ((aName < bName) ? -1 : ((aName > bName) ? 1 : 0));
 }
+
+function recover_extern_list(operation, params, container) {
+	
+	$.ajax({
+
+		  url: api_url,
+		  
+	  	  data: 
+	  	  		{ 
+	  	  			o: operation, 
+	  	  			p: params 
+	  	  		},
+	  
+		  type: 'POST',
+		  dataType: 'json',
+		  crossDomain: true, 
+		  success: function(data) 
+		  		   {
+		  		   		var cadena="";
+		  		   				  		   		
+			  			$.each(data.result.routes, function(ind, route)  
+						{								
+							cadena+='<div onclick="donwload_files(\''+route.id+'\')" >';
+									
+							cadena+='<div id="ov_box_13_1_f" class="ov_box_13"><img src="../../styles/images/icons/grey2_triangle.png" alt="menu" class="ov_image_14"/></div>';
+										
+							switch(getLocalStorage("current_language"))
+							{
+								default:
+								case "es":  cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24">'+route.es.nombre+'</div></div>';											
+											break;
+								
+								case "en":  cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24">'+route.en.nombre+'</div></div>';
+											break;
+							}	
+						
+							cadena+='</div>';
+
+						});
+						
+						$("#"+container).html(cadena);
+	
+		  			},
+		  error: function() {
+		  				alert("Error ajax"); //change to console.log("error ajax");
+		  		 },
+		  async:false,
+		});
+}
+
+/* DOWNLOAD TO DIR */
+
+function donwload_files(id) {
+
+	ID_ROUTE_DOWNLOAD=id;
+	 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, onFileSystemError);
+	//window.webkitRequestFileSystem(PERSISTENT, 0, onFileSystemSuccess, onFileSystemError);   
+  
+}
+
+function onFileSystemError(error) 
+{
+	alert("Error File System");  //change to console.log("Error File System"); 
+}
+function onFileSystemSuccess(fileSystem) 
+{
+
+	alert("File System OK");  //change to console.log("File System OK"); 
+	
+	//Cargado el sistema de archivos, crear los directorios pertinentes para la descarga de los ficheros.
+		
+	fs=fileSystem.root;
+	
+	setFilePath();		
+	
+	console.log(fs)
+	console.log(file_path);
+	
+	fs.getDirectory("AgendaCulturalAV",{create:true, exclusive:false},function() {
+		fs.getDirectory(file_path,{create:true, exclusive:false},downloadRoutesToDir,onError);
+	},onError);   
+    
+}
+
+function setFilePath() {
+    var ua = navigator.userAgent.toLowerCase();
+	var isAndroid = ua.indexOf("android") > -1; 
+	if(isAndroid) {
+		file_path = "AgendaCulturalAV/resources";
+		//Android
+	}
+	else {
+		file_path = "AgendaCulturalAV/resources";
+		//IOS
+	}
+}
+
+function downloadRoutesToDir(d) {
+
+	console.log('created directory '+d.name);
+
+	DATADIR = d;  
+
+	//$("body").prepend("<div id='descarga' onclick='$(this).hide()'><div id='descarga_close'>CERRAR</div></div>");
+	$("#ov_download_routes").prepend("<div id='descarga'></div>");
+		
+	$("#descarga").append("<p>DESCARGANDO ARCHIVOS...</p>");
+	$("#descarga").append("<p>Esta acci&oacute;n puede tardar algunos minutos.</p>");
+	
+	//$("#descarga").append('<progress id="barra_carga" max="98" value="1"></progress>');		
+	$("#descarga").append('<p id="porcentaje"> </p>');
+	
+	
+	fs.getDirectory(file_path+"/json/",{create:true, exclusive:false},function() {
+		
+		fs.getDirectory(file_path+"/json/routes",{create:true, exclusive:false},function() {
+										
+			var ft = new FileTransfer();		
+			
+			var dlPath = fs.toURL()+file_path+"/json/routes"+filename+".json"; 	
+			
+			console.log(dlPath);
+	
+			ft.download(api_url+"/json/routes"+filename , dlPath, function() {
+					//$("#descarga").append(folder+filename+".json"+" .... OK<br>");
+					cargar_barra("barra_carga", 100);
+				}, 
+				function(error){
+					$("#descarga").append("json/routes"+filename+".json"+" .... KO "+error.code+"<br>");
+				});
+		}
+		,function(error) {
+			$("#descarga").append("Get Directory "+fs.toURL()+file_path+"/json/routes"+". FAIL: " + error.message+"<br>");
+		});
+		
+	}
+	,function(error) {
+		$("#descarga").append("Get Directory "+fs.toURL()+file_path+"/json/"+". FAIL: " + error.message+"<br>");
+	});
+
+}
+
+function gotFS(fileSystem) 
+{
+    var reader = fileSystem.root.createReader();
+    reader.readEntries(gotList, fail_getFile);  
+
+}
+function gotList(entries) {
+    var i;
+    for (i=0; i<entries.length; i++) {
+        if (entries[i].name.indexOf(".json") != -1) {
+            console.log(entries[i].name);
+        }
+    }
+}
+function success_getFile(parent) {
+    console.log("Nombre del padre: " + parent.name);
+}
+function fail_getFile(error) {
+    alert("Ocurrió un error recuperando el fichero: " + error.message);
+}
+function onError(e){
+	$("#descarga_close").show();
+	alert("ERROR "+e.code+" - "+e.source+" - "+e.target);
+}
+
+/*******************/
 
 function go_to_page(name, id) {
 	window.location.href='../'+getLocalStorage('current_language')+'/'+name+'.html?id='+id;

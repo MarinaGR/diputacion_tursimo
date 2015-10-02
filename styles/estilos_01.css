@@ -198,7 +198,7 @@ a {color: #4D802B;}
 .location_map_01 { width: 100%; min-height: 300px; text-align: center; }
 .location_map_01 img { max-width:none; }
 
-.legend img {width:18px;vertical-align:middle;margin:4px;}
+.legend img {width:25px;vertical-align:middle;margin:4px;}
 
 .cluster { color: #fff; font-size:1.2em; font-family: "2", Arial, sans-serif; text-align:center; width: 40px; height: 55px; line-height: 45px; background: url(./images/icons/cluster_point.png) no-repeat center; z-index:999; position: absolute;}
 .cluster-1  { font-size:1.7em;}
