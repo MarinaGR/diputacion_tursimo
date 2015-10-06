@@ -65,9 +65,9 @@
 	<gap:plugin name="de.appplant.cordova.plugin.local-notification" version="0.7.5" />
 	<gap:plugin name="org.apache.cordova.media" version="0.2.13" />
 	<gap:plugin name="org.apache.cordova.device" version="0.2.8" /> -->
-	<gap:plugin name="cordova-plugin-geolocation" source="npm" version="0.3.10" />
-	<gap:plugin name="cordova-plugin-inappbrowser" source="npm" version="0.5.2" />
-	<gap:plugin name="cordova-plugin-barcodescanner" source="npm" version="2.2.0" />	
+	<gap:plugin name="cordova-plugin-geolocation" source="npm" version="1.0.1" />
+	<gap:plugin name="cordova-plugin-inappbrowser" source="npm" version="1.0.1" />
+	<gap:plugin name="cordova-plugin-barcodescanner" source="npm" version="0.7.0" />	
 	<!--text to speech-->
 	<!--<gap:plugin name="org.tt.plugin.tts" version="1" />
 	<gap:plugin name="com.lefortsoftware.ttsplugin" version="0.1.0" />	-->	
