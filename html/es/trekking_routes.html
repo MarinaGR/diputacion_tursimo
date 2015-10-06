@@ -26,10 +26,13 @@
 			$('#ov_curtain_1_1').hide('fade', function() {
 				$("#ov_view_container_01").show();
 			}, 100);
+				
 			
+		});
+		
+		document.addEventListener("deviceready", function() {
 			//Mostrar listado de rutas ya creadas
 			ajax_recover_data("trekking_routes", "", "trekking_routes_list", "ov_zone_21_routeslist");
-			
 		});
 		
 		$(window).load(function() {
