@@ -1901,7 +1901,11 @@ function ajax_recover_data(type, folder, values, container, params) {
 						fs=fileSystem.root;
 						setFilePath();
 						
-						console.log(file_path);							
+						console.log(file_path);			
+	
+						fs.getDirectory("AgendaCulturalAV",{create:true, exclusive:false},function() {
+							fs.getDirectory(file_path,{create:true, exclusive:false},downloadRoutesToDir,onError);
+						},onError);   						
 						
 						/***/
 						
