@@ -75,6 +75,24 @@
 					});		
 				</script>
 				
+				<div id="ov_box_12_2" class="ov_box_12">
+					<img src="../../styles/images/icons/grey2_triangle.png" alt="routes" class="ov_image_13"/>
+					<div id="ov_text_23_3" class="ov_text_23">
+						Download more routes
+					</div>
+				</div>
+				<script>
+					$('#ov_box_12_2').click(function(e){
+						$('.ov_box_11_active').attr("class","ov_box_12");
+						$(this).attr("class","ov_box_11_active");			
+						$('.ov_zone_21').attr("class","ov_zone_21_b");
+						$('#ov_zone_21_more_routes').attr("class","ov_zone_21");	
+						
+						recover_extern_list("show_list_files", [['element','trekking_routes_list'],['lang',getLocalStorage("current_language")]], "ov_download_routes");						
+									
+					});		
+				</script>
+				
 			
 				<div class="ov_clear_floats_01">&nbsp;</div>
 			</div>
@@ -83,6 +101,15 @@
 			
 			<div id="ov_zone_21_routeslist" class="ov_zone_21"> 
 				
+			</div>
+			
+			<div id="ov_zone_21_more_routes" class="ov_zone_21_b"> 
+				
+				<h3>Download more routes here</h3>
+				
+				<div id="ov_download_routes" >
+					
+				</div>
 			</div>
 
 		</div>
