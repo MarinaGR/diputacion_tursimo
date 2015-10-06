@@ -1,7 +1,7 @@
 var api_imgs='http://www.turismoavila.com/app/apiD.php';
 var api_url='http://www.turismoavila.com/app/apiD.php';
 var kml_url='http://www.turismoavila.com/app/resources/avila.kml';
-var extern_url='http://www.turismoavila.com/';
+var extern_url='http://www.turismoavila.com/app/resources/';
 var local_url='../../resources/json/';
 
 var ID_ROUTE_DOWNLOAD;
@@ -5358,7 +5358,7 @@ function downloadRoutesToDir(d) {
 			
 			console.log(dlPath);
 	
-			ft.download(api_url+"/json/routes"+filename , dlPath, function() {
+			ft.download(extern_url+"/json/routes"+filename , dlPath, function() {
 					//$("#descarga").append(folder+filename+".json"+" .... OK<br>");
 					cargar_barra("barra_carga", 100);
 				}, 
