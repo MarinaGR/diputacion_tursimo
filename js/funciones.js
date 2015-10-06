@@ -4041,7 +4041,7 @@ function scan_qr(){
 				}
 				else
 				{
-					alert(TEXTOS[17]+"<br>"+result.text);
+					alert(TEXTOS[17]+":  "+result.text);
 				}
 			}
 		}, 
