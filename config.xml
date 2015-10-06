@@ -18,7 +18,7 @@
 	<preference name="permissions" value="none"/>
 	
     <!-- Personalización -->
-    <preference name="phonegap-version"           value="3.7.0" />          <!-- all: current version of PhoneGap -->
+    <preference name="phonegap-version"           value="cli-5.2.0" />          <!-- all: current version of PhoneGap -->
 	
     <preference name="orientation"                value="portrait" />        <!-- all: default means both landscape and portrait are enabled -->
     <preference name="target-device"              value="universal" />      <!-- all: possible values handset, tablet, or universal -->
@@ -29,7 +29,21 @@
     <preference name="exit-on-suspend"            value="false" />          <!-- ios: if set to true, app will terminate when home button is pressed -->
     <preference name="auto-hide-splash-screen"    value="true" />           <!-- ios: if set to false, the splash screen must be hidden using a JavaScript API -->
     <preference name="disable-cursor"             value="false" />          <!-- blackberry: prevents a mouse-icon/cursor from being displayed on the app -->
-    <preference name="android-minSdkVersion"      value="14" />             <!-- android: MIN SDK version supported on the target device. MAX version is blank by default. -->
+    <preference name="android-minSdkVersion"      value="15" />             <!-- android: MIN SDK version supported on the target device. MAX version is blank by default. -->
+	
+	<!--
+	
+	android-minSdkVersion:
+	
+	14: Android 4.0
+	15: Android 4.0.3
+	16: Android 4.1
+	17: Android 4.2
+	18: Android 4.3
+	19: Android 4.4	
+	
+	-->
+	
     <preference name="android-installLocation"    value="auto" />           <!-- android: app install location. 'auto' will choose. 'internalOnly' is device memory. 'preferExternal' is SDCard. -->
 
      <!-- Pplugins -->
@@ -62,6 +76,15 @@
 		<param name="android-package" value="nz.co.beweb.ttsplugin"/> 
 		<param name="ios-package" value="TtsPlugin" /> 
 	</feature>
+	
+	<!-- Ocultar barra ios, a partir de ios7-->
+	<gap:plugin name="de.appplant.cordova.plugin.hidden-statusbar-overlay" version="1.1.0" />
+	<gap:config-file platform="ios" parent="UIStatusBarHidden">
+		<true/>
+	</gap:config-file>
+	<gap:config-file platform="ios" parent="UIViewControllerBasedStatusBarAppearance">
+		<false/>
+	</gap:config-file>
 
     <!-- Iconos para cada plataforma -->
     <icon src="res/icon/icon.png" />

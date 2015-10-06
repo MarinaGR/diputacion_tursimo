@@ -85,6 +85,18 @@ function onDeviceReady()
 {					
 	document.addEventListener("offline", onOffline, false);
 	document.addEventListener("online", onOnline, false);
+	
+	if(typeof device!="undefined")
+	{
+	
+		console.log("WINDOW "+window);
+		console.log("DEVICE "+device);
+	
+		if(device.platform!='android' && device.platform!='Android') 
+		{
+			window.plugin.statusbarOverlay.hide();
+		}
+	}
 
 	document.addEventListener("backbutton", onBackKeyDown, false);
 	document.addEventListener("menubutton", onMenuKeyDown, false);
