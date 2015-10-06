@@ -1953,13 +1953,13 @@ function ajax_recover_data(type, folder, values, container, params) {
 										       
 										    }, function(jqXHR, textStatus, errorThrown) {		
 							
-												console.log("No se ha cargado el archivo "+fs.toURL()+file_path+"/json/route"+id+".json");
+												console.log("Error reader: No se ha cargado el archivo");
 										
 										  		});
 										
 										  }, function(jqXHR, textStatus, errorThrown) {		
 							
-												console.log("No se ha cargado el archivo "+fs.toURL()+file_path+"/json/route"+id+".json");
+												console.log("Error getFile: No se ha cargado el archivo");
 										
 										  	});
 										  
@@ -1968,7 +1968,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 								
 								  }, function(jqXHR, textStatus, errorThrown) {		
 							
-										console.log("No se ha cargado el archivo "+fs.toURL()+file_path+"/json/route"+id+".json");
+										console.log("Error ReadEntries: No se ha cargado el directorio "+fs.toURL()+file_path+"/json/routes/");
 								
 								  });
 								  
@@ -1978,7 +1978,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 						  
 						}, function(jqXHR, textStatus, errorThrown) {		
 						
-									console.log("No se ha cargado el archivo "+fs.toURL()+file_path+"/json/route"+id+".json");
+									console.log("Error getDirectory: No se ha cargado el directorio "+fs.toURL()+file_path+"/json/routes/");
 						});
 						
 						/***
