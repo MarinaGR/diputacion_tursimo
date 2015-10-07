@@ -21,7 +21,10 @@
 				},
 				"en":{
 					"descripcion": "<b>21,13 km.</b><p>Desnivel de subida: 1045 metros.<br>Desnivel de bajada: 1015 metros.</p><p>Duración: 5 horas 35 minutos.</p><hr><b>Valle del Tiétar</b><p>El GR 180 recoge el testigo senderista del GR 111 en la localidad cacereña y verata de Madrigal de la Vera.</p><p>Cruza el puente de piedra de la garganta de Alardos, frontera natural entre Extremadura y Castilla, y se dirige a visitar el castro vetón de El Freillo/El Raso (Siglo III a.C.) entre campos de cultivo.</p><p>Atraviesa la población de El Raso y se acomoda a los pies de las laderas meridionales que descienden del Circo de Gredos.</p><p>Los extensos jarales verdean los cerros cuando han sustituido al robledal, que aumenta su presencia a medida que avanza la etapa.</p><p>Las vistas sobre el mediodía del Bajo Tiétar y la cercana comarca de La Vera son magníficas.</p><p>La ruta salva la garganta de Chilla, uno de los principales cauces que descienden entre las cuerdas montañosas de este sector occidental de la Sierra.</p><p>Hace parada en el Santuario de Nuestra Señora de Chilla (Siglo XVI y XVIII), abrigado en un enclave mágico por un exuberante bosque de robles y fresnos centenarios, y se dirige por carretera local, entre un dombo vegetal de robles a Candeleda, donde termina la primera etapa.</p>"
-				}
+				},
+				"src_image": "../../resources/images/maps/gr180_e1.jpg",
+				"coord_image_ppal": [["top-left", "40.2164", "-5.4179"],["bottom-left", "40.0983", "-5.4179"], ["top-right","40.2164", "-5.1861"]]
+ 									   		
 			},
 			{	
 				"id":"gr180_e2", 
@@ -33,7 +36,9 @@
 				},
 				"en":{
 					"descripcion": "<b>34,3 km.</b><p>Desnivel de subida: 1174 metros.<br>Desnivel de bajada: 1069 metros.</p><p>Duración: 9 horas 13 minutos.</p><hr><b>Valle del Tiétar</b><p>Abandona Candeleda la etapa por la vereda del puerto de Candeleda o Trocha Real, vía pecuaria que acortaba el viaje y ahorraba el portazgo del Puerto del Pico para los ganados trashumantes.</p><p>La deja y se adentra en un inmenso robledal que cubre las laderas meridionales de la cuerda del Canchón y del cabezo de Cereceda.</p><p>Atraviesa por carretera la localidad de Poyales del Hoyo y hace lo propio en la urbanización El Palancar. Salva el río Arbillas y, por buenas pistas forestales, comienza a ascender por un compacto pinar resinero a sortear el collado del Portezuelo.</p><p>Las vistas del valle del Arbillas desde el mirador son inmensas, desde el embalse Rosarito a la Cabeza del Cervunal (2.089 metros).</p><p>Desciende por la otra vertiente del collado, la que mira al valle del río Pelayo, hasta la carretera que da comunicación con Guisando, villa declarada Conjunto Histórico-Artístico y Pintoresco.</p><p>La última parte de la etapa combina el uso del camino entre bancales y la pista forestal que baja por El Lancharón hacia Arenas de San Pedro y que ofrece una excelsa panorámica del casco urbano de la villa y del embalse de Riocuevas.</p>"
-				}
+				},
+				"src_image": "../../resources/images/maps/gr180_e2.jpg",
+				"coord_image_ppal": [["top-left", "40.2483", "-5.2733"],["bottom-left", "40.1303", "-5.2733"], ["top-right","40.2483", "-5.0416"]]
 			},
 			{	
 				"id":"gr180_e3", 
@@ -45,7 +50,9 @@
 				},
 				"en":{
 					"descripcion": "<b>25,8 km.</b><p>Desnivel de subida: 957 metros.<br>Desnivel de bajada: 843 metros.</p><p>Duración: 7 horas 30 minutos.</p><hr><b>Valle del Tiétar</b><p>Esta etapa conecta dos grandes villas castilladas por los señores del lugar durante la Edad Media, el Condestable Dávalos y el Duque de Alburquerque.</p><p>La ruta parte de Arenas de San Pedro con el objetivo de detenerse en el Monasterio de San Pedro de Alcántara y la Capilla Real (Siglo XVIII).</p><p>Reemprende el paso con el fin de coronar el collado de la Cruz de la Tendera, bajar por el bosque hasta la localidad de El Hornillo y desde allí, entre un mar de campos de cerezos, a El Arenal.</p><p>Se trata de dos localidades que se congregan en los interfluvios de barrancos y gargantas de cabecera del río Arenal, que desciende de la larga cuerda de Gredos.</p><p>Prosigue viaje hacia los collados de los cordales de La Penca (1.357 metros) y del Portezuelo, desde donde pasa a la cuenca del río Prado Latorre o, como es más conocido, el Barranco de las Cinco Villas.</p><p>El descenso desde el collado hacia Mombeltrán por un medio despejado pone en evidencia los estragos dejados en el paisaje forestal por el grave incendio sufrido en 2009.</p>"
-				}
+				},
+				"src_image": "../../resources/images/maps/gr180_e3.jpg",
+				"coord_image_ppal": [["top-left", "40.3031", "-5.1678"],["bottom-left", "40.1852", "-5.1678"], ["top-right","40.3031", "-4.9360"]]
 			},
 			{	
 				"id":"gr180_e4", 
@@ -57,7 +64,9 @@
 				},
 				"en":{
 					"descripcion": "<b>12,9 km.</b>Desnivel de subida: 437 metros.<br>Desnivel de bajada: 341 metros.</p><p>Duración: 4 horas 30 minutos.</p><hr><b>Valle del Tiétar</b><p>La cuarta etapa discurre casi íntegra por la Senda de las Cinco Villas (PRC-AV 49), que une todas las villas del valle.</p><p>No obstante, el primer tramo entre Mombeltrán y Cuevas del Valle no es coincidente, sino que el GR 180 aprovecha la Cañada Real que sube al Puerto del Pico.</p><p>Es a partir de Cuevas del Valle cuando ya es absoluta la comunión entre las dos rutas señalizadas y el trazado es común entre las cuatro villas restantes.</p><p>El recorrido es suave, a media ladera, animado si cabe por alguna ligera cuesta que traspasa de una garganta a otra, y acomodado sobre caminos tradicionales que conservan puentes, muros y empedrados.</p><p>Pero, sobre todo, si algo caracteriza esta ruta es por el delicado paisaje agrícola por el que discurre la trama rojiblanca del GR. Un mosaico coloreado por un sinfín de terrazas y bancales agrícolas que se derraman por las laderas, donde se fusionan el olivo, la higuera y la vid.</p>"
-				}
+				},
+				"src_image": "../../resources/images/maps/gr180_e4.jpg",
+				"coord_image_ppal": [["top-left", "40.3025", "-5.0556"],["bottom-left", "40.2435", "-5.0556"], ["top-right","40.3025", "-4.9397"]]
 			},
 			{	
 				"id":"gr180_e5", 
@@ -69,7 +78,9 @@
 				},
 				"en":{
 					"descripcion": "<b>24,6 km.</b><p>Desnivel de subida: 784 metros.<br>Desnivel de bajada: 744 metros.</p><p>Duración: 6 horas 30 minutos.</p><hr><b>Valle del Tiétar</b><p>El GR 180 deja el Barranco de las Cinco Villas y emprende un largo periplo por caminos y pistas forestales contorneando las faldas del Risco Abantera (1.514 metros), donde el pino resinero impone su ley y el castaño y el roble melojo aprovechan la umbría de vaguadas y arroyos para medrar por la ladera.</p><p>Hace parada breve en Lanzahíta, donde le recibe ese puente histórico por donde Goya y Boccherini cruzaron en su día para acudir a la pequeña corte del Infante en el palacio de la Mosquera.</p><p>Sin entrar en esta villa, la ruta recupera la marcha hacia Pedro Bernardo. Toma el camino que sube a la presa, situada en la garganta de La Eliza y, tras contemplar la lámina estancada de agua, prosigue camino, jalonando campos y fincas particulares y remontado el vallezuelo.</p><p>Cruza a la otra orilla de la garganta, donde vemos uno de los viejos molinos harineros arruinados, y sube decidida hasta el Balcón del Tiétar, como así es conocida la pintoresca villa de Pedro Bernardo que se encarama en la vertiente de los Riscos.</p>"
-				}
+				},
+				"src_image": "../../resources/images/maps/gr180_e5.jpg",
+				"coord_image_ppal": [["top-left", "40.2570", "-5.0144"],["bottom-left", "40.1981", "-5.0144"], ["top-right","40.2570", "-4.8986"]]
 			},
 			{	
 				"id":"gr180_e6", 
@@ -81,7 +92,9 @@
 				},
 				"en":{
 					"descripcion": "<b>12,2 km.</b><p>Desnivel de subida: 460 metros.<br>esnivel de bajada: 395 metros.</p><p>Duración: 3 horas 20 minutos.</p><hr><b>Valle del Tiétar</b><p>Del extremo más oriental de la villa parte esta etapa por el camino del Lancho.</p><p>Sube cortando la ladera del Risco de Sierpe (1.253 metros), logrando muy buenas vistas panorámicas sobre el valle del Tiétar y con ejemplos muy representativos, en las empinadas laderas, de esa sacrificada agricultura doméstica que se desarrolla sobre exiguas terracillas y que caracteriza a la Sierra de Gredos.</p><p>La ruta supera la hombrera del monte y desciende, dirigiéndose hacia la primera de las poblaciones situadas en la ladera de la Garganta de las Torres.</p><p>Una mezcolanza de fincas, casas de labor, cercados de piedra, callejones, pinares, etc. componen el mosaico natural que decora el avance sinuoso del GR hasta Gavilanes.</p><p>La última parte de la etapa es un paseo cómodo y agradable, el recorrido se apega más a la garganta y se aprovecha del parasol que le procura la arboleda del valle. Cruza el arroyo por el nuevo puente de la Cueva y sube por camino de herradura serpenteando hasta Mijares.</p>"
-				}
+				},
+				"src_image": "../../resources/images/maps/gr180_e6.jpg",
+				"coord_image_ppal": [["top-left", "40.2980", "-4.9297"],["bottom-left", "40.2390", "-4.9297"], ["top-right","40.2980", "-4.8139"]]
 			},
 			{	
 				"id":"gr180_e7", 
@@ -93,7 +106,9 @@
 				},
 				"en":{
 					"descripcion": "<b>21,7 km.</b><p>Desnivel de subida: 487 metros.<br>Desnivel de bajada: 620 metros.</p><p>Duración: 6 horas 33 minutos.</p><p><hr><b>Valle del Tiétar</b><p>El GR 180 desde Mijares, situado a media ladera de la montaña, va perdiendo cota y a mitad de recorrido se acerca tímidamente al eje del valle del Tiétar.</p><p>Los pinares y castañares de ladera siguen presentes camino de Casavieja, aunque el encinar comienza a ganar protagonismo favorecido por una menor altura, así como también la multiplicación de fincas agrícolas propiciada por la dulcificación de las pendientes.</p><p>La ruta penetra en Casavieja, con algún que otro requiebro final, y emprende un cuaderno de ruta revirado hasta llegar a Piedralaves, aprovechando cualquier posibilidad que le brinda la red viaria, incluidos varios cruces de carreteras.</p><p>Antes de finalizar la etapa, los últimos kilómetros surcan un espacio natural de sumo interés ambiental y rica tradición histórica como es la dehesa boyal de Piedralaves, un extenso comunal de pastos donde se apacientan estacionalmente los rebaños y vacadas y en el que abundan los robles, fresnos, alcornoques y otras muchas especies botánicas.</p>"
-				}
+				},
+				"src_image": "../../resources/images/maps/gr180_e7.jpg",
+				"coord_image_ppal": [["top-left", "40.3380", "-4.8733"],["bottom-left", "40.2202", "-4.8733"], ["top-right","40.3380", "-4.6416"]]
 			},
 			{	
 				"id":"gr180_e8", 
@@ -105,7 +120,9 @@
 				},
 				"en":{
 					"descripcion": "<b>26,5 km.</b><p>Desnivel de subida: 280 metros.<br>Desnivel de bajada: 352 metros.</p><p>Duración: 5 horas 57 minutos.</p><hr><b>Valle del Tiétar</b><p>Esta etapa se aleja temporalmente del piedemonte de Gredos para cruzar el Tiétar y visitar dos poblaciones al pie de la sierra de la Higuera.</p><p>En los primeros kilómetros los robustos alcornoques nos acompañan y las cerradas o prados ganaderos bordean el camino. Se cruza el río Escorial por el Puente Nuevo y los grandes pinos resineros comparten hábitat con altivos piñoneros.</p><p>El camino surca el señorial callejero de La Adrada, con su castillo, y se dirige a la pequeña Fresnedilla.</p><p>Para ello, antes tendrá que cruzar el Tiétar por el puente Mosquea y surcar montes adehesados frecuentados por ganados.</p><p>En Fresnedilla conecta con la Cañada Real Leonesa Oriental, que toma para llegar a la vecina Higuera de las Dueñas.</p><p>Desde esta localidad hasta Sotillo, los pastizales y grandes prados abiertos son más frecuentes en el paisaje, en contraste con las extensas masas forestales que cubren las laderas de la sierra.</p>"
-				}
+				},
+				"src_image": "../../resources/images/maps/gr180_e8.jpg",
+				"coord_image_ppal": [["top-left", "40.3294", "-4.7550"],["bottom-left", "40.2116", "-4.7550"], ["top-right","40.3294", "-4.5240"]]
 			},
 			{
 				"id":"gr180_e9", 
@@ -117,7 +134,9 @@
 				},
 				"en":{
 					"descripcion": "<b>29,9 km.</b><p>Desnivel de subida: 945 metros.<br>Desnivel de bajada: 932 metros.</p><p>Duración: 7 horas 56 minutos.</p><hr><b>Valle del Tiétar</b><p>La última etapa del GR 180 apura los relieves más orientales de la Sierra de Gredos subiendo al monte El Pinar y visitando la población serrana que se encuentra a mayor altitud, Casillas (1.012 metros). </p><p>Esta localidad, situada en la cabecera de la garganta del Pajarero, se significó por su intenso pasado resinero, como así se evidencia en el centro expositivo “La Resina”.</p><p>La ruta desciende nuevamente al fondo del valle donde se erige Santa María del Tiétar que, al igual que su vecina Sotillo, son dos villas de gran dinamismo y pujanza gracias a un turismo residencial que se beneficia de la cercanía a Madrid.</p><p>El resto de la etapa se desarrolla sobre la Cañada Real Leonesa Oriental, que corona el puerto y desciende por la otra vertiente, siguiendo el eje del arroyo Morales o Avellaneda entre pastizales y dehesas, hasta abocar en la carretera al pie del Cerro Guisando y las célebres esculturas zoomórficas de los vetones.</p>"
-				}
+				},
+				"src_image": "../../resources/images/maps/gr180_e9.jpg",
+				"coord_image_ppal": [["top-left", "40.3892", "-4.6268"],["bottom-left", "40.2713", "-4.6268"], ["top-right","40.3892", "-4.3964"]]
 			}
 		]
 	}

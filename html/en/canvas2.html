@@ -25,7 +25,7 @@
 				
 				$("#ov_body_01").css("background-color","#F2F2F3");
 
-				ajax_paint_routes("trekking_route_canvas", "", "point_list", "contenido", [['id',identificador],['gpx',gpx_file],['haveCanvas', true],['canvas_number',2]]);
+				ajax_paint_routes("trekking_route_canvas", "routes", json_file, "contenido", [['id',identificador],['gpx',gpx_file],['haveCanvas', true],['canvas_number',2]]);
 				
 				document.getElementById("zoom_out").addEventListener("click", function zoomin() {
 					window.location.href="canvas.html?id="+get_var_url("id")+"&gpx="+gpx_file+"&json="+json_file;

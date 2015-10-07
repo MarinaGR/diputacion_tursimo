@@ -2578,6 +2578,8 @@ function ajax_recover_data(type, folder, values, container, params) {
 	
 }
 
+//ajax_paint_routes("trekking_route_canvas", "", "point_list", "contenido", [['id',identificador],['gpx',gpx_file],['haveCanvas', true],['canvas_number',1]]);
+
 function ajax_paint_routes(type, folder, values, container, params) {
 
 	var file_to_load="";
@@ -2641,120 +2643,29 @@ function ajax_paint_routes(type, folder, values, container, params) {
 		{
 			case "trekking_route_canvas": 
 					var cadena="";
-					
+															
 					if(haveCanvas==true)
 					{
 						var src_image="";
 				
-						switch(id)
+						var elementos=data.result.items;
+
+						$.each(elementos, function(i,e){
+
+							if(e.id.search(id)!=-1)
+							{
+								src_image=e.src_image;  
+								coord_image_ppal=e.coord_image_ppal;
+								return false;
+							}
+						});
+
+						if(src_image=="")
 						{
-							case "gr180_e1": src_image='../../resources/images/maps/gr180_e1.jpg';  
-									   		 coord_image_ppal=[["top-left", "40.2164", "-5.4179"],["bottom-left", "40.0983", "-5.4179"], ["top-right","40.2164", "-5.1861"]];
- 									   		 break;
- 									   		 
-							case "gr180_e2": src_image='../../resources/images/maps/gr180_e2.jpg';  
-									   		 coord_image_ppal=[["top-left", "40.2483", "-5.2733"],["bottom-left", "40.1303", "-5.2733"], ["top-right","40.2483", "-5.0416"]];
- 									   		 break;
- 
-							case "gr180_e3": src_image='../../resources/images/maps/gr180_e3.jpg';  
-									   		 coord_image_ppal=[["top-left", "40.3031", "-5.1678"],["bottom-left", "40.1852", "-5.1678"], ["top-right","40.3031", "-4.9360"]];
- 									   		 break;
- 
-							case "gr180_e4": src_image='../../resources/images/maps/gr180_e4.jpg';  
-									   		 coord_image_ppal=[["top-left", "40.3025", "-5.0556"],["bottom-left", "40.2435", "-5.0556"], ["top-right","40.3025", "-4.9397"]];
- 									   		 break;
- 									   		 
-							case "gr180_e5": src_image='../../resources/images/maps/gr180_e5.jpg';  
-									   		 coord_image_ppal=[["top-left", "40.2570", "-5.0144"],["bottom-left", "40.1981", "-5.0144"], ["top-right","40.2570", "-4.8986"]];
- 									   		 break;
- 									   		 
-							case "gr180_e6": src_image='../../resources/images/maps/gr180_e6.jpg';  
-									   		 coord_image_ppal=[["top-left", "40.2980", "-4.9297"],["bottom-left", "40.2390", "-4.9297"], ["top-right","40.2980", "-4.8139"]];
- 									   		 break;
-
-							case "gr180_e7": src_image='../../resources/images/maps/gr180_e7.jpg';  
-									   		 coord_image_ppal=[["top-left", "40.3380", "-4.8733"],["bottom-left", "40.2202", "-4.8733"], ["top-right","40.3380", "-4.6416"]];
- 									   		 break;
- 									   		 
-							case "gr180_e8": src_image='../../resources/images/maps/gr180_e8.jpg';  
-									   		 coord_image_ppal=[["top-left", "40.3294", "-4.7550"],["bottom-left", "40.2116", "-4.7550"], ["top-right","40.3294", "-4.5240"]];
- 									   		 break;
- 									   		 
-							case "gr180_e9": src_image='../../resources/images/maps/gr180_e9.jpg';  
-									   		 coord_image_ppal=[["top-left", "40.3892", "-4.6268"],["bottom-left", "40.2713", "-4.6268"], ["top-right","40.3892", "-4.3964"]];
- 									   		 break;
-											 
-							case "caminos_teresianos":	
-													src_image='../../resources/images/maps/cteresianos.jpg';  
-													coord_image_ppal=[["top-left", "41.0045", "-5.5653"],["bottom-left", "40.5365", "-5.5653"], ["top-right","41.0045", "-4.6383"]];
-													break;
-													
-							case "cteresianos_e1":	src_image='../../resources/images/maps/cteresianos_e1.jpg';  
-													coord_image_ppal=[["top-left", "40.7010", "-4.7606"],["bottom-left", "40.6424", "-4.7606"], ["top-right","40.7010", "-4.6447"]];
-													break;
-													
-							case "cteresianos_e2":	src_image='../../resources/images/maps/cteresianos_e2.jpg';  
-													coord_image_ppal=[["top-left", "40.7462", "-4.7902"],["bottom-left", "40.6877", "-4.7902"], ["top-right","40.7462", "-4.6743"]];
-													break;
-													
-							case "cteresianos_e3":	src_image='../../resources/images/maps/cteresianos_e3.jpg';  
-													coord_image_ppal=[["top-left", "40.7827", "-4.7968"],["bottom-left", "40.7241", "-4.7968"], ["top-right","40.7827", "-4.6809"]];
-													break;
-													
-							case "cteresianos_e4":	src_image='../../resources/images/maps/cteresianos_e4.jpg';  
-													coord_image_ppal=[["top-left", "40.8291", "-4.7962"],["bottom-left", "40.7706", "-4.7962"], ["top-right","40.8291", "-4.6803"]];
-													break;
-																									
-							case "cteresianos_e5":	src_image='../../resources/images/maps/cteresianos_e5.jpg';  
-													coord_image_ppal=[["top-left", "40.8472", "-4.7827"],["bottom-left", "40.8180", "-4.7827"],["top-right", "40.8472", "-4.7247"]];
-													break;
-													
-							case "cteresianos_e6":	src_image='../../resources/images/maps/cteresianos_e6.jpg';  
-													coord_image_ppal=[["top-left", "40.8834", "-4.8587"],["bottom-left", "40.8250", "-4.8587"],["top-right", "40.8834", "-4.7428"]];
-													break;
-													
-							case "cteresianos_e7":	src_image='../../resources/images/maps/cteresianos_e7.jpg';  
-													coord_image_ppal=[["top-left", "40.8870", "-4.8798"],["bottom-left", "40.8578", "-4.8798"],["top-right", "40.8870", "-4.8218"]];
-													break;
-													
-							case "cteresianos_e8":	src_image='../../resources/images/maps/cteresianos_e8.jpg';  
-													coord_image_ppal=[["top-left", "40.9303", "-4.9730"],["bottom-left", "40.8719", "-4.9730"],["top-right", "40.9303", "-4.8572"]];
-													break;
-
-							case "cteresianos_e9":	src_image='../../resources/images/maps/cteresianos_e9.jpg';  
-													coord_image_ppal=[["top-left", "40.9300", "-5.0017"],["bottom-left", "40.9008", "-5.0017"],["top-right", "40.9300", "-4.9438"]];
-													break;
-							   
-						    case "cteresianos_e10":	src_image='../../resources/images/maps/cteresianos_e10.jpg';  
-													coord_image_ppal=[["top-left", "40.9080", "-5.0823"],["bottom-left", "40.8496", "-5.0823"],["top-right", "40.9080", "-4.9664"]];
-													break;
-													
-							case "cteresianos_e11":	src_image='../../resources/images/maps/cteresianos_e11.jpg';  
-													coord_image_ppal=[["top-left", "40.8684", "-5.1535"],["bottom-left", "40.8099", "-5.1535"],["top-right", "40.8684", "-5.0377"]];
-													break;
-													
-							case "cteresianos_e12":	src_image='../../resources/images/maps/cteresianos_e12.jpg';  
-													coord_image_ppal=[["top-left", "40.8623", "-5.2214"],["bottom-left", "40.8038", "-5.2214"],["top-right", "40.8623", "-5.1056"]];
-													break;
-													
-							case "cteresianos_e13":	src_image='../../resources/images/maps/cteresianos_e13.jpg';  
-													coord_image_ppal=[["top-left", "40.8621", "-5.2993"],["bottom-left", "40.8036", "-5.2993"],["top-right", "40.8621", "-5.1834"]];
-													break;
-													
-							case "cteresianos_e14":	src_image='../../resources/images/maps/cteresianos_e14.jpg';  
-													coord_image_ppal=[["top-left", "40.8708", "-5.3767"],["bottom-left", "40.8124", "-5.3767"],["top-right", "40.8708", "-5.2608"]];
-													break;
-													
-							case "cteresianos_e15":	src_image='../../resources/images/maps/cteresianos_e15.jpg';  
-													coord_image_ppal=[["top-left", "40.8979", "-5.5505"],["bottom-left", "40.7810", "-5.5505"],["top-right", "40.8979", "-5.3188"]];
-													break;
-													
-							default: src_image=''; 
-									 $("#"+container).append(TEXTOS[7]);
-									 return; 
-									 break;
+							 $("#"+container).append(TEXTOS[7]);
+							 return; 									 
 						}
-						
+					
 						var d=data.Result;
 						draw_canvas(container,src_image, '../../resources/routes/'+gpx+".gpx", id, canvas_number); 
 						
@@ -5546,11 +5457,60 @@ function downloadRoutesToDir(d) {
 		,function(error) {
 			$("#descarga").append("Get Directory "+fs.toURL()+file_path+"/json/routes/"+". FAIL: " + error.message+"<br>");
 		});
-		
+
 	}
 	,function(error) {
 		$("#descarga").append("Get Directory "+fs.toURL()+file_path+"/json/"+". FAIL: " + error.message+"<br>");
 	});
+	
+	
+	/*
+	setTimeout(function() {
+		//Descarga imagenes
+		fs.getDirectory(file_path+"/galleries",{create:true, exclusive:false},function(dimg) {
+		
+			var objajax=$.getJSON("./resources/json/galleries.json", function donwload_images(data1) {
+			//var objajax=$.getJSON(api_url+"galleries", function donwload_images(data1) {
+				
+				$.each(data1.Result.Items, function(index, gal){   
+
+					//var objajax2=$.getJSON("./resources/json/gallery/"+gal.ID+".json", function donwload_images(data2) {
+					var objajax2=$.getJSON(api_url+"gallery/"+gal.ID, function donwload_images(data2) {
+						
+						var d=data2.Result;
+											
+						if(d.Total>0) 
+						{
+							fs.getDirectory(file_path+"/gallery/"+gal.ID,{create:true, exclusive:false},function() {
+
+								var imagenes=d.Items;
+								
+								i=0;
+								total_img_gals+=d.Total;
+								downloadImages(imagenes, i, d.Total, fs.toURL()+file_path+"/gallery/"+gal.ID);
+								
+							} ,function(error){
+								$("#descarga").append("Get Directory "+file_path+"/gallery/"+gal.ID+" fail " + error.code+"<br>");
+							});
+						}
+				
+					}).fail(function(jqXHR, textStatus, errorThrown) {							
+						console.log("Error al recoger la galeria");											
+					});
+
+				});
+
+			}).fail(function(jqXHR, textStatus, errorThrown) {					
+				console.log("Error al recoger galleries.json");			
+			});
+				
+		},function(error){
+			$("#descarga").append("Get Directory "+file_path+"/gallery fail " + error.code+"<br>");
+		});
+		
+	}, 200);
+	*/
+		
 
 }
 

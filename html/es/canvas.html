@@ -26,7 +26,7 @@
 				
 				$("#ov_body_01").css("background-color","#F2F2F3");
 
-				ajax_paint_routes("trekking_route_canvas", "", "point_list", "contenido", [['id',identificador],['gpx',gpx_file],['haveCanvas', true],['canvas_number',1]]);
+				ajax_paint_routes("trekking_route_canvas", "routes", json_file, "contenido", [['id',identificador],['gpx',gpx_file],['haveCanvas', true],['canvas_number',1]]);
 				
 				ajax_recover_data("trekking_route_info", "routes", json_file, "info_route", [['id',identificador]]);
 					
