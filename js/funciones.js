@@ -2076,13 +2076,10 @@ function ajax_recover_data(type, folder, values, container, params) {
 						
 						console.log(file_path);			
 	
-						fs.getDirectory("AgendaCulturalAV",{create:true, exclusive:false},function() {
-							fs.getDirectory(file_path,{create:true, exclusive:false},downloadRoutesToDir,onError);
-						},onError);   						
-						
-						/***/
-						
-						fs.getDirectory(file_path+"/json/routes/", {}, function(dirEntry){
+						fs.getDirectory("DiputacionAvila",{create:true, exclusive:false},function() {
+							fs.getDirectory(file_path,{create:true, exclusive:false},function() {
+								
+								fs.getDirectory(file_path+"/json/routes/", {}, function(dirEntry){
 							  var dirReader = dirEntry.createReader();
 														  
 							  var readEntries = function() {
@@ -2158,7 +2155,12 @@ function ajax_recover_data(type, folder, values, container, params) {
 									console.log("Error getDirectory: No se ha cargado el directorio "+fs.toURL()+file_path+"/json/routes/");
 						});
 						
-						/***
+								
+							},onError);
+						},onError);   						
+						
+						/***/
+						
 						
 						var dirReader = fs.createReader();
 						var entries = [];
@@ -5401,7 +5403,7 @@ function onFileSystemSuccess(fileSystem)
 	console.log(fs)
 	console.log(file_path);
 	
-	fs.getDirectory("AgendaCulturalAV",{create:true, exclusive:false},function() {
+	fs.getDirectory("DiputacionAvila",{create:true, exclusive:false},function() {
 		fs.getDirectory(file_path,{create:true, exclusive:false},downloadRoutesToDir,onError);
 	},onError);   
     
@@ -5411,11 +5413,11 @@ function setFilePath() {
     var ua = navigator.userAgent.toLowerCase();
 	var isAndroid = ua.indexOf("android") > -1; 
 	if(isAndroid) {
-		file_path = "AgendaCulturalAV/resources";
+		file_path = "DiputacionAvila/resources";
 		//Android
 	}
 	else {
-		file_path = "AgendaCulturalAV/resources";
+		file_path = "DiputacionAvila/resources";
 		//IOS
 	}
 }
@@ -5435,24 +5437,24 @@ function downloadRoutesToDir(d) {
 	//$("#descarga").append('<progress id="barra_carga" max="98" value="1"></progress>');		
 	$("#descarga").append('<p id="porcentaje"> </p>');
 	
-	
 	fs.getDirectory(file_path+"/json/",{create:true, exclusive:false},function() {
 		
 		fs.getDirectory(file_path+"/json/routes",{create:true, exclusive:false},function() {
 										
 			var ft = new FileTransfer();		
 			
-			var dlPath = fs.toURL()+file_path+"/json/routes/"+filename+".json"; 	
+			var dlPath = fs.toURL()+file_path+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json"; 	
 			
 			console.log(dlPath);
 	
-			ft.download(extern_url+"/json/routes/"+filename , dlPath, function() {
-					//$("#descarga").append(folder+filename+".json"+" .... OK<br>");
-					cargar_barra("barra_carga", 100);
+			ft.download(extern_url+"/json/routes/"+ID_ROUTE_DOWNLOAD , dlPath, function() {
+					$("#descarga").append(folder+ID_ROUTE_DOWNLOAD+".json"+" .... OK<br>");
+					//cargar_barra("barra_carga", 100);
 				}, 
 				function(error){
-					$("#descarga").append("json/routes/"+filename+".json"+" .... KO "+error.code+"<br>");
+					$("#descarga").append("json/routes/"+ID_ROUTE_DOWNLOAD+".json"+" .... KO "+error.code+"<br>");
 				});
+				
 		}
 		,function(error) {
 			$("#descarga").append("Get Directory "+fs.toURL()+file_path+"/json/routes/"+". FAIL: " + error.message+"<br>");
@@ -5467,31 +5469,24 @@ function downloadRoutesToDir(d) {
 	/*
 	setTimeout(function() {
 		//Descarga imagenes
-		fs.getDirectory(file_path+"/galleries",{create:true, exclusive:false},function(dimg) {
+		fs.getDirectory(file_path+"/images/",{create:true, exclusive:false},function() {
 		
-			var objajax=$.getJSON("./resources/json/galleries.json", function donwload_images(data1) {
-			//var objajax=$.getJSON(api_url+"galleries", function donwload_images(data1) {
+			fs.getDirectory(file_path+"/images/maps",{create:true, exclusive:false},function() {
 				
-				$.each(data1.Result.Items, function(index, gal){   
-
-					//var objajax2=$.getJSON("./resources/json/gallery/"+gal.ID+".json", function donwload_images(data2) {
-					var objajax2=$.getJSON(api_url+"gallery/"+gal.ID, function donwload_images(data2) {
+				var objajax2=$.getJSON(extern_url+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json", function (data1) {
+						
+				$.each(data1.result.Items, function(index, gal){   
 						
 						var d=data2.Result;
 											
 						if(d.Total>0) 
 						{
-							fs.getDirectory(file_path+"/gallery/"+gal.ID,{create:true, exclusive:false},function() {
-
-								var imagenes=d.Items;
-								
-								i=0;
-								total_img_gals+=d.Total;
-								downloadImages(imagenes, i, d.Total, fs.toURL()+file_path+"/gallery/"+gal.ID);
-								
-							} ,function(error){
-								$("#descarga").append("Get Directory "+file_path+"/gallery/"+gal.ID+" fail " + error.code+"<br>");
-							});
+							var imagenes=d.Items;
+							
+							i=0;
+							total_img_gals+=d.Total;
+							downloadImages(imagenes, i, d.Total, fs.toURL()+file_path+"/images/maps/"+gal.ID);
+	
 						}
 				
 					}).fail(function(jqXHR, textStatus, errorThrown) {							
@@ -5499,27 +5494,74 @@ function downloadRoutesToDir(d) {
 					});
 
 				});
-
-			}).fail(function(jqXHR, textStatus, errorThrown) {					
-				console.log("Error al recoger galleries.json");			
+					
+			},function(error){
+				$("#descarga").append("Get Directory "+file_path+"/images/maps fail " + error.code+"<br>");
 			});
-				
+			
 		},function(error){
-			$("#descarga").append("Get Directory "+file_path+"/gallery fail " + error.code+"<br>");
+			$("#descarga").append("Get Directory "+file_path+"/images fail " + error.code+"<br>");
 		});
-		
+			
 	}, 200);
 	*/
 		
 
 }
+function downloadImages(imagenes, i, total, path) {
 
+	var imagen_local=(imagenes[i].Image).split("/public/images/");
+
+	var ft = new FileTransfer();			
+	var dlPath = path+"/"+imagen_local[1]; 
+	
+	$("#porcentaje").html(total_gals+" %");	
+	
+	try {	
+		ft.download(imagenes[i].Image , dlPath, function() {
+		
+				$("#descarga").append(imagen_local[1]+" .... OK<br>");	
+				//cargar_barra("barra_carga", total_gals);
+				total_gals++;
+				i++;			
+				if(i<total)
+					downloadImages(imagenes, i, total, path);
+			}, 
+			function(error){
+				$("#descarga").append(imagen_local[1]+" .... KO (err."+error.code+")<br>");
+				intentos++;
+				if(i<total && intentos<2)
+					downloadImages(imagenes, i, total, path);
+				else
+				{
+					total_gals++;
+					intentos=0;
+				}
+			}
+		);
+	}
+	catch(e) {
+	   $("#descarga_close").show();
+	}
+	
+	if(total_img_gals==total_gals+1)
+	{
+		setTimeout(function() {
+			setSessionStorage("tdownload",false);
+			setLocalStorage("first_time", true);
+			$("#descarga_close").show();
+			$("#descarga").hide();
+			$("#div_update").html("Actualizacion finalizada");
+			
+		}, 100);
+	}		
+}
 function cargar_barra(id, total)
 {		
-	var barra_progreso=$("#"+id);
+	/*var barra_progreso=$("#"+id);
 	var value = barra_progreso.val();  
 	value+=parseInt(90/total);
-    barra_progreso.val(value);  			
+    barra_progreso.val(value);  	*/		
 }
 
 function gotFS(fileSystem) 
