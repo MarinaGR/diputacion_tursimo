@@ -5531,20 +5531,20 @@ function downloadRoutesToDir(d) {
 										
 			var ft = new FileTransfer();		
 			
-			var dlPath = fs.toURL()+file_path+"/json/routes"+filename+".json"; 	
+			var dlPath = fs.toURL()+file_path+"/json/routes/"+filename+".json"; 	
 			
 			console.log(dlPath);
 	
-			ft.download(extern_url+"/json/routes"+filename , dlPath, function() {
+			ft.download(extern_url+"/json/routes/"+filename , dlPath, function() {
 					//$("#descarga").append(folder+filename+".json"+" .... OK<br>");
 					cargar_barra("barra_carga", 100);
 				}, 
 				function(error){
-					$("#descarga").append("json/routes"+filename+".json"+" .... KO "+error.code+"<br>");
+					$("#descarga").append("json/routes/"+filename+".json"+" .... KO "+error.code+"<br>");
 				});
 		}
 		,function(error) {
-			$("#descarga").append("Get Directory "+fs.toURL()+file_path+"/json/routes"+". FAIL: " + error.message+"<br>");
+			$("#descarga").append("Get Directory "+fs.toURL()+file_path+"/json/routes/"+". FAIL: " + error.message+"<br>");
 		});
 		
 	}
