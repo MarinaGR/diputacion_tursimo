@@ -3,6 +3,7 @@
 	{
 		"items":	
 			[
+				{"id":"cat_8","es":"BIC: Bien de interés cultural","en":"BIC"},
 				{"id":"cat_1","es":"Interés histórico","en":"Historical interest"},
 				{"id":"cat_2","es":"Interés cultural","en":"Cultural interest"},
 				{"id":"cat_3","es":"Naturaleza","en":"Nature"},
