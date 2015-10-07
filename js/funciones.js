@@ -5448,11 +5448,11 @@ function downloadRoutesToDir(d) {
 			console.log(dlPath);
 	
 			ft.download(extern_url+"/json/routes/"+ID_ROUTE_DOWNLOAD , dlPath, function() {
-					$("#descarga").append(folder+ID_ROUTE_DOWNLOAD+".json"+" .... OK<br>");
+					$("#descarga").append(extern_url+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json"+" .... OK<br>");
 					//cargar_barra("barra_carga", 100);
 				}, 
 				function(error){
-					$("#descarga").append("json/routes/"+ID_ROUTE_DOWNLOAD+".json"+" .... KO "+error.code+"<br>");
+					$("#descarga").append("json/routes/"+ID_ROUTE_DOWNLOAD+".json"+" .... KO "+error.message+"<br>");
 				});
 				
 		}
