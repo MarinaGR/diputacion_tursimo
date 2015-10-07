@@ -311,6 +311,102 @@ function search_string(value, container) {
 	}
 }
 
+function search_string_in_avaut(value, container, type) {
+	
+	var cadena="";
+	var cad_result="<p>"+TEXTOS[28]+"</p>";
+	
+	var sorted_points=new Array();
+	var sorted_empr=new Array();
+	
+	if(value!="")
+	{
+		var q = $.trim(value),
+			regex = new RegExp(q, "i");
+		
+		$.getJSON('../../resources/json/avautentica_list.json', function (data) {
+			
+			 $.each(data.result.items, function (ind, point) {
+				
+				switch(getLocalStorage("current_language"))
+				{
+					default:
+					case "es":  if(point.es.nombre.search(regex) != -1) {	
+									if($.inArray(point, sorted_points)==-1)				
+										sorted_points.push(point);		
+								}
+								
+								break;
+					
+					case "en":  if(point.en.nombre.search(regex) != -1) {
+									if($.inArray(point, sorted_points)==-1)				
+										sorted_points.push(point);		
+								}
+								break;
+				}				
+				 
+			});
+						
+			sorted_points.sort(SortByLangName);
+			
+
+			$.each(sorted_points, function(index, d) {
+				
+				cadena+='<div>';
+									
+				cadena+='<div id="ov_box_13_1_f" class="ov_box_13" onclick="$(\'#info_avaut_filter_'+index+'\').toggle();" >+</div>';
+
+				cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24" onclick="$(\'#info_avaut_filter_'+index+'\').toggle();">';
+				
+				switch(getLocalStorage("current_language"))
+				{
+					default:
+					case "es":  cadena+=d.es.nombre;
+								break;
+					
+					case "en":  cadena+=d.en.nombre;
+								break;
+				}
+				
+				cadena+='</div></div>';			
+			
+				cadena+='<div class="ov_box_14_d" id="info_avaut_filter_'+index+'"><div class="ov_text_18">';
+									
+					if(d.tlf)
+						cadena+='<i class="fa fa-phone fa-fw"></i> '+d.tlf+'<br>';			
+					
+					if(d.email)
+						cadena+='<i class="fa fa-envelope fa-fw"></i> <a href="mailto:'+d.email+'" >'+d.email+'</a><br>';
+					
+					if(d.web)
+						cadena+='<i class="fa fa-globe fa-fw"></i> <a href="'+d.web+'" >'+d.web+'</a><br>';
+					
+					if(d.direccion)
+						cadena+='<i class="fa fa-home fa-fw"></i> '+d.direccion+'<br>';
+					
+					cadena+='</div></div>';   
+					
+					cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
+					
+				cadena+='</div>';
+										
+			});
+			
+			if(cadena=="")
+			{		
+				cadena="<p>"+TEXTOS[0]+"</p>";
+			}
+			cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
+			$('#'+container).html(cadena);		
+			$('.ov_zone_21').attr("class","ov_zone_21_b");
+			$('#'+container).attr("class","ov_zone_21");	
+			$('.ov_box_11_active').attr("class","ov_box_12");		
+					
+		});
+
+	}
+}
+
 function search_string_in_cat(value, container, type) {
 	
 	var cadena="";
@@ -792,6 +888,82 @@ function ajax_recover_data(type, folder, values, container, params) {
 					
 					break;
 					
+			case "avautentica_list": 	
+			
+					var cadena="";
+					var start_count=start;
+					
+					cadena+='<div class="ov_zone_15"><h3>Ávila Auténtica</h3></div>';
+					
+					$.each(data.result.items, function(index, d) {
+						
+						/*if(start_count>index)
+						{
+							return true;
+						}
+						else
+							start_count++;
+							
+						if(start_count>start+limit)
+							return false;*/
+							
+							
+						cadena+='<div>';
+							
+							cadena+='<div id="ov_box_13_1_f" class="ov_box_13" onclick="$(\'#info_avaut_'+index+'\').toggle();">+</div>';
+							
+							cadena+='<div id="ov_box_14_1_f" class="ov_box_14" ><div id="ov_text_24_1_f" class="ov_text_24"  onclick="$(\'#info_avaut_'+index+'\').toggle();">';
+								
+								switch(getLocalStorage("current_language"))
+								{
+									default:
+									case "es":  cadena+=d.es.nombre;
+												break;
+									
+									case "en":  cadena+=d.en.nombre;
+												break;
+								}
+								
+								cadena+='</div>';
+																	
+							cadena+='</div>';
+							
+							cadena+='<div class="ov_box_14_d" id="info_avaut_'+index+'"><div class="ov_text_18">';
+									
+							if(d.tlf)
+								cadena+='<i class="fa fa-phone fa-fw"></i> '+d.tlf+'<br>';			
+							
+							if(d.email)
+								cadena+='<i class="fa fa-envelope fa-fw"></i> <a href="mailto:'+d.email+'" >'+d.email+'</a><br>';
+							
+							if(d.web)
+								cadena+='<i class="fa fa-globe fa-fw"></i> <a href="'+d.web+'" >'+d.web+'</a><br>';
+							
+							if(d.direccion)
+								cadena+='<i class="fa fa-home fa-fw"></i> '+d.direccion+'<br>';
+							
+							cadena+='</div></div>';   
+							
+							cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
+							
+						cadena+='</div>';
+												
+					});
+					
+					cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
+						
+					/*if(start-limit>=0)
+						cadena+="<a class='verpagina' href='municipios_list.html?id="+filter_id+"&start="+(start-limit)+"&limit="+limit+"' style='float:left'>"+TEXTOS[27]+"</a>";
+					
+					if(start+limit<data.result.total)
+						cadena+="<a class='verpagina' href='municipios_list.html?id="+filter_id+"&start="+(start+limit)+"&limit="+limit+"' style='float:right'>"+TEXTOS[26]+"</a>";*/
+					
+					cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
+					
+					$("#"+container).html(cadena);
+							
+					break;
+					
 			case "services_list": 	
 			
 					var cadena="";
@@ -993,6 +1165,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 						
 									
 					break;
+										
 					
 			case "municipios_list": 	
 			

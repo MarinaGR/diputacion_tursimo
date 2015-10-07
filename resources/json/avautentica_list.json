@@ -1,0 +1,24 @@
+{
+	"result":
+	{
+		"items":
+			[
+				{
+					"id":"AVAU-00000000001","es":{"nombre":"Empresa AV Autentica 1"},"en":{"nombre":"Empresa AV Autentica 1"},"tlf":"920000000","email":"miemail1@correo.com","direccion":"C/Ficticia s/n","web":"http//www.nuestraweb.com","geolocalizacion":"(40.654499, -4.697245)17"
+				},
+				{
+					"id":"AVAU-00000000002","es":{"nombre":"Empresa AV Autentica 2"},"en":{"nombre":"Empresa AV Autentica 2"},"tlf":"920111111","email":null,"direccion":"C/Prueba s/n","web":"http//www.nuestraweb2.com","geolocalizacion":"(40.654499, -4.697245)17"
+				},
+				{
+					"id":"AVAU-00000000003","es":{"nombre":"Empresa AV Autentica 3"},"en":{"nombre":"Empresa AV Autentica 3"},"tlf":"920222222","email":null,"direccion":"C/Otra s/n","web":"http//www.nuestraweb3.com","geolocalizacion":"(40.654499, -4.697245)17"
+				},
+				{
+					"id":"AVAU-00000000004","es":{"nombre":"Empresa AV Autentica 4"},"en":{"nombre":"Empresa AV Autentica 4"},"tlf":"920333333","email":"miemail2@correo.es","direccion":"C/Mas s/n","web":null,"geolocalizacion":"(40.654499, -4.697245)17"
+				},
+				{
+					"id":"AVAU-00000000005","es":{"nombre":"Empresa AV Autentica 5"},"en":{"nombre":"Empresa AV Autentica 5"},"tlf":null,"email":null,"direccion":"C/Ninguna s/n","web":"http//www.nuestraweb3.com","geolocalizacion":"(40.654499, -4.697245)17"
+				}			
+			],
+		"total":5
+	}
+}
