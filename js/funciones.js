@@ -5554,6 +5554,14 @@ function downloadRoutesToDir(d) {
 
 }
 
+function cargar_barra(id, total)
+{		
+	var barra_progreso=$("#"+id);
+	var value = barra_progreso.val();  
+	value+=parseInt(90/total);
+    barra_progreso.val(value);  			
+}
+
 function gotFS(fileSystem) 
 {
     var reader = fileSystem.root.createReader();
