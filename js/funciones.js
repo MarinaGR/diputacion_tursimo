@@ -5768,7 +5768,7 @@ function downloadRoutesToDir(d) {
 					
 					var imagenes=data1.result.items;
 					
-					if(imagenes.length>0)
+					if(Object.size(imagenes)>0)
 					{					
 						
 						$("#descarga").append(JSON.stringify(data1.result.items[0]));
@@ -5777,7 +5777,7 @@ function downloadRoutesToDir(d) {
 						total_img_gals=1;
 												
 						//downloadImages(object/array data,  posicion, tamaño, ruta);
-						downloadImages(imagenes, i, imagenes.length, fs.toURL()+file_path);
+						downloadImages(imagenes, i, Object.size(imagenes), fs.toURL()+file_path);
 					}	
 					
 				}).fail(function(jqXHR, textStatus, errorThrown) {							
@@ -5849,6 +5849,14 @@ function downloadImages(imagenes, i, total, path) {
 		}, 200);
 	}		
 }
+
+Object.size = function(obj) {
+    var size = 0, key;
+    for (key in obj) {
+        if (obj.hasOwnProperty(key)) size++;
+    }
+    return size;
+};
 
 function cargar_barra(id, total)
 {		
