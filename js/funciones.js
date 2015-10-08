@@ -5646,10 +5646,12 @@ function downloadRoutesToDir(d) {
 				});	
 					
 				
-			}	
+			});
 					
 			console.log(dlPath);
 
+		},function(error){
+			$("#descarga").append("Get File "+fs.toURL()+file_path+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json fail " + error.message+"<br>");
 		});
 		
 	}
