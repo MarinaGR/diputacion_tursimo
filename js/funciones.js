@@ -23,6 +23,8 @@ var array_coord_image_ppal=new Array();
 var array_coord_image=new Array();
 var zoom=1.02;
 
+var intentos=0;
+
 var default_language='es';
 
 var lang_available=[['es','Castellano'],['en','English']];
@@ -5468,7 +5470,7 @@ function donwload_files(id) {
 	ID_ROUTE_DOWNLOAD=id;
 	 window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, onFileSystemError);
 	//window.webkitRequestFileSystem(PERSISTENT, 0, onFileSystemSuccess, onFileSystemError);   
-  
+
 }
 
 function onFileSystemError(error) 
@@ -5579,7 +5581,6 @@ function downloadRoutesToDir(d) {
 	});
 	
 	
-	/*
 	setTimeout(function() {
 		//Descarga imagenes
 		fs.getDirectory(file_path+"/images/",{create:true, exclusive:false},function() {
@@ -5587,24 +5588,20 @@ function downloadRoutesToDir(d) {
 			fs.getDirectory(file_path+"/images/maps",{create:true, exclusive:false},function() {
 				
 				var objajax2=$.getJSON(extern_url+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json", function (data1) {
-						
-				$.each(data1.result.Items, function(index, gal){   
-						
-						var d=data2.Result;
-											
-						if(d.Total>0) 
-						{
-							var imagenes=d.Items;
-							
-							i=0;
-							total_img_gals+=d.Total;
-							downloadImages(imagenes, i, d.Total, fs.toURL()+file_path+"/images/maps/"+gal.ID);
-	
-						}
+				
+				if(data1.result.items.length>0)
+				{
+					var imagenes=data1.result.items;
+									
+					i=0;
+					total_img_gals=1;
+					downloadImages(imagenes, i, data1.result.items.length, fs.toURL()+file_path+"/images/maps");
+
 				
 					}).fail(function(jqXHR, textStatus, errorThrown) {							
 						console.log("Error al recoger la galeria");											
 					});
+				}
 
 				});
 					
@@ -5616,59 +5613,55 @@ function downloadRoutesToDir(d) {
 			$("#descarga").append("Get Directory "+file_path+"/images fail " + error.code+"<br>");
 		});
 			
-	}, 200);
-	*/
+	}, 500);
 		
 
 }
 function downloadImages(imagenes, i, total, path) {
 
-	var imagen_local=(imagenes[i].Image).split("/public/images/");
-
-	var ft = new FileTransfer();			
-	var dlPath = path+"/"+imagen_local[1]; 
-	
-	$("#porcentaje").html(total_gals+" %");	
-	
-	try {	
-		ft.download(imagenes[i].Image , dlPath, function() {
+	$.each(imagenes, function(indice, imagen) {
 		
-				$("#descarga").append(imagen_local[1]+" .... OK<br>");	
-				//cargar_barra("barra_carga", total_gals);
-				total_gals++;
-				i++;			
-				if(i<total)
-					downloadImages(imagenes, i, total, path);
-			}, 
-			function(error){
-				$("#descarga").append(imagen_local[1]+" .... KO (err."+error.code+")<br>");
-				intentos++;
-				if(i<total && intentos<2)
-					downloadImages(imagenes, i, total, path);
-				else
-				{
-					total_gals++;
-					intentos=0;
+		var imagen_local=(imagen.src_image).split("../../");
+
+		var ft = new FileTransfer();			
+		var dlPath = path+"/"+imagen_local[1]; 
+		
+		try {	
+			ft.download(extern_url+"/images/maps/"+imagen_local[1], dlPath, function() {
+			
+					$("#descarga").append(imagen_local[1]+" .... OK<br>");	
+					i++;			
+					if(i<total)
+						downloadImages(imagenes, i, total, path);
+				}, 
+				function(error){
+					$("#descarga").append(imagen_local[1]+" .... KO (err."+error.message+")<br>");
+					intentos++;
+					if(i<total && intentos<2)
+						downloadImages(imagenes, i, total, path);
+					else
+					{
+						intentos=0;
+					}
 				}
-			}
-		);
-	}
-	catch(e) {
-	   $("#descarga_close").show();
-	}
+			);
+		}
+		catch(e) {
+		   $("#descarga_close").show();
+		}
+		
+	});
 	
-	if(total_img_gals==total_gals+1)
+	if(total_img_gals==1)
 	{
 		setTimeout(function() {
-			setSessionStorage("tdownload",false);
-			setLocalStorage("first_time", true);
-			$("#descarga_close").show();
-			$("#descarga").hide();
-			$("#div_update").html("Actualizacion finalizada");
+			//$("#descarga").hide();
+			$("#descarga").append("Actualizacion finalizada");
 			
-		}, 100);
+		}, 200);
 	}		
 }
+
 function cargar_barra(id, total)
 {		
 	/*var barra_progreso=$("#"+id);
