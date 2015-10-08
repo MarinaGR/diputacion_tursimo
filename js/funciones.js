@@ -5679,7 +5679,7 @@ function downloadRoutesToDir(d) {
 						console.log(imagenes);
 						
 						//downloadImages(object/array data,  posicion, tamaño, ruta);
-						downloadImages(imagenes, i, data1.result.items.length, fs.toURL()+file_path+"/images/maps");
+						downloadImages(imagenes, i, imagenes.length, fs.toURL()+file_path+"/images/maps");
 					}	
 					
 				}).fail(function(jqXHR, textStatus, errorThrown) {							
@@ -5704,11 +5704,11 @@ function downloadImages(imagenes, i, total, path) {
 	
 	console.log(imagenes);
 	
-	$.each(imagenes, function(indice, imagen) {				
+	//$.each(imagenes, function(indice, imagen) {				
 		
-		$("#descarga").append("Get File "+imagen.src_image);
+		$("#descarga").append("Get File "+imagenes[i]);
 		
-		var imagen_local=(imagen.src_image).split("../../");
+		var imagen_local=(imagenes[i].src_image).split("../../");
 
 		var ft = new FileTransfer();			
 		var dlPath = path+"/"+imagen_local[1]; 
@@ -5739,7 +5739,7 @@ function downloadImages(imagenes, i, total, path) {
 		   $("#descarga_close").show();
 		}
 		
-	});
+	//});
 	
 	if(total_img_gals==1)
 	{

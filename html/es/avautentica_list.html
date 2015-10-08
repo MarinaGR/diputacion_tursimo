@@ -85,35 +85,35 @@
 			<div class="ov_vertical_space_01">&nbsp;</div>
 
 			<div id="ov_zone_20" class="ov_zone_20" >
-				<div id="ov_box_11_1" class="ov_box_12_b" onclick="go_to_page('main_menu', '');"  >
+				<div id="ov_box_11_1" class="ov_box_12" onclick="go_to_page('main_menu', '');"  >
 					<img src="../../styles/images/icons/menu.png" alt="menu" class="ov_image_13"/>
 					<div id="ov_text_23_1" class="ov_text_23">
 						Ir a menú
 					</div>		
 				</div>
-				<div id="ov_box_12_1" class="ov_box_12_b" onclick="go_to_page('main_menu', '');" >
+				<div id="ov_box_12_1" class="ov_box_12" onclick="go_to_page('main_menu', '');" >
 					<img src="../../styles/images/icons/back.png" alt="back" class="ov_image_13"/>
 					<div id="ov_text_23_2" class="ov_text_23">
 						Volver
 					</div>
 				</div>
 				
-				<div id="ov_box_13_1" class="ov_box_11_b_active">
-					<img src="../../styles/images/icons/info.png" alt="info" class="ov_image_13"/>
+				<div id="ov_box_13_1" class="ov_box_11_active">
+					<img src="../../styles/images/icons/servicios2.png" alt="info" class="ov_image_13"/>
 					<div id="ov_text_23_3" class="ov_text_23">
 						Información
 					</div>
 				</div>
 				<script>
 					$('#ov_box_13_1').click(function(e){
-						$('.ov_box_11_b_active').attr("class","ov_box_12_b");
-						$(this).attr("class","ov_box_11_b_active");			
+						$('.ov_box_11_active').attr("class","ov_box_12");
+						$(this).attr("class","ov_box_11_active");			
 						$('.ov_zone_21').attr("class","ov_zone_21_b");
-						$('#ov_zone_21_info').attr("class","ov_zone_21");
+						$('#ov_zone_21_info').attr("class","ov_zone_21 ov_zone_15");
 					});		
 				</script>
 				
-				<div id="ov_box_14_1" class="ov_box_12_b">
+				<div id="ov_box_14_1" class="ov_box_12">
 					<img src="../../styles/images/icons/categories.png" alt="list" class="ov_image_13"/>
 					<div id="ov_text_23_3" class="ov_text_23">
 						Listado
@@ -121,8 +121,8 @@
 				</div>
 				<script>
 					$('#ov_box_14_1').click(function(e){
-						$('.ov_box_11_b_active').attr("class","ov_box_12_b");
-						$(this).attr("class","ov_box_11_b_active");			
+						$('.ov_box_11_active').attr("class","ov_box_12");
+						$(this).attr("class","ov_box_11_active");			
 						$('.ov_zone_21').attr("class","ov_zone_21_b");
 						$('#ov_zone_21_all').attr("class","ov_zone_21");
 						if($("#search_filter_list").val()!="")
@@ -152,46 +152,52 @@
 
 			<div id="ov_zone_21_info" class="ov_zone_21">
 			
-				<h3>Ávila Auténtica, Calidad gastronómica y turística en Avila</h3>
+				<div class="ov_zone_15">
 				
-				<img src="../../styles/images/icons/avilaautentica.jpg" alt="Ávila Auténtica" /><br>
-				
-				<h5>¿Qué es Ávila Auténtica?</h5>
+					<h2>Ávila Auténtica</h2><h3>Calidad gastronómica y turística en Avila</h3>
+					
+					<p style="text-align:center"><img src="../../styles/images/general/avilaautentica.jpg" alt="Ávila Auténtica" /></p>
+					
+					<h4>¿Qué es Ávila Auténtica?</h4>
 
-				<p>Ávila Auténtica es una marca colectiva que la Diputación Provincial de Ávila ha creado con el objetivo de desarrollar una imagen común que impulse la notoriedad y prestigio de los productos agroalimentarios y empresas de la provincia.</p>
- 
-				<h5>¿Quién puede solicitar la marca?</h5>
+					<p>Ávila Auténtica es una marca colectiva que la Diputación Provincial de Ávila ha creado con el objetivo de desarrollar una imagen común que impulse la notoriedad y prestigio de los productos agroalimentarios y empresas de la provincia.</p>
+	 
+					<h4>¿Quién puede solicitar la marca?</h4>
 
-				<p>Los productores agroalimentarios  cuyos productos sean producidos, elaborados y/o transformados en la provincia, los establecimientos de hostelería, los comercios minoristas de alimentación y  los establecimientos de alojamiento rural establecidos en el territorio de Ávila.</p>
-				
-				<b>Objetivos:</b>
-				<ul>
-					<li>Impulsar estrategias de promoción y comercialización.</li>
-					<li>Consolidar un espacio de cooperación intersectorial en el ámbito de la competitividad y de la innovación.</li>
-					<li>Impulsar la notoriedad y prestigio de los productos y empresas potenciando su desarrollo y expansión.</li>
-					<li>Vinculación geográfica</li>
-				</ul>
-				
-				<h5>¿Qué categorías existen?</h5>
-				
-				<p>SELLOS DE CALIDAD</p>
-				
-				<img src="" alt="calidad oro" /><br>
-				<p>Ávila Auténtica Calidad Oro agrupará a los productos agroalimentarios que posean alguna figura de calidad, un sistema de gestión de Calidad y/o seguridad alimentaria certificado o que cuenten con el reconocimiento de Empresa Artesana Alimentaria de Castilla y León.</p>
+					<p>Los productores agroalimentarios  cuyos productos sean producidos, elaborados y/o transformados en la provincia, los establecimientos de hostelería, los comercios minoristas de alimentación y  los establecimientos de alojamiento rural establecidos en el territorio de Ávila.</p>
+					
+					<b>Objetivos:</b>
+					<ul>
+						<li>Impulsar estrategias de promoción y comercialización.</li>
+						<li>Consolidar un espacio de cooperación intersectorial en el ámbito de la competitividad y de la innovación.</li>
+						<li>Impulsar la notoriedad y prestigio de los productos y empresas potenciando su desarrollo y expansión.</li>
+						<li>Vinculación geográfica</li>
+					</ul>
+					
+					<h4>¿Qué categorías existen?</h4>
+					
+					<img src="../../styles/images/general/calidad-oro.jpg" width="60" alt="Calidad oro" />
+					<p><b>Ávila Auténtica Calidad Oro</b> agrupará a los productos agroalimentarios que posean alguna figura de calidad, un sistema de gestión de Calidad y/o seguridad alimentaria certificado o que cuenten con el reconocimiento de Empresa Artesana Alimentaria de Castilla y León.</p>
 
-				<img src="" alt="calidad plata"/><br>
-				<p>Ávila Auténtica Calidad Plata agrupará a los productos agroalimentarios que es aquel que ha demostrado su calidad, que obtiene resultados, que tiene una buena imagen empresarial, que satisface las expectativas de sus clientes o consumidores y que por supuesto son una identificación de productos agroalimentarios originarios de esta provincia.</p>
+					<div class="ov_clear_floats_01"> </div>
+					
+					<img src="../../styles/images/general/calidad-plata.jpg" width="60" alt="Calidad plata" />
+					<p><b>Ávila Auténtica Calidad Plata</b> agrupará a los productos agroalimentarios que es aquel que ha demostrado su calidad, que obtiene resultados, que tiene una buena imagen empresarial, que satisface las expectativas de sus clientes o consumidores y que por supuesto son una identificación de productos agroalimentarios originarios de esta provincia.</p>
+					
+					<div class="ov_clear_floats_01"> </div>
+					
+					<b>Ventajas de pertenecer a Ávila Auténtica:</b>
+					
+					<ul>
+						<li>Identificación bajo una misma imagen.</li>
+						<li>Promoción colectiva a través de campañas y actividades.</li>
+						<li>Introducción en nuevos mercados.</li>
+						<li>Valorización de los productos y empresas</li>
+					</ul>
+					
+					<p>Puedes ver el LISTADO DE EMPRESAS ASOCIADAS desde el menú superior.</p>
 				
-				<b>Ventajas de pertenecer a Ávila Auténtica:</b>
-				
-				<ul>
-					<li>Identificación bajo una misma imagen.</li>
-					<li>Promoción colectiva a través de campañas y actividades.</li>
-					<li>Introducción en nuevos mercados.</li>
-					<li>Valorización de los productos y empresas</li>
-				</ul>
-				
-				<p>Puedes ver el LISTADO DE EMPRESAS ASOCIADAS desde el menú superior.</p>
+				</div>
 				
 			</div>
 			
