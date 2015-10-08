@@ -20,7 +20,10 @@
 		
 		<script>
 		var identificador=get_var_url("id"); 
-		$(document).ready(function() {
+		var downloaded=get_var_url("downloaded"); 
+		
+		document.addEventListener("deviceready", function() {
+		//$(document).ready(function() {
 			$("#ov_view_container_01").css("background-color","#F2F2F3");
 			$('#ov_view_container_01').css("min-height",$(window).innerHeight()+"px");
 			
@@ -28,7 +31,7 @@
 				$("#ov_view_container_01").show();
 			}, 100);
 
-			ajax_recover_data("troute", "routes", identificador, "ov_info_route");
+			ajax_recover_data("troute", "routes", identificador, "ov_info_route", ["downloaded",downloaded]);
 			
 		});
 		

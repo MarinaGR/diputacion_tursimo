@@ -18,7 +18,8 @@
 		<script src="../../cordova.js"></script>
 		
 		<script>	
-			$(document).ready(function() {
+			document.addEventListener("deviceready", function() {
+			//$(document).ready(function() {
 				
 				var identificador=get_var_url("id");
 				var gpx_file=get_var_url("gpx");
@@ -26,16 +27,16 @@
 				
 				$("#ov_body_01").css("background-color","#F2F2F3");
 
-				ajax_paint_routes("trekking_route_canvas", "routes", json_file, "contenido", [['id',identificador],['gpx',gpx_file],['haveCanvas', true],['canvas_number',1]]);
-				
-				ajax_recover_data("trekking_route_info", "routes", json_file, "info_route", [['id',identificador]]);
+				ajax_paint_routes("trekking_route_canvas", "routes", json_file, "contenido", [['id',identificador],['gpx',gpx_file],['haveCanvas', true],['canvas_number',1],["downloaded",downloaded]]);
+								
+				ajax_recover_data("trekking_route_info", "routes", json_file, "info_route", [['id',identificador]],["downloaded",downloaded]]);
 					
 				document.getElementById("zoom_in").addEventListener("click", function zoomin() {
-					window.location.href="canvas2.html?id="+get_var_url("id")+"&gpx="+gpx_file+"&json="+json_file;
+					window.location.href="canvas2.html?id="+get_var_url("id")+"&gpx="+gpx_file+"&json="+json_file+"&downloaded="+downloaded;
 				}, false);	
 				
 				document.getElementById("boton_atras").addEventListener("click", function() {
-					window.location.href="troute.html?id="+ json_file;
+					window.location.href="troute.html?id="+ json_file+"&downloaded="+downloaded;
 				}, false);	
 				
 				document.getElementById("boton_masinfo").addEventListener("click", function() {

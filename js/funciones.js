@@ -758,6 +758,10 @@ function ajax_recover_data(type, folder, values, container, params) {
 			{
 				var limit=parseInt(params[i][1]);
 			}
+			if(params[i][0]=="downloaded")
+			{
+				var downloaded=parseInt(params[i][1]);
+			}
 		}
 	}
 
@@ -2100,7 +2104,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 										
 											   reader.onloadend = function(e) {
 												
-													cadena+='<div onclick="go_to_page(\'troute\',\''+this.id+'\');" >';
+													cadena+='<div onclick="go_to_page(\'troute\',\''+this.id+'&downloaded=yes\');" >';
 													cadena+='<div id="ov_box_13_1_f" class="ov_box_13" ><img src="../../styles/images/icons/right_arrow.png" alt="menu" class="ov_image_14" /></div>';
 																
 													switch(getLocalStorage("current_language"))
@@ -2366,10 +2370,28 @@ function ajax_recover_data(type, folder, values, container, params) {
 					
 					
 			case "trekking_route_info": 			
-					var cadena="";
 					
+					var cadena="";
 					var indice=0;
-					var info=data.result;
+					var info;
+			
+					if(typeof downloaded!="undefined" && downloaded=="yes")
+					{
+						$.getJSON(fs.toURL()+file_path+"/json/routes/"+identificador+".json", function (data2) {
+							
+							info=data2.result;
+							
+						}).fail(function(jqXHR, textStatus, errorThrown) {
+							//alert('Error: "+textStatus+"  "+errorThrown);	
+							
+							$("#"+container).html(TEXTOS[6]+"<br>Error: "+fs.toURL()+file_path+"/json/routes/"+identificador+".json"+" - "+textStatus+"  "+errorThrown);
+
+						});
+					}
+					else
+					{
+						info=data.result;
+					}
 					
 					$.each(info.items, function(ind, etapa) {
 
@@ -2618,12 +2640,27 @@ function ajax_recover_data(type, folder, values, container, params) {
 					break;
 					
 
-			case "troute":      
-								
+			case "troute":    
+
 					var cadena="";
-					
-					var d=data.result;
-					
+					var d;
+			
+					if(typeof downloaded!="undefined" && downloaded=="yes")
+					{
+						$.getJSON(fs.toURL()+file_path+"/json/routes/"+identificador+".json", function (data2) {
+							d=data2.result;
+						}).fail(function(jqXHR, textStatus, errorThrown) {
+							//alert('Error: "+textStatus+"  "+errorThrown);	
+							
+							$("#"+container).html(TEXTOS[6]+"<br>Error: "+fs.toURL()+file_path+"/json/routes/"+identificador+".json"+" - "+textStatus+"  "+errorThrown);
+
+						});
+					}
+					else
+					{
+						d=data.result;
+					}
+										
 					switch(getLocalStorage("current_language"))
 					{
 						default:
@@ -2668,28 +2705,10 @@ function ajax_recover_data(type, folder, values, container, params) {
 	
 }
 
-//ajax_paint_routes("trekking_route_canvas", "", "point_list", "contenido", [['id',identificador],['gpx',gpx_file],['haveCanvas', true],['canvas_number',1]]);
-
 function ajax_paint_routes(type, folder, values, container, params) {
 
 	var file_to_load="";
-	if(folder!="")
-	{
-		file_to_load=local_url+folder+"/"+values+".json";
-	}
-	else
-	{
-		file_to_load=local_url+values+".json";
-	}
-	
-	var objajax=$.getJSON(file_to_load, f_success)
-		.fail(function(jqXHR, textStatus, errorThrown) {
-			//alert('Error: "+textStatus+"  "+errorThrown);	
 			
-			$("#"+container).html(TEXTOS[6]+"<br>Error: "+local_url+folder+"/"+values+".json"+" - "+textStatus+"  "+errorThrown);
-
-		});
-		
 	if(params)
 	{
 		for(var i=0;i<params.length;i++)
@@ -2718,8 +2737,52 @@ function ajax_paint_routes(type, folder, values, container, params) {
 			{
 				var canvas_number=parseInt(params[i][1]);
 			}
+			if(params[i][0]=="downloaded")
+			{
+				var downloaded=parseInt(params[i][1]);
+			}
 		}
 	}
+	
+	if(typeof downloaded!="undefined" && downloaded=="yes")
+	{
+		if(folder!="")
+		{
+			file_to_load=fs.toURL()+file_path+folder+"/"+values+".json";
+		}
+		else
+		{
+			file_to_load=fs.toURL()+file_path+values+".json";
+		}
+		
+		var objajax=$.getJSON(file_to_load, f_success)
+		.fail(function(jqXHR, textStatus, errorThrown) {
+			//alert('Error: "+textStatus+"  "+errorThrown);	
+			
+			$("#"+container).html(TEXTOS[6]+"<br>Error: "+local_url+folder+"/"+values+".json"+" - "+textStatus+"  "+errorThrown);
+
+		});
+	}
+	else
+	{
+		if(folder!="")
+		{
+			file_to_load=local_url+folder+"/"+values+".json";
+		}
+		else
+		{
+			file_to_load=local_url+values+".json";
+		}		
+	
+		var objajax=$.getJSON(file_to_load, f_success)
+		.fail(function(jqXHR, textStatus, errorThrown) {
+			//alert('Error: "+textStatus+"  "+errorThrown);	
+			
+			$("#"+container).html(TEXTOS[6]+"<br>Error: "+local_url+folder+"/"+values+".json"+" - "+textStatus+"  "+errorThrown);
+
+		});
+	}
+	
 
 	function f_success(data) {
 
@@ -5539,9 +5602,8 @@ function downloadRoutesToDir(d) {
 					$("#descarga").append(extern_url+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json"+" .... OK<br>");
 					//cargar_barra("barra_carga", 100);
 					
-					
 						//Añadimos a localstorage
-						$.getJSON(file_path+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json", function (data) {
+						$.getJSON(fs.toURL()+file_path+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json", function (data) {
 						
 							d=data.result;
 							
@@ -5584,10 +5646,16 @@ function downloadRoutesToDir(d) {
 	setTimeout(function() {
 		//Descarga imagenes
 		fs.getDirectory(file_path+"/images/",{create:true, exclusive:false},function() {
+			
+			$("#descarga").append("Get Directory "+file_path+"/images/");
 		
 			fs.getDirectory(file_path+"/images/maps",{create:true, exclusive:false},function() {
 				
-				var objajax2=$.getJSON(extern_url+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json", function (data1) {
+				$("#descarga").append("Get Directory "+file_path+"/images/maps");
+				
+				var objajax2=$.getJSON(fs.toURL()+file_path+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json", function (data1) {
+					
+					$("#descarga").append("Get File "+fs.toURL()+file_path+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json");
 				
 					if(data1.result.items.length>0)
 					{
@@ -5616,7 +5684,12 @@ function downloadRoutesToDir(d) {
 }
 function downloadImages(imagenes, i, total, path) {
 
-	$.each(imagenes, function(indice, imagen) {
+	$("#descarga").append("downloadImages");
+	
+	$.each(imagenes, function(indice, imagen) {		
+		
+		
+		$("#descarga").append("Get File "+fs.toURL()+file_path+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json");
 		
 		var imagen_local=(imagen.src_image).split("../../");
 
