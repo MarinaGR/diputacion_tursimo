@@ -5597,6 +5597,7 @@ function downloadRoutesToDir(d) {
 	//$("#descarga").append('<progress id="barra_carga" max="98" value="1"></progress>');		
 	$("#descarga").append('<p id="porcentaje"> </p>');
 	
+	//DESCARGA FICHERO JSON
 	fs.getDirectory(file_path+"/json/",{create:true, exclusive:false},function() {
 		
 		fs.getDirectory(file_path+"/json/routes",{create:true, exclusive:false},function() {
@@ -5609,33 +5610,7 @@ function downloadRoutesToDir(d) {
 	
 			ft.download(extern_url+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json" , dlPath, function() {
 					$("#descarga").append(extern_url+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json"+" .... OK<br>");
-					//cargar_barra("barra_carga", 100);
-					
-						//Añadimos a localstorage
-						$.getJSON(fs.toURL()+file_path+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json", function (data) {
-						
-							d=data.result;
-							
-							trekking_routes=JSON.parse(getLocalStorage("trekking_routes"));
-							
-							if(trekking_routes==null)
-								trekking_routes=new Object();
-						
-							trekking_routes[id]=new Array();
-							trekking_routes[id].push(
-								{
-									id:id,
-									es:d.es.nombre,
-									en:d.en.nombre,
-								}
-							);		
-							
-							setLocalStorage("trekking_routes", JSON.stringify(fav_list));
-						
-						});
-									
-
-					
+					//cargar_barra("barra_carga", 100);	
 				}, 
 				function(error){
 					$("#descarga").append("json/routes/"+ID_ROUTE_DOWNLOAD+".json"+" .... KO "+error.message+"<br>");
@@ -5646,6 +5621,37 @@ function downloadRoutesToDir(d) {
 			$("#descarga").append("Get Directory "+fs.toURL()+file_path+"/json/routes/"+". FAIL: " + error.message+"<br>");
 		});
 
+	}
+	,function(error) {
+		$("#descarga").append("Get Directory "+fs.toURL()+file_path+"/json/"+". FAIL: " + error.message+"<br>");
+	});
+	
+	//DESCARGA ARCHIVOS GPX
+	fs.getDirectory(file_path+"/routes/",{create:true, exclusive:false},function() {
+												
+		var ft = new FileTransfer();		
+				
+		$.getJSON(fs.toURL()+file_path+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json", function (data1) {
+		
+			$.each(data1.result.items, function(ind, dat) {
+				
+				var dlPath = fs.toURL()+file_path+"/routes/"+dat.gpx+".gpx"; 	
+			
+				ft.download(extern_url+"/routes/"+dat.gpx+".gpx" , dlPath, function() {
+					$("#descarga").append(extern_url+"/routes/"+dat.gpx+".gpx"+" .... OK<br>");
+					//cargar_barra("barra_carga", 100);
+				}, 
+				function(error){
+					$("#descarga").append("routes/"+dat.gpx+".gpx"+" .... KO "+error.message+"<br>");
+				});	
+					
+				
+			}	
+					
+			console.log(dlPath);
+
+		});
+		
 	}
 	,function(error) {
 		$("#descarga").append("Get Directory "+fs.toURL()+file_path+"/json/"+". FAIL: " + error.message+"<br>");
@@ -5670,6 +5676,7 @@ function downloadRoutesToDir(d) {
 						console.log("imagenes");
 						console.log(imagenes);
 						
+						//downloadImages(object/array data,  posicion, tamaño, ruta);
 						downloadImages(imagenes, i, data1.result.items.length, fs.toURL()+file_path+"/images/maps");
 					}	
 					
