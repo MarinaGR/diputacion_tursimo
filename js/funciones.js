@@ -11,6 +11,7 @@ var DATOS, FILTRO, NOMBRE_FILTRO, CONTENEDOR, ES_MUNICIPIO, ES_SERVICIO;
 
 var fav_list=new Object();
 var routes_list=new Object();
+var trekking_routes=new Object();
 var categ_list=new Object();
 var cat_services_list=new Object();
 var MAX_NUMBER_ROUTES=10;
@@ -2037,7 +2038,11 @@ function ajax_recover_data(type, folder, values, container, params) {
 								
 					break;
 					
-			case "trekking_routes": 			
+			case "trekking_routes": 		
+
+					//Guardar en localstorage los id y nombres de las rutas descargadas, 
+					//para luego recorrer ese localstorage y mostrar el listado sin tener que leer el directorio
+				
 					var cadena="";
 					
 					var indice=0;
@@ -2053,7 +2058,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 							case "es":  cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24" onclick="$(\'#'+indice+'_puntos\').toggle();">'+rutas.es.nombre+'</div></div>';	
 										break;
 										
-							case "en":  cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24" onclick="$(\'#'+indice+'_puntos\').toggle();">'+rutas.es.nombre+'</div></div>';	
+							case "en":  cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24" onclick="$(\'#'+indice+'_puntos\').toggle();">'+rutas.en.nombre+'</div></div>';	
 										break;
 						}
 							
@@ -2062,9 +2067,9 @@ function ajax_recover_data(type, folder, values, container, params) {
 						
 						indice++;
 						
-					});			
+					});		
 					
-	
+						
 					window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem)
 					//window.webkitRequestFileSystem(PERSISTENT, 0, function(fileSystem) 
 					{
@@ -2074,36 +2079,26 @@ function ajax_recover_data(type, folder, values, container, params) {
 						fs=fileSystem.root;
 						setFilePath();
 						
-						console.log(file_path);			
-	
-						fs.getDirectory("DiputacionAvila",{create:true, exclusive:false},function() {
-							fs.getDirectory(file_path,{create:true, exclusive:false},function() {
-								
-								fs.getDirectory(file_path+"/json/routes/", {}, function(dirEntry){
-							  var dirReader = dirEntry.createReader();
-														  
-							  var readEntries = function() {
-							   	
-								  dirReader.readEntries(function(entries) {
-								  	
-								    for(var i = 0; i < entries.length; i++) {
-								      var entry = entries[i];
-								      if (entry.isDirectory){
-								        console.log('Directory: ' + entry.fullPath);
-								      }
-								      else if (entry.isFile){
-								        console.log('File: ' + entry.fullPath);
-								        
-								        fs.root.getFile(entry.fullPath, {}, function(fileEntry) {
+						console.log(file_path);	
 
-										    // Get a File object representing the file,
-										    // then use FileReader to read its contents.
-										    fileEntry.file(function(file) {
-										       var reader = new FileReader();
+						if(getLocalStorage("trekking_routes")!=null && typeof JSON.parse(getLocalStorage("trekking_routes"))!="undefined")
+						{
+							fs.getDirectory(file_path+"/json/routes",{create:true, exclusive:false},function(dirEntry) {
+								
+								$.each(JSON.parse(getLocalStorage("trekking_routes")), function(index, data) {
+								
+									$.each(data, function(i, d) {
+																					
+										fs.root.getFile(file_path+"/json/routes/"+d.id+".json", {}, function(fileEntry) {
+
+											// Get a File object representing the file, then use FileReader to read its contents.
+											
+											fileEntry.file(function(file) {
+											   var reader = new FileReader();
 										
-										       reader.onloadend = function(e) {
-										       	
-										         	cadena+='<div onclick="go_to_page(\'troute\',\''+this.id+'\');" >';
+											   reader.onloadend = function(e) {
+												
+													cadena+='<div onclick="go_to_page(\'troute\',\''+this.id+'\');" >';
 													cadena+='<div id="ov_box_13_1_f" class="ov_box_13" ><img src="../../styles/images/icons/right_arrow.png" alt="menu" class="ov_image_14" /></div>';
 																
 													switch(getLocalStorage("current_language"))
@@ -2121,31 +2116,121 @@ function ajax_recover_data(type, folder, values, container, params) {
 													
 													indice++;
 													
-										       };
+											   };
 										
-										       reader.readAsText(file);
-										       
-										    }, function(jqXHR, textStatus, errorThrown) {		
+											   reader.readAsText(file);
+											   
+											}, function(jqXHR, textStatus, errorThrown) {		
 							
 												console.log("Error reader: No se ha cargado el archivo");
 										
-										  		});
+											});
+											
 										
 										  }, function(jqXHR, textStatus, errorThrown) {		
 							
 												console.log("Error getFile: No se ha cargado el archivo");
 										
-										  	});
-										  
-								      }
-								    }
-								
-								  }, function(jqXHR, textStatus, errorThrown) {		
+										  });
+												
+											  
+									});
+							});
 							
-										console.log("Error ReadEntries: No se ha cargado el directorio "+fs.toURL()+file_path+"/json/routes/");
+						},onError);   
+						
+					}
+				
+				},onFileSystemError);   		
+						
+						/******************
+	
+						fs.getDirectory("DiputacionAvila",{create:true, exclusive:false},function() {
+							
+							fs.getDirectory(file_path,{create:true, exclusive:false},function() {
 								
-								  });
+								fs.getDirectory(file_path+"/json/",{create:true, exclusive:false},function() {
+		
+									fs.getDirectory(file_path+"/json/routes",{create:true, exclusive:false},function(dirEntry) {
+									
+										
+										  var dirReader = dirEntry.createReader();
+																	  
+										  var readEntries = function() {
+											
+											  dirReader.readEntries(function(entries) {
+												
+												for(var i = 0; i < entries.length; i++) {
+												  var entry = entries[i];
+												  if (entry.isDirectory){
+													console.log('Directory: ' + entry.fullPath);
+												  }
+												  else if (entry.isFile){
+													console.log('File: ' + entry.fullPath);
+													
+													fs.root.getFile(entry.fullPath, {}, function(fileEntry) {
+
+														// Get a File object representing the file,
+														// then use FileReader to read its contents.
+														fileEntry.file(function(file) {
+														   var reader = new FileReader();
+													
+														   reader.onloadend = function(e) {
+															
+																cadena+='<div onclick="go_to_page(\'troute\',\''+this.id+'\');" >';
+																cadena+='<div id="ov_box_13_1_f" class="ov_box_13" ><img src="../../styles/images/icons/right_arrow.png" alt="menu" class="ov_image_14" /></div>';
+																			
+																switch(getLocalStorage("current_language"))
+																{
+																	default:
+																	case "es":  cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24" onclick="$(\'#'+indice+'_puntos\').toggle();">'+this.es.nombre+'</div></div>';	
+																				break;
+																				
+																	case "en":  cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24" onclick="$(\'#'+indice+'_puntos\').toggle();">'+this.es.nombre+'</div></div>';	
+																				break;
+																}
+																	
+																cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
+																cadena+='</div>';
+																
+																indice++;
+																
+														   };
+													
+														   reader.readAsText(file);
+														   
+														}, function(jqXHR, textStatus, errorThrown) {		
+										
+															console.log("Error reader: No se ha cargado el archivo");
+													
+															});
+													
+													  }, function(jqXHR, textStatus, errorThrown) {		
+										
+															console.log("Error getFile: No se ha cargado el archivo");
+													
+														});
+													  
+												  }
+												}
+											
+											  }, function(jqXHR, textStatus, errorThrown) {		
+										
+													console.log("Error ReadEntries: No se ha cargado el directorio "+fs.toURL()+file_path+"/json/routes/");
+											
+											});
+											
+										}, function(jqXHR, textStatus, errorThrown) {		
+										
+												console.log("Error ReadEntries: No se ha cargado el directorio "+fs.toURL()+file_path+"/json/routes/");
+										
+										});
 								  
+									}, function(jqXHR, textStatus, errorThrown) {		
+										
+											console.log("Error ReadEntries: No se ha cargado el directorio "+fs.toURL()+file_path+"/json/routes/");
+									
+									});
 								};
 						
 						  readEntries(); // Start reading dirs.
@@ -2159,8 +2244,9 @@ function ajax_recover_data(type, folder, values, container, params) {
 							},onError);
 						},onError);   						
 						
-						/***/
+						**************************/
 						
+						/**************************
 						
 						var dirReader = fs.createReader();
 						var entries = [];
@@ -2224,7 +2310,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 							
 						});*/
 
-					});
+					//});
 					
 					
 					/*
@@ -5450,6 +5536,33 @@ function downloadRoutesToDir(d) {
 			ft.download(extern_url+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json" , dlPath, function() {
 					$("#descarga").append(extern_url+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json"+" .... OK<br>");
 					//cargar_barra("barra_carga", 100);
+					
+					
+						//Añadimos a localstorage
+						$.getJSON(file_path+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json", function (data) {
+						
+							d=data.result;
+							
+							trekking_routes=JSON.parse(getLocalStorage("trekking_routes"));
+							
+							if(trekking_routes==null)
+								trekking_routes=new Object();
+						
+							trekking_routes[id]=new Array();
+							trekking_routes[id].push(
+								{
+									id:id,
+									es:d.es.nombre,
+									en:d.en.nombre,
+								}
+							);		
+							
+							setLocalStorage("trekking_routes", JSON.stringify(fav_list));
+						
+						});
+									
+
+					
 				}, 
 				function(error){
 					$("#descarga").append("json/routes/"+ID_ROUTE_DOWNLOAD+".json"+" .... KO "+error.message+"<br>");
