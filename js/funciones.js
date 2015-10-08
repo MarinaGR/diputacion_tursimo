@@ -2055,7 +2055,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 					$.each(data.result.routes, function(index, rutas) 
 					{   		
 
-						cadena+='<div onclick="go_to_page(\'troute\',\''+rutas.id+'\');" >';
+						cadena+='<div onclick="go_to_page(\'troute\',\''+rutas.id+'&downloaded=no\');" >';
 						cadena+='<div id="ov_box_13_1_f" class="ov_box_13" ><img src="../../styles/images/icons/right_arrow.png" alt="menu" class="ov_image_14" /></div>';
 									
 						switch(getLocalStorage("current_language"))
@@ -2799,7 +2799,16 @@ function ajax_paint_routes(type, folder, values, container, params) {
 
 							if(e.id.search(id)!=-1)
 							{
-								src_image=e.src_image;  
+								if(typeof downloaded!="undefined" && downloaded=="yes")
+								{
+									var la_imagen=e.src_image.split("../../");
+									src_image=fs.toURL()+file_path+"/images/maps/"+la_imagen[1];  
+								}
+								else
+								{
+									src_image=e.src_image;  
+								}
+								
 								coord_image_ppal=e.coord_image_ppal;
 								return false;
 							}
@@ -5649,6 +5658,10 @@ function downloadRoutesToDir(d) {
 										
 						i=0;
 						total_img_gals=1;
+						
+						console.log("imagenes");
+						console.log(imagenes);
+						
 						downloadImages(imagenes, i, data1.result.items.length, fs.toURL()+file_path+"/images/maps");
 					}	
 					
@@ -5671,6 +5684,8 @@ function downloadRoutesToDir(d) {
 function downloadImages(imagenes, i, total, path) {
 
 	$("#descarga").append("<p>downloadImages</p>");
+	
+	console.log(imagenes);
 	
 	$.each(imagenes, function(indice, imagen) {				
 		
