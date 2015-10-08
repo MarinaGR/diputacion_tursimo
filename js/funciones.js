@@ -2755,13 +2755,6 @@ function ajax_paint_routes(type, folder, values, container, params) {
 			file_to_load=fs.toURL()+file_path+values+".json";
 		}
 		
-		var objajax=$.getJSON(file_to_load, f_success)
-		.fail(function(jqXHR, textStatus, errorThrown) {
-			//alert('Error: "+textStatus+"  "+errorThrown);	
-			
-			$("#"+container).html(TEXTOS[6]+"<br>Error: "+local_url+folder+"/"+values+".json"+" - "+textStatus+"  "+errorThrown);
-
-		});
 	}
 	else
 	{
@@ -2773,16 +2766,15 @@ function ajax_paint_routes(type, folder, values, container, params) {
 		{
 			file_to_load=local_url+values+".json";
 		}		
+	}
 	
-		var objajax=$.getJSON(file_to_load, f_success)
+	var objajax=$.getJSON(file_to_load, f_success)
 		.fail(function(jqXHR, textStatus, errorThrown) {
 			//alert('Error: "+textStatus+"  "+errorThrown);	
 			
 			$("#"+container).html(TEXTOS[6]+"<br>Error: "+local_url+folder+"/"+values+".json"+" - "+textStatus+"  "+errorThrown);
 
-		});
-	}
-	
+		});	
 
 	function f_success(data) {
 
@@ -5646,17 +5638,11 @@ function downloadRoutesToDir(d) {
 	setTimeout(function() {
 		//Descarga imagenes
 		fs.getDirectory(file_path+"/images/",{create:true, exclusive:false},function() {
-			
-			$("#descarga").append("Get Directory "+file_path+"/images/");
-		
-			fs.getDirectory(file_path+"/images/maps",{create:true, exclusive:false},function() {
-				
-				$("#descarga").append("Get Directory "+file_path+"/images/maps");
-				
-				var objajax2=$.getJSON(fs.toURL()+file_path+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json", function (data1) {
 					
-					$("#descarga").append("Get File "+fs.toURL()+file_path+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json");
-				
+			fs.getDirectory(file_path+"/images/maps",{create:true, exclusive:false},function() {
+								
+				var objajax2=$.getJSON(fs.toURL()+file_path+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json", function (data1) {
+									
 					if(data1.result.items.length>0)
 					{
 						var imagenes=data1.result.items;
@@ -5684,10 +5670,9 @@ function downloadRoutesToDir(d) {
 }
 function downloadImages(imagenes, i, total, path) {
 
-	$("#descarga").append("downloadImages");
+	$("#descarga").append("<p>downloadImages</p>");
 	
-	$.each(imagenes, function(indice, imagen) {		
-		
+	$.each(imagenes, function(indice, imagen) {				
 		
 		$("#descarga").append("Get File "+fs.toURL()+file_path+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json");
 		

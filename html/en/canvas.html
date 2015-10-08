@@ -29,7 +29,7 @@
 
 				ajax_paint_routes("trekking_route_canvas", "routes", json_file, "contenido", [['id',identificador],['gpx',gpx_file],['haveCanvas', true],['canvas_number',1],["downloaded",downloaded]]);
 								
-				ajax_recover_data("trekking_route_info", "routes", json_file, "info_route", [['id',identificador]],["downloaded",downloaded]]);
+				ajax_recover_data("trekking_route_info", "routes", json_file, "info_route", [['id',identificador],["downloaded",downloaded]]);
 					
 				document.getElementById("zoom_in").addEventListener("click", function zoomin() {
 					window.location.href="canvas2.html?id="+get_var_url("id")+"&gpx="+gpx_file+"&json="+json_file+"&downloaded="+downloaded;
