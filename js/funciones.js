@@ -5683,7 +5683,7 @@ function downloadRoutesToDir(d) {
 					}	
 					
 				}).fail(function(jqXHR, textStatus, errorThrown) {							
-					console.log("Error al recoger la galeria");											
+					console.log("Error al recoger la ruta "+fs.toURL()+file_path+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json");											
 				});
 					
 			},function(error){
@@ -5694,7 +5694,7 @@ function downloadRoutesToDir(d) {
 			$("#descarga").append("Get Directory "+file_path+"/images fail " + error.code+"<br>");
 		});
 			
-	}, 500);
+	}, 1000);
 		
 
 }
@@ -5702,7 +5702,7 @@ function downloadImages(imagenes, i, total, path) {
 
 	$("#descarga").append("<p>downloadImages</p>");
 	
-	console.log(imagenes);
+	console.log(imagenes[i]);
 	
 	//$.each(imagenes, function(indice, imagen) {				
 		
