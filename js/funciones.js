@@ -2048,13 +2048,13 @@ function ajax_recover_data(type, folder, values, container, params) {
 
 					//Guardar en localstorage los id y nombres de las rutas descargadas, 
 					//para luego recorrer ese localstorage y mostrar el listado sin tener que leer el directorio
+					//Esto valdría también para mostrar sólo las rutas a descargar que no se hayan descargado anteriormente
 				
 					var cadena="";
 					
 					var indice=0;
 					$.each(data.result.routes, function(index, rutas) 
 					{   		
-
 						cadena+='<div onclick="go_to_page(\'troute\',\''+rutas.id+'&downloaded=no\');" >';
 						cadena+='<div id="ov_box_13_1_f" class="ov_box_13" ><img src="../../styles/images/icons/right_arrow.png" alt="menu" class="ov_image_14" /></div>';
 									
@@ -5611,6 +5611,41 @@ function downloadRoutesToDir(d) {
 			ft.download(extern_url+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json" , dlPath, function() {
 					$("#descarga").append(extern_url+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json"+" .... OK<br>");
 					//cargar_barra("barra_carga", 100);	
+					
+					
+					//COMIENZA LA DESCARGA DE ARCHIVOS GPX -> Habría que hacerlo recursivamente como con las imágenes
+					fs.getDirectory(file_path+"/routes/",{create:true, exclusive:false},function() {
+																
+						var ft = new FileTransfer();		
+								
+						$.getJSON(fs.toURL()+file_path+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json", function (data1) {
+						
+							$.each(data1.result.items, function(ind, dat) {
+								
+								var dlPath = fs.toURL()+file_path+"/routes/"+dat.gpx+".gpx"; 	
+							
+								ft.download(extern_url+"/routes/"+dat.gpx+".gpx" , dlPath, function() {
+									$("#descarga").append(extern_url+"/routes/"+dat.gpx+".gpx"+" .... OK<br>");
+									//cargar_barra("barra_carga", 100);
+								}, 
+								function(error){
+									$("#descarga").append("routes/"+dat.gpx+".gpx"+" .... KO "+error.message+"<br>");
+								});	
+									
+								
+							});
+									
+							console.log(dlPath);
+
+						},function(error){
+							$("#descarga").append("Get File "+fs.toURL()+file_path+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json fail " + error.message+"<br>");
+						});
+						
+					}
+					,function(error) {
+						$("#descarga").append("Get Directory "+fs.toURL()+file_path+"/json/"+". FAIL: " + error.message+"<br>");
+					});
+	
 				}, 
 				function(error){
 					$("#descarga").append("json/routes/"+ID_ROUTE_DOWNLOAD+".json"+" .... KO "+error.message+"<br>");
@@ -5625,40 +5660,7 @@ function downloadRoutesToDir(d) {
 	,function(error) {
 		$("#descarga").append("Get Directory "+fs.toURL()+file_path+"/json/"+". FAIL: " + error.message+"<br>");
 	});
-	
-	//DESCARGA ARCHIVOS GPX
-	fs.getDirectory(file_path+"/routes/",{create:true, exclusive:false},function() {
-												
-		var ft = new FileTransfer();		
-				
-		$.getJSON(fs.toURL()+file_path+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json", function (data1) {
-		
-			$.each(data1.result.items, function(ind, dat) {
-				
-				var dlPath = fs.toURL()+file_path+"/routes/"+dat.gpx+".gpx"; 	
-			
-				ft.download(extern_url+"/routes/"+dat.gpx+".gpx" , dlPath, function() {
-					$("#descarga").append(extern_url+"/routes/"+dat.gpx+".gpx"+" .... OK<br>");
-					//cargar_barra("barra_carga", 100);
-				}, 
-				function(error){
-					$("#descarga").append("routes/"+dat.gpx+".gpx"+" .... KO "+error.message+"<br>");
-				});	
-					
-				
-			});
-					
-			console.log(dlPath);
 
-		},function(error){
-			$("#descarga").append("Get File "+fs.toURL()+file_path+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json fail " + error.message+"<br>");
-		});
-		
-	}
-	,function(error) {
-		$("#descarga").append("Get Directory "+fs.toURL()+file_path+"/json/"+". FAIL: " + error.message+"<br>");
-	});
-	
 	
 	setTimeout(function() {
 		//Descarga imagenes
@@ -5668,18 +5670,17 @@ function downloadRoutesToDir(d) {
 								
 				var objajax2=$.getJSON(fs.toURL()+file_path+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json", function (data1) {
 									
+					$("#descarga").append(JSON.stringify(data1));
+					
 					if(data1.result.items.length>0)
 					{
 						var imagenes=data1.result.items;
 										
 						i=0;
 						total_img_gals=1;
-						
-						console.log("imagenes");
-						console.log(imagenes);
-						
+												
 						//downloadImages(object/array data,  posicion, tamaño, ruta);
-						downloadImages(imagenes, i, imagenes.length, fs.toURL()+file_path+"/images/maps");
+						downloadImages(imagenes, i, imagenes.length, fs.toURL()+file_path);
 					}	
 					
 				}).fail(function(jqXHR, textStatus, errorThrown) {							
@@ -5694,7 +5695,7 @@ function downloadRoutesToDir(d) {
 			$("#descarga").append("Get Directory "+file_path+"/images fail " + error.code+"<br>");
 		});
 			
-	}, 1000);
+	}, 2000);
 		
 
 }
@@ -5702,11 +5703,12 @@ function downloadImages(imagenes, i, total, path) {
 
 	$("#descarga").append("<p>downloadImages</p>");
 	
+	console.log("<p>"+i+"</p>");
 	console.log(imagenes[i]);
 	
 	//$.each(imagenes, function(indice, imagen) {				
 		
-		$("#descarga").append("Get File "+imagenes[i]);
+		$("#descarga").append("Get File "+imagenes[i].src_image);
 		
 		var imagen_local=(imagenes[i].src_image).split("../../");
 
