@@ -5447,7 +5447,7 @@ function downloadRoutesToDir(d) {
 			
 			console.log(dlPath);
 	
-			ft.download(extern_url+"/json/routes/"+ID_ROUTE_DOWNLOAD , dlPath, function() {
+			ft.download(extern_url+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json" , dlPath, function() {
 					$("#descarga").append(extern_url+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json"+" .... OK<br>");
 					//cargar_barra("barra_carga", 100);
 				}, 
