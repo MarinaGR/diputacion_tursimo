@@ -5763,7 +5763,9 @@ function downloadRoutesToDir(d) {
 					
 					if(data1.result.items.length>0)
 					{
-						var imagenes=data1.result.items;
+						var imagenes=data1.result;
+						
+						$("#descarga").append(JSON.stringify(data1.result.items[0]));
 										
 						i=0;
 						total_img_gals=1;
@@ -5793,13 +5795,13 @@ function downloadImages(imagenes, i, total, path) {
 	$("#descarga").append("<p>downloadImages</p>");
 	
 	console.log("<p>"+i+"</p>");
-	console.log(imagenes[i]);
+	console.log(imagenes.items[i]);
 	
 	//$.each(imagenes, function(indice, imagen) {				
 		
-		$("#descarga").append("Get File "+imagenes[i].src_image);
+		$("#descarga").append("Get File "+imagenes.items[i].src_image);
 		
-		var imagen_local=(imagenes[i].src_image).split("../../");
+		var imagen_local=(imagenes.items[i].src_image).split("../../");
 
 		var ft = new FileTransfer();			
 		var dlPath = path+"/"+imagen_local[1]; 
