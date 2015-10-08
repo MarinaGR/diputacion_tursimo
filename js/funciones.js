@@ -2093,14 +2093,19 @@ function ajax_recover_data(type, folder, values, container, params) {
 								fs.getDirectory(file_path+"/json/",{create:true, exclusive:false},function() {
 									fs.getDirectory(file_path+"/json/routes",{create:true, exclusive:false},function(dirEntry) {
 										
+										console.log("Dir: "+file_path+"/json/routes");
+										
 										var dirReader = dirEntry.createReader();
 																	  
 										  var readEntries = function() {
 											
 											  dirReader.readEntries(function(entries) {
+											  
+												console.log("entries[0]: "+entries[0]);
 												
 												for(var i = 0; i < entries.length; i++) {
 												  var entry = entries[i];
+												  
 												  if (entry.isDirectory){
 													console.log('Directory: ' + entry.fullPath);
 												  }
@@ -5761,9 +5766,10 @@ function downloadRoutesToDir(d) {
 									
 					$("#descarga").append(JSON.stringify(data1));
 					
-					if(data1.result.items.length>0)
-					{
-						var imagenes=data1.result;
+					var imagenes=data1.result.items;
+					
+					if(imagenes.length>0)
+					{					
 						
 						$("#descarga").append(JSON.stringify(data1.result.items[0]));
 										
@@ -5795,7 +5801,7 @@ function downloadImages(imagenes, i, total, path) {
 	$("#descarga").append("<p>downloadImages</p>");
 	
 	console.log("<p>"+i+"</p>");
-	console.log(imagenes.items[i]);
+	$("#descarga").append(imagenes.items[i].id);
 	
 	//$.each(imagenes, function(indice, imagen) {				
 		
