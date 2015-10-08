@@ -5674,12 +5674,14 @@ function downloadImages(imagenes, i, total, path) {
 	
 	$.each(imagenes, function(indice, imagen) {				
 		
-		$("#descarga").append("Get File "+fs.toURL()+file_path+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json");
+		$("#descarga").append("Get File "+imagen.src_image);
 		
 		var imagen_local=(imagen.src_image).split("../../");
 
 		var ft = new FileTransfer();			
 		var dlPath = path+"/"+imagen_local[1]; 
+		
+		$("#descarga").append("Download route "+extern_url+"/images/maps/"+imagen_local[1]);
 		
 		try {	
 			ft.download(extern_url+"/images/maps/"+imagen_local[1], dlPath, function() {
