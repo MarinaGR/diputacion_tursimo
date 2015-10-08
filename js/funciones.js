@@ -2677,9 +2677,17 @@ function ajax_recover_data(type, folder, values, container, params) {
 					cadena+="<h4>"+TEXTOS[31]+"</h4>";
 					
 					cadena+='<table class="table_routes">';
-					$.each(d.items, function(i, d) {   
-						cadena+='<tr><td><a href="#" onclick="go_to_page(\'canvas\',\''+d.id+'&gpx='+d.gpx+'&json='+identificador+'\');">'+d.desde+' - '+d.hasta+'</a></td></tr>';						
+					$.each(d.items, function(i, d) {  
 
+						if(typeof downloaded!="undefined" && downloaded=="yes")
+						{
+							cadena+='<tr><td><a href="#" onclick="go_to_page(\'canvas\',\''+d.id+'&gpx='+d.gpx+'&json='+identificador+'&downloaded=yes\');">'+d.desde+' - '+d.hasta+'</a></td></tr>';				
+						}
+						else
+						{
+							cadena+='<tr><td><a href="#" onclick="go_to_page(\'canvas\',\''+d.id+'&gpx='+d.gpx+'&json='+identificador+'&downloaded=no\');">'+d.desde+' - '+d.hasta+'</a></td></tr>';						
+						}
+						
 					});	
 					cadena+='</table>';
 					
