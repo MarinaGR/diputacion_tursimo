@@ -2086,8 +2086,93 @@ function ajax_recover_data(type, folder, values, container, params) {
 						setFilePath();
 						
 						console.log(file_path);	
+						
+						/*************************/
+						fs.getDirectory("DiputacionAvila",{create:true, exclusive:false},function() {
+							fs.getDirectory(file_path,{create:true, exclusive:false},function() {
+								fs.getDirectory(file_path+"/json/",{create:true, exclusive:false},function() {
+									fs.getDirectory(file_path+"/json/routes",{create:true, exclusive:false},function(dirEntry) {
+										
+										var dirReader = dirEntry.createReader();
+																	  
+										  var readEntries = function() {
+											
+											  dirReader.readEntries(function(entries) {
+												
+												for(var i = 0; i < entries.length; i++) {
+												  var entry = entries[i];
+												  if (entry.isDirectory){
+													console.log('Directory: ' + entry.fullPath);
+												  }
+												  else if (entry.isFile){
+													console.log('File: ' + entry.fullPath);
+													
+													fs.root.getFile(entry.fullPath, {}, function(fileEntry) {
 
-						if(getLocalStorage("trekking_routes")!=null && typeof JSON.parse(getLocalStorage("trekking_routes"))!="undefined")
+														// Get a File object representing the file,
+														// then use FileReader to read its contents.
+														fileEntry.file(function(file) {
+														   var reader = new FileReader();
+													
+														   reader.onloadend = function(e) {
+															
+																cadena+='<div onclick="go_to_page(\'troute\',\''+this.id+'\');" >';
+																cadena+='<div id="ov_box_13_1_f" class="ov_box_13" ><img src="../../styles/images/icons/right_arrow.png" alt="menu" class="ov_image_14" /></div>';
+																			
+																switch(getLocalStorage("current_language"))
+																{
+																	default:
+																	case "es":  cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24" onclick="$(\'#'+indice+'_puntos\').toggle();">'+this.es.nombre+'</div></div>';	
+																				break;
+																				
+																	case "en":  cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24" onclick="$(\'#'+indice+'_puntos\').toggle();">'+this.es.nombre+'</div></div>';	
+																				break;
+																}
+																	
+																cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
+																cadena+='</div>';
+																
+																indice++;
+																
+														   };
+													
+														   reader.readAsText(file);
+														   
+														}, function(jqXHR, textStatus, errorThrown) {		
+										
+															console.log("Error reader: No se ha cargado el archivo");
+													
+															});
+													
+													  }, function(jqXHR, textStatus, errorThrown) {		
+										
+															console.log("Error getFile: No se ha cargado el archivo");
+													
+														});
+													  
+												  }
+												}
+												
+												readEntries(); // Start reading dirs.
+											
+											  }, function(jqXHR, textStatus, errorThrown) {		
+										
+													console.log("Error ReadEntries: No se ha cargado el directorio "+fs.toURL()+file_path+"/json/routes/");
+											
+											});
+											
+										}
+										
+									},onError);					
+								},onError);								
+							},onError);							
+						},onError);
+							
+									
+
+						/*************************/
+
+						/*if(getLocalStorage("trekking_routes")!=null && typeof JSON.parse(getLocalStorage("trekking_routes"))!="undefined")
 						{
 							fs.getDirectory(file_path+"/json/routes",{create:true, exclusive:false},function(dirEntry) {
 								
@@ -2096,11 +2181,15 @@ function ajax_recover_data(type, folder, values, container, params) {
 									$.each(data, function(i, d) {
 																					
 										fs.root.getFile(file_path+"/json/routes/"+d.id+".json", {}, function(fileEntry) {
+											
+											console.log("reader getFile "+file_path+"/json/routes/"+d.id+".json");	
 
 											// Get a File object representing the file, then use FileReader to read its contents.
 											
 											fileEntry.file(function(file) {
 											   var reader = new FileReader();
+											   
+											   console.log("CREATE READER");
 										
 											   reader.onloadend = function(e) {
 												
@@ -2145,7 +2234,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 							
 						},onError);   
 						
-					}
+					}*/
 				
 				},onFileSystemError);   		
 						
