@@ -5589,20 +5589,17 @@ function downloadRoutesToDir(d) {
 				
 				var objajax2=$.getJSON(extern_url+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json", function (data1) {
 				
-				if(data1.result.items.length>0)
-				{
-					var imagenes=data1.result.items;
-									
-					i=0;
-					total_img_gals=1;
-					downloadImages(imagenes, i, data1.result.items.length, fs.toURL()+file_path+"/images/maps");
-
-				
-					}).fail(function(jqXHR, textStatus, errorThrown) {							
-						console.log("Error al recoger la galeria");											
-					});
-				}
-
+					if(data1.result.items.length>0)
+					{
+						var imagenes=data1.result.items;
+										
+						i=0;
+						total_img_gals=1;
+						downloadImages(imagenes, i, data1.result.items.length, fs.toURL()+file_path+"/images/maps");
+					}	
+					
+				}).fail(function(jqXHR, textStatus, errorThrown) {							
+					console.log("Error al recoger la galeria");											
 				});
 					
 			},function(error){
