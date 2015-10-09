@@ -2101,10 +2101,11 @@ function ajax_recover_data(type, folder, values, container, params) {
 																	  
 										  function readEntries() {
 											  
+											  
 											  $("#ov_zone_21_routeslist").append("function readEntries<br>");
 											  
-											  $("#ov_zone_21_routeslist").append(dirReader);
-
+											  console.log(dirReader);
+											  
 											  
 											  dirReader.readEntries(function(entries) {
 											  
@@ -2132,21 +2133,25 @@ function ajax_recover_data(type, folder, values, container, params) {
 													
 														//   reader.onloadend = function(e) {
 															
-																cadena+='<div onclick="go_to_page(\'troute\',\''+e.id+'\');" >';
-																cadena+='<div id="ov_box_13_1_f" class="ov_box_13" ><img src="../../styles/images/icons/right_arrow.png" alt="menu" class="ov_image_14" /></div>';
+																var cadena2="";
+																
+																cadena2+='<div onclick="go_to_page(\'troute\',\''+e.id+'\');" >';
+																cadena2+='<div id="ov_box_13_1_f" class="ov_box_13" ><img src="../../styles/images/icons/right_arrow.png" alt="menu" class="ov_image_14" /></div>';
 																			
 																switch(getLocalStorage("current_language"))
 																{
 																	default:
-																	case "es":  cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24" onclick="$(\'#'+indice+'_puntos\').toggle();">'+e.es.nombre+'</div></div>';	
+																	case "es":  cadena2+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24" onclick="$(\'#'+indice+'_puntos\').toggle();">'+e.es.nombre+'</div></div>';	
 																				break;
 																				
-																	case "en":  cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24" onclick="$(\'#'+indice+'_puntos\').toggle();">'+e.es.nombre+'</div></div>';	
+																	case "en":  cadena2+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24" onclick="$(\'#'+indice+'_puntos\').toggle();">'+e.es.nombre+'</div></div>';	
 																				break;
 																}
 																	
-																cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
-																cadena+='</div>';
+																cadena2+='<div class="ov_clear_floats_01">&nbsp;</div>';
+																cadena2+='</div>';
+																
+																$("#"+container).append(cadena2);		
 																
 																indice++;
 																
@@ -5835,7 +5840,7 @@ function downloadImages(imagenes, i, total, path) {
 	   $("#descarga_close").show();
 	}
 	
-	if(i>=total)
+	if(i>=total-1)
 	{
 		$("#descarga").append("<p>Actualizacion finalizada</p>");
 		setTimeout(function() {
