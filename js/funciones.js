@@ -2121,27 +2121,27 @@ function ajax_recover_data(type, folder, values, container, params) {
 													$("#ov_zone_21_routeslist").append('File: ' + entry.fullPath);
 																										
 													//fs.root.getFile(entry.fullPath, {}, function(fileEntry) {
-													$.getJSON(entry.fullPath, function(fileEntry)
+													$.getJSON(entry.fullPath, function(data) {
 													
-													
+														var e=data.result;
 
 														// Get a File object representing the file,
 														// then use FileReader to read its contents.
 														//fileEntry.file(function(file) {
-														   var reader = new FileReader();
+														//   var reader = new FileReader();
 													
-														   reader.onloadend = function(e) {
+														//   reader.onloadend = function(e) {
 															
-																cadena+='<div onclick="go_to_page(\'troute\',\''+this.id+'\');" >';
+																cadena+='<div onclick="go_to_page(\'troute\',\''+e.id+'\');" >';
 																cadena+='<div id="ov_box_13_1_f" class="ov_box_13" ><img src="../../styles/images/icons/right_arrow.png" alt="menu" class="ov_image_14" /></div>';
 																			
 																switch(getLocalStorage("current_language"))
 																{
 																	default:
-																	case "es":  cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24" onclick="$(\'#'+indice+'_puntos\').toggle();">'+this.es.nombre+'</div></div>';	
+																	case "es":  cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24" onclick="$(\'#'+indice+'_puntos\').toggle();">'+e.es.nombre+'</div></div>';	
 																				break;
 																				
-																	case "en":  cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24" onclick="$(\'#'+indice+'_puntos\').toggle();">'+this.es.nombre+'</div></div>';	
+																	case "en":  cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24" onclick="$(\'#'+indice+'_puntos\').toggle();">'+e.es.nombre+'</div></div>';	
 																				break;
 																}
 																	
@@ -2150,9 +2150,9 @@ function ajax_recover_data(type, folder, values, container, params) {
 																
 																indice++;
 																
-														   };
+														//  };
 													
-														   reader.readAsText(file);
+														//   reader.readAsText(file);
 														   
 														/*}, function(jqXHR, textStatus, errorThrown) {		
 										
