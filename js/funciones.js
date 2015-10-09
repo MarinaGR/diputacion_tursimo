@@ -2088,21 +2088,22 @@ function ajax_recover_data(type, folder, values, container, params) {
 						console.log(file_path);	
 						
 						/*************************/
+						
 						fs.getDirectory("DiputacionAvila",{create:true, exclusive:false},function() {
 							
-							$(body).append("DiputacionAvila<br>");
+							$("#ov_zone_21_routeslist").append("DiputacionAvila<br>");
 							
 							fs.getDirectory(file_path,{create:true, exclusive:false},function() {
 								
-								$(body).append(file_path+"<br>");
+								$("#ov_zone_21_routeslist").append(file_path+"<br>");
 								
 								fs.getDirectory(file_path+"/json",{create:true, exclusive:false},function() {
 									
-									$(body).append(file_path+"/json/<br>");
+									$("#ov_zone_21_routeslist").append(file_path+"/json/<br>");
 									
 									fs.getDirectory(file_path+"/json/routes",{create:true, exclusive:false},function(dirEntry) {
 										
-										$(body).append(file_path+"/json/routes<br>");
+										$("#ov_zone_21_routeslist").append(file_path+"/json/routes<br>");
 																				
 										console.log("Dir: "+file_path+"/json/routes");
 										
@@ -5633,7 +5634,8 @@ function recover_extern_list(operation, params, container) {
 	
 		  			},
 		  error: function() {
-		  				alert("Error ajax"); //change to console.log("error ajax");
+		  				console.log("Error ajax"); 
+						$("#"+container).html("<p>"+TEXTOS[10]+"</p>");
 		  		 },
 		  async:false,
 		});
@@ -5656,7 +5658,7 @@ function onFileSystemError(error)
 function onFileSystemSuccess(fileSystem) 
 {
 
-	alert("File System OK");  //change to console.log("File System OK"); 
+	console.log("File System OK"); 
 	
 	//Cargado el sistema de archivos, crear los directorios pertinentes para la descarga de los ficheros.
 		
