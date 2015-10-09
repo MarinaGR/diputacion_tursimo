@@ -2107,10 +2107,10 @@ function ajax_recover_data(type, folder, values, container, params) {
 												  var entry = entries[i];
 												  
 												  if (entry.isDirectory){
-													//$("#ov_zone_21_routeslist").append('Directory: ' + entry.fullPath);
+													console.log('Directory: ' + entry.fullPath);
 												  }
 												  else if (entry.isFile){
-													//$("#ov_zone_21_routeslist").append('File: ' + entry.fullPath);
+													console.log('File: ' + entry.fullPath);
 																										
 													//fs.root.getFile(entry.fullPath, {}, function(fileEntry) {
 													$.getJSON(fs.toURL()+entry.fullPath, function(data) {
@@ -5833,9 +5833,9 @@ function downloadImages(imagenes, i, total, path) {
 	
 	if(i>=total-1)
 	{
-		$("#descarga").append("<p>Actualizacion finalizada</p>");
+		$("#descarga").append("<p>Completado</p>");
 		setTimeout(function() {
-			$("#descarga").hide();			
+			$("#descarga").html("<p>Descarga finalizada</p>");		
 		}, 500);
 	}		
 }
