@@ -2100,29 +2100,20 @@ function ajax_recover_data(type, folder, values, container, params) {
 										var dirReader = dirEntry.createReader();
 																	  
 										  function readEntries() {
-											  
-											  
-											  $("#ov_zone_21_routeslist").append("function readEntries<br>");
-											  
-											  console.log(dirReader);
-											  
-											  
+
 											  dirReader.readEntries(function(entries) {
 											  
-												$("#ov_zone_21_routeslist").append("entries[0]: "+entries[0]);
-												console.log(entries);
-												
 												for(var i = 0; i < entries.length; i++) {
 												  var entry = entries[i];
 												  
 												  if (entry.isDirectory){
-													$("#ov_zone_21_routeslist").append('Directory: ' + entry.fullPath);
+													//$("#ov_zone_21_routeslist").append('Directory: ' + entry.fullPath);
 												  }
 												  else if (entry.isFile){
-													$("#ov_zone_21_routeslist").append('File: ' + entry.fullPath);
+													//$("#ov_zone_21_routeslist").append('File: ' + entry.fullPath);
 																										
 													//fs.root.getFile(entry.fullPath, {}, function(fileEntry) {
-													$.getJSON(entry.fullPath, function(data) {
+													$.getJSON(fs.toURL()+entry.fullPath, function(data) {
 													
 														var e=data.result;
 
@@ -5805,7 +5796,7 @@ function downloadRoutesToDir(d) {
 			$("#descarga").append("Get Directory "+file_path+"/images fail " + error.code+"<br>");
 		});
 			
-	}, 1500);
+	}, 1000);
 		
 
 }
