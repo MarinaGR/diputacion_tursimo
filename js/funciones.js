@@ -2090,30 +2090,24 @@ function ajax_recover_data(type, folder, values, container, params) {
 						/*************************/
 						
 						fs.getDirectory("DiputacionAvila",{create:true, exclusive:false},function() {
-							
-							$("#ov_zone_21_routeslist").append("DiputacionAvila<br>");
-							
+														
 							fs.getDirectory(file_path,{create:true, exclusive:false},function() {
-								
-								$("#ov_zone_21_routeslist").append(file_path+"<br>");
-								
+																
 								fs.getDirectory(file_path+"/json",{create:true, exclusive:false},function() {
-									
-									$("#ov_zone_21_routeslist").append(file_path+"/json/<br>");
 									
 									fs.getDirectory(file_path+"/json/routes",{create:true, exclusive:false},function(dirEntry) {
 										
 										$("#ov_zone_21_routeslist").append(file_path+"/json/routes<br>");
-																				
-										console.log("Dir: "+file_path+"/json/routes");
 										
 										var dirReader = dirEntry.createReader();
 																	  
 										  var readEntries = function() {
 											  
+											  $("#ov_zone_21_routeslist").append("function readEntries<br>");
+											  
 											  dirReader.readEntries(function(entries) {
 											  
-												console.log("entries[0]: "+entries[0]);
+												$("#ov_zone_21_routeslist").append("entries[0]: "+entries[0]);
 												
 												for(var i = 0; i < entries.length; i++) {
 												  var entry = entries[i];
@@ -5799,7 +5793,7 @@ function downloadRoutesToDir(d) {
 			$("#descarga").append("Get Directory "+file_path+"/images fail " + error.code+"<br>");
 		});
 			
-	}, 2000);
+	}, 1500);
 		
 
 }
@@ -5815,15 +5809,15 @@ function downloadImages(imagenes, i, total, path) {
 		
 		$("#descarga").append("Get File "+imagenes[i].src_image);
 		
-		var imagen_local=(imagenes[i].src_image).split("../../");
+		var imagen_local=(imagenes[i].src_image).split("../../resources");
 
 		var ft = new FileTransfer();			
 		var dlPath = path+"/"+imagen_local[1]; 
 		
-		$("#descarga").append("Download route "+extern_url+"/images/maps/"+imagen_local[1]);
+		$("#descarga").append("Download route "+extern_url+"/"+imagen_local[1]);
 		
 		try {	
-			ft.download(extern_url+"/images/maps/"+imagen_local[1], dlPath, function() {
+			ft.download(extern_url+"/"+imagen_local[1], dlPath, function() {
 			
 					$("#descarga").append(imagen_local[1]+" .... OK<br>");	
 					i++;			
@@ -5848,13 +5842,13 @@ function downloadImages(imagenes, i, total, path) {
 		
 	//});
 	
-	if(total_img_gals==1)
+	if(i>=total)
 	{
 		setTimeout(function() {
 			//$("#descarga").hide();
-			$("#descarga").append("Actualizacion finalizada");
+			$("#descarga").append("<p>Actualizacion finalizada</p>");
 			
-		}, 200);
+		}, 500);
 	}		
 }
 
