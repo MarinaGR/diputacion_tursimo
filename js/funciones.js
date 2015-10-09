@@ -2103,7 +2103,8 @@ function ajax_recover_data(type, folder, values, container, params) {
 											  
 											  $("#ov_zone_21_routeslist").append("function readEntries<br>");
 											  
-											  console.log(dirReader);
+											  $("#ov_zone_21_routeslist").append(dirReader);
+
 											  
 											  dirReader.readEntries(function(entries) {
 											  
@@ -2114,16 +2115,19 @@ function ajax_recover_data(type, folder, values, container, params) {
 												  var entry = entries[i];
 												  
 												  if (entry.isDirectory){
-													console.log('Directory: ' + entry.fullPath);
+													$("#ov_zone_21_routeslist").append('Directory: ' + entry.fullPath);
 												  }
 												  else if (entry.isFile){
-													console.log('File: ' + entry.fullPath);
+													$("#ov_zone_21_routeslist").append('File: ' + entry.fullPath);
 																										
-													fs.root.getFile(entry.fullPath, {}, function(fileEntry) {
+													//fs.root.getFile(entry.fullPath, {}, function(fileEntry) {
+													$.getJSON(entry.fullPath, function(fileEntry)
+													
+													
 
 														// Get a File object representing the file,
 														// then use FileReader to read its contents.
-														fileEntry.file(function(file) {
+														//fileEntry.file(function(file) {
 														   var reader = new FileReader();
 													
 														   reader.onloadend = function(e) {
@@ -2150,11 +2154,11 @@ function ajax_recover_data(type, folder, values, container, params) {
 													
 														   reader.readAsText(file);
 														   
-														}, function(jqXHR, textStatus, errorThrown) {		
+														/*}, function(jqXHR, textStatus, errorThrown) {		
 										
 															console.log("Error reader: No se ha cargado el archivo");
 													
-															});
+															});*/
 													
 													  }, function(jqXHR, textStatus, errorThrown) {		
 										
@@ -5712,7 +5716,7 @@ function downloadRoutesToDir(d) {
 			console.log(dlPath);
 	
 			ft.download(extern_url+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json" , dlPath, function() {
-					$("#descarga").append(extern_url+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json"+" .... OK<br>");
+					$("#descarga").append("/json/routes/"+ID_ROUTE_DOWNLOAD+".json"+" .... OK<br>");
 					//cargar_barra("barra_carga", 100);	
 					
 					
@@ -5728,7 +5732,7 @@ function downloadRoutesToDir(d) {
 								var dlPath = fs.toURL()+file_path+"/routes/"+dat.gpx+".gpx"; 	
 							
 								ft.download(extern_url+"/routes/"+dat.gpx+".gpx" , dlPath, function() {
-									$("#descarga").append(extern_url+"/routes/"+dat.gpx+".gpx"+" .... OK<br>");
+									$("#descarga").append("/routes/"+dat.gpx+".gpx"+" .... OK<br>");
 									//cargar_barra("barra_carga", 100);
 								}, 
 								function(error){
@@ -5831,12 +5835,11 @@ function downloadImages(imagenes, i, total, path) {
 	   $("#descarga_close").show();
 	}
 	
-	if(i>=total-1)
+	if(i>=total)
 	{
+		$("#descarga").append("<p>Actualizacion finalizada</p>");
 		setTimeout(function() {
-			//$("#descarga").hide();
-			$("#descarga").append("<p>Actualizacion finalizada</p>");
-			
+			$("#descarga").hide();			
 		}, 500);
 	}		
 }
