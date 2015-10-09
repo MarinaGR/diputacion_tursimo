@@ -37,6 +37,10 @@
 				document.getElementById("boton_atras").addEventListener("click", function() {
 					window.location.href="canvas.html?id="+get_var_url("id")+"&gpx="+gpx_file+"&json="+json_file+"&downloaded="+downloaded;
 				}, false);	
+				
+				document.addEventListener("backbutton", function() {
+					window.location.href="canvas.html?id="+get_var_url("id")+"&gpx="+gpx_file+"&json="+json_file+"&downloaded="+downloaded;
+				}, false);
 			});
 
 		</script>
