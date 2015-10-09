@@ -2089,16 +2089,27 @@ function ajax_recover_data(type, folder, values, container, params) {
 						
 						/*************************/
 						fs.getDirectory("DiputacionAvila",{create:true, exclusive:false},function() {
+							
+							$(body).append("DiputacionAvila<br>");
+							
 							fs.getDirectory(file_path,{create:true, exclusive:false},function() {
-								fs.getDirectory(file_path+"/json/",{create:true, exclusive:false},function() {
+								
+								$(body).append(file_path+"<br>");
+								
+								fs.getDirectory(file_path+"/json",{create:true, exclusive:false},function() {
+									
+									$(body).append(file_path+"/json/<br>");
+									
 									fs.getDirectory(file_path+"/json/routes",{create:true, exclusive:false},function(dirEntry) {
 										
+										$(body).append(file_path+"/json/routes<br>");
+																				
 										console.log("Dir: "+file_path+"/json/routes");
 										
 										var dirReader = dirEntry.createReader();
 																	  
 										  var readEntries = function() {
-											
+											  
 											  dirReader.readEntries(function(entries) {
 											  
 												console.log("entries[0]: "+entries[0]);
@@ -2111,7 +2122,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 												  }
 												  else if (entry.isFile){
 													console.log('File: ' + entry.fullPath);
-													
+																										
 													fs.root.getFile(entry.fullPath, {}, function(fileEntry) {
 
 														// Get a File object representing the file,
@@ -2157,8 +2168,6 @@ function ajax_recover_data(type, folder, values, container, params) {
 													  
 												  }
 												}
-												
-												readEntries(); // Start reading dirs.
 											
 											  }, function(jqXHR, textStatus, errorThrown) {		
 										
@@ -2167,6 +2176,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 											});
 											
 										}
+										readEntries(); // Start reading dirs.
 										
 									},onError);					
 								},onError);								
@@ -5763,10 +5773,10 @@ function downloadRoutesToDir(d) {
 			fs.getDirectory(file_path+"/images/maps",{create:true, exclusive:false},function() {
 								
 				var objajax2=$.getJSON(fs.toURL()+file_path+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json", function (data1) {
-									
-					$("#descarga").append(JSON.stringify(data1));
-					
+														
 					var imagenes=data1.result.items;
+					
+					$("#descarga").append(Object.size(imagenes));
 					
 					if(Object.size(imagenes)>0)
 					{					
