@@ -217,14 +217,74 @@ function search_string(value, container) {
 	var sorted_empr=new Array();
 	
 	if(value!="")
-	{
-		var q = $.trim(value),
-			regex = new RegExp(q, "i");
+	{		
+		//Busqueda normal
+		var trim_value=$.trim(value);
+		var split_value=trim_value.split(" ");
 		
+		var palabras_excluidas="";
+				
+		var expr_regular="";
+		for(i=0; i<split_value.length; i++)
+		{			
+			expr_regular+=""+split_value[i]+".*";
+		}
+		expr_regular=expr_regular.slice(0,-2);
+		expr_regular+="|";
+		for(i=split_value.length-1; i>=0; i--)
+		{			
+			expr_regular+=""+split_value[i]+".*";
+		}
+		expr_regular=expr_regular.slice(0,-2);
+		expr_regular+="|";
+		
+		//Busqueda sin tildes 
+		var translate = {
+			"á": "a", "é": "e", "í": "i", "ó": "o", "ú": "u",
+			"Á": "A", "É": "E", "Í": "I", "Ó": "O", "Ú": "U",
+		    "ä": "a", "ö": "o", "ü": "u",
+		    "Ä": "A", "Ö": "O", "Ü": "U"   
+		};		
+		var translate_re = /[áéíóúÁÉÍÓÚöäüÖÄÜ]/g;
+		var value_sin_tildes = value;
+		var value_sin_tildes = ( value_sin_tildes.replace(translate_re, function(match) { 
+		    return translate[match]; 
+		}) );
+		
+		var trim_value_sin_tildes=$.trim(value_sin_tildes);
+		var split_value_sin_tildes=trim_value_sin_tildes.split(" ");
+				
+		for(i=0; i<split_value_sin_tildes.length; i++)
+		{			
+			expr_regular+=""+split_value_sin_tildes[i]+".*";
+		}
+		expr_regular=expr_regular.slice(0,-2);
+		expr_regular+="|";
+		for(i=split_value_sin_tildes.length-1; i>=0; i--)
+		{			
+			expr_regular+=""+split_value_sin_tildes[i]+".*";
+		}
+		expr_regular=expr_regular.slice(0,-2);
+		
+		var q = $.trim(expr_regular),
+			regex = new RegExp(q, "i");
+			
+		/*var expr_regular2="";
+		for(i=0; i<split_value.length; i++)
+		{			
+			expr_regular2+=split_value[i]+"|";
+		}
+		expr_regular2=expr_regular2.slice(0,-1);
+	
+		var q2 = $.trim(expr_regular2),
+			regex2 = new RegExp(q2, "i");*/
+			
+		console.log(regex);
+					
 		$.getJSON('../../resources/json/point_list.json', function (data) {
 			
 			 $.each(data.result.items, function (ind, point) {
-				
+			 					
 				switch(getLocalStorage("current_language"))
 				{
 					default:
@@ -232,15 +292,30 @@ function search_string(value, container) {
 									if($.inArray(point, sorted_points)==-1)				
 										sorted_points.push(point);		
 								}
-								
+								if(point.es.descripcion.search(regex) != -1) {	
+									if($.inArray(point, sorted_points)==-1)				
+										sorted_points.push(point);		
+								}							
 								break;
 					
 					case "en":  if(point.en.nombre.search(regex) != -1) {
 									if($.inArray(point, sorted_points)==-1)				
 										sorted_points.push(point);		
 								}
+								if(point.en.descripcion.search(regex) != -1) {	
+									if($.inArray(point, sorted_points)==-1)				
+										sorted_points.push(point);		
+								}
 								break;
-				}				
+				}	
+
+				if(point.municipio!=null)
+				{
+					if(point.municipio.search(regex) != -1) {
+						if($.inArray(point, sorted_points)==-1)				
+							sorted_points.push(point);	
+					}	
+				}
 				 
 			});
 						
@@ -270,15 +345,40 @@ function search_string(value, container) {
 											if($.inArray(empr, sorted_empr)==-1)				
 												sorted_empr.push(empr);		
 										}
-										
-										break;
-							
-							case "en":  if(point.en.nombre.search(regex) != -1) {
+										/*if(empr.es.descripcion.search(regex) != -1) {	
 											if($.inArray(empr, sorted_empr)==-1)				
 												sorted_empr.push(empr);		
 										}
+										if(empr.es.caracteristica.search(regex) != -1) {	
+											if($.inArray(empr, sorted_empr)==-1)				
+												sorted_empr.push(empr);		
+										}*/
+										
 										break;
-						}	
+							
+							case "en":  if(empr.en.nombre.search(regex) != -1) {
+											if($.inArray(empr, sorted_empr)==-1)				
+												sorted_empr.push(empr);		
+										}
+										/*if(empr.en.descripcion.search(regex) != -1) {	
+											if($.inArray(empr, sorted_empr)==-1)				
+												sorted_empr.push(empr);		
+										}
+										if(empr.en.caracteristica.search(regex) != -1) {	
+											if($.inArray(empr, sorted_empr)==-1)				
+												sorted_empr.push(empr);		
+										}*/
+										break;
+						}
+
+						if(empr.municipio!=null)
+						{
+							if(empr.municipio.search(regex) != -1) {	
+								if($.inArray(empr, sorted_empr)==-1)				
+									sorted_empr.push(empr);		
+							}
+						}
+						
 					}			
 					 
 				});
@@ -2135,7 +2235,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 																	case "es":  cadena2+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24" onclick="$(\'#'+indice+'_puntos\').toggle();">'+e.es.nombre+'</div></div>';	
 																				break;
 																				
-																	case "en":  cadena2+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24" onclick="$(\'#'+indice+'_puntos\').toggle();">'+e.es.nombre+'</div></div>';	
+																	case "en":  cadena2+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24" onclick="$(\'#'+indice+'_puntos\').toggle();">'+e.en.nombre+'</div></div>';	
 																				break;
 																}
 																	
@@ -3790,7 +3890,7 @@ function show_localstorage_data(type, container, params) {
 
 					if(getLocalStorage("routes_list")==null || typeof JSON.parse(getLocalStorage("routes_list"))=="undefined")
 					{
-						$("#"+container).html("<p>"+TEXTOS[35]+"</p>");
+						$("#"+container).html("<p>"+TEXTOS[35]+"<br>"+TEXTOS[55]+"</p><p><a href='go_to_page(\"points_list\");' >"+TEXTOS[56]+"</a>");
 					}					
 					else
 					{
@@ -3910,6 +4010,10 @@ function show_localstorage_data(type, container, params) {
 						i++;
 						
 					});
+					
+					cadena+='<tr><td><a href="points.html?id='+puntos.id+'">'+TEXTOS[57]+'</a></td>';
+					cadena+='<td onclick="go_to_page(\'points_list\');"><img src="../../styles/images/icons/plus.png" /></td>';
+					cadena+='</tr>';	
 					
 					cadena+='</table>';
 
