@@ -5630,7 +5630,7 @@ function recover_extern_list(operation, params, container) {
 						$("#"+container).html(cadena);
 	
 		  			},
-		  error: function() {
+		  error: function(jqXHR, textStatus, errorThrown) {
 		  				console.log("Error ajax"); 
 						$("#"+container).html("<p>"+TEXTOS[10]+"</p>");
 		  		 },
