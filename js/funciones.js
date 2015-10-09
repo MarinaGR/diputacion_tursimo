@@ -2097,17 +2097,18 @@ function ajax_recover_data(type, folder, values, container, params) {
 									
 									fs.getDirectory(file_path+"/json/routes",{create:true, exclusive:false},function(dirEntry) {
 										
-										$("#ov_zone_21_routeslist").append(file_path+"/json/routes<br>");
-										
 										var dirReader = dirEntry.createReader();
 																	  
-										  var readEntries = function() {
+										  function readEntries() {
 											  
 											  $("#ov_zone_21_routeslist").append("function readEntries<br>");
+											  
+											  console.log(dirReader);
 											  
 											  dirReader.readEntries(function(entries) {
 											  
 												$("#ov_zone_21_routeslist").append("entries[0]: "+entries[0]);
+												console.log(entries);
 												
 												for(var i = 0; i < entries.length; i++) {
 												  var entry = entries[i];
@@ -2163,13 +2164,15 @@ function ajax_recover_data(type, folder, values, container, params) {
 													  
 												  }
 												}
-											
-											  }, function(jqXHR, textStatus, errorThrown) {		
-										
-													console.log("Error ReadEntries: No se ha cargado el directorio "+fs.toURL()+file_path+"/json/routes/");
+												
+											 }, function(jqXHR, textStatus, errorThrown) {		
+									
+												console.log("Error ReadEntries: No se ha cargado el directorio "+fs.toURL()+file_path+"/json/routes/");
 											
 											});
 											
+											
+											 
 										}
 										readEntries(); // Start reading dirs.
 										
@@ -5798,51 +5801,37 @@ function downloadRoutesToDir(d) {
 
 }
 function downloadImages(imagenes, i, total, path) {
+		
+	var imagen_local=(imagenes[i].src_image).split("../../resources/");
 
-	$("#descarga").append("<p>downloadImages</p>");
-	
-	$("#descarga").append("<p>"+i+"</p>");
-	
-	$("#descarga").append(imagenes[i].id);
-	
-	//$.each(imagenes, function(indice, imagen) {				
-		
-		$("#descarga").append("Get File "+imagenes[i].src_image);
-		
-		var imagen_local=(imagenes[i].src_image).split("../../resources");
+	var ft = new FileTransfer();			
+	var dlPath = path+"/"+imagen_local[1]; 
 
-		var ft = new FileTransfer();			
-		var dlPath = path+"/"+imagen_local[1]; 
+	try {	
+		ft.download(extern_url+"/"+imagen_local[1], dlPath, function() {
 		
-		$("#descarga").append("Download route "+extern_url+"/"+imagen_local[1]);
-		
-		try {	
-			ft.download(extern_url+"/"+imagen_local[1], dlPath, function() {
-			
-					$("#descarga").append(imagen_local[1]+" .... OK<br>");	
-					i++;			
-					if(i<total)
-						downloadImages(imagenes, i, total, path);
-				}, 
-				function(error){
-					$("#descarga").append(imagen_local[1]+" .... KO (err."+error.message+")<br>");
-					intentos++;
-					if(i<total && intentos<2)
-						downloadImages(imagenes, i, total, path);
-					else
-					{
-						intentos=0;
-					}
+				$("#descarga").append(imagen_local[1]+" .... OK<br>");	
+				i++;			
+				if(i<total)
+					downloadImages(imagenes, i, total, path);
+			}, 
+			function(error){
+				$("#descarga").append(imagen_local[1]+" .... KO (err. "+error.message+")<br>");
+				intentos++;
+				if(i<total && intentos<2)
+					downloadImages(imagenes, i, total, path);
+				else
+				{
+					intentos=0;
 				}
-			);
-		}
-		catch(e) {
-		   $("#descarga_close").show();
-		}
-		
-	//});
+			}
+		);
+	}
+	catch(e) {
+	   $("#descarga_close").show();
+	}
 	
-	if(i>=total)
+	if(i>=total-1)
 	{
 		setTimeout(function() {
 			//$("#descarga").hide();
