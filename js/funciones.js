@@ -5775,14 +5775,9 @@ function downloadRoutesToDir(d) {
 				var objajax2=$.getJSON(fs.toURL()+file_path+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json", function (data1) {
 														
 					var imagenes=data1.result.items;
-					
-					$("#descarga").append(Object.size(imagenes));
-					
+
 					if(Object.size(imagenes)>0)
-					{					
-						
-						$("#descarga").append(JSON.stringify(data1.result.items[0]));
-										
+					{										
 						i=0;
 						total_img_gals=1;
 												
@@ -5810,14 +5805,15 @@ function downloadImages(imagenes, i, total, path) {
 
 	$("#descarga").append("<p>downloadImages</p>");
 	
-	console.log("<p>"+i+"</p>");
-	$("#descarga").append(imagenes.items[i].id);
+	$("#descarga").append("<p>"+i+"</p>");
+	
+	$("#descarga").append(imagenes[i].id);
 	
 	//$.each(imagenes, function(indice, imagen) {				
 		
-		$("#descarga").append("Get File "+imagenes.items[i].src_image);
+		$("#descarga").append("Get File "+imagenes[i].src_image);
 		
-		var imagen_local=(imagenes.items[i].src_image).split("../../");
+		var imagen_local=(imagenes[i].src_image).split("../../");
 
 		var ft = new FileTransfer();			
 		var dlPath = path+"/"+imagen_local[1]; 
