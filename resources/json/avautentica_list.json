@@ -34,7 +34,7 @@
 					"id":"AVAU-ALI00000010","es":{"nombre":"Bodegas y Viñedos Valhondo"},"en":{"nombre":"Bodegas y Viñedos Valhondo"},"tlf":"920256559","email":null,"direccion":"C/ Arevalo 9, 05229, Castellanos de Zapardiel, Avila, España","web":"http://www.vetone.es","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, vino, bebida","geolocalizacion":null
 				},
 				{
-					"id":"AVAU-ALI00000011","es":{"nombre":"Carnes Barbero"},"en":{"nombre":"Carnes Barbero"},"tlf":"920281181","email":null,"direccion":"Poligono Industrial La Peguera, 05110, El Barraco, Avila, España","web":null,"seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion","geolocalizacion":null
+					"id":"AVAU-ALI00000011","es":{"nombre":"Carnes Barbero"},"en":{"nombre":"Carnes Barbero"},"tlf":"920281181","email":null,"direccion":"Poligono Industrial La Peguera, 05110, El Barraco, Avila, España","web":"http://www.avilaautentica.es/169-carnes-barbero.html","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion","geolocalizacion":null
 				},
 				{
 					"id":"AVAU-ALI00000012","es":{"nombre":"Cabritos Maribel"},"en":{"nombre":"Cabritos Maribel"},"tlf":"920049235","email":null,"direccion":"Paraje el Robledillo 05480, El Raso, Avila, España","web":"http://www.cabritosmaribel.es","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion","geolocalizacion":null
@@ -67,7 +67,7 @@
 					"id":"AVAU-COM00000021","es":{"nombre":"Alimentación Manuel Mena"},"en":{"nombre":"Alimentación Manuel Mena"},"tlf":"920340210","email":null,"direccion":"Mayor, 16 05600, El Barco de Avila, Ávila, España","web":"http://www.gallareta.com","seccion":"Comercio","tipo":[{"id":"tipo_1"}],"tag":"comercio, alimentacion","geolocalizacion":null
 				},
 				{
-					"id":"AVAU-COM00000022","es":{"nombre":"Comercio-Soles de Gredos"},"en":{"nombre":"Comercio-Soles de Gredos"},"tlf":"920299702","email":null,"direccion":"C/ PIEDRACABALLERA, 6 05123, HOYOCASERO, Ávila, España","web":"http://www.solesdegredos.com","seccion":"Comercio","tipo":[{"id":"tipo_1"}],"tag":"comercio, pasteleria","geolocalizacion":null
+					"id":"AVAU-COM00000022","es":{"nombre":"Soles de Gredos"},"en":{"nombre":"Soles de Gredos"},"tlf":"920299702","email":null,"direccion":"C/ PIEDRACABALLERA, 6 05123, HOYOCASERO, Ávila, España","web":"http://www.solesdegredos.com","seccion":"Comercio","tipo":[{"id":"tipo_1"}],"tag":"comercio, pasteleria","geolocalizacion":null
 				},
 				{
 					"id":"AVAU-COM00000023","es":{"nombre":"Paladar Gourmet"},"en":{"nombre":"Paladar Gourmet"},"tlf":"920360694","email":null,"direccion":"Plaza de España,30 05500, Piedrahita, Ávila, España","web":"http://www.avilaautentica.es/3-paladar-gourmet.html","seccion":"Comercio","tipo":[{"id":"tipo_1"}],"tag":"comercio, alimentacion","geolocalizacion":null
@@ -103,7 +103,7 @@
 					"id":"AVAU-COM00000033","es":{"nombre":"Delicatessen Tietar C.B."},"en":{"nombre":"Delicatessen Tietar C.B."},"tlf":"918662441 / 656665067 / 656663249","email":null,"direccion":"Avda. Argedi 4 URB LA VEGA 05429, Santa Maria del Tietar, Ávila, España","web":"http://www.delicatessentietar.com","seccion":"Comercio","tipo":[{"id":"tipo_1"}],"tag":"comercio, alimentacion","geolocalizacion":null
 				},
 				{
-					"id":"AVAU-COM00000034","es":{"nombre":"Comercio-La Tahona del Sotillo"},"en":{"nombre":"Comercio-La Tahona del Sotillo"},"tlf":"918660112","email":null,"direccion":"C/Cervantes, nº 6 05420, Sotillo de La Adrada, Ávila, España","web":"http://www.latahonadesotillo.es","seccion":"Comercio","tipo":[{"id":"tipo_1"}],"tag":"comercio, panaderia, reposteria","geolocalizacion":null
+					"id":"AVAU-COM00000034","es":{"nombre":"La Tahona del Sotillo"},"en":{"nombre":"La Tahona del Sotillo"},"tlf":"918660112","email":null,"direccion":"C/Cervantes, nº 6 05420, Sotillo de La Adrada, Ávila, España","web":"http://www.latahonadesotillo.es","seccion":"Comercio","tipo":[{"id":"tipo_1"}],"tag":"comercio, panaderia, reposteria","geolocalizacion":null
 				},
 				{
 					"id":"AVAU-COM00000035","es":{"nombre":"La viña Bonita"},"en":{"nombre":"La viña Bonita"},"tlf":"625090912","email":null,"direccion":"C/ Martin Carramolino, nº 18. local 05004, Ávila, España","web":"http://www.laviñabonita.com","seccion":"Comercio","tipo":[{"id":"tipo_1"}],"tag":"comercio, alimentacion, vinos, cervezas, bebidas","geolocalizacion":null
@@ -112,10 +112,70 @@
 					"id":"AVAU-COM00000036","es":{"nombre":"Quesos y Vinos Sabor Alegre"},"en":{"nombre":"Quesos y Vinos Sabor Alegre"},"tlf":"920370806","email":null,"direccion":"Plaza de las Monjas Agustinas, 5 05400, Arenas de San Pedro, Ávila, España","web":"http://www.quesosyvinossaboralegre.com","seccion":"Comercio","tipo":[{"id":"tipo_1"}],"tag":"comercio, alimentacion, vinos, bebidas","geolocalizacion":null
 				},
 				{
-					"id":"AVAU-COM00000037","es":{"nombre":"Comercio-Legumbres Coronado"},"en":{"nombre":"Comercio-Legumbres Coronado"},"tlf":"920340032","email":null,"direccion":"Plaza España 20 05600, El Barco de Avila, Ávila, España","web":"http://www.legumbrescoronado.com","seccion":"Comercio","tipo":[{"id":"tipo_1"}],"tag":"comercio, alimentacion","geolocalizacion":null
+					"id":"AVAU-COM00000037","es":{"nombre":"Legumbres Coronado"},"en":{"nombre":"Legumbres Coronado"},"tlf":"920340032","email":null,"direccion":"Plaza España 20 05600, El Barco de Avila, Ávila, España","web":"http://www.legumbrescoronado.com","seccion":"Comercio","tipo":[{"id":"tipo_1"}],"tag":"comercio, alimentacion","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-RES00000038","es":{"nombre":"Restaurante El Portazgo"},"en":{"nombre":"Restaurante El Portazgo"},"tlf":null,"email":null,"direccion":"Ctra. de Ávila, 10 05414, Cuevas del Valle, Ávila, España","web":"http://www.avilaautentica.es/144-restaurante-el-portazgo.html","seccion":"Restaurantes","tipo":[{"id":"tipo_2"}],"tag":"restaurante","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-RES00000039","es":{"nombre":"Restaurante La Galana"},"en":{"nombre":"Restaurante La Galana"},"tlf":"920349179","email":null,"direccion":"Cr Plataforma km 0'2 2 05634, Hoyos del Espino, Ávila, España","web":"http://www.lagalanagredos.com","seccion":"Restaurantes","tipo":[{"id":"tipo_2"}],"tag":"restaurante","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-RES00000040","es":{"nombre":"Restaurante El Yantar de Gredos"},"en":{"nombre":"Restaurante El Yantar de Gredos"},"tlf":"920348394","email":null,"direccion":"C/ Cañadilla, s/n 05132, San Martín del Pimpollar, Ávila, España","web":"http://www.elyantardegredos.es","seccion":"Restaurantes","tipo":[{"id":"tipo_2"}],"tag":"restaurante","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-RES00000041","es":{"nombre":"Cinco Restaurante"},"en":{"nombre":"Cinco Restaurante"},"tlf":"920252104","email":null,"direccion":"Pza. de Mosén Rubí, 5 05001, Ávila, España","web":"http://www.5restaurante.com","seccion":"Restaurantes","tipo":[{"id":"tipo_2"}],"tag":"restaurante","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-RES00000042","es":{"nombre":"Restaurante El Carrascal"},"en":{"nombre":"Restaurante El Carrascal"},"tlf":"920231492","email":null,"direccion":"Ctra Nacional 110 Km 286, Muñana, Ávila, España","web":"http://www.complejoelcarrascal.com","seccion":"Restaurantes","tipo":[{"id":"tipo_2"}],"tag":"restaurante","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-RES00000043","es":{"nombre":"Restaurante El Rinconcito de Gredos"},"en":{"nombre":"Restaurante El Rinconcito de Gredos"},"tlf":"920383288","email":null,"direccion":"Urb. Los Llanos, 3-5 05414, Cuevas del Valle, Ávila, España","web":"http://www.rinconcitogredos.com","seccion":"Restaurantes","tipo":[{"id":"tipo_2"}],"tag":"restaurante","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-RES00000044","es":{"nombre":"La Pitanza de Arranz"},"en":{"nombre":"La Pitanza de Arranz"},"tlf":"918627347","email":null,"direccion":"C/ Mártires 22 05270, El Tiemblo, Ávila, España","web":"http://www.avilaautentica.es/restaurantes/149-la-pitanza-de-arranz/visit.html","seccion":"Restaurantes","tipo":[{"id":"tipo_2"}],"tag":"restaurante","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-RES00000045","es":{"nombre":"Restaurante El Milano Real"},"en":{"nombre":"Restaurante El Milano Real"},"tlf":"920349108","email":null,"direccion":"C/Toledo S/N 05634, Hoyos del Espino, Ávila, España","web":"http://www.elmilanoreal.com","seccion":"Restaurantes","tipo":[{"id":"tipo_2"}],"tag":"restaurante","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-RES00000046","es":{"nombre":"Restaurante Las Cancelas"},"en":{"nombre":"Restaurante Las Cancelas"},"tlf":"920212249","email":null,"direccion":"Cruz Vieja, 6 05001, Ávila, España","web":"http://www.lascancelas.com","seccion":"Restaurantes","tipo":[{"id":"tipo_2"}],"tag":"restaurante","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-RES00000047","es":{"nombre":"Restaurante El Castrejón"},"en":{"nombre":"Restaurante El Castrejón"},"tlf":"918630044","email":null,"direccion":"Los caños, 10 05260, Cebreros, Ávila, España","web":"http://www.elcastrejon.com","seccion":"Restaurantes","tipo":[{"id":"tipo_2"}],"tag":"restaurante","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-RES00000048","es":{"nombre":"Restaurante Espacio San Juan de la Cruz"},"en":{"nombre":"Restaurante Espacio San Juan de la Cruz"},"tlf":"920245013","email":null,"direccion":"Plaza de los Conquistadores s/n 05310, Fontiveros, Ávila, España","web":"http://www.espaciosanjuandelacruz.es","seccion":"Restaurantes","tipo":[{"id":"tipo_2"}],"tag":"restaurante","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-RES00000049","es":{"nombre":"Restaurante El Linar del Zaire"},"en":{"nombre":"Restaurante El Linar del Zaire"},"tlf":"920284091","email":null,"direccion":"Crta. Avila Casavieja, 42 B, Burgohondo, Ávila, España","web":"http://www.ellinardelzaire.com","seccion":"Restaurantes","tipo":[{"id":"tipo_2"}],"tag":"restaurante","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-RES00000050","es":{"nombre":"Restaurante La Bruja"},"en":{"nombre":"Restaurante La Bruja"},"tlf":"920352042","email":null,"direccion":"C/ Francisco Gallego 05002, Ávila, España","web":"http://www.la-bruja.es","seccion":"Restaurantes","tipo":[{"id":"tipo_2"}],"tag":"restaurante","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-RES00000051","es":{"nombre":"Restaurante El Descanso"},"en":{"nombre":"Restaurante El Descanso"},"tlf":"920281657","email":null,"direccion":"C/ Arroyo de la parra, 2 05278, El Barraco, Ávila, España","web":"http://restauranteeldescanso.es","seccion":"Restaurantes","tipo":[{"id":"tipo_2"}],"tag":"restaurante","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-RES00000052","es":{"nombre":"Restaurante Venta del Obispo"},"en":{"nombre":"Restaurante Venta del Obispo"},"tlf":"920207280","email":null,"direccion":"Venta del obispo s/n 05132, San Martin del Pimpollar, Ávila, España","web":"http://www.ventadelobispo.es","seccion":"Restaurantes","tipo":[{"id":"tipo_2"}],"tag":"restaurante","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-RES00000053","es":{"nombre":"Restaurante Venta Rasquilla"},"en":{"nombre":"Restaurante Venta Rasquilla"},"tlf":"920207583 / 920207571","email":null,"direccion":"Crta N-502 Avila-Talavera de la Reina km 49 05132, San Martin del Pimpollar, Ávila, España","web":"http://www.ventarasquilla.com","seccion":"Restaurantes","tipo":[{"id":"tipo_2"}],"tag":"restaurante","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-RES00000054","es":{"nombre":"Restaurante El Rondón"},"en":{"nombre":"Restaurante El Rondón"},"tlf":"918630460","email":null,"direccion":"Carretera de Villacastín 6 05260, Cebreros, Ávila, España","web":"http://elrondon.es","seccion":"Restaurantes","tipo":[{"id":"tipo_2"}],"tag":"restaurante","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-RES00000055","es":{"nombre":"Restaurante El Gavilán"},"en":{"nombre":"Restaurante El Gavilán"},"tlf":"920384950","email":null,"direccion":"Plaza Generalisimo, 5 05460, Gavilanes, Ávila, España","web":"http://www.avilaautentica.es/193-restaurante-el-gavilan.html","seccion":"Restaurantes","tipo":[{"id":"tipo_2"}],"tag":"restaurante","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-RES00000056","es":{"nombre":"Restaurante La Pinilla"},"en":{"nombre":"Restaurante La Pinilla"},"tlf":"920300063","email":null,"direccion":"Figones, 1 05200, Arévalo, Ávila, España","web":"http://www.restaurantelapinilla.com","seccion":"Restaurantes","tipo":[{"id":"tipo_2"}],"tag":"restaurante","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-ALI00000057","es":{"nombre":"El Pomar de Gredos"},"en":{"nombre":"El Pomar de Gredos"},"tlf":"920207156","email":null,"direccion":"Santa Teresa, 9, Hermosillo, Avila, España, 05400","web":"www.elpomardegredos.net","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion","geolocalizacion":null
 				}
 				
 			],
-		"total":38
+		"total":57
 	}
 }
