@@ -208,10 +208,36 @@ function view_presentation_or_menu()
 	});
 }
 
+function devolver_sin_tildes(value_con_tildes) {
+	
+	var translate = {
+			"á": "a", "é": "e", "í": "i", "ó": "o", "ú": "u", 
+			"&aacute;":"a", "&eacute;":"e", "&iacute;":"i", "&oacute;":"o", "&uacute;":"u",
+			"Á": "A", "É": "E", "Í": "I", "Ó": "O", "Ú": "U",
+			"&Aacute;":"A", "&Eacute;":"E", "&Iacute;":"I", "&Oacute;":"O", "&Uacute;":"U",
+		    "ä": "a", "ö": "o", "ü": "u",
+		    "Ä": "A", "Ö": "O", "Ü": "U" 
+		};		
+		
+	var translate_re = /[áéíóúÁÉÍÓÚöäüÖÄÜ]|(&aacute;)|(&eacute;)|(&iacute;)|(&oacute;)|(&uacute;)|(&Aacute;)|(&Eacute;)|(&Iacute;)|(&Oacute;)|(&Uacute;)/g;
+	
+	var value_sin_tildes=value_con_tildes.replace(translate_re, function(match, contents, offset, s) { 
+
+		    return translate[match]; 
+	});
+	
+	return value_sin_tildes;
+}
 function search_string(value, container) {
 	
 	var cadena="";
 	var cad_result="<p>"+TEXTOS[28]+"</p>";
+	
+	$('#'+container).html("<div id='cargador'><img src='../../styles/images/icons/loader.gif' style='margin:0 5px;width:20px' /></div>");		
+	
+	$('.ov_zone_21').attr("class","ov_zone_21_b");
+	$('#'+container).attr("class","ov_zone_21");	
+	$('.ov_box_11_active').attr("class","ov_box_12");	
 	
 	var sorted_points=new Array();
 	var sorted_empr=new Array();
@@ -239,17 +265,8 @@ function search_string(value, container) {
 		expr_regular+="|";
 		
 		//Busqueda sin tildes 
-		var translate = {
-			"á": "a", "é": "e", "í": "i", "ó": "o", "ú": "u",
-			"Á": "A", "É": "E", "Í": "I", "Ó": "O", "Ú": "U",
-		    "ä": "a", "ö": "o", "ü": "u",
-		    "Ä": "A", "Ö": "O", "Ü": "U"   
-		};		
-		var translate_re = /[áéíóúÁÉÍÓÚöäüÖÄÜ]/g;
-		var value_sin_tildes = value;
-		var value_sin_tildes = ( value_sin_tildes.replace(translate_re, function(match) { 
-		    return translate[match]; 
-		}) );
+		
+		var value_sin_tildes = devolver_sin_tildes(value);
 		
 		var trim_value_sin_tildes=$.trim(value_sin_tildes);
 		var split_value_sin_tildes=trim_value_sin_tildes.split(" ");
@@ -295,7 +312,21 @@ function search_string(value, container) {
 								if(point.es.descripcion.search(regex) != -1) {	
 									if($.inArray(point, sorted_points)==-1)				
 										sorted_points.push(point);		
-								}							
+								}
+								
+								var name_point_sin_tildes=devolver_sin_tildes(point.es.nombre);
+								if(name_point_sin_tildes.search(regex) != -1) {	
+									if($.inArray(point, sorted_points)==-1)				
+										sorted_points.push(point);		
+								}
+								
+								var description_point_sin_tildes=devolver_sin_tildes(point.es.descripcion);
+									
+								if(description_point_sin_tildes.search(regex) != -1) {	
+									if($.inArray(point, sorted_points)==-1)				
+										sorted_points.push(point);		
+								}
+								
 								break;
 					
 					case "en":  if(point.en.nombre.search(regex) != -1) {
@@ -303,6 +334,18 @@ function search_string(value, container) {
 										sorted_points.push(point);		
 								}
 								if(point.en.descripcion.search(regex) != -1) {	
+									if($.inArray(point, sorted_points)==-1)				
+										sorted_points.push(point);		
+								}
+								
+								var name_point_sin_tildes=devolver_sin_tildes(point.en.nombre);
+								if(name_point_sin_tildes.search(regex) != -1) {	
+									if($.inArray(point, sorted_points)==-1)				
+										sorted_points.push(point);		
+								}
+								
+								var description_point_sin_tildes=devolver_sin_tildes(point.en.descripcion);
+								if(description_point_sin_tildes.search(regex) != -1) {	
 									if($.inArray(point, sorted_points)==-1)				
 										sorted_points.push(point);		
 								}
@@ -314,7 +357,13 @@ function search_string(value, container) {
 					if(point.municipio.search(regex) != -1) {
 						if($.inArray(point, sorted_points)==-1)				
 							sorted_points.push(point);	
-					}	
+					}
+
+					var municipio_point_sin_tildes=devolver_sin_tildes(point.municipio);
+					if(municipio_point_sin_tildes.search(regex) != -1) {
+						if($.inArray(point, sorted_points)==-1)				
+							sorted_points.push(point);	
+					}
 				}
 				 
 			});
@@ -345,14 +394,20 @@ function search_string(value, container) {
 											if($.inArray(empr, sorted_empr)==-1)				
 												sorted_empr.push(empr);		
 										}
-										/*if(empr.es.descripcion.search(regex) != -1) {	
+										
+										var name_empr_sin_tildes=devolver_sin_tildes(empr.es.nombre);
+										if(name_empr_sin_tildes.search(regex) != -1) {
+											if($.inArray(empr, sorted_empr)==-1)				
+												sorted_empr.push(empr);	
+										}
+										
+										/*
+										var description_empr_sin_tildes=devolver_sin_tildes(empr.es.descripcion)
+										if(description_empr_sin_tildes.search(regex) != -1) {	
 											if($.inArray(empr, sorted_empr)==-1)				
 												sorted_empr.push(empr);		
 										}
-										if(empr.es.caracteristica.search(regex) != -1) {	
-											if($.inArray(empr, sorted_empr)==-1)				
-												sorted_empr.push(empr);		
-										}*/
+										*/
 										
 										break;
 							
@@ -360,20 +415,26 @@ function search_string(value, container) {
 											if($.inArray(empr, sorted_empr)==-1)				
 												sorted_empr.push(empr);		
 										}
-										/*if(empr.en.descripcion.search(regex) != -1) {	
+										
+										/*
+										var description_empr_sin_tildes=devolver_sin_tildes(empr.en.descripcion)
+										if(description_empr_sin_tildes.search(regex) != -1) {	
 											if($.inArray(empr, sorted_empr)==-1)				
 												sorted_empr.push(empr);		
 										}
-										if(empr.en.caracteristica.search(regex) != -1) {	
-											if($.inArray(empr, sorted_empr)==-1)				
-												sorted_empr.push(empr);		
-										}*/
+										*/
 										break;
 						}
 
 						if(empr.municipio!=null)
 						{
 							if(empr.municipio.search(regex) != -1) {	
+								if($.inArray(empr, sorted_empr)==-1)				
+									sorted_empr.push(empr);		
+							}
+							
+							var municipio_empr_sin_tildes=devolver_sin_tildes(empr.municipio);
+							if(municipio_empr_sin_tildes.search(regex) != -1) {
 								if($.inArray(empr, sorted_empr)==-1)				
 									sorted_empr.push(empr);		
 							}
@@ -403,9 +464,9 @@ function search_string(value, container) {
 				}
 				cad_result+='<div class="ov_clear_floats_01">&nbsp;</div>';
 				$('#'+container).html(cad_result);		
-				$('.ov_zone_21').attr("class","ov_zone_21_b");
-				$('#'+container).attr("class","ov_zone_21");	
-				$('.ov_box_11_active').attr("class","ov_box_12");		
+				
+				$('#cargador').hide();
+	
 					
 			});
 						
@@ -439,14 +500,27 @@ function search_string_in_avaut(value, container, type) {
 										sorted_points.push(point);		
 								}
 								
+								var name_point_sin_tildes=devolver_sin_tildes(point.es.nombre);
+								if(name_point_sin_tildes.search(regex) != -1) {
+									if($.inArray(point, sorted_points)==-1)				
+										sorted_points.push(point);		
+								}
+								
 								break;
 					
 					case "en":  if(point.en.nombre.search(regex) != -1) {
 									if($.inArray(point, sorted_points)==-1)				
 										sorted_points.push(point);		
 								}
+								
+								var name_point_sin_tildes=devolver_sin_tildes(point.en.nombre);
+								if(name_point_sin_tildes.search(regex) != -1) {
+									if($.inArray(point, sorted_points)==-1)				
+										sorted_points.push(point);		
+								}
+								
 								break;
-				}				
+				}	
 				 
 			});
 						
@@ -552,11 +626,23 @@ function search_string_in_cat(value, container, type) {
 										sorted_points.push(point);		
 								}
 								
+								var name_point_sin_tildes=devolver_sin_tildes(point.es.nombre);
+								if(name_point_sin_tildes.search(regex) != -1) {
+									if($.inArray(point, sorted_points)==-1)				
+										sorted_points.push(point);	
+								}
+								
 								break;
 					
 					case "en":  if(point.en.nombre.search(regex) != -1) {
 									if($.inArray(point, sorted_points)==-1)				
 										sorted_points.push(point);		
+								}
+								
+								var name_point_sin_tildes=devolver_sin_tildes(point.en.nombre);
+								if(name_point_sin_tildes.search(regex) != -1) {
+									if($.inArray(point, sorted_points)==-1)				
+										sorted_points.push(point);	
 								}
 								break;
 				}				
@@ -590,12 +676,25 @@ function search_string_in_cat(value, container, type) {
 												sorted_empr.push(empr);		
 										}
 										
+										var name_empr_sin_tildes=devolver_sin_tildes(empr.es.nombre);
+										if(name_empr_sin_tildes.search(regex) != -1) {
+											if($.inArray(empr, sorted_empr)==-1)				
+												sorted_empr.push(empr);	
+										}
+										
 										break;
 							
 							case "en":  if(point.en.nombre.search(regex) != -1) {
 											if($.inArray(empr, sorted_empr)==-1)				
 												sorted_empr.push(empr);		
 										}
+										
+										var name_empr_sin_tildes=devolver_sin_tildes(empr.en.nombre);
+										if(name_empr_sin_tildes.search(regex) != -1) {
+											if($.inArray(empr, sorted_empr)==-1)				
+												sorted_empr.push(empr);	
+										}
+										
 										break;
 						}
 					}				
