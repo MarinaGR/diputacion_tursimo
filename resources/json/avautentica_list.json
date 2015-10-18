@@ -4,22 +4,22 @@
 		"items":
 			[
 				{
-					"id":"AVAU-ALI00000001","es":{"nombre":"Bodega Alto Alberche"},"en":{"nombre":"Bodega Alto Alberche"},"tlf":"920286245 / 687410952","email":null,"direccion":"Paraje del Pimpollar, parcela 17, polígono 5, Navaluenga, Avila, España, 05100","web":"http://www.bodegagarnachaaltoalberche.com","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, vino, bebida","geolocalizacion":null
+					"id":"AVAU-ALI00000001","es":{"nombre":"Bodega Alto Alberche"},"en":{"nombre":"Bodega Alto Alberche"},"tlf":"920286245 / 687410952","email":null,"direccion":"Paraje del Pimpollar, parcela 17, polígono 5, 05100 Navaluenga, Avila, España","web":"http://www.bodegagarnachaaltoalberche.com","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, vino, bebida","geolocalizacion":null
 				},
 				{
-					"id":"AVAU-ALI00000002","es":{"nombre":"Bodega Don Juan del Aguila"},"en":{"nombre":"Bodega Don Juan del Aguila"},"tlf":"920281032","email":null,"direccion":"Real de Abajo 100, El Barraco, Avila, España, 05110","web":"http://www.donjuandelaguila.es","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, vino, bebida","geolocalizacion":null
+					"id":"AVAU-ALI00000002","es":{"nombre":"Bodega Don Juan del Aguila"},"en":{"nombre":"Bodega Don Juan del Aguila"},"tlf":"920281032","email":null,"direccion":"Real de Abajo 100, 05110 El Barraco, Avila, España","web":"http://www.donjuandelaguila.es","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, vino, bebida","geolocalizacion":null
 				},
 				{
 					"id":"AVAU-ALI00000003","es":{"nombre":"Carnes Naturales Carlos"},"en":{"nombre":"Carnes Naturales Carlos"},"tlf":null,"email":null,"direccion":"Fontiveros, Ávila","web":"http://www.avilaautentica.es/137-carnes-naturales-carlos.html","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion","geolocalizacion":null
 				},
 				{
-					"id":"AVAU-ALI00000004","es":{"nombre":"Bolleria Mariano Hernández"},"en":{"nombre":"Bolleria Mariano Hernández"},"tlf":"920212995","email":null,"direccion":"Plaza Magana 1, Avila, Avila, España, 05003","web":"http://www.bolleriamarianohernandez.com","seccion":"Alimentación","tipo":[{"id":"tipo_0"},{"id":"tipo_1"}],"tag":"alimentacion, comercio","geolocalizacion":null
+					"id":"AVAU-ALI00000004","es":{"nombre":"Bolleria Mariano Hernández"},"en":{"nombre":"Bolleria Mariano Hernández"},"tlf":"920212995","email":null,"direccion":"Plaza Magana 1 05003, Avila, España","web":"http://www.bolleriamarianohernandez.com","seccion":"Alimentación","tipo":[{"id":"tipo_0"},{"id":"tipo_1"}],"tag":"alimentacion, comercio","geolocalizacion":null
 				},
 				{
-					"id":"AVAU-ALI00000005","es":{"nombre":"Carnes Pérez Moreno"},"en":{"nombre":"Carnes Pérez Moreno"},"tlf":"920221946","email":null,"direccion":"C/ Rio Pisuerga nº 29, Ávila, Avila, España, 05005","web":"http://www.porkyavila.es","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion","geolocalizacion":null
+					"id":"AVAU-ALI00000005","es":{"nombre":"Carnes Pérez Moreno"},"en":{"nombre":"Carnes Pérez Moreno"},"tlf":"920221946","email":null,"direccion":"C/ Rio Pisuerga nº 29, 05005 Avila, España","web":"http://www.porkyavila.es","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion","geolocalizacion":null
 				},
 				{
-					"id":"AVAU-ALI00000006","es":{"nombre":"Caracoles Gredos"},"en":{"nombre":"Caracoles Gredos"},"tlf":"669727209","email":null,"direccion":"Finca Los Llanos, Arenas de San Pedro, Avila, España, 05400","web":"http://www.caracolesdegredos.es","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion","geolocalizacion":null
+					"id":"AVAU-ALI00000006","es":{"nombre":"Caracoles Gredos"},"en":{"nombre":"Caracoles Gredos"},"tlf":"669727209","email":null,"direccion":"Finca Los Llanos 05400, Arenas de San Pedro, Avila, España","web":"http://www.caracolesdegredos.es","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion","geolocalizacion":null
 				},
 				{
 					"id":"AVAU-ALI00000007","es":{"nombre":"Cerveza Gredos"},"en":{"nombre":"Cerveza Gredos"},"tlf":"920293166","email":null,"direccion":"Eras Ruiz, Hoyocasero, Avila, España","web":"http://www.cervezagredos.com","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, bebida","geolocalizacion":null
@@ -88,7 +88,7 @@
 					"id":"AVAU-COM00000028","es":{"nombre":"De La Tierra"},"en":{"nombre":"De La Tierra"},"tlf":"920302873","email":null,"direccion":"C/ San Millán, 3 05001, Ávila, España","web":"http://delicatessendelatierra.com","seccion":"Comercio","tipo":[{"id":"tipo_1"}],"tag":"comercio, alimentacion, vinos, cervezas, bebidas","geolocalizacion":null
 				},
 				{
-					"id":"AVAU-COM00000029","es":{"nombre":"Comercio Industrias Carnicas Roal"},"en":{"nombre":"Comercio Industrias Carnicas Roal"},"tlf":"920231717","email":null,"direccion":"N-110 Ctra. Soria-Plasencia, Km. 281 05540, La Torre, Ávila, España","web":"http://www.industriascarnicasroal.com","seccion":"Comercio","tipo":[{"id":"tipo_1"}],"tag":"comercio, alimentacion","geolocalizacion":null
+					"id":"AVAU-COM00000029","es":{"nombre":"Industrias Carnicas Roal"},"en":{"nombre":"Industrias Carnicas Roal"},"tlf":"920231717","email":null,"direccion":"N-110 Ctra. Soria-Plasencia, Km. 281 05540, La Torre, Ávila, España","web":"http://www.industriascarnicasroal.com","seccion":"Comercio, Alimentación","tipo":[{"id":"tipo_1"},{"id":"tipo_0"}],"tag":"comercio, alimentacion","geolocalizacion":null
 				},
 				{
 					"id":"AVAU-COM00000030","es":{"nombre":"Alimentación Marina"},"en":{"nombre":"Alimentación Marina"},"tlf":"920220003","email":null,"direccion":"C/Logroño, 8 05003, Ávila, España","web":"http://www.alimentacionmarina.es","seccion":"Comercio","tipo":[{"id":"tipo_1"}],"tag":"comercio, alimentacion","geolocalizacion":null
@@ -100,7 +100,7 @@
 					"id":"AVAU-COM00000032","es":{"nombre":"LIS&COM"},"en":{"nombre":"LIS&COM"},"tlf":"920228804","email":null,"direccion":"C/Don Gerónimo, 15 05001, Ávila, España","web":"http://es-es.facebook.com/liscom.avila","seccion":"Comercio","tipo":[{"id":"tipo_1"}],"tag":"comercio, alimentacion","geolocalizacion":null
 				},
 				{
-					"id":"AVAU-COM00000033","es":{"nombre":"Delicatessen Tietar C.B."},"en":{"nombre":"Delicatessen Tietar C.B."},"tlf":"918662441 / 656665067 / 656663249","email":null,"direccion":"Avda. Argedi 4 URB LA VEGA 05429, Santa Maria del Tietar, Ávila, España","web":"http://www.delicatessentietar.com","seccion":"Comercio","tipo":[{"id":"tipo_1"}],"tag":"comercio, alimentacion","geolocalizacion":null
+					"id":"AVAU-COM00000033","es":{"nombre":"Delicatessen Tietar C.B."},"en":{"nombre":"Delicatessen Tietar C.B."},"tlf":"918662441 / 656665067 / 656663249","email":null,"direccion":"Avda. Argedi 4 URB LA VEGA 05429, Santa Maria del Tietar, Ávila, España","web":"http://www.delicatessentietar.com","seccion":"Comercio, Alimentación","tipo":[{"id":"tipo_1"},{"id":"tipo_0"}],"tag":"comercio, alimentacion","geolocalizacion":null
 				},
 				{
 					"id":"AVAU-COM00000034","es":{"nombre":"La Tahona del Sotillo"},"en":{"nombre":"La Tahona del Sotillo"},"tlf":"918660112","email":null,"direccion":"C/Cervantes, nº 6 05420, Sotillo de La Adrada, Ávila, España","web":"http://www.latahonadesotillo.es","seccion":"Comercio","tipo":[{"id":"tipo_1"}],"tag":"comercio, panaderia, reposteria","geolocalizacion":null
@@ -112,7 +112,7 @@
 					"id":"AVAU-COM00000036","es":{"nombre":"Quesos y Vinos Sabor Alegre"},"en":{"nombre":"Quesos y Vinos Sabor Alegre"},"tlf":"920370806","email":null,"direccion":"Plaza de las Monjas Agustinas, 5 05400, Arenas de San Pedro, Ávila, España","web":"http://www.quesosyvinossaboralegre.com","seccion":"Comercio","tipo":[{"id":"tipo_1"}],"tag":"comercio, alimentacion, vinos, bebidas","geolocalizacion":null
 				},
 				{
-					"id":"AVAU-COM00000037","es":{"nombre":"Legumbres Coronado"},"en":{"nombre":"Legumbres Coronado"},"tlf":"920340032","email":null,"direccion":"Plaza España 20 05600, El Barco de Avila, Ávila, España","web":"http://www.legumbrescoronado.com","seccion":"Comercio","tipo":[{"id":"tipo_1"}],"tag":"comercio, alimentacion","geolocalizacion":null
+					"id":"AVAU-COM00000037","es":{"nombre":"Legumbres Coronado"},"en":{"nombre":"Legumbres Coronado"},"tlf":"920340032","email":null,"direccion":"Plaza España 20 05600, El Barco de Avila, Ávila, España","web":"http://www.legumbrescoronado.com","seccion":"Comercio, Alimentación","tipo":[{"id":"tipo_1"},{"id":"tipo_0"}],"tag":"comercio, alimentacion","geolocalizacion":null
 				},
 				{
 					"id":"AVAU-RES00000038","es":{"nombre":"Restaurante El Portazgo"},"en":{"nombre":"Restaurante El Portazgo"},"tlf":null,"email":null,"direccion":"Ctra. de Ávila, 10 05414, Cuevas del Valle, Ávila, España","web":"http://www.avilaautentica.es/144-restaurante-el-portazgo.html","seccion":"Restaurantes","tipo":[{"id":"tipo_2"}],"tag":"restaurante","geolocalizacion":null
@@ -172,10 +172,55 @@
 					"id":"AVAU-RES00000056","es":{"nombre":"Restaurante La Pinilla"},"en":{"nombre":"Restaurante La Pinilla"},"tlf":"920300063","email":null,"direccion":"Figones, 1 05200, Arévalo, Ávila, España","web":"http://www.restaurantelapinilla.com","seccion":"Restaurantes","tipo":[{"id":"tipo_2"}],"tag":"restaurante","geolocalizacion":null
 				},
 				{
-					"id":"AVAU-ALI00000057","es":{"nombre":"El Pomar de Gredos"},"en":{"nombre":"El Pomar de Gredos"},"tlf":"920207156","email":null,"direccion":"Santa Teresa, 9, Hermosillo, Avila, España, 05400","web":"www.elpomardegredos.net","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion","geolocalizacion":null
+					"id":"AVAU-ALI00000057","es":{"nombre":"El Pomar de Gredos"},"en":{"nombre":"El Pomar de Gredos"},"tlf":"920207156","email":null,"direccion":"Santa Teresa, 9, 05400 Hermosillo, Avila, España","web":"www.elpomardegredos.net","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-ALI00000058","es":{"nombre":"Félix Bernaldo de Quiros S.L."},"en":{"nombre":"Félix Bernaldo de Quiros S.L."},"tlf":"920272002","email":null,"direccion":"C/ MAYOR Nº1 05294 Cañada, Avila, España","web":"http://www.grupojufersa.com","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, embutido, jamones","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-ALI00000059","es":{"nombre":"La cañada de Pinares"},"en":{"nombre":"La cañada de Pinares"},"tlf":"920272002","email":null,"direccion":"C/ Mayor 1, 05294 La Cañada, Avila, España","web":"http://www.grupojufersa.com","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, embutidos, jamones","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-ALI00000060","es":{"nombre":"ICAV-Ternera de Ávila"},"en":{"nombre":"ICAV-Ternera de Ávila"},"tlf":"920210127","email":null,"direccion":"C/Río Cea I, 66 05004, Avila, España","web":"http://www.carneavila.com","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, vacuno, carne","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-ALI00000061","es":{"nombre":"Cooperativa Capra Hispánica"},"en":{"nombre":"Cooperativa Capra Hispánica"},"tlf":"920389816","email":null,"direccion":"C/ Rastro Celta 05489, El Raso, Avila, España","web":"http://www.avilaautentica.es/151-coop.-capra-hispanica.html","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, cerezas,higos","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-ALI00000062","es":{"nombre":"Daniel Ramos"},"en":{"nombre":"Daniel Ramos"},"tlf":"687410952","email":null,"direccion":"C/San Pedro Alcantara, 1 05270, El Barraco, Avila, España","web":"http://winesdanielramosvinos.blogspot.com","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, vinos","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-ALI00000063","es":{"nombre":"Cooperativa Gredos Sur"},"en":{"nombre":"Cooperativa Gredos Sur"},"tlf":"920390169","email":null,"direccion":"Polígono Las Lanchuelas s/n 05492, Poyales del Hoyo, Avila, España","web":"http://www.gredosur-soc-coop.es","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, cerezas, higos","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-ALI00000064","es":{"nombre":"La carnicería de Marisa"},"en":{"nombre":"La carnicería de Marisa"},"tlf":"920360241","email":null,"direccion":"C/ Alhondiga, 15 05500, Piedrahita, Avila, España","web":null,"seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, carne","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-ALI00000065","es":{"nombre":"Cerveza Tierra Vettona"},"en":{"nombre":"Cerveza Tierra Vettona"},"tlf":"659474523","email":null,"direccion":"05001, Avila, España","web":"http://www.tierravettona.es","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, bebida","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-ALI00000066","es":{"nombre":"Explotaciones Arroyohondo SL"},"en":{"nombre":"Explotaciones Arroyohondo SL"},"tlf":null,"email":null,"direccion":"c/ Duque de Alba 6, Avila, España","web":"http://www.carniceriamuñogalindo.com","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, carne","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-ALI00000067","es":{"nombre":"Horno el Cristo"},"en":{"nombre":"Horno el Cristo"},"tlf":"659334423","email":null,"direccion":"Avenida la Villa 21 05600, El Barco de Ávila, Avila, España","web":"http://hornoelcristo.com","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, pasteleria,panaderia","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-ALI00000068","es":{"nombre":"Embutidos Velázquez"},"en":{"nombre":"Embutidos Velázquez"},"tlf":"920297940","email":null,"direccion":"C/ El Cerrillo, parcela 45, 05122 Navatalgordo, Avila, España","web":"http://www.avilaautentica.es/97-embutidos-velazquez.html","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, carne","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-ALI00000069","es":{"nombre":"Hornazart"},"en":{"nombre":"Hornazart"},"tlf":"920265224","email":null,"direccion":"Camino Santa Maria del Arroyo s/n 05530, Muñogalindo, Avila, España","web":"http://www.hornazart.com","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, panaderia","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-ALI00000070","es":{"nombre":"Hormoba"},"en":{"nombre":"Hormoba"},"tlf":"920083869","email":null,"direccion":"Ctra. Noharre-Magazos, s/n 05216, Noharre, Nava de Arévalo, Avila, España","web":"http://www.grupohormoba.com","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, cebolla","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-ALI00000071","es":{"nombre":"Helix Serrota, S.A.T."},"en":{"nombre":"Helix Serrota, S.A.T."},"tlf":"610523694","email":null,"direccion":"C/ Larga, 4, Pradosegar, Avila, España","web":null,"seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, caracoles","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-ALI00000072","es":{"nombre":"Embutidos Gómez"},"en":{"nombre":"Embutidos Gómez"},"tlf":"920381152","email":null,"direccion":"Ctra Oropesa, Km 1.600 05480, Candeleda, Avila, España","web":"http://www.embutidosgomez.com","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, jamón, embutidos","geolocalizacion":null
 				}
 				
 			],
-		"total":57
+		"total":72
 	}
 }
