@@ -16,7 +16,7 @@
 					"id":"AVAU-ALI00000004","es":{"nombre":"Bolleria Mariano Hernández"},"en":{"nombre":"Bolleria Mariano Hernández"},"tlf":"920212995","email":null,"direccion":"Plaza Magana 1 05003, Avila, España","web":"http://www.bolleriamarianohernandez.com","seccion":"Alimentación","tipo":[{"id":"tipo_0"},{"id":"tipo_1"}],"tag":"alimentacion, comercio","geolocalizacion":null
 				},
 				{
-					"id":"AVAU-ALI00000005","es":{"nombre":"Carnes Pérez Moreno"},"en":{"nombre":"Carnes Pérez Moreno"},"tlf":"920221946","email":null,"direccion":"C/ Rio Pisuerga nº 29, 05005 Avila, España","web":"http://www.porkyavila.es","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion","geolocalizacion":null
+					"id":"AVAU-ALI00000005","es":{"nombre":"Porky Avila, Carnes Pérez Moreno"},"en":{"nombre":"Porky Avila, Carnes Pérez Moreno"},"tlf":"920221946","email":null,"direccion":"C/ Rio Pisuerga nº 29, 05005 Avila, España","web":"http://www.porkyavila.es","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion","geolocalizacion":null
 				},
 				{
 					"id":"AVAU-ALI00000006","es":{"nombre":"Caracoles Gredos"},"en":{"nombre":"Caracoles Gredos"},"tlf":"669727209","email":null,"direccion":"Finca Los Llanos 05400, Arenas de San Pedro, Avila, España","web":"http://www.caracolesdegredos.es","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion","geolocalizacion":null
@@ -67,7 +67,7 @@
 					"id":"AVAU-COM00000021","es":{"nombre":"Alimentación Manuel Mena"},"en":{"nombre":"Alimentación Manuel Mena"},"tlf":"920340210","email":null,"direccion":"Mayor, 16 05600, El Barco de Avila, Ávila, España","web":"http://www.gallareta.com","seccion":"Comercio","tipo":[{"id":"tipo_1"}],"tag":"comercio, alimentacion","geolocalizacion":null
 				},
 				{
-					"id":"AVAU-COM00000022","es":{"nombre":"Soles de Gredos"},"en":{"nombre":"Soles de Gredos"},"tlf":"920299702","email":null,"direccion":"C/ PIEDRACABALLERA, 6 05123, HOYOCASERO, Ávila, España","web":"http://www.solesdegredos.com","seccion":"Comercio","tipo":[{"id":"tipo_1"}],"tag":"comercio, pasteleria","geolocalizacion":null
+					"id":"AVAU-COM00000022","es":{"nombre":"Soles de Gredos, dulces artesanos"},"en":{"nombre":"Soles de Gredos, dulces artesanos"},"tlf":"920299702","email":null,"direccion":"C/Piedracaballera, 6 05123, Hoyocasero, Ávila, España","web":"http://www.solesdegredos.com","seccion":"Comercio","tipo":[{"id":"tipo_1"}],"tag":"comercio, pasteleria","geolocalizacion":null
 				},
 				{
 					"id":"AVAU-COM00000023","es":{"nombre":"Paladar Gourmet"},"en":{"nombre":"Paladar Gourmet"},"tlf":"920360694","email":null,"direccion":"Plaza de España,30 05500, Piedrahita, Ávila, España","web":"http://www.avilaautentica.es/3-paladar-gourmet.html","seccion":"Comercio","tipo":[{"id":"tipo_1"}],"tag":"comercio, alimentacion","geolocalizacion":null
@@ -76,7 +76,7 @@
 					"id":"AVAU-COM00000024","es":{"nombre":"Alimentación Gimeco"},"en":{"nombre":"Alimentación Gimeco"},"tlf":"920227571","email":null,"direccion":"C/ Juan José Martín, nº 6 05001, Ávila, España","web":"http://www.gimeco.net","seccion":"Comercio","tipo":[{"id":"tipo_1"}],"tag":"comercio, alimentacion","geolocalizacion":null
 				},
 				{
-					"id":"AVAU-COM00000025","es":{"nombre":"La Flor de Castilla"},"en":{"nombre":"La Flor de Castilla"},"tlf":"920252866","email":null,"direccion":"Plaza Jose Tomé 4 05001, Ávila, España","web":"http://www.yemasdesantateresa.es","seccion":"Comercio","tipo":[{"id":"tipo_1"}],"tag":"comercio, confiteria, gastronomia, alimentacion","geolocalizacion":null
+					"id":"AVAU-COM00000025","es":{"nombre":"La Flor de Castilla"},"en":{"nombre":"La Flor de Castilla"},"tlf":"920252866","email":null,"direccion":"Plaza Jose Tomé 4 05001, Ávila, España. C/Rio Duero, 3-4 y 3-5, P.I. Las Hervencias 05004, Avila, España.","web":"http://www.yemasdesantateresa.es","seccion":"Comercio, Alimentación","tipo":[{"id":"tipo_1"},{"id":"tipo_0"}],"tag":"comercio, confiteria, gastronomia, alimentacion, yemas de santa teresa","geolocalizacion":null
 				},
 				{
 					"id":"AVAU-COM00000026","es":{"nombre":"Carnicerias Sastre"},"en":{"nombre":"Carnicerias Sastre"},"tlf":"920212051","email":null,"direccion":"Ctra El Espinar, 1 Mercadito Norte 05004, Ávila, España","web":"http://carniceriasastre.es","seccion":"Comercio","tipo":[{"id":"tipo_1"}],"tag":"comercio, alimentacion","geolocalizacion":null
@@ -94,7 +94,7 @@
 					"id":"AVAU-COM00000030","es":{"nombre":"Alimentación Marina"},"en":{"nombre":"Alimentación Marina"},"tlf":"920220003","email":null,"direccion":"C/Logroño, 8 05003, Ávila, España","web":"http://www.alimentacionmarina.es","seccion":"Comercio","tipo":[{"id":"tipo_1"}],"tag":"comercio, alimentacion","geolocalizacion":null
 				},
 				{
-					"id":"AVAU-COM00000031","es":{"nombre":"Pastelerías-Comercio Muñoz Iselma"},"en":{"nombre":"Pastelerías-Comercio Muñoz Iselma"},"tlf":"920211170","email":null,"direccion":"Plaza Santa Teresa 05001, Ávila, España","web":"http://www.iselma.com","seccion":"Comercio","tipo":[{"id":"tipo_1"}],"tag":"comercio, pasteleria","geolocalizacion":null
+					"id":"AVAU-COM00000031","es":{"nombre":"Pastelerías Iselma"},"en":{"nombre":"Pastelerías Iselma"},"tlf":"920211170","email":null,"direccion":"Plaza Santa Teresa, 6 05001, Ávila, España","web":"http://www.iselma.com","seccion":"Comercio, Alimentación","tipo":[{"id":"tipo_1"}, {"id":"tipo_0"}],"tag":"comercio, alimentacion, pasteleria","geolocalizacion":null
 				},
 				{
 					"id":"AVAU-COM00000032","es":{"nombre":"LIS&COM"},"en":{"nombre":"LIS&COM"},"tlf":"920228804","email":null,"direccion":"C/Don Gerónimo, 15 05001, Ávila, España","web":"http://es-es.facebook.com/liscom.avila","seccion":"Comercio","tipo":[{"id":"tipo_1"}],"tag":"comercio, alimentacion","geolocalizacion":null
@@ -103,7 +103,7 @@
 					"id":"AVAU-COM00000033","es":{"nombre":"Delicatessen Tietar C.B."},"en":{"nombre":"Delicatessen Tietar C.B."},"tlf":"918662441 / 656665067 / 656663249","email":null,"direccion":"Avda. Argedi 4 URB LA VEGA 05429, Santa Maria del Tietar, Ávila, España","web":"http://www.delicatessentietar.com","seccion":"Comercio, Alimentación","tipo":[{"id":"tipo_1"},{"id":"tipo_0"}],"tag":"comercio, alimentacion","geolocalizacion":null
 				},
 				{
-					"id":"AVAU-COM00000034","es":{"nombre":"La Tahona del Sotillo"},"en":{"nombre":"La Tahona del Sotillo"},"tlf":"918660112","email":null,"direccion":"C/Cervantes, nº 6 05420, Sotillo de La Adrada, Ávila, España","web":"http://www.latahonadesotillo.es","seccion":"Comercio","tipo":[{"id":"tipo_1"}],"tag":"comercio, panaderia, reposteria","geolocalizacion":null
+					"id":"AVAU-COM00000034","es":{"nombre":"La Tahona de Sotillo"},"en":{"nombre":"La Tahona de Sotillo"},"tlf":"918660112","email":null,"direccion":"C/Cervantes, nº 6 05420, Sotillo de La Adrada, Ávila, España","web":"http://www.latahonadesotillo.es","seccion":"Comercio, Alimentación","tipo":[{"id":"tipo_1"},{"id":"tipo_0"}],"tag":"comercio, panaderia, reposteria","geolocalizacion":null
 				},
 				{
 					"id":"AVAU-COM00000035","es":{"nombre":"La viña Bonita"},"en":{"nombre":"La viña Bonita"},"tlf":"625090912","email":null,"direccion":"C/ Martin Carramolino, nº 18. local 05004, Ávila, España","web":"http://www.laviñabonita.com","seccion":"Comercio","tipo":[{"id":"tipo_1"}],"tag":"comercio, alimentacion, vinos, cervezas, bebidas","geolocalizacion":null
@@ -215,12 +215,63 @@
 				},
 				{
 					"id":"AVAU-ALI00000071","es":{"nombre":"Helix Serrota, S.A.T."},"en":{"nombre":"Helix Serrota, S.A.T."},"tlf":"610523694","email":null,"direccion":"C/ Larga, 4, Pradosegar, Avila, España","web":null,"seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, caracoles","geolocalizacion":null
-				},
+				,
 				{
 					"id":"AVAU-ALI00000072","es":{"nombre":"Embutidos Gómez"},"en":{"nombre":"Embutidos Gómez"},"tlf":"920381152","email":null,"direccion":"Ctra Oropesa, Km 1.600 05480, Candeleda, Avila, España","web":"http://www.embutidosgomez.com","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, jamón, embutidos","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-ALI00000073","es":{"nombre":"Pimentón El Sequero"},"en":{"nombre":"Pimentón El Sequero"},"tlf":"622321020","email":null,"direccion":"Finca la Lagunilla (ctra de Madrigal Km 7) 05480, Candeleda, Avila, España","web":"http://www.elsequero.es","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, pimentón","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-ALI00000074","es":{"nombre":"Quesería de Castilla"},"en":{"nombre":"Quesería de Castilla"},"tlf":"920308129","email":null,"direccion":"El Caño, 5 05215, PALACIOS DE GODA, Avila, España","web":"http://quesopalacios.com","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, quesos","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-ALI00000075","es":{"nombre":"Valle del Tietar Natural"},"en":{"nombre":"Valle del Tietar Natural"},"tlf":"689464677","email":null,"direccion":"Avda. José Antonio 20 05429, Santa María del Tietar, Avila, España","web":"http://www.valletietarnatural.es","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, miel","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-ALI00000076","es":{"nombre":"La Picorea"},"en":{"nombre":"La Picorea"},"tlf":"920340370","email":null,"direccion":"Avda. Puerto Chia, s/n 05571, Navacepedilla de Corneja, Avila, España","web":"http://www.lapicorea.com","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, miel","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-ALI00000077","es":{"nombre":"Martín Martín Blázquez"},"en":{"nombre":"Martín Martín Blázquez"},"tlf":"920231481","email":null,"direccion":"Pilón, 8 05540, Muñana, Avila, España","web":"http://www.martinmartinblazquez.es","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, jamon","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-ALI00000078","es":{"nombre":"San Pedro Bautista Sociedad Cooperativa"},"en":{"nombre":"San Pedro Bautista Sociedad Cooperativa"},"tlf":"920383669","email":null,"direccion":"Paseo de San Andrés, 28 05412, San Esteban del Valle, Avila, España","web":"http://www.coopsanpedro.com","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-ALI00000079","es":{"nombre":"Lacteos La Marquesa C.B."},"en":{"nombre":"Lacteos La Marquesa C.B."},"tlf":"678476784","email":null,"direccion":"C/ Magdalena, nº 26 05230, Las Navas del Marques, Avila, España","web":"http://www.avilaautentica.es/45-lacteos-la-marquesa-c.b.html","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion,lacteos","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-ALI00000080","es":{"nombre":"Moraña Natural Soc. Coop"},"en":{"nombre":"Moraña Natural Soc. Coop"},"tlf":"920326148","email":null,"direccion":"Camino de Palacios s/n 05215, Donvidas, Avila, España","web":"http://www.biolegumbres.com","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, legumbres","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-ALI00000081","es":{"nombre":"Vailecus"},"en":{"nombre":"Vailecus"},"tlf":"687993884","email":null,"direccion":"Ctra. San Juan del Molinillo 23 05120, Navandrinal, Avila, España","web":"http://www.quesosdelalberche.es","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, quesos","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-ALI00000082","es":{"nombre":"Queserías del Tietar"},"en":{"nombre":"Queserías del Tietar"},"tlf":"918670876","email":null,"direccion":"Carretera CL-501, km. 22 05430, La Adrada, Avila, España","web":"http://www.queseriasdeltietar.com","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, quesos","geolocalizacion":null
+				},
+				{
+					"id":"AVAU-COM00000083","es":{"nombre":"La Gallareta"},"en":{"nombre":"La Gallareta"},"tlf":"920340316","email":null,"direccion":"Calle Mayor, 22 05600, El Barco de Ávila, Ávila, España","web":"http://www.gallareta.com","seccion":"Comercio","tipo":[{"id":"tipo_1"}],"tag":"comercio, alimentacion, vinos","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-ALI00000084","es":{"nombre":"Quesos El Caprino de Candeleda"},"en":{"nombre":"Quesos El Caprino de Candeleda"},"tlf":"920380010","email":null,"direccion":"Ctra. Madrigal km 1.3 05480, Candeleda, Avila, España","web":"http://www.ganaderosdecaprino.es","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, quesos","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-ALI00000085","es":{"nombre":"Productos Artesanos Valdecabras S.L."},"en":{"nombre":"Productos Artesanos Valdecabras S.L."},"tlf":"920380192","email":null,"direccion":"C/ Pedro Vaquero,nº 13 05480, Candeleda, Avila, España","web":"http://www.queseriavaldecabras.es","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, quesos","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-ALI00000086","es":{"nombre":"Pollos de Corral Bernardo"},"en":{"nombre":"Pollos de Corral Bernardo"},"tlf":"920245299","email":null,"direccion":"C/ Corralada, 5 05310, Fontiveros, Avila, España","web":"http://www.pollosdecorral.net","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, pollos","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-ALI00000087","es":{"nombre":"Quesos Elvira García"},"en":{"nombre":"Quesos Elvira García"},"tlf":"649087343","email":null,"direccion":"C/ Alamo, 46 05110, El Barraco, Avila, España","web":"http://www.quesoselviragarcia.com","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, quesos","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-ALI00000088","es":{"nombre":"Valtie Gourmet"},"en":{"nombre":"Valtie Gourmet"},"tlf":"628032650","email":null,"direccion":"C/ Veguilla, s/n 05415, El Hornillo, Avila, España","web":"http://www.valtiegourmet.com","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000089","es":{"nombre":"Casa Rural El Aravalle"},"en":{"nombre":"Casa Rural El Aravalle"},"tlf":"628150200 / 679436324","email":null,"direccion":"Calle Galín - Gómez, 34, 05693 Umbrías, Avila, España","web":"http://www.altillodelaravalle.com","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
 				}
 				
 			],
-		"total":72
+		"total":88
 	}
 }
