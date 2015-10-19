@@ -524,8 +524,7 @@ function search_string_in_avaut(value, container, type) {
 				 
 			});
 						
-			sorted_points.sort(SortByLangName);
-			
+			sorted_points.sort(SortByLangName);			
 
 			$.each(sorted_points, function(index, d) {
 				
