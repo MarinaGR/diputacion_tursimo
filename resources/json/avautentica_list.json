@@ -215,7 +215,7 @@
 				},
 				{
 					"id":"AVAU-ALI00000071","es":{"nombre":"Helix Serrota, S.A.T."},"en":{"nombre":"Helix Serrota, S.A.T."},"tlf":"610523694","email":null,"direccion":"C/ Larga, 4, Pradosegar, Avila, España","web":null,"seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, caracoles","geolocalizacion":null
-				,
+				},
 				{
 					"id":"AVAU-ALI00000072","es":{"nombre":"Embutidos Gómez"},"en":{"nombre":"Embutidos Gómez"},"tlf":"920381152","email":null,"direccion":"Ctra Oropesa, Km 1.600 05480, Candeleda, Avila, España","web":"http://www.embutidosgomez.com","seccion":"Alimentación","tipo":[{"id":"tipo_0"}],"tag":"alimentacion, jamón, embutidos","geolocalizacion":null
 				},

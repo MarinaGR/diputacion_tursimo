@@ -241,6 +241,7 @@ function search_string(value, container) {
 	
 	var sorted_points=new Array();
 	var sorted_empr=new Array();
+	var sorted_avaut=new Array();
 	
 	if(value!="")
 	{		
@@ -294,9 +295,9 @@ function search_string(value, container) {
 		expr_regular2=expr_regular2.slice(0,-1);
 	
 		var q2 = $.trim(expr_regular2),
-			regex2 = new RegExp(q2, "i");*/
+			regex2 = new RegExp(q2, "i");
 			
-		console.log(regex);
+		console.log(regex);*/
 					
 		$.getJSON('../../resources/json/point_list.json', function (data) {
 			
@@ -456,7 +457,7 @@ function search_string(value, container) {
 					cadena+='</div>';
 				});
 				
-				cad_result+=cadena;
+				/*cad_result+=cadena;
 				
 				if(cadena=="")
 				{		
@@ -465,8 +466,127 @@ function search_string(value, container) {
 				cad_result+='<div class="ov_clear_floats_01">&nbsp;</div>';
 				$('#'+container).html(cad_result);		
 				
-				$('#cargador').hide();
+				$('#cargador').hide();*/
+				
 	
+				/*AVILA AUTENTICA*/
+				$.getJSON('../../resources/json/avautentica_list.json', function (data3) {
+
+					 $.each(data3.result.items, function (ind, avaut) {			
+						
+						switch(getLocalStorage("current_language"))
+						{
+							default:
+							case "es":  if(avaut.es.nombre.search(regex) != -1) {	
+											if($.inArray(avaut, sorted_avaut)==-1)				
+												sorted_avaut.push(avaut);		
+										}
+										
+										var name_avaut_sin_tildes=devolver_sin_tildes(avaut.es.nombre);
+										if(name_avaut_sin_tildes.search(regex) != -1) {
+											if($.inArray(avaut, sorted_avaut)==-1)				
+												sorted_avaut.push(avaut);	
+										}
+
+										break;
+							
+							case "en":  if(avaut.en.nombre.search(regex) != -1) {
+											if($.inArray(avaut, sorted_avaut)==-1)				
+												sorted_avaut.push(avaut);		
+										}
+										
+										var name_avaut_sin_tildes=devolver_sin_tildes(avaut.en.nombre);
+										if(name_avaut_sin_tildes.search(regex) != -1) {
+											if($.inArray(avaut, sorted_avaut)==-1)				
+												sorted_avaut.push(avaut);	
+										}
+										
+										break;
+						}
+						
+						if(avaut.tag.search(regex) != -1) {	
+							if($.inArray(avaut, sorted_avaut)==-1)				
+								sorted_avaut.push(avaut);		
+						}
+						var tag_avaut_sin_tildes=devolver_sin_tildes(avaut.tag);
+						if(tag_avaut_sin_tildes.search(regex) != -1) {
+							if($.inArray(avaut, sorted_avaut)==-1)				
+								sorted_avaut.push(avaut);	
+						}										
+
+						if(avaut.direccion!=null)
+						{
+							if(avaut.direccion.search(regex) != -1) {	
+								if($.inArray(avaut, sorted_avaut)==-1)				
+									sorted_avaut.push(avaut);		
+							}
+							
+							var municipio_empr_sin_tildes=devolver_sin_tildes(avaut.direccion);
+							if(municipio_empr_sin_tildes.search(regex) != -1) {
+								if($.inArray(avaut, sorted_avaut)==-1)				
+									sorted_avaut.push(avaut);		
+							}
+						}		
+						 
+					});
+										
+					sorted_avaut.sort(SortByLangName);
+					
+					$.each(sorted_avaut, function(index, avaut) {
+				
+						cadena+='<div>';
+											
+						cadena+='<div id="ov_box_13_1_f" class="ov_box_13" onclick="$(\'#info_avaut_filter_'+index+'\').toggle();" >+</div>';
+
+						cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24" onclick="$(\'#info_avaut_filter_'+index+'\').toggle();">';
+						
+						switch(getLocalStorage("current_language"))
+						{
+							default:
+							case "es":  cadena+=avaut.es.nombre;
+										break;
+							
+							case "en":  cadena+=avaut.en.nombre;
+										break;
+						}
+						
+						cadena+='</div></div>';			
+					
+						cadena+='<div class="ov_box_14_d" id="info_avaut_filter_'+index+'"><div class="ov_text_18">';
+											
+							if(avaut.tlf)
+								cadena+='<i class="fa fa-phone fa-fw"></i> '+avaut.tlf+'<br>';			
+							
+							if(avaut.email)
+								cadena+='<i class="fa fa-envelope fa-fw"></i> <a href="mailto:'+avaut.email+'" >'+avaut.email+'</a><br>';
+							
+							if(avaut.web)
+								cadena+='<i class="fa fa-globe fa-fw"></i> <a href="'+avaut.web+'" >'+avaut.web+'</a><br>';
+							
+							if(avaut.direccion)
+								cadena+='<i class="fa fa-home fa-fw"></i> '+avaut.direccion+'<br>';
+							
+							cadena+='</div></div>';   
+							
+							cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
+							
+						cadena+='</div>';
+
+					});
+					
+					cad_result+=cadena;
+					
+					if(cadena=="")
+					{		
+						cad_result="<p>"+TEXTOS[0]+"</p>";
+					}
+					cad_result+='<div class="ov_clear_floats_01">&nbsp;</div>';
+					$('#'+container).html(cad_result);		
+					
+					$('#cargador').hide();
+		
+						
+				});
 					
 			});
 						
@@ -485,7 +605,46 @@ function search_string_in_avaut(value, container, type) {
 	
 	if(value!="")
 	{
-		var q = $.trim(value),
+		//Busqueda normal
+		var trim_value=$.trim(value);
+		var split_value=trim_value.split(" ");
+		
+		var palabras_excluidas="";
+				
+		var expr_regular="";
+		for(i=0; i<split_value.length; i++)
+		{			
+			expr_regular+=""+split_value[i]+".*";
+		}
+		expr_regular=expr_regular.slice(0,-2);
+		expr_regular+="|";
+		for(i=split_value.length-1; i>=0; i--)
+		{			
+			expr_regular+=""+split_value[i]+".*";
+		}
+		expr_regular=expr_regular.slice(0,-2);
+		expr_regular+="|";
+		
+		//Busqueda sin tildes 
+		
+		var value_sin_tildes = devolver_sin_tildes(value);
+		
+		var trim_value_sin_tildes=$.trim(value_sin_tildes);
+		var split_value_sin_tildes=trim_value_sin_tildes.split(" ");
+				
+		for(i=0; i<split_value_sin_tildes.length; i++)
+		{			
+			expr_regular+=""+split_value_sin_tildes[i]+".*";
+		}
+		expr_regular=expr_regular.slice(0,-2);
+		expr_regular+="|";
+		for(i=split_value_sin_tildes.length-1; i>=0; i--)
+		{			
+			expr_regular+=""+split_value_sin_tildes[i]+".*";
+		}
+		expr_regular=expr_regular.slice(0,-2);
+		
+		var q = $.trim(expr_regular),
 			regex = new RegExp(q, "i");
 		
 		$.getJSON('../../resources/json/avautentica_list.json', function (data) {
@@ -520,6 +679,30 @@ function search_string_in_avaut(value, container, type) {
 								}
 								
 								break;
+				}	
+				
+				if(point.tag.search(regex) != -1) {	
+					if($.inArray(point, sorted_points)==-1)				
+						sorted_points.push(point);		
+				}
+				var tag_avaut_sin_tildes=devolver_sin_tildes(point.tag);
+				if(tag_avaut_sin_tildes.search(regex) != -1) {
+					if($.inArray(point, sorted_points)==-1)				
+						sorted_points.push(point);	
+				}										
+
+				if(point.direccion!=null)
+				{
+					if(point.direccion.search(regex) != -1) {	
+						if($.inArray(point, sorted_points)==-1)				
+							sorted_points.push(point);		
+					}
+					
+					var municipio_empr_sin_tildes=devolver_sin_tildes(point.direccion);
+					if(municipio_empr_sin_tildes.search(regex) != -1) {
+						if($.inArray(point, sorted_points)==-1)				
+							sorted_points.push(point);		
+					}
 				}	
 				 
 			});
@@ -593,7 +776,46 @@ function search_string_in_cat(value, container, type) {
 	
 	if(value!="")
 	{
-		var q = $.trim(value),
+		//Busqueda normal
+		var trim_value=$.trim(value);
+		var split_value=trim_value.split(" ");
+		
+		var palabras_excluidas="";
+				
+		var expr_regular="";
+		for(i=0; i<split_value.length; i++)
+		{			
+			expr_regular+=""+split_value[i]+".*";
+		}
+		expr_regular=expr_regular.slice(0,-2);
+		expr_regular+="|";
+		for(i=split_value.length-1; i>=0; i--)
+		{			
+			expr_regular+=""+split_value[i]+".*";
+		}
+		expr_regular=expr_regular.slice(0,-2);
+		expr_regular+="|";
+		
+		//Busqueda sin tildes 
+		
+		var value_sin_tildes = devolver_sin_tildes(value);
+		
+		var trim_value_sin_tildes=$.trim(value_sin_tildes);
+		var split_value_sin_tildes=trim_value_sin_tildes.split(" ");
+				
+		for(i=0; i<split_value_sin_tildes.length; i++)
+		{			
+			expr_regular+=""+split_value_sin_tildes[i]+".*";
+		}
+		expr_regular=expr_regular.slice(0,-2);
+		expr_regular+="|";
+		for(i=split_value_sin_tildes.length-1; i>=0; i--)
+		{			
+			expr_regular+=""+split_value_sin_tildes[i]+".*";
+		}
+		expr_regular=expr_regular.slice(0,-2);
+		
+		var q = $.trim(expr_regular),
 			regex = new RegExp(q, "i");
 			
 		var q2 = type,
@@ -644,7 +866,21 @@ function search_string_in_cat(value, container, type) {
 										sorted_points.push(point);	
 								}
 								break;
-				}				
+				}	
+
+				if(point.municipio!=null)
+				{
+					if(point.municipio.search(regex) != -1) {	
+						if($.inArray(point, sorted_points)==-1)				
+							sorted_points.push(point);		
+					}
+					
+					var municipio_empr_sin_tildes=devolver_sin_tildes(point.municipio);
+					if(municipio_empr_sin_tildes.search(regex) != -1) {
+						if($.inArray(point, sorted_points)==-1)				
+							sorted_points.push(point);		
+					}
+				}					
 				 
 			});
 			
@@ -696,6 +932,21 @@ function search_string_in_cat(value, container, type) {
 										
 										break;
 						}
+						
+						if(empr.municipio!=null)
+						{
+							if(empr.municipio.search(regex) != -1) {	
+								if($.inArray(empr, sorted_points)==-1)				
+									sorted_points.push(empr);		
+							}
+							
+							var municipio_empr_sin_tildes=devolver_sin_tildes(empr.municipio);
+							if(municipio_empr_sin_tildes.search(regex) != -1) {
+								if($.inArray(empr, sorted_points)==-1)				
+									sorted_points.push(empr);		
+							}
+						}	
+						
 					}				
 					 
 				});
@@ -739,8 +990,47 @@ function search_string_in_mun(value, container, type) {
 	var cad_result="<p>"+TEXTOS[28]+"</p>";
 	if(value!="")
 	{
-		var q = $.trim(value),
-			regex = new RegExp(q, "i");
+		//Busqueda normal
+		var trim_value=$.trim(value);
+		var split_value=trim_value.split(" ");
+		
+		var palabras_excluidas="";
+				
+		var expr_regular="";
+		for(i=0; i<split_value.length; i++)
+		{			
+			expr_regular+=""+split_value[i]+".*";
+		}
+		expr_regular=expr_regular.slice(0,-2);
+		expr_regular+="|";
+		for(i=split_value.length-1; i>=0; i--)
+		{			
+			expr_regular+=""+split_value[i]+".*";
+		}
+		expr_regular=expr_regular.slice(0,-2);
+		expr_regular+="|";
+		
+		//Busqueda sin tildes 
+		
+		var value_sin_tildes = devolver_sin_tildes(value);
+		
+		var trim_value_sin_tildes=$.trim(value_sin_tildes);
+		var split_value_sin_tildes=trim_value_sin_tildes.split(" ");
+				
+		for(i=0; i<split_value_sin_tildes.length; i++)
+		{			
+			expr_regular+=""+split_value_sin_tildes[i]+".*";
+		}
+		expr_regular=expr_regular.slice(0,-2);
+		expr_regular+="|";
+		for(i=split_value_sin_tildes.length-1; i>=0; i--)
+		{			
+			expr_regular+=""+split_value_sin_tildes[i]+".*";
+		}
+		expr_regular=expr_regular.slice(0,-2);
+		
+		var q = $.trim(expr_regular),
+			regex = new RegExp(q, "i");			
 		
 		$.getJSON('../../resources/json/municipios_list.json', function (data) {
 			
@@ -796,7 +1086,46 @@ function search_string_in_ser(value, container, type) {
 	
 	if(value!="")
 	{
-		var q = $.trim(value),
+		//Busqueda normal
+		var trim_value=$.trim(value);
+		var split_value=trim_value.split(" ");
+		
+		var palabras_excluidas="";
+				
+		var expr_regular="";
+		for(i=0; i<split_value.length; i++)
+		{			
+			expr_regular+=""+split_value[i]+".*";
+		}
+		expr_regular=expr_regular.slice(0,-2);
+		expr_regular+="|";
+		for(i=split_value.length-1; i>=0; i--)
+		{			
+			expr_regular+=""+split_value[i]+".*";
+		}
+		expr_regular=expr_regular.slice(0,-2);
+		expr_regular+="|";
+		
+		//Busqueda sin tildes 
+		
+		var value_sin_tildes = devolver_sin_tildes(value);
+		
+		var trim_value_sin_tildes=$.trim(value_sin_tildes);
+		var split_value_sin_tildes=trim_value_sin_tildes.split(" ");
+				
+		for(i=0; i<split_value_sin_tildes.length; i++)
+		{			
+			expr_regular+=""+split_value_sin_tildes[i]+".*";
+		}
+		expr_regular=expr_regular.slice(0,-2);
+		expr_regular+="|";
+		for(i=split_value_sin_tildes.length-1; i>=0; i--)
+		{			
+			expr_regular+=""+split_value_sin_tildes[i]+".*";
+		}
+		expr_regular=expr_regular.slice(0,-2);
+		
+		var q = $.trim(expr_regular),
 			regex = new RegExp(q, "i");
 		
 		$.getJSON('../../resources/json/services_list.json', function (data) {
@@ -3988,7 +4317,7 @@ function show_localstorage_data(type, container, params) {
 
 					if(getLocalStorage("routes_list")==null || typeof JSON.parse(getLocalStorage("routes_list"))=="undefined")
 					{
-						$("#"+container).html("<p>"+TEXTOS[35]+"<br>"+TEXTOS[55]+"</p><p><a href='go_to_page(\"points_list\");' >"+TEXTOS[56]+"</a>");
+						$("#"+container).html("<p>"+TEXTOS[35]+"<br>"+TEXTOS[55]+"</p><div class='ov_button_03' style='font-size:1.2em' onclick='go_to_page(\"points_list\");' >"+TEXTOS[56]+"</div>");
 					}					
 					else
 					{
@@ -4109,7 +4438,7 @@ function show_localstorage_data(type, container, params) {
 						
 					});
 					
-					cadena+='<tr><td><a href="points.html?id='+puntos.id+'">'+TEXTOS[57]+'</a></td>';
+					cadena+='<tr><td><a href="points_list.html">'+TEXTOS[57]+'</a></td>';
 					cadena+='<td onclick="go_to_page(\'points_list\');"><img src="../../styles/images/icons/plus.png" /></td>';
 					cadena+='</tr>';	
 					
