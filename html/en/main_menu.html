@@ -48,7 +48,7 @@
 
 			<div id="ov_zone_05" class="ov_zone_02">
 				
-				<img src="../../styles/images/logos/logo_dip.png" style="height:70px" />
+				<img src="../../styles/images/logos/avila_te_toca.png" style="height:70px" />
 				
 				<div class="ov_box_24">
 					<div id="ov_text_26_1" class="ov_text_26" style="text-transform:uppercase">
@@ -59,17 +59,81 @@
 			</div>
 			
 			<div class="ov_vertical_space_01">&nbsp;</div>
+			
+			<div class="menu_principal">
+				<div class="puntos">
+					<div class="cuadropuntos4" onclick="go_to_page('points_list','')">
+						<p><i class="fa fa-map-marker fa-4x"></i>
+						<br><br>LOCATIONS<br>OF INTEREST</p>
+					</div>
+					<div class="cuadropuntos1" onclick="go_to_page('filter_list','cat_3')">
+						<i class="fa fa-pagelines fa-2x"></i>
+						<br>NATURE 
+					</div>
+					<div class="cuadropuntos2" onclick="go_to_page('filter_list','cat_4')">
+						<i class="fa fa-cutlery fa-2x"></i>
+						<br>GASTRONOMY
+					</div>
+					<div class="cuadropuntos3" onclick="go_to_page('filter_list','cat_1')">
+						<i class="fa fa-bookmark fa-2x"></i>
+						<br>CULTURAL
+					</div>
+					<div class="clear_01"> </div>
+					
+				</div>
+				<div class="cuadrodondeestoy" onclick="go_to_page('my_location','')">
+					<img src="../../styles/images/icons/whereami.png" alt="points" style="vertical-align:middle;margin-right: 10px;"/> WHERE AM I?
+				</div>
+				<div class="rutas">
+					<div class="cuadrorutas1" onclick="go_to_page('my_routes','')">
+						<i class="fa fa-map fa-2x"></i>
+						<br>TOURS
+					</div>
+					<div class="cuadrorutas2" onclick="go_to_page('trekking_routes','')">
+						<i class="fa fa-map-signs fa-2x"></i>
+						<br>TREKKING TOURS 
+					</div>
+					<div class="clear_01"> </div>
+				</div>
+				<div class="cuadroavilaautentica" onclick="go_to_page('avautentica_list','')">
+					<img src="../../styles/images/general/avilaautentica.jpg" alt="á" style="height:75px" />
+				</div>
+				<div class="cuadroagenda" onclick="go_to_page('events','')">
+					<i class="fa fa-calendar fa-2x"></i>
+					<br>AGENDA
+				</div>
+				<div class="cuadroblog" onclick="go_to_page('events','')">
+					<i class="fa fa-rss fa-2x"></i>
+					<br>BLOG
+				</div>
+				<div class="clear_01"> </div>
+				<div class="masinfo">
+					<!--<div class="cuadropresentacion"><i class="fa fa-laptop fa-lg"></i><br>PRESENTACIÓN</div>-->
+					<div class="cuadroidioma" onclick="window.location.href='../../index.html'">
+						<i class="fa fa-cogs fa-lg"></i>
+						<br>LANGUAGE</div>
+					<!--<div class="cuadromasinfo"><i class="fa fa-info-circle fa-lg"></i><br>MÁS INFO</div>-->
+					<div class="cuadroacercade" onclick="go_to_page('about','')">
+						<i class="fa fa-commenting fa-lg"></i>
+						<br>ABOUT</div>
+					<div class="clear_01"> </div>
+				</div>
+				<div class="cuadroiconos">
+					<img src="../../styles/images/logos/logo_dip.png" style="height:70px" />
+				</div>	
+				<div class="clear_01"> </div>				
+			</div>
 
-			<div id="ov_zone_10" class="ov_zone_10" onclick="window.location.href='../'+getLocalStorage('current_language')+'/points_list.html'" >
+			<!--<div id="ov_zone_10" class="ov_zone_10" onclick="window.location.href='../'+getLocalStorage('current_language')+'/points_list.html'" >
 				<div id="ov_box_01" class="ov_box_01">
 					<img src="../../styles/images/icons/points.png" alt="points" class="ov_image_06"/>
 				</div>
 				<div id="ov_box_02" class="ov_box_02">
 					<div id="ov_text_06" class="ov_text_06">
-						POINTS OF INTEREST
+						LOCATIONS OF INTEREST
 					</div>
 					<div id="ov_text_07" class="ov_text_07">
-						Access information on each place.
+						Access to info for each location
 					</div>
 				</div>
 				<div class="ov_clear_floats_01">&nbsp;</div>
@@ -83,7 +147,7 @@
 						WHERE AM I?
 					</div>
 					<div id="ov_text_09" class="ov_text_09">
-						View map
+						View map with your current location
 					</div>
 				</div>
 				<div id="ov_box_04" class="ov_box_04">
@@ -96,7 +160,7 @@
 
 			<div id="ov_zone_12" class="ov_zone_12">
 				<div id="ov_text_10" class="ov_text_10">
-					ROUTES. <span class="ov_span_01">Plan your visit</span>
+					TOURS. <span class="ov_span_01">Configure your own tour</span>
 				</div>
 				<img src="../../styles/images/icons/grey_triangle.png" alt="triangle" class="ov_image_12"/>
 			</div>
@@ -105,13 +169,13 @@
 				<div id="ov_box_05" class="ov_box_05" onclick="go_to_page('my_routes','')">
 					<img src="../../styles/images/general/routes.png" alt="points" class="ov_image_08"/>
 					<div id="ov_text_22" class="ov_text_22">
-					ROUTES
+					TOURS
 					</div>
 				</div>
 				<div id="ov_box_06" class="ov_box_06" onclick="go_to_page('trekking_routes','')">
 					<img src="../../styles/images/general/routes_02.png" alt="points" class="ov_image_08"/>
 					<div id="ov_text_23" class="ov_text_22">
-					TREKKING
+					TREKKING TOURS
 					</div>
 				</div>
 				<div class="ov_clear_floats_01">&nbsp;</div>
@@ -121,7 +185,7 @@
 
 			<div id="ov_zone_14" class="ov_zone_14">
 				<div id="ov_text_11" class="ov_text_11">
-					DIARY. <span class="ov_span_01">Calendar of events</span>
+					AGENDA. <span class="ov_span_01">Check all events</span>
 				</div>
 				<img src="../../styles/images/icons/white_triangle.png" alt="triangle" class="ov_image_12"/>
 			</div>
@@ -137,7 +201,7 @@
 				
 				<div class="ov_zone_14_a">
 					<div id="ov_text_12" class="ov_text_11">
-						Ávila Auténtica. <span class="ov_span_01">Affiliates</span>
+						Ávila Auténtica. <span class="ov_span_01">A quality brand</span>
 					</div>
 					<img src="../../styles/images/icons/grey2_triangle.png" alt="triangle" class="ov_image_12"/>
 				</div>			
@@ -153,7 +217,7 @@
 				
 				<div class="ov_zone_14_a">
 					<div id="ov_text_12" class="ov_text_11">
-						BLOG. <span class="ov_span_01">Last news</span>
+						BLOG. <span class="ov_span_01">Last news and info</span>
 					</div>
 					<img src="../../styles/images/icons/grey2_triangle.png" alt="triangle" class="ov_image_12"/>
 				</div>			
@@ -164,7 +228,7 @@
 			
 			<div class="ov_vertical_space_01">&nbsp;</div>
 
-			<!--<div id="ov_zone_18_1" class="ov_zone_18">
+			<div id="ov_zone_18_1" class="ov_zone_18">
 				<div id="ov_text_21_1" class="ov_text_21">
 					<img src="../../styles/images/icons/servicios.png" alt="servicios" class="ov_image_11"/>
 					Services
@@ -189,16 +253,16 @@
 				</div>
 			</div>
 			
-			<div class="ov_vertical_space_01">&nbsp;</div>-->
+			<div class="ov_vertical_space_01">&nbsp;</div>
 
 			<div id="ov_zone_18_2" class="ov_zone_18" onclick="window.location.href='../../index.html'">
 				<div id="ov_text_21_2" class="ov_text_21">
 					<img src="../../styles/images/icons/configuracion.png" alt="conf" class="ov_image_11"/>
-					Change language
+					Select other languages
 				</div>
 			</div>
 
-			<!--<div class="ov_vertical_space_01">&nbsp;</div>
+			<div class="ov_vertical_space_01">&nbsp;</div>
 
 			<div id="ov_zone_18_3" class="ov_zone_18" onclick="scan_qr()">
 				<div id="ov_text_21_3" class="ov_text_21">
@@ -214,7 +278,7 @@
 					<img src="../../styles/images/icons/sobreestaapp.png" alt="about" class="ov_image_11"/>
 					View presentation
 				</div>
-			</div>-->
+			</div>
 			
 			<div class="ov_vertical_space_01">&nbsp;</div>
 
@@ -223,7 +287,7 @@
 					<img src="../../styles/images/icons/sobreestaapp.png" alt="about" class="ov_image_11"/>
 					About
 				</div>
-			</div>
+			</div>-->
 			
 			<div class="ov_vertical_space_01">&nbsp;</div>
 

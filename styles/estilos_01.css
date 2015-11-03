@@ -194,7 +194,7 @@ a {color: #4D802B;}
 .ov_box_22{width:100%;min-height:200px;}
 .ov_box_23{width:90%;margin:auto;height:300px;background-image:url(./images/icons/loader.gif);background-repeat:no-repeat;background-position:center center;}
 
-.ov_box_24{float:right;text-align:center;font-family:"4", sans-serif;letter-spacing:0px;font-size:1.6em;color:#f2f2f2;padding:5px 10px;background-color:#333333; margin-right:5px;}
+.ov_box_24{float:right;text-align:center;font-family:"4", sans-serif;letter-spacing:0px;font-size:1.6em;color:#f2f2f2;padding:5px 10px;background-color:#222222; margin-right:5px;}
 
 
 .location_map_01 { width: 100%; min-height: 300px; text-align: center; }
@@ -355,9 +355,225 @@ a {color: #4D802B;}
 	opacity: 1;
 }
 
+/*NUEVO ESTILO*/
+.clear_01 {
+	clear: both;
+}
+.menu_principal{
+	margin:auto;
+	width:98%;
+	max-width:700px;
+	border-radius:15px;
+	font-family: "4",sans-serif;
+	font-size: 2.1em;
+}
+.puntos{
+}
+.cuadropuntos1 {
+	float: left;
+	padding: 10px 1%;
+	width: 47%;
+	height: 70px;
+	line-height: 30px;
+	margin-right: 1%;
+	margin-bottom: 10px;
+	text-align:center;
+	color: #F3F3F3;
+	background-color: #39AA33;
+}
+.cuadropuntos2 {
+	float: left;
+	padding: 10px 1%;
+	width: 47%;
+	height: 70px;
+	line-height: 30px;
+	margin-right: 1%;
+	margin-bottom: 10px;
+	text-align:center;
+	color: #F3F3F3;
+	background-color: #F66B00;
+}
+.cuadropuntos3 {
+	float: left;
+	padding: 10px 1%;
+	width: 47%;
+	height: 70px;
+	line-height: 30px;
+	margin-right: 1%;
+	margin-bottom: 10px;
+	text-align:center;
+	color: #F3F3F3;
+	background-color: #1C8FED;
+}
+.cuadropuntos4 {
+	float: right;
+	padding: 10px 1%;
+	width: 47%;
+	height: 270px;
+	margin-left: 1%;
+	margin-bottom: 10px;
+	font-size: 1.2em;
+	text-align:center;
+	color: #F3F3F3;
+	background-color: #BC1520;
+}
+.cuadrodondeestoy {
+	width: 98%;
+	height: 60px;
+	line-height: 30px;
+	padding: 10px 1%;
+	margin-bottom: 10px;	
+	text-align:center;
+	font-size: 1.5em;
+	color: #EEE;
+	background-color: #7A6B58;
+}
+.cuadropuntos1:hover, .cuadropuntos2:hover, .cuadropuntos3:hover, .cuadropuntos4:hover, .cuadrodondeestoy:hover{
+	cursor: pointer;
+	background-color: #444;
+}
+.rutas {
+}
+.cuadrorutas1 {
+	float: left;
+	width: 47%;
+	height: 70px;
+	line-height: 30px;
+	padding: 10px 1%;
+	margin-right: 1%;
+	margin-bottom: 10px;
+	text-align:center;
+	color: #F3F3F3;
+	background-color: #E2CA00;
+}
+.cuadrorutas2 {
+	float: right;
+	width: 47%;
+	height: 70px;
+	line-height: 30px;
+	padding: 10px 1%;
+	margin-left: 1%;
+	margin-bottom: 10px;
+	text-align:center;
+	color: #F3F3F3;
+	background-color: #FFAB03;
+}
+.cuadroavilaautentica {
+	width: 98%;
+	height: 70px;
+	line-height: 30px;
+	padding: 5px 1%;
+	margin-bottom: 10px;	
+	text-align:center;
+	color: #444;
+	background-color: #FFF;
+}
+.cuadroagenda {
+	float: left;
+	width: 47%;
+	height: 70px;
+	line-height: 30px;
+	padding: 10px 1%;
+	margin-right: 1%;
+	margin-bottom: 10px;	
+	text-align:center;
+	color: #EEE;
+	background-color: #94C11F;
+}
+.cuadroblog {
+	float: right;
+	width: 47%;
+	height: 70px;
+	line-height: 30px;
+	padding: 10px 1%;
+	margin-left: 1%;
+	margin-bottom: 10px;
+	text-align:center;	
+	color: #F3F3F3;
+	background-color: #969A11;
+}
+.cuadroavilaautentica:hover {
+	cursor:pointer;
+}
+.cuadrorutas1:hover, .cuadrorutas2:hover, .cuadroagenda:hover, .cuadroblog:hover{
+	cursor: pointer;
+	background-color: #444;
+}
+.masinfo {
+
+}
+.cuadropresentacion {
+	float: left;
+	width: 22%;
+	height: 60px;
+	line-height: 32px;
+	padding: 10px 1%;
+	margin-right: 1%;
+	margin-bottom: 10px;	
+	text-align:center;	
+	color: #444;
+	background-color: #DDD;
+}
+.cuadroidioma {
+	float: left;
+	width: 47%;
+	height: 60px;
+	line-height: 32px;
+	padding: 10px 1%;
+	margin-right: 1%;
+	margin-bottom: 10px;	
+	text-align:center;	
+	color: #444;
+	background-color: #DDD;
+}
+.cuadromasinfo {
+	float: left;
+	width: 22%;
+	height: 60px;
+	line-height: 32px;
+	padding: 10px 1%;
+	margin-right: 1%;
+	margin-bottom: 10px;	
+	text-align:center;	
+	color: #444;
+	background-color: #DDD;
+}
+.cuadroacercade {
+	float: right;
+	width: 47%;
+	height: 60px;
+	line-height: 32px;
+	padding: 10px 1%;
+	margin-left: 1%;
+	margin-bottom: 10px;	
+	text-align:center;	
+	color: #444;
+	background-color: #DDD;
+}
+.cuadropresentacion:hover, .cuadroidioma:hover, .cuadromasinfo:hover, .cuadroacercade:hover {
+	cursor: pointer;
+	color: #EEE;
+	background-color: #444;
+}
+.cuadroiconos {
+	width: 98%;
+	height: 70px;
+	line-height: 30px;
+	padding: 10px 1%;
+	margin-top: 5px;
+	margin-bottom: 10px;	
+	text-align:center;
+	color: #444;
+	border-top: 1px solid #ccc;
+}
+/*FIN NUEVO ESTILO*/
+
 
 @media only screen and (max-width: 680px), only screen and (max-device-width: 680px)
 {
+	.menu_principal{
+		font-size: 2em;
+	}
 
 	.ov_zone_01{ }
 	.ov_zone_02{ }
@@ -414,6 +630,10 @@ a {color: #4D802B;}
 @media only screen and (max-width: 480px), only screen and (max-device-width: 480px)
 {
 
+	.menu_principal{
+		font-size: 1.9em;
+	}
+	
 	.ov_text_18{font-size:1.1em;}
 	.ov_text_23 {font-size:1.1em;}
 	
@@ -469,6 +689,9 @@ a {color: #4D802B;}
 
 @media only screen and (max-width: 320px), only screen and (max-device-width: 320px)
 {
+	.menu_principal{
+		font-size: 1.8em;
+	}
 	
 	.ov_zone_01{}
 	.ov_zone_02{}
