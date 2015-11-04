@@ -1,0 +1,13 @@
+{
+	"result":
+	{
+		"items":	
+			[
+				{"id":"tipo_0","es":"Alimentación","en":"Alimentación"},
+				{"id":"tipo_1","es":"Comercio", "en":"Comercio"},
+				{"id":"tipo_2","es":"Restaurantes","en":"Restaurantes"},
+				{"id":"tipo_3","es":"Turismo Rural","en":"Turismo Rural"}
+			],
+		"total":4
+	}
+}

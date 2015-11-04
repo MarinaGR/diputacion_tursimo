@@ -47,7 +47,22 @@
 			}
 			else
 			{
-				ajax_recover_data("avautentica_list", "", "avautentica_list", "ov_zone_21_all", [['id',identificador],['start',start],['limit',limit],['element','points']]);
+				if(identificador=="")
+				{
+					ajax_recover_data("avautentica_list", "", "avautentica_list", "ov_zone_21_all", [['id',identificador],['start',start],['limit',limit],['element','points']]);
+				}
+				else
+				{
+					$('.ov_box_11_active').attr("class","ov_box_12");
+					$('#ov_box_14_1').attr("class","ov_box_11_active");			
+					$('.ov_zone_21').attr("class","ov_zone_21_b");
+					$('#ov_zone_21_all').attr("class","ov_zone_21");
+					
+					ajax_recover_data("avautentica_list", "", "avautentica_list", "ov_zone_21_all", [['id',identificador],['start',start],['limit',limit]]);						
+						
+					$("#search_filter_list").val("");	
+				}				
+				
 			}
 			
 			$("#search_filter_list").keypress(function(event){

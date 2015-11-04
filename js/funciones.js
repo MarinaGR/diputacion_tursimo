@@ -1426,76 +1426,160 @@ function ajax_recover_data(type, folder, values, container, params) {
 			
 					var cadena="";
 					var start_count=start;
-					
-					cadena+='<div class="ov_zone_15"><h3>Ávila Auténtica</h3></div>';
-					
-					$.each(data.result.items, function(index, d) {
+					var filter_points=new Array();
 						
-						/*if(start_count>index)
-						{
-							return true;
-						}
-						else
-							start_count++;
-							
-						if(start_count>start+limit)
-							return false;*/
-							
-							
-						cadena+='<div>';
-							
-							cadena+='<div id="ov_box_13_1_f" class="ov_box_13" onclick="$(\'#info_avaut_'+index+'\').toggle();">+</div>';
-							
-							cadena+='<div id="ov_box_14_1_f" class="ov_box_14" ><div id="ov_text_24_1_f" class="ov_text_24"  onclick="$(\'#info_avaut_'+index+'\').toggle();">';
+					var objajax=$.getJSON("../../resources/json/categories_avautentica_list.json", function(cat_avaut) {
+						
+						var filter_name="";
+						var filter_identificador="";
+						
+						var q = decodeURI(filter_id),
+								regex = new RegExp("^" + q + "$");
 								
+						var aBuscar=decodeURI(filter_id);
+							
+						$.each(cat_avaut.result.items, function(i, cat) {
+							
+							if(cat.id==aBuscar)
+							{
 								switch(getLocalStorage("current_language"))
 								{
 									default:
-									case "es":  cadena+=d.es.nombre;
+									case "es":  filter_name=cat.es;
 												break;
 									
-									case "en":  cadena+=d.en.nombre;
+									case "en":  filter_name=cat.en;
 												break;
 								}
 								
-								cadena+='</div>';
-																	
-							cadena+='</div>';
+								filter_identificador=cat.id;
+							}
 							
-							cadena+='<div class="ov_box_14_d" id="info_avaut_'+index+'"><div class="ov_text_18">';
-									
-							if(d.tlf)
-								cadena+='<i class="fa fa-phone fa-fw"></i> '+d.tlf+'<br>';			
-							
-							if(d.email)
-								cadena+='<i class="fa fa-envelope fa-fw"></i> <a href="mailto:'+d.email+'" >'+d.email+'</a><br>';
-							
-							if(d.web)
-								cadena+='<i class="fa fa-globe fa-fw"></i> <a href="'+d.web+'" >'+d.web+'</a><br>';
-							
-							if(d.direccion)
-								cadena+='<i class="fa fa-home fa-fw"></i> '+d.direccion+'<br>';
-							
-							cadena+='</div></div>';   
-							
-							cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
-							
-						cadena+='</div>';
+						});	
 												
-					});
-					
-					cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
-						
-					/*if(start-limit>=0)
-						cadena+="<a class='verpagina' href='municipios_list.html?id="+filter_id+"&start="+(start-limit)+"&limit="+limit+"' style='float:left'>"+TEXTOS[27]+"</a>";
-					
-					if(start+limit<data.result.total)
-						cadena+="<a class='verpagina' href='municipios_list.html?id="+filter_id+"&start="+(start+limit)+"&limit="+limit+"' style='float:right'>"+TEXTOS[26]+"</a>";*/
-					
-					cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
-					
-					$("#"+container).html(cadena);
+						$.each(data.result.items, function(index, d) {   
+
+							if(filter_id=="")
+							{
+								filter_points.push(d);	
+							}
+							else
+							{
+								$.each(d.tipo, function(i, tipo) {
+									if(tipo.id.search(regex) != -1) 
+									{							
+										if($.inArray(d, filter_points)==-1)
+											filter_points.push(d);			
+									}
+								});
+							}
 							
+						});
+						
+						cadena+='<div class="ov_zone_15"><h3>Ávila Auténtica</h3></div>';
+				
+						cadena+='<select id="secciones_avaut" class="ov_select_01" onchange="go_to_page(\'avautentica_list\',$(\'#secciones_avaut\').val());">';
+						
+						cadena+='<option value="">'+TEXTOS[39]+'</option>';
+											
+						$.each(cat_avaut.result.items, function(i, cat) {			
+														
+							switch(getLocalStorage("current_language"))
+							{
+								default:
+								case "es":  var informacion=cat.es;	
+											break;
+											
+								case "en":  var informacion=cat.en;	
+											break;
+							}
+
+							if(filter_id==cat.id) {
+								cadena+='<option value="'+cat.id+'" selected>'+informacion+'</option>';		
+							} else {
+								cadena+='<option value="'+cat.id+'" >'+informacion+'</option>';
+							}
+							
+						});
+						
+						cadena+='</select>';
+				
+						$.each(filter_points, function(index, d) {
+							
+							/*if(start_count>index)
+							{
+								return true;
+							}
+							else
+								start_count++;
+								
+							if(start_count>start+limit)
+								return false;*/
+								
+								
+							cadena+='<div>';
+								
+								cadena+='<div id="ov_box_13_1_f" class="ov_box_13" onclick="$(\'#info_avaut_'+index+'\').toggle();">+</div>';
+								
+								cadena+='<div id="ov_box_14_1_f" class="ov_box_14" ><div id="ov_text_24_1_f" class="ov_text_24"  onclick="$(\'#info_avaut_'+index+'\').toggle();">';
+									
+									switch(getLocalStorage("current_language"))
+									{
+										default:
+										case "es":  cadena+=d.es.nombre;
+													break;
+										
+										case "en":  cadena+=d.en.nombre;
+													break;
+									}
+									
+									cadena+='</div>';
+																		
+								cadena+='</div>';
+								
+								cadena+='<div class="ov_box_14_d" id="info_avaut_'+index+'"><div class="ov_text_18">';
+										
+								if(d.tlf)
+									cadena+='<i class="fa fa-phone fa-fw"></i> '+d.tlf+'<br>';			
+								
+								if(d.email)
+									cadena+='<i class="fa fa-envelope fa-fw"></i> <a href="mailto:'+d.email+'" >'+d.email+'</a><br>';
+								
+								if(d.web)
+									cadena+='<i class="fa fa-globe fa-fw"></i> <a href="'+d.web+'" >'+d.web+'</a><br>';
+								
+								if(d.direccion)
+									cadena+='<i class="fa fa-home fa-fw"></i> '+d.direccion+'<br>';
+								
+								cadena+='</div></div>';   
+								
+								cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
+								
+							cadena+='</div>';
+													
+						});
+						
+						cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
+							
+						/*if(start-limit>=0)
+							cadena+="<a class='verpagina' href='municipios_list.html?id="+filter_id+"&start="+(start-limit)+"&limit="+limit+"' style='float:left'>"+TEXTOS[27]+"</a>";
+						
+						if(start+limit<data.result.total)
+							cadena+="<a class='verpagina' href='municipios_list.html?id="+filter_id+"&start="+(start+limit)+"&limit="+limit+"' style='float:right'>"+TEXTOS[26]+"</a>";*/
+						
+						cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
+						
+						$("#"+container).html(cadena);
+							
+					})
+					.fail(function(jqXHR, textStatus, errorThrown) {
+						//alert('Error: "+textStatus+"  "+errorThrown);	
+						
+						$("#"+container).html("<p>"+TEXTOS[6]+"</p>");
+	
+					});
+						
+					
 					break;
 					
 			case "services_list": 	
