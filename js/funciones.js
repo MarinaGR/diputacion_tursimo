@@ -4710,6 +4710,31 @@ function ajax_recover_extern_data(operation, container, params) {
 							$("#"+container).html(cadena);
 							
 							break;	
+							
+			case "moreinfo": 		
+							var cadena='';
+							
+							cadena+=TEXTOS[7];
+									
+							/*var d=data.result;
+							
+							cadena+='<div class="" onclick="window.open('+data.url_web+', \'_system\', \'location=yes\');" >'
+										+'<div class="ov_text_08">'
+										+d.titulo+'<br><span class="ov_text_32">'+d.fecha_ini+''+d.fecha_fin+'</span>'
+										+'</div>'
+									+'</div>';
+									
+							cadena+='<div class="ov_box_22">'
+										+'<div class="ov_text_09">'
+										+d.descripcion
+										+'</div>'
+									+'</div>';		
+
+							cadena+='<div class="ov_clear_floats_01"> </div>';*/
+
+							$("#"+container).html(cadena);
+							
+							break;	
 					
 		}
 		
