@@ -4674,11 +4674,11 @@ function ajax_recover_extern_data(operation, container, params) {
 							cadena+='<div id="ov_zone_15" class="ov_zone_15_b">';
 							
 							$.each(data.result, function(i,d) {
-								cadena+='<div class="ov_box_10" onclick="window.location.href=\'event.html?id='+d.id_evento+'\'" >'
+								/*cadena+='<div class="ov_box_10" onclick="window.location.href=\'event.html?id='+d.id_evento+'\'" >'
 											+'<div class="ov_text_14">'
 											+d.titulo+'<br><span style="color:#333">'+d.fecha_ini+''+d.fecha_fin+'</span>'
 											+'</div>'
-										+'</div>';
+										+'</div>';*/
 										
 								if(d.descripcion!="" && d.descripcion!="&nbsp;")
 								{
