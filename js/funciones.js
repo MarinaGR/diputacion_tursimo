@@ -4588,14 +4588,32 @@ function ajax_recover_extern_data(operation, container, params) {
 							var cadena='';
 							
 							cadena+='<div id="ov_zone_15" class="ov_zone_15_b">';
-							cadena+='<div id="ov_scroller_01_guide" class="ov_scroller_01_guide">&nbsp;</div>'
+							
+							$.each(data.result, function(i,d) {
+								cadena+='<div class="ov_box_10" onclick="window.location.href=\'event.html?id='+d.id_evento+'\'" >'
+											+'<div class="ov_text_14">'
+											+d.titulo+'<br><span style="color:#333">'+d.fecha_ini+''+d.fecha_fin+'</span>'
+											+'</div>'
+										+'</div>';
+										
+								if(d.descripcion!="" && d.descripcion!="&nbsp;")
+								{
+									cadena+='<div class="ov_box_07_08">'
+												+'<div class="ov_text_15">'
+												+d.descripcion
+												+'</div>'
+											+'</div>';
+								}
+							});
+							
+							/*cadena+='<div id="ov_scroller_01_guide" class="ov_scroller_01_guide">&nbsp;</div>'
 									+'<div id="ov_scroller_01" class="ov_scroller_01">'
 										+'<img src="../../styles/images/icons/up_arrow.png" alt="up" class="ov_image_10"/>'
 										+'<div class="ov_vertical_space_02">&nbsp;</div>'
 										+'<img src="../../styles/images/icons/down_arrow.png" alt="down" class="ov_image_10"/>'
-									+'</div>';
+									+'</div>';*/
 									
-							var indice=0;
+							/*var indice=0;
 							$.each(data.result, function(i,d) {
 								//onclick="window.open('+d.url+', \'_system\', \'location=yes\');"
 								if(indice%2)
@@ -4615,7 +4633,7 @@ function ajax_recover_extern_data(operation, container, params) {
 											
 									
 									
-									cadena+='<div class="ov_box_09_10_a" onclick="window.location.href=\'event.html?id='+d.id_evento+'\'" >'
+									/*cadena+='<div class="ov_box_09_10_a" onclick="window.location.href=\'event.html?id='+d.id_evento+'\'" >'
 												+'<div class="ov_text_14_a">'
 												+d.titulo+'<br><span style="color:#333">'+d.fecha_ini+''+d.fecha_fin+'</span>'
 												+'</div>'
@@ -4646,7 +4664,7 @@ function ajax_recover_extern_data(operation, container, params) {
 										+'</div>';*/
 									
 									
-									cadena+='<div class="ov_box_07_08_a" onclick="window.location.href=\'event.html?id='+d.id_evento+'\'" >'
+									/*cadena+='<div class="ov_box_07_08_a" onclick="window.location.href=\'event.html?id='+d.id_evento+'\'" >'
 												+'<div class="ov_text_12_a">'
 												+d.titulo+'<br><span style="color:#333">'+d.fecha_ini+''+d.fecha_fin+'</span>'
 												+'</div>'
@@ -4665,7 +4683,7 @@ function ajax_recover_extern_data(operation, container, params) {
 								
 								indice++;
 								
-							});
+							});*/
 							cadena+='</div>';
 							
 							$("#"+container).html(cadena);			
