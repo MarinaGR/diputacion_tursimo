@@ -4837,6 +4837,16 @@ function ajax_recover_extern_data(operation, container, params) {
 							$("#"+container).html(cadena);
 							
 							break;	
+							
+			case "video": 		
+							var cadena='';		
+							
+							cadena=data.result;							
+
+							$("#"+container).html(cadena);
+							
+							break;				
+									
 					
 		}
 		

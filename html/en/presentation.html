@@ -20,12 +20,14 @@
 		<script>
 				
 		$(document).ready(function() {
-			$("#ov_view_container_01").css("background-color","#C0615F"); //#4D802B
-			var current_presentation_slide=1;
+			$("body").css("background-color","#C0615F"); 
 			
 			$('#ov_curtain_1_1').hide('fade', function() {
 				$("#ov_view_container_01").show();
 			}, 100);
+			
+			ajax_recover_extern_data("video", "video_presentacion");
+
 		});
 		
 		$(window).load(function() {
@@ -40,11 +42,11 @@
 		
 		<div id="ov_view_container_01" class="ov_view_container_01">
 		
-			<!-- Hacer la presentación en canvas -->
+			<!-- Video -->
 
 			<div id="ov_zone_05" class="ov_zone_06">
 				<div id="ov_text_03" class="ov_text_03">
-					<img class="ov_image_03" src="../../styles/images/icons/close.png" alt="Cerrar"/> Skip 
+					<img class="ov_image_03" src="../../styles/images/icons/close.png" alt="Cerrar"/> Skip <br><br>					
 				</div>
 				<script>
 				$('#ov_text_03').click(function(e){
@@ -60,102 +62,7 @@
 				</script>
 			</div>
 
-			<div id="ov_zone_06" class="ov_zone_06">
-				<div id="ov_text_04" class="ov_text_04">
-					ABOUT ÁVILA
-				</div>
-				<div id="ov_text_05" class="ov_text_05">
-					In this presentation you will find some important information about our province.
-				</div>
-			</div>
-
-			<div id="ov_zone_07" class="ov_zone_07">
-				<img src="../../styles/images/general/mapa_01.png" alt="map" class="ov_image_04"/>
-			</div>
-
-			<div id="ov_zone_08" class="ov_zone_08">
-				<img src="../../styles/images/icons/white_circle.png" alt="circle" class="ov_image_05_a"/>
-				<img id="ov_to_sheet_2" src="../../styles/images/icons/grey_circle.png" alt="circle" class="ov_image_05"/>
-				<script>
-				$('#ov_to_sheet_2').click(function(e){
-					$('#ov_curtain_1_1').show('fade',500);
-					$("#ov_view_container_01").hide('drop',500,function(){
-						$("#ov_view_container_01").load("./views/"+localStorage.getItem("current_language")+"/presentation/ov_view_presentation_02.html",function(){
-							$('#ov_curtain_1_1').hide('fade',500);
-							$("#ov_view_container_01").show('drop',{direction: "right"},500,function(){});
-						});
-					});
-				});
-				</script>
-				<img id="ov_to_sheet_3" src="../../styles/images/icons/grey_circle.png" alt="circle" class="ov_image_05"/>
-				<script>
-				$('#ov_to_sheet_3').click(function(e){
-					$('#ov_curtain_1_1').show('fade',500);
-					$("#ov_view_container_01").hide('drop',500,function(){
-						$("#ov_view_container_01").load("./views/"+localStorage.getItem("current_language")+"/presentation/ov_view_presentation_03.html",function(){
-							$('#ov_curtain_1_1').hide('fade',500);
-							$("#ov_view_container_01").show('drop',{direction: "right"},500,function(){});
-						});
-					});
-				});
-				</script>
-				<img id="ov_to_sheet_4" src="../../styles/images/icons/grey_circle.png" alt="circle" class="ov_image_05"/>
-				<script>
-				$('#ov_to_sheet_4').click(function(e){
-					$('#ov_curtain_1_1').show('fade',500);
-					$("#ov_view_container_01").hide('drop',500,function(){
-						$("#ov_view_container_01").load("./views/"+localStorage.getItem("current_language")+"/presentation/ov_view_presentation_04.html",function(){
-							$('#ov_curtain_1_1').hide('fade',500);
-							$("#ov_view_container_01").show('drop',{direction: "right"},500,function(){});
-						});
-					});
-				});
-				</script>
-				<img id="ov_to_sheet_5" src="../../styles/images/icons/grey_circle.png" alt="circle" class="ov_image_05"/>
-				<script>
-				$('#ov_to_sheet_5').click(function(e){
-					$('#ov_curtain_1_1').show('fade',500);
-					$("#ov_view_container_01").hide('drop',500,function(){
-						$("#ov_view_container_01").load("./views/"+localStorage.getItem("current_language")+"/presentation/ov_view_presentation_05.html",function(){
-							$('#ov_curtain_1_1').hide('fade',500);
-							$("#ov_view_container_01").show('drop',{direction: "right"},500,function(){});
-						});
-					});
-				});
-				</script>
-				<img id="ov_to_sheet_6" src="../../styles/images/icons/grey_circle.png" alt="circle" class="ov_image_05"/>
-				<script>
-				$('#ov_to_sheet_6').click(function(e){
-					$('#ov_curtain_1_1').show('fade',500);
-					$("#ov_view_container_01").hide('drop',500,function(){
-						$("#ov_view_container_01").load("./views/"+localStorage.getItem("current_language")+"/presentation/ov_view_presentation_06.html",function(){
-							$('#ov_curtain_1_1').hide('fade',500);
-							$("#ov_view_container_01").show('drop',{direction: "right"},500,function(){});
-						});
-					});
-				});
-				</script>
-			</div>
-
-			<div id="ov_zone_09" class="ov_zone_09">
-				<div id="ov_button_02" class="ov_button_02">
-					NEXT
-				</div>
-				<script>
-						
-						$('#ov_button_02').click(function(e){
-							$('#ov_curtain_1_1').show('fade',500);
-							$("#ov_view_container_01").hide('drop',500,function(){
-								$("#ov_view_container_01").load("./views/"+localStorage.getItem("current_language")+"/presentation/ov_view_presentation_02.html",function(){
-									$('#ov_curtain_1_1').hide('fade',500);
-									$("#ov_view_container_01").show('drop',{direction: "right"},500,function(){});
-								});
-							});
-						});
-						
-				</script>
-			</div>
-
+			<div class="video_presentacion" id="video_presentacion"> </div>
 
 		</div>
 		
