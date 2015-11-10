@@ -452,13 +452,25 @@ a {color: #4D802B;}
 	color: #444;
 	border-top: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
-	background-color: #EEE;
-	background: url("./images/general/mapa.jpg") no-repeat center / 100%;
+	background: #EEE url("./images/general/mapa.jpg") no-repeat center / 100%;
 }
-.cuadropuntos1:hover, .cuadropuntos2:hover, .cuadropuntos3:hover, .cuadropuntos4:hover, .cuadrodondeestoy:hover{
+.cuadro_productostipicos {
+	width: 98%;
+	height: 60px;
+	line-height: 30px;
+	padding: 10px 1%;
+	margin-bottom: 10px;	
+	text-align:center;
+	font-size: 1.5em;
+	color: #444;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	background: #A0141A; /* url("./images/general/mapa.jpg") no-repeat center / 100%;*/
+}
+.cuadropuntos1:hover, .cuadropuntos2:hover, .cuadropuntos3:hover, .cuadropuntos4:hover, .cuadrodondeestoy:hover, .cuadro_productostipicos:hover{
 	cursor: pointer;
 	color: #EEE;
-	background-color: #444;
+	background: #444;
 }
 .rutas {
 }
