@@ -165,11 +165,11 @@ a {color: #4D802B;}
 .ov_box_07 {margin: 10px 20px; float: left;}
 .ov_box_07_a{float:left;width:50%;background-color:#4D802B;text-align: center;padding-top:20px;padding-bottom:20px;height:100px;overflow:hidden;}			
 .ov_box_08_a{float:right;width:50%;background-color:#4D802B;text-align: center;padding-top:20px;padding-bottom:20px;height:100px;overflow:hidden;}	
-.ov_box_07_08_a{width:100%;background-color:#93B561;text-align: center;padding-top:15px;padding-bottom:15px;min-height:50px;overflow:hidden;border-top:4px solid #7A914C;}
+.ov_box_07_08_a{width:100%;background-color:#E0E0E1;text-align: center;padding-top:15px;padding-bottom:15px;min-height:50px;overflow:hidden;}
 .ov_box_07_08_b{width:100%;/*background-color:#AFCA86*/;background-color:#93B561;padding-top:0px;padding-bottom:10px;text-align: left;min-height:20px;overflow:hidden;border-top: 0px dotted #557B29;}	
 .ov_box_09{float:left;width:50%;background-color:#f7f7f8;text-align: center;padding-top:20px;padding-bottom:20px;height:100px;overflow:hidden;}
 .ov_box_10{float:right;width:50%;background-color:#f7f7f8;text-align: center;padding-top:20px;padding-bottom:20px;height:100px;	overflow:hidden;}	
-.ov_box_09_10_a{width:100%;background-color:#A9BE5F;text-align: center;padding-top:15px;padding-bottom:15px;min-height:50px;overflow:hidden;border-top:4px solid #7A914C;}		
+.ov_box_09_10_a{width:100%;background-color:#f7f7f8;text-align: center;padding-top:15px;padding-bottom:15px;min-height:50px;overflow:hidden;border-top:4px solid #7A914C;}		
 .ov_box_09_10_b{width:100%;/*background-color:#D0E1AD*/;background-color:#A9BE5F;padding-top:0px;padding-bottom:10px;text-align: left;min-height:20px;overflow:hidden;border-top: 0px dotted #557B29;}	
 .ov_box_11{float:left;width:25%;height:60px;background-color:#8AA900;padding-top:10px;cursor:pointer;border-right: 1px solid #8AA900;box-sizing: border-box;}
 .ov_box_11_active{float:left;width:25%;height:60px;/*background-color:#8AA900;*/background-color:#BC1520;padding-top:10px;cursor:pointer;box-shadow:0px 0px 4px 1px #444;z-index:15;position:relative;/*border-right: 1px solid #8AA900*/border-right:1px solid #8E1018;;box-sizing: border-box;}

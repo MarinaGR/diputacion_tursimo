@@ -46,7 +46,7 @@
 			}
 			else
 			{
-				ajax_recover_data("filter_list_p", "", "conoceavila_list", "ov_zone_21_all", [['id',identificador],['start',start],['limit',limit],['element','points']]);
+				ajax_recover_data("conoce_avila", "", "conoceavila_list", "ov_zone_21_all", [['id',identificador],['start',start],['limit',limit],['element','conoce']]);
 			}
 			
 			//Mostrar favoritos 
@@ -114,7 +114,7 @@
 						$('#ov_zone_21_all').attr("class","ov_zone_21");
 						if($("#search_filter_list").val()!="")
 						{
-							ajax_recover_data("filter_list", "", "point_list", "ov_zone_21_all", [['id',identificador],['start',start],['limit',limit]]);						
+							ajax_recover_data("conoce_avila", "", "conoceavila_list", "ov_zone_21_all", [['id',identificador],['start',start],['limit',limit]]);						
 						
 							$("#search_filter_list").val("");						
 						}
@@ -129,7 +129,7 @@
 				<script>
 					$('#ov_box_11_2').click(function(e){
 						//Mostrar puntos cercanos
-						ajax_recover_data("near_filter_list", "", "point_list", "ov_zone_21_nearest", [['id',identificador]]);
+						ajax_recover_data("near_filter_list", "", "conoceavila_list", "ov_zone_21_nearest", [['id',identificador]]);
 						
 						$('.ov_box_11_b_active').attr("class","ov_box_12_b");
 						$(this).attr("class","ov_box_11_b_active");			

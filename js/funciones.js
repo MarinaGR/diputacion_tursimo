@@ -2087,6 +2087,62 @@ function ajax_recover_data(type, folder, values, container, params) {
 									
 					break;
 					
+			case "conoce_avila": 	
+										
+					var resultados=(data.result.items).length;
+					$.each(data.result.items, function(i, fd) {
+					
+						/*if(start_count>i)
+						{
+							return true;
+						}
+						else
+							start_count++;
+							
+						if(start_count>start+limit)
+							return false;*/
+						
+						cadena+='<div onclick="window.location.href=\'../'+getLocalStorage('current_language')+'/'+element+'.html?id='+fd.id+'\'" >';
+
+							cadena+='<div id="ov_box_13_1_f" class="ov_box_13" style="background-image:url(../..'+fd.imagen+');" ><img src="../../styles/images/icons/right_arrow.png" alt="menu" class="ov_image_14"/></div>';
+														
+							switch(getLocalStorage("current_language"))
+							{
+								default:
+								case "es":  var informacion=fd.es;	
+											break;
+											
+								case "en":  var informacion=fd.en;	
+											break;
+							}
+					
+							cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24">'+informacion.nombre+'</div></div>';
+						
+						cadena+='</div>';
+					});
+
+					if(resultados==0)
+					{
+						cadena+="<p>"+TEXTOS[0]+"</p>";
+					}
+					
+					cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
+					
+					/*if(start-limit>=0)
+						cadena+="<a class='verpagina' href='filter_list.html?id="+filter_id+"&start="+(start-limit)+"&limit="+limit+"' style='float:left'>"+TEXTOS[27]+"</a>";
+					
+					if(start+limit<resultados)
+						cadena+="<a class='verpagina' href='filter_list.html?id="+filter_id+"&start="+(start+limit)+"&limit="+limit+"' style='float:right'>"+TEXTOS[26]+"</a>";*/
+					
+					cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
+					
+					$("#"+container).html(cadena);
+					
+					///////////////////
+						
+					
+					break;
+					
 			case "filter_list_e": 	
 					
 					/*Habría que comprobar folder para ver si es point o empresa (o cualquier otro elemento) y en función de eso redirigir donde fuese necesario.*/
@@ -2663,6 +2719,8 @@ function ajax_recover_data(type, folder, values, container, params) {
 				
 					var cadena="";
 					
+					console.log(data.result);
+					
 					var indice=0;
 					$.each(data.result.routes, function(index, rutas) 
 					{   		
@@ -2686,7 +2744,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 						
 					});		
 					
-						
+					/*	
 					window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem)
 					//window.webkitRequestFileSystem(PERSISTENT, 0, function(fileSystem) 
 					{
@@ -2698,7 +2756,6 @@ function ajax_recover_data(type, folder, values, container, params) {
 						
 						console.log(file_path);	
 						
-						/*************************/
 						
 						fs.getDirectory("DiputacionAvila",{create:true, exclusive:false},function() {
 														
@@ -2761,11 +2818,11 @@ function ajax_recover_data(type, folder, values, container, params) {
 													
 														//   reader.readAsText(file);
 														   
-														/*}, function(jqXHR, textStatus, errorThrown) {		
-										
-															console.log("Error reader: No se ha cargado el archivo");
-													
-															});*/
+														//}, function(jqXHR, textStatus, errorThrown) {		
+														//
+														//	console.log("Error reader: No se ha cargado el archivo");
+														//
+														//	});
 													
 													  }, function(jqXHR, textStatus, errorThrown) {		
 										
@@ -2791,76 +2848,14 @@ function ajax_recover_data(type, folder, values, container, params) {
 								},onError);								
 							},onError);							
 						},onError);
-							
-									
-
-						/*************************/
-
-						/*if(getLocalStorage("trekking_routes")!=null && typeof JSON.parse(getLocalStorage("trekking_routes"))!="undefined")
-						{
-							fs.getDirectory(file_path+"/json/routes",{create:true, exclusive:false},function(dirEntry) {
 								
-								$.each(JSON.parse(getLocalStorage("trekking_routes")), function(index, data) {
-								
-									$.each(data, function(i, d) {
-																					
-										fs.root.getFile(file_path+"/json/routes/"+d.id+".json", {}, function(fileEntry) {
-											
-											console.log("reader getFile "+file_path+"/json/routes/"+d.id+".json");	
-
-											// Get a File object representing the file, then use FileReader to read its contents.
-											
-											fileEntry.file(function(file) {
-											   var reader = new FileReader();
-											   
-											   console.log("CREATE READER");
-										
-											   reader.onloadend = function(e) {
-												
-													cadena+='<div onclick="go_to_page(\'troute\',\''+this.id+'&downloaded=yes\');" >';
-													cadena+='<div id="ov_box_13_1_f" class="ov_box_13" ><img src="../../styles/images/icons/right_arrow.png" alt="menu" class="ov_image_14" /></div>';
-																
-													switch(getLocalStorage("current_language"))
-													{
-														default:
-														case "es":  cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24" onclick="$(\'#'+indice+'_puntos\').toggle();">'+this.es.nombre+'</div></div>';	
-																	break;
-																	
-														case "en":  cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24" onclick="$(\'#'+indice+'_puntos\').toggle();">'+this.es.nombre+'</div></div>';	
-																	break;
-													}
-														
-													cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
-													cadena+='</div>';
-													
-													indice++;
-													
-											   };
-										
-											   reader.readAsText(file);
-											   
-											}, function(jqXHR, textStatus, errorThrown) {		
-							
-												console.log("Error reader: No se ha cargado el archivo");
-										
-											});
-											
-										
-										  }, function(jqXHR, textStatus, errorThrown) {		
-							
-												console.log("Error getFile: No se ha cargado el archivo");
-										
-										  });
-												
-											  
-									});
-							});
-							
-						},onError);   
-						
-					}*/
 				
-				},onFileSystemError);   		
+				},onFileSystemError);   	*/	
+				
+					/**************************/
+					/* DESCOMENTAR HASTA AQUÍ */
+					/**************************/
+	
 						
 						/******************
 	
@@ -4674,7 +4669,7 @@ function ajax_recover_extern_data(operation, container, params) {
 							cadena+='<div id="ov_zone_15" class="ov_zone_15_b">';
 							
 							$.each(data.result, function(i,d) {
-								cadena+='<div class="ov_box_10" onclick="window.location.href=\'event.html?id='+d.id_evento+'\'" >'
+								cadena+='<div class="ov_box_09_10_a" onclick="window.location.href=\'event.html?id='+d.id_evento+'\'" >'
 											+'<div class="ov_text_14">'
 											+d.titulo+'<br><span style="color:#333">'+d.fecha_ini+''+d.fecha_fin+'</span>'
 											+'</div>'
@@ -4682,7 +4677,7 @@ function ajax_recover_extern_data(operation, container, params) {
 										
 								if(d.descripcion!="" && d.descripcion!="&nbsp;")
 								{
-									cadena+='<div class="ov_box_07_08">'
+									cadena+='<div class="ov_box_07_08_a">'
 												+'<div class="ov_text_15">'
 												+d.descripcion
 												+'</div>'
