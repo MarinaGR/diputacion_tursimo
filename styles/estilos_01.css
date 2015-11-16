@@ -369,6 +369,12 @@ a {color: #4D802B;}
 }
 .puntos{
 }
+.puntos .subtitulo {
+    bottom: 12px;
+    position: absolute;
+    font-size: 0.65em;
+	z-index: 100;
+}
 .cuadro_letras {
 	max-height: 50px;
 	max-width:75%;
@@ -378,7 +384,7 @@ a {color: #4D802B;}
 	background: rgba(160,20,26,0.7);
 	padding: 2px 4px 2px 0;
 	box-sizing: border-box;
-	bottom: 10px;
+	top: 15px;
 	position: absolute;
 }
 .cuadro_corazon {
@@ -461,11 +467,19 @@ a {color: #4D802B;}
 	padding: 10px 1%;
 	margin-bottom: 10px;	
 	text-align:center;
-	font-size: 1.5em;
-	color: #444;
+	font-size: 1.2em;
+	color: #EEE;
 	border-top: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
-	background: #A0141A; /* url("./images/general/mapa.jpg") no-repeat center / 100%;*/
+	background: #39AA33; /* url("./images/general/mapa.jpg") no-repeat center / 100%;*/
+}
+.cuadro_productostipicos i.fa {
+    float: left;
+    margin: 0px 10px 0px 20%;
+}
+.cuadro_productostipicos .subtitulo{
+	font-size:0.75em;
+	display: block;
 }
 .cuadropuntos1:hover, .cuadropuntos2:hover, .cuadropuntos3:hover, .cuadropuntos4:hover, .cuadrodondeestoy:hover, .cuadro_productostipicos:hover{
 	cursor: pointer;
