@@ -50,7 +50,7 @@
 			}
 			
 			//Mostrar favoritos 
-			show_localstorage_data("filter_fav_list", "ov_zone_21_featured", [['id',identificador]]);			
+			show_localstorage_data("filter_fav_list", "ov_zone_21_featured", [['id',identificador]]);		
 			
 			$("#search_filter_list").keypress(function(event){
 				
@@ -91,19 +91,19 @@
 				<div id="ov_box_11_1" class="ov_box_12" onclick="go_to_page('main_menu', '');"  >
 					<img src="../../styles/images/icons/menu.png" alt="menu" class="ov_image_13"/>
 					<div id="ov_text_23_1" class="ov_text_23">
-						Ir a menú
+						Menu
 					</div>		
 				</div>
 				<div id="ov_box_12_1" class="ov_box_12" onclick="go_to_page('points_list', '');" >
 					<img src="../../styles/images/icons/back.png" alt="back" class="ov_image_13"/>
 					<div id="ov_text_23_2" class="ov_text_23">
-						Volver
+						Back
 					</div>
 				</div>
 				<div id="ov_box_13_1" class="ov_box_11_active">
 					<img src="../../styles/images/icons/categories.png" alt="list" class="ov_image_13"/>
 					<div id="ov_text_23_3" class="ov_text_23">
-						Listado
+						List
 					</div>
 				</div>
 				<script>
@@ -121,36 +121,9 @@
 					});		
 				</script>
 				<div id="ov_box_11_2" class="ov_box_12">
-					<img src="../../styles/images/icons/nearest.png" alt="near" class="ov_image_13"/>
-					<div id="ov_text_23_4" class="ov_text_23">
-						Cercanos
-					</div>
+					
 				</div>
-				<script>
-					$('#ov_box_11_2').click(function(e){
-						//Mostrar puntos cercanos
-						ajax_recover_data("near_filter_list", "", "conoceavila_list", "ov_zone_21_nearest", [['id',identificador]]);
-						
-						$('.ov_box_11_active').attr("class","ov_box_12");
-						$(this).attr("class","ov_box_11_active");			
-						$('.ov_zone_21').attr("class","ov_zone_21_b");
-						$('#ov_zone_21_nearest').attr("class","ov_zone_21");			
-					});		
-				</script>
-				<div id="ov_box_12_2" class="ov_box_12">
-					<img src="../../styles/images/icons/heart.png" alt="fav" class="ov_image_13"/>
-					<div id="ov_text_23_5" class="ov_text_23">
-						Favoritos
-					</div>
-				</div>
-				<script>
-					$('#ov_box_12_2').click(function(e){
-						$('.ov_box_11_active').attr("class","ov_box_12");
-						$(this).attr("class","ov_box_11_active");			
-						$('.ov_zone_21').attr("class","ov_zone_21_b");
-						$('#ov_zone_21_featured').attr("class","ov_zone_21");			
-					});		
-				</script>
+				
 				<div class="ov_clear_floats_01">&nbsp;</div>
 			</div>
 			

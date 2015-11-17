@@ -269,9 +269,75 @@
 				},				
 				{
 					"id":"AVAU-TUR00000089","es":{"nombre":"Casa Rural El Aravalle"},"en":{"nombre":"Casa Rural El Aravalle"},"tlf":"628150200 / 679436324","email":null,"direccion":"Calle Galín - Gómez, 34, 05693 Umbrías, Avila, España","web":"http://www.altillodelaravalle.com","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000090","es":{"nombre":"Casa Rural Besana - La Herrería"},"en":{"nombre":"Casa Rural Besana - La Herrería"},"tlf":"663305887","email":null,"direccion":"C/ Real, 4 bis, Santo Tomé de Zabarcos, Avila, España","web":"http://www.casa-herreria.com","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000091","es":{"nombre":"Alojamiento Rural la Vieja Usanza 'El Pinar'"},"en":{"nombre":"Alojamiento Rural la Vieja Usanza 'El Pinar'"}, "tlf":"916318545","email":null,"direccion":"C/ Esquilo nº26, 05123 Hoyocasero, Avila, España","web":"http://www.laviejausanza.es","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000092","es":{"nombre":"CRA de Benjamín Palencia"},"en":{"nombre":"CRA de Benjamín Palencia"}, "tlf":"920206204 / 685886664","email":null,"direccion":"Villafranca de la Sierra, 05000 Piedrahita - Valle del Corneja, Ávila, España","web":"http://www.casasgredos.com/casa-rural-en-villafranca-de-la-sierra/casa-rural-de-benjamin-palencia.html","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000093","es":{"nombre":"Centro de turismo rural La casa de la Yaya"},"en":{"nombre":"Centro de turismo rural La casa de la Yaya"}, "tlf":"630041661 / 645972745","email":null,"direccion":"Calle La Ladera 4, 05634 Hoyos del Espino, Avila, España","web":"http://www.casadelayaya.com","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000094","es":{"nombre":"Apartamentos Rurales La Eliza"},"en":{"nombre":"Apartamentos Rurales La Eliza"}, "tlf":"620772608","email":null,"direccion":"05490 Lanzahíta, Avila, España","web":"http://www.apartamentoslaeliza.com","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000095","es":{"nombre":"Casa Rural Cerro de la Cueva"},"en":{"nombre":"Casa Rural Cerro de la Cueva"}, "tlf":"625960453","email":null,"direccion":"C/ Palencia-Salamanca, 17-18, Lanzahíta, Avila, España","web":null,"seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000096","es":{"nombre":"Centro de Turismo Rural El Rinconcito de Gredos"},"en":{"nombre":"Centro de Turismo Rural El Rinconcito de Gredos"}, "tlf":"920383288","email":null,"direccion":"Urb. Los Llanos, 3-5, 05414 Cuevas del Valle, Avila, España","web":"http://www.rinconcitogredos.com","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000097","es":{"nombre":"Casa Rural La Rinconera"},"en":{"nombre":"Casa Rural La Rinconera"}, "tlf":"630544621","email":null,"direccion":"05280 Mingorría, Avila, España","web":"http://larinconerayelboyo.wix.com/larinconerayelboyo","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000098","es":{"nombre":"Casa Rural de Alba"},"en":{"nombre":"Casa Rural de Alba"}, "tlf":"667296212","email":null,"direccion":"Avenida Buenos Aires 4, 05600 El Barco de Ávila, Ávila, España","web":"http://www.casaruraldealba.com","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000099","es":{"nombre":"Centro de Turismo Rural El linaje de los cinco sombreros"},"en":{"nombre":"Centro de Turismo Rural El linaje de los cinco sombreros"}, "tlf":"920081592","email":null,"direccion":"Nueva, 12 - Crta. Ávila - Tolbaños 05289, Gallegos de San Vicente, Ávila, España","web":"http://www.cincosombreros.es","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000100","es":{"nombre":"Casa Rural La Fragua"},"en":{"nombre":"Casa Rural La Fragua"}, "tlf":"920378558 / 620804950","email":null,"direccion":"C/ Comandante Cavanillas, 15, 05490 Lanzahíta, Ávila, España","web":"http://www.lafraguahita.com","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000101","es":{"nombre":"Casa Rural La Fragua"},"en":{"nombre":"Casa Rural La Fragua"}, "tlf":"920378558 / 620804950","email":null,"direccion":"C/ Comandante Cavanillas, 15, 05490 Lanzahíta, Ávila, España","web":"http://www.lafraguahita.com","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000102","es":{"nombre":"Alojamiento Rural la Vieja Usanza 'El Balcón'"},"en":{"nombre":"Alojamiento Rural la Vieja Usanza 'El Balcón'"}, "tlf":"916318545","email":null,"direccion":"C/ Esquilo nº26, 05123 Hoyocasero, Ávila, España","web":"http://www.laviejausanza.es","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000103","es":{"nombre":"Casa Rural El Torreón II"},"en":{"nombre":"Casa Rural El Torreón II"}, "tlf":"635575769","email":null,"direccion":"C/ Claudio Sánchez Albornoz, 13, 05634 Hoyos del Espino, Ávila, España","web":"http://www.lascasasdeltorreon.com","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000104","es":{"nombre":"Casa Rural El Altillo"},"en":{"nombre":"Casa Rural El Altillo"}, "tlf":"628150200 / 679436324","email":null,"direccion":"Calle Galín - Gómez, 34, 05693 Umbrías, Ávila, España","web":"http://www.altillodelaravalle.com","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000105","es":{"nombre":"Chozos de Tejea"},"en":{"nombre":"Chozos de Tejea"}, "tlf":"920377306","email":null,"direccion":"Finca la Cercona s/n 05489, Candeleda, Ávila, España","web":"http://www.chozosdetejea.com","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000106","es":{"nombre":"Casa Rural El Torreón I"},"en":{"nombre":"Casa Rural El Torreón I"}, "tlf":"635575769","email":null,"direccion":"C/ Claudio Sánchez Albornoz, 13, 05634 Hoyos del Espino, Ávila, España","web":"http://www.lascasasdeltorreon.com","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000107","es":{"nombre":"Alojamiento Rural la Vieja Usanza 'La Pedriza'"},"en":{"nombre":"Alojamiento Rural la Vieja Usanza 'La Pedriza'"}, "tlf":"916318545","email":null,"direccion":"C/ Esquilo nº26 05123, Hoyocasero, Ávila, España","web":"http://www.laviejausanza.es","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000108","es":{"nombre":"CRA El Molino I"},"en":{"nombre":"CRA El Molino I"}, "tlf":"920206204 / 685886664","email":null,"direccion":"05000 San Bartolomé de Pinares, Ávila, España","web":"http://www.casasgredos.com/casa-rural-en-san-bartolome-de-pinares/casa-rural-el-molino-i.html","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000109","es":{"nombre":"Casa Rural Victoria"},"en":{"nombre":"Casa Rural Victoria"}, "tlf":"660125759","email":null,"direccion":"Calle de la Cruz, 05690 Los Llanos de Tormes, Ávila, España","web":"http://www.casaruralvictoria.es","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000110","es":{"nombre":"CRA Mirador del Alberche III"},"en":{"nombre":"CRA Mirador del Alberche III"}, "tlf":"654455593","email":null,"direccion":"C/ Cañada Chica 35, 05100 Navaluenga, Ávila, España","web":"http://www.gredosrural.es","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000111","es":{"nombre":"CRA Mirador del Alberche II"},"en":{"nombre":"CRA Mirador del Alberche II"}, "tlf":"920298134 / 665979066","email":null,"direccion":"C/ Camino de Piedralaves 12, 05100 Navaluenga, Ávila, España","web":"http://www.gredosrural.es","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
 				}
 				
 			],
-		"total":88
+		"total":110
 	}
 }
