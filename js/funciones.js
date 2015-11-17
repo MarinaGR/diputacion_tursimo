@@ -197,6 +197,7 @@ function view_presentation_or_menu()
 {
 	$('#ov_curtain_1_1').show('fade',500);
 	$("#ov_view_container_01").hide('drop',500,function(){
+
 		if(localStorage.getItem("skip_presentation")=="1")
 		{
 			window.location.href='./html/'+getLocalStorage("current_language")+'/main_menu.html';
@@ -2744,7 +2745,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 						
 					});		
 					
-					/*	
+					
 					window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem)
 					//window.webkitRequestFileSystem(PERSISTENT, 0, function(fileSystem) 
 					{
@@ -2850,7 +2851,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 						},onError);
 								
 				
-				},onFileSystemError);   	*/	
+				},onFileSystemError);   	
 				
 					/**************************/
 					/* DESCOMENTAR HASTA AQUÍ */
@@ -6569,6 +6570,14 @@ function get_var_url(variable){
 	else
 		return false;
 	
+}
+
+function getFirstTime()   
+{
+	if(getLocalStorage("first_time")==null || getLocalStorage("first_time")!="NO")
+	{
+		window.location.href='./html/'+getLocalStorage("current_language")+'/main_menu.html';
+	}
 }
 
 function setLanguage()   

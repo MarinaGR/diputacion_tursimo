@@ -8,7 +8,7 @@
 		<meta name="robots" content="NOINDEX,NOFOLLOW,NOARCHIVE,NOODP,NOSNIPPET">
 		
 		<link href="../../styles/estilos_01.css" rel="stylesheet" type="text/css">
-		
+
 		<script src="../../js/jquery.js"></script>
 		<script src="../../js/jqueryui.js"></script>
 		<script src="../../js/jquery.ui.touch-punch.min.js"></script>
@@ -16,28 +16,26 @@
 		<script src="../../resources/langs/langs.js"></script>
 		<script src="../../js/funciones.js"></script>
 		<script src="../../cordova.js"></script>
-		
+
 		<script>
 		var identificador=get_var_url("id"); 
+		
 		$(document).ready(function() {
+		
 			$("#ov_view_container_01").css("background-color","#F2F2F3");
 			$('#ov_view_container_01').css("min-height",$(window).innerHeight()+"px");
 			
 			$('#ov_curtain_1_1').hide('fade', function() {
 				$("#ov_view_container_01").show();
 			}, 100);
-					
-		});
-		
-		document.addEventListener("deviceready", function() {
-			//Mostrar listado de rutas ya creadas
-			ajax_recover_data("trekking_routes", "", "trekking_routes_list", "ov_zone_21_routeslist");
-		});
-		
-		$(window).load(function() {
 			
+			ajax_recover_data("empresa", "conoceavila", identificador, "ov_view_container_01");
+		
 		});
+
+
 		</script>		
+		
 	</head>
 
 	<body id="ov_body_01" class="ov_body_01" onload="onBodyLoad()">
@@ -45,7 +43,7 @@
 		<div id="ov_curtain_1_1" class="ov_curtain_1"> </div>
 		
 		<div id="ov_view_container_01" class="ov_view_container_01">
-
+		
 			<div class="ov_vertical_space_01">&nbsp;</div>
 
 			<div id="ov_zone_20" class="ov_zone_20" >
@@ -55,66 +53,62 @@
 						Ir a menú
 					</div>		
 				</div>
-				<div class="ov_box_12" id="ov_box_12" onclick="go_to_page('main_menu', '');" >
-					<img src="../../styles/images/icons/back.png" alt="back" class="ov_image_15"/>
-					<div id="ov_text_26_1" class="ov_text_26">
+				<div id="ov_box_12_1" class="ov_box_12" onclick="window.history.back();" >
+					<img src="../../styles/images/icons/back.png" alt="back" class="ov_image_13"/>
+					<div id="ov_text_23_2" class="ov_text_23">
 						Volver
 					</div>
 				</div>
-				
-				<div id="ov_box_12_1" class="ov_box_11_active">
-					<img src="../../styles/images/icons/nearest.png" alt="routes" class="ov_image_13"/>
-					<div id="ov_text_23_2" class="ov_text_23">
-						Senderismo
-					</div>
-				</div>
-				<script>
-					$('#ov_box_12_1').click(function(e){
-						$('.ov_box_11_active').attr("class","ov_box_12");
-						$(this).attr("class","ov_box_11_active");			
-						$('.ov_zone_21').attr("class","ov_zone_21_b");
-						$('#ov_zone_21_routeslist').attr("class","ov_zone_21");	
-
-						ajax_recover_data("trekking_routes", "", "trekking_routes_list", "ov_zone_21_routeslist");
-					});		
-				</script>
-				
-				<div id="ov_box_12_2" class="ov_box_12">
-					<img src="../../styles/images/icons/grey2_triangle.png" alt="routes" class="ov_image_13"/>
+				<div id="ov_box_13_1" class="ov_box_11_active">
+					<img src="../../styles/images/icons/categories.png" alt="list" class="ov_image_13"/>
 					<div id="ov_text_23_3" class="ov_text_23">
-						Descargar más rutas
+						Información
 					</div>
 				</div>
 				<script>
-					$('#ov_box_12_2').click(function(e){
+					$('#ov_box_13_1').click(function(e){
 						$('.ov_box_11_active').attr("class","ov_box_12");
 						$(this).attr("class","ov_box_11_active");			
 						$('.ov_zone_21').attr("class","ov_zone_21_b");
-						$('#ov_zone_21_more_routes').attr("class","ov_zone_21");	
-						
-						recover_extern_list("show_list_files", [['element','trekking_routes_list'],['lang',getLocalStorage("current_language")]], "ov_download_routes");						
-									
+						$('#ov_zone_21_all').attr("class","ov_zone_21");
 					});		
 				</script>
-			
-				<div class="ov_clear_floats_01">&nbsp;</div>
-			</div>
-
-			<div class="ov_vertical_space_01">&nbsp;</div>
-			
-			<div id="ov_zone_21_routeslist" class="ov_zone_21"> 
 				
-			</div>
-			
-			<div id="ov_zone_21_more_routes" class="ov_zone_21_b"> 
-				
-				<h3>Descarga más rutas desde aquí</h3>
-				
-				<div id="ov_download_routes" >
+				<div id="ov_box_11_2" class="ov_box_12">
 					
 				</div>
+				<!--
+				<div id="ov_box_11_2" class="ov_box_12">
+					<img src="../../styles/images/icons/mini_point.png" alt="near" class="ov_image_13"/>
+					<div id="ov_text_23_4" class="ov_text_23">
+						Ubicación
+					</div>
+				</div>
+				<script>
+					$('#ov_box_11_2').click(function(e){
+						//Mostrar ubicación
+						go_to_page('location_point',identificador+'&folder=empresas');
+	
+					});		
+				</script>
+				-->
+				<div class="ov_clear_floats_01">&nbsp;</div>
 			</div>
-
+			
+			<div class="ov_vertical_space_01">&nbsp;</div>
+						
+			<div id="categories_point" class="ov_zone_23"> </div>
+			
+			<div id="ov_zone_26" class="ov_zone_26">
+				<h2>
+					<div id="point_name" class="ov_text_31"> </div>
+				</h2>
+				
+				<div id="data_info" class="ov_text_18"> </div>
+				
+				<div id="point_description" class="ov_text_31">	</div>
+			</div>
+			
 		</div>
 		
 	</body>
