@@ -1078,6 +1078,99 @@ function search_string_in_mun(value, container, type) {
 	}
 }
 
+function search_string_in_av(value, container, type) {
+	
+	var cadena="";
+	var cad_result="<p>"+TEXTOS[28]+"</p>";
+	if(value!="")
+	{
+		//Busqueda normal
+		var trim_value=$.trim(value);
+		var split_value=trim_value.split(" ");
+		
+		var palabras_excluidas="";
+				
+		var expr_regular="";
+		for(i=0; i<split_value.length; i++)
+		{			
+			expr_regular+=""+split_value[i]+".*";
+		}
+		expr_regular=expr_regular.slice(0,-2);
+		expr_regular+="|";
+		for(i=split_value.length-1; i>=0; i--)
+		{			
+			expr_regular+=""+split_value[i]+".*";
+		}
+		expr_regular=expr_regular.slice(0,-2);
+		expr_regular+="|";
+		
+		//Busqueda sin tildes 
+		
+		var value_sin_tildes = devolver_sin_tildes(value);
+		
+		var trim_value_sin_tildes=$.trim(value_sin_tildes);
+		var split_value_sin_tildes=trim_value_sin_tildes.split(" ");
+				
+		for(i=0; i<split_value_sin_tildes.length; i++)
+		{			
+			expr_regular+=""+split_value_sin_tildes[i]+".*";
+		}
+		expr_regular=expr_regular.slice(0,-2);
+		expr_regular+="|";
+		for(i=split_value_sin_tildes.length-1; i>=0; i--)
+		{			
+			expr_regular+=""+split_value_sin_tildes[i]+".*";
+		}
+		expr_regular=expr_regular.slice(0,-2);
+		
+		var q = $.trim(expr_regular),
+			regex = new RegExp(q, "i");			
+		
+		$.getJSON('../../resources/json/conoceavila_list.json', function (data) {
+			
+			var filter_points=new Array();
+			
+			$.each(data.result.items, function (ind, d) {
+		 		
+				if(d.id.search(regex) != -1 || d.nombre.search(regex) != -1) 
+				{		
+					if($.inArray(d, filter_points)==-1)					
+						filter_points.push(d);			
+				}
+				
+			});
+			
+			filter_points.sort(SortByName);
+	
+			$.each(filter_points, function (ind, point) {
+				
+				cadena+='<div onclick="window.location.href=\'../'+getLocalStorage('current_language')+'/conoce.html?id='+point.id+'\'" >';
+									
+				cadena+='<div id="ov_box_13_1_f" class="ov_box_13" style="background-image:url(../..'+point.imagen+');" ><img src="../../styles/images/icons/right_arrow.png" alt="menu" class="ov_image_14"/></div>';
+
+				cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24">'+point.nombre+'</div></div>';
+			
+				cadena+='</div>';	
+				 
+			});
+
+			cad_result+=cadena;
+			
+			if(cadena=="")
+			{		
+				cad_result="<p>"+TEXTOS[0]+"</p>";
+			}
+			cad_result+='<div class="ov_clear_floats_01">&nbsp;</div>';
+			$('#'+container).html(cad_result);		
+			
+			$('.ov_zone_21').attr("class","ov_zone_21_b");
+			$('#'+container).attr("class","ov_zone_21");	
+			$('.ov_box_11_active').attr("class","ov_box_12");						
+		});
+
+	}
+}
+
 function search_string_in_ser(value, container, type) {
 	
 	var cadena="";
@@ -3086,6 +3179,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 			
 					if(typeof downloaded!="undefined" && downloaded=="yes")
 					{
+						
 						window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem)
 						//window.webkitRequestFileSystem(PERSISTENT, 0, function(fileSystem) 
 						{
@@ -3101,7 +3195,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 							}).fail(function(jqXHR, textStatus, errorThrown) {
 								//alert('Error: "+textStatus+"  "+errorThrown);	
 								
-								$("#"+container).html(TEXTOS[6]+"<br>Error: "+fs.toURL()+file_path+"/json/routes/"+identificador+".json"+" - "+textStatus+"  "+errorThrown);
+								$("#"+container).html(downloaded+" "+TEXTOS[6]+"<br>Error local file: "+fs.toURL()+file_path+"/json/routes/"+identificador+".json"+" - "+textStatus+"  "+errorThrown);
 
 							});
 						},onFileSystemError);   	
