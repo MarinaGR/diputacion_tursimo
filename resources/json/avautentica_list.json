@@ -335,9 +335,72 @@
 				},				
 				{
 					"id":"AVAU-TUR00000111","es":{"nombre":"CRA Mirador del Alberche II"},"en":{"nombre":"CRA Mirador del Alberche II"}, "tlf":"920298134 / 665979066","email":null,"direccion":"C/ Camino de Piedralaves 12, 05100 Navaluenga, Ávila, España","web":"http://www.gredosrural.es","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
-				}
+				},				
+				{
+					"id":"AVAU-TUR00000112","es":{"nombre":"Espacio San Juan de la Cruz"},"en":{"nombre":"Espacio San Juan de la Cruz"}, "tlf":"920245013","email":null,"direccion":"Plaza de los Conquistadores s/n, 05310 Fontiveros, Ávila, España","web":"http://www.espaciosanjuandelacruz.es","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000113","es":{"nombre":"El Molino de los gamusinos"},"en":{"nombre":"El Molino de los gamusinos"}, "tlf":"920227714","email":null,"direccion":"05289 Tolbaños, Ávila, España","web":"http://www.losgamusinos.com","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000114","es":{"nombre":"Hotel Rural El Castrejón"},"en":{"nombre":"Hotel Rural El Castrejón"}, "tlf":"918630044","email":null,"direccion":"C/ Los Caños 10, 05260 Cebreros, Ávila, España","web":"http://www.elcastrejon.com","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000115","es":{"nombre":"Parador de Ávila"},"en":{"nombre":"Parador de Ávila"}, "tlf":"920211340","email":null,"direccion":"Marqués Canales de Chozas nº 2, 05001 Ávila, España","web":"http://www.parador.es/es/paradores/parador-de-avila","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000116","es":{"nombre":"CTR Cruz del Gallo"},"en":{"nombre":"CTR Cruz del Gallo"}, "tlf":"920207110 / 645820846 / 656443006","email":null,"direccion":"Navalperal de Tormes, Ávila, España","web":"http://www.cruzdelgallo.com","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000117","es":{"nombre":"Hotel Rural La Sayuela"},"en":{"nombre":"Hotel Rural La Sayuela"}, "tlf":"920377024","email":null,"direccion":"Camino la Sayuela AP-119.0, 05480 Candeleda, Ávila, España","web":"http://www.lasayuela.com","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000118","es":{"nombre":"CRA La Escaruela"},"en":{"nombre":"CRA La Escaruela"}, "tlf":"663571320","email":null,"direccion":"Travesía Caño, 05693 Casas del Abad, Ávila, España","web":"http://www.avilaautentica.es/139-cra-la-escaruela.html","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000119","es":{"nombre":"Los Molinillos"},"en":{"nombre":"Los Molinillos"}, "tlf":"647543675 / 920375209","email":null,"direccion":"Carretera de Mombeltrán, 23, 05416 El Arenal, Ávila, España","web":"http://www.ctr-losmolinillos.com","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000120","es":{"nombre":"Las Atalayas II"},"en":{"nombre":"Las Atalayas II"}, "tlf":"920377306","email":null,"direccion":"Finca la Cercona s/n, 05489 Candeleda, Ávila, España","web":"http://www.chozosdetejea.com","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000121","es":{"nombre":"CRA La Cabezuela"},"en":{"nombre":"CRA La Cabezuela"}, "tlf":"920349006","email":null,"direccion":"Cabezuela s/n, 05634 Hoyos del Espino, Ávila, España","web":"http://www.gredos-rural.com","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000122","es":{"nombre":"La ermita de los Llanos"},"en":{"nombre":"La ermita de los Llanos"}, "tlf":"699995721","email":null,"direccion":"Ctra. de la Dehesa Km 4, 05400 Arenas de San Pedro, Ávila, España","web":"http://www.laermitadelosllanos.com","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000123","es":{"nombre":"Luna Alojamientos Rurales"},"en":{"nombre":"Luna Alojamientos Rurales"}, "tlf":"616498786 / 920382265","email":null,"direccion":"C/ Domingo Labajo 19, 05480 Candeleda, Ávila, España","web":"http://www.lunacandeleda.com","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000124","es":{"nombre":"El Yantar de Gredos"},"en":{"nombre":"El Yantar de Gredos"}, "tlf":"920348394","email":null,"direccion":"C/ Cañadilla, s/n, 05132 San Martín del Pimpollar, Ávila, España","web":"http://www.elyantardegredos.es","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000125","es":{"nombre":"CRA Las Lanchas"},"en":{"nombre":"CRA Las Lanchas"}, "tlf":"920298016 / 606939909","email":null,"direccion":"Calle Las Lanchas 58, 05100 Navaluenga, Ávila, España","web":"http://www.avilaautentica.es/140-cra-las-lanchas.html","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000126","es":{"nombre":"La Quinta del Chocolatero"},"en":{"nombre":"La Quinta del Chocolatero"}, "tlf":"639229205","email":null,"direccion":"C/Otanilla, 14, 05697 Navatejares, Ávila, España","web":"http://www.laquintadelchocolatero.com","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000127","es":{"nombre":"Las Atalayas I"},"en":{"nombre":"Las Atalayas I"}, "tlf":"920377306","email":null,"direccion":"Finca la Cercona s/n, 05489 Candeleda, Ávila, España","web":"http://www.chozosdetejea.com","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000128","es":{"nombre":"La Galana"},"en":{"nombre":"La Galana"}, "tlf":"920349179","email":null,"direccion":"Cr Plataforma km 0'2 2, 05634, Hoyos del Espino, Ávila, España","web":"http://www.lagalanagredos.com","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000129","es":{"nombre":"Hostal Restaurante El Milano Real"},"en":{"nombre":"Hostal Restaurante El Milano Real"}, "tlf":"920349108","email":null,"direccion":"C/Toleo S/N, 05634 Hoyos del Espino, Ávila, España","web":"http://www.elmilanoreal.com","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000130","es":{"nombre":"Posada Real El Linar del Zaire"},"en":{"nombre":"Posada Real El Linar del Zaire"}, "tlf":"920284091","email":null,"direccion":"Crta. Avila Casavieja, 42 B, 05113 Burgohondo, Ávila, España","web":"http://www.ellinardelzaire.com","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000131","es":{"nombre":"Parador de Gredos"},"en":{"nombre":"Parador de Gredos"}, "tlf":"920348048","email":null,"direccion":"AV-941, km. 10, 05635 Navarredonda de Gredos, Ávila, España","web":"http://www.parador.es/es/paradores/parador-de-gredos","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				},				
+				{
+					"id":"AVAU-TUR00000132","es":{"nombre":"Posada del Tiétar"},"en":{"nombre":"Posada del Tiétar"}, "tlf":"902026475 / 918662329 / 699460078","email":null,"direccion":"Carretera N-501, Km 70, Santa María del Tiétar, Ávila, España","web":"http://www.posadadeltietar.com","seccion":"Turismo Rural","tipo":[{"id":"tipo_3"}],"tag":"turismo, casa rural","geolocalizacion":null
+				}				
 				
 			],
-		"total":110
+		"total":130
 	}
 }

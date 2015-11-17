@@ -1340,24 +1340,6 @@ function show_info_map_services(id, direccion) {
 }
 
 function ajax_recover_data(type, folder, values, container, params) {
-
-	var file_to_load="";
-	if(folder!="")
-	{
-		file_to_load=local_url+folder+"/"+values+".json";
-	}
-	else
-	{
-		file_to_load=local_url+values+".json";
-	}
-	
-	var objajax=$.getJSON(file_to_load, f_success)
-		.fail(function(jqXHR, textStatus, errorThrown) {
-			//alert('Error: "+textStatus+"  "+errorThrown);	
-			
-			 $("#"+container).html(TEXTOS[6]+"<br>Error: "+local_url+folder+"/"+values+".json"+" - "+textStatus+"  "+errorThrown);
-
-		});
 		
 	if(params)
 	{
@@ -1385,6 +1367,46 @@ function ajax_recover_data(type, folder, values, container, params) {
 			}
 		}
 	}
+	
+	var file_to_load="";
+	if(typeof downloaded!="undefined" && downloaded=="yes")
+	{
+		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem)
+		//window.webkitRequestFileSystem(PERSISTENT, 0, function(fileSystem) 
+		{
+			fs=fileSystem.root;							
+							
+			if(folder!="")
+			{
+				file_to_load=fs.toURL()+file_path+folder+"/"+values+".json";
+			}
+			else
+			{
+				file_to_load=fs.toURL()+file_path+values+".json";
+			}
+			
+		},onFileSystemError);   
+		
+	}
+	else
+	{
+		if(folder!="")
+		{
+			file_to_load=local_url+folder+"/"+values+".json";
+		}
+		else
+		{
+			file_to_load=local_url+values+".json";
+		}		
+	}
+	
+	var objajax=$.getJSON(file_to_load, f_success)
+		.fail(function(jqXHR, textStatus, errorThrown) {
+			//alert('Error: "+textStatus+"  "+errorThrown);	
+			
+			 $("#"+container).html(TEXTOS[6]+"<br>Error: "+local_url+folder+"/"+values+".json"+" - "+textStatus+"  "+errorThrown);
+
+		});
 
 	function f_success(data) {
 
@@ -3176,37 +3198,8 @@ function ajax_recover_data(type, folder, values, container, params) {
 					var cadena="";
 					var indice=0;
 					var info;
-			
-					if(typeof downloaded!="undefined" && downloaded=="yes")
-					{
-						
-						window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem)
-						//window.webkitRequestFileSystem(PERSISTENT, 0, function(fileSystem) 
-						{
-							console.log("FileSystem OK");
-							//Cargado el sistema de archivos, recuperar ficheros
-							
-							fs=fileSystem.root;
-							
-							$.getJSON(fs.toURL()+file_path+"/json/routes/"+identificador+".json", function (data2) {
-								
-								info=data2.result;
-								
-							}).fail(function(jqXHR, textStatus, errorThrown) {
-								//alert('Error: "+textStatus+"  "+errorThrown);	
-								
-								$("#"+container).html(downloaded+" "+TEXTOS[6]+"<br>Error local file: "+fs.toURL()+file_path+"/json/routes/"+identificador+".json"+" - "+textStatus+"  "+errorThrown);
-
-							});
-						},onFileSystemError);   	
-						
-					}
-					else
-					{
-						info=data.result;
-					}
 					
-					$.each(info.items, function(ind, etapa) {
+					$.each(data.result.items, function(ind, etapa) {
 
 						if(etapa.id == filter_id) 
 						{
@@ -3456,31 +3449,8 @@ function ajax_recover_data(type, folder, values, container, params) {
 			case "troute":    
 
 					var cadena="";
-					var d;
-			
-					if(typeof downloaded!="undefined" && downloaded=="yes")
-					{
-						window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem)
-						//window.webkitRequestFileSystem(PERSISTENT, 0, function(fileSystem) 
-						{
-							fs=fileSystem.root;							
-							
-							$.getJSON(fs.toURL()+file_path+"/json/routes/"+identificador+".json", function (data2) {
-								d=data2.result;
-							}).fail(function(jqXHR, textStatus, errorThrown) {
-								//alert('Error: "+textStatus+"  "+errorThrown);	
+					var d=data.result;
 								
-								$("#"+container).html(TEXTOS[6]+"<br>Error: "+fs.toURL()+file_path+"/json/routes/"+identificador+".json"+" - "+textStatus+"  "+errorThrown);
-
-							});
-							
-						},onFileSystemError);   
-					}
-					else
-					{
-						d=data.result;
-					}
-										
 					switch(getLocalStorage("current_language"))
 					{
 						default:
