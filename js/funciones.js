@@ -1429,7 +1429,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 				file_to_load=fs.toURL()+file_path+values+".json";
 			}
 			
-		},onFileSystemError);   
+		}, onFileSystemError);   
 		
 	}
 	else
