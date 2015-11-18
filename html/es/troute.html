@@ -22,10 +22,14 @@
 		var identificador=get_var_url("id"); 
 		var downloaded=get_var_url("downloaded"); 
 		
+		alert(id);
 		alert(downloaded);
 
 		document.addEventListener("deviceready", function() {
 		//$(document).ready(function() {
+		
+		alert("D:"+get_var_url("downloaded"));
+		
 			$("#ov_view_container_01").css("background-color","#F2F2F3");
 			$('#ov_view_container_01').css("min-height",$(window).innerHeight()+"px");
 			
@@ -76,6 +80,10 @@
 						<div id="ov_text_23_2" class="ov_text_23">
 							Información
 						</div>
+					</div>
+					
+					<div id="ov_box_12_2" class="ov_box_12">
+						
 					</div>
 				
 					<div class="ov_clear_floats_01">&nbsp;</div>

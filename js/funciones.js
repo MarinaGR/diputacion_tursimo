@@ -1410,8 +1410,6 @@ function ajax_recover_data(type, folder, values, container, params) {
 		}
 	}
 	
-	alert(downloaded);
-	
 	var file_to_load="";
 	if(typeof downloaded!="undefined" && downloaded=="yes")
 	{
@@ -2918,7 +2916,6 @@ function ajax_recover_data(type, folder, values, container, params) {
 						setFilePath();
 						
 						console.log(file_path);	
-						
 						
 						fs.getDirectory("DiputacionAvila",{create:true, exclusive:false},function() {
 														
