@@ -920,7 +920,7 @@ function search_string_in_cat(value, container, type) {
 										
 										break;
 							
-							case "en":  if(point.en.nombre.search(regex) != -1) {
+							case "en":  if(empr.en.nombre.search(regex) != -1) {
 											if($.inArray(empr, sorted_empr)==-1)				
 												sorted_empr.push(empr);		
 										}
@@ -1132,24 +1132,66 @@ function search_string_in_av(value, container, type) {
 			
 			$.each(data.result.items, function (ind, d) {
 		 		
-				if(d.id.search(regex) != -1 || d.nombre.search(regex) != -1) 
+				if(d.id.search(regex) != -1) 
 				{		
 					if($.inArray(d, filter_points)==-1)					
 						filter_points.push(d);			
 				}
 				
+				switch(getLocalStorage("current_language"))
+				{
+					default:
+					case "es":  if(d.es.nombre.search(regex) != -1) {	
+									if($.inArray(d, filter_points)==-1)				
+										filter_points.push(d);		
+								}
+								
+								var point_sin_tildes=devolver_sin_tildes(d.es.nombre);
+								if(point_sin_tildes.search(regex) != -1) {
+									if($.inArray(d, filter_points)==-1)				
+										filter_points.push(d);	
+								}
+								
+								break;
+					
+					case "en":  if(point.en.nombre.search(regex) != -1) {
+									if($.inArray(d, filter_points)==-1)				
+										filter_points.push(d);		
+								}
+								
+								var point_sin_tildes=devolver_sin_tildes(d.en.nombre);
+								if(point_sin_tildes.search(regex) != -1) {
+									if($.inArray(d, filter_points)==-1)				
+										filter_points.push(d);	
+								}
+								
+								break;
+				}
+				
 			});
 			
-			filter_points.sort(SortByName);
+			filter_points.sort(SortByLangName);
+			
+			console.log(filter_points);
 	
 			$.each(filter_points, function (ind, point) {
 				
 				cadena+='<div onclick="window.location.href=\'../'+getLocalStorage('current_language')+'/conoce.html?id='+point.id+'\'" >';
 									
 				cadena+='<div id="ov_box_13_1_f" class="ov_box_13" style="background-image:url(../..'+point.imagen+');" ><img src="../../styles/images/icons/right_arrow.png" alt="menu" class="ov_image_14"/></div>';
+				
+				switch(getLocalStorage("current_language"))
+				{
+					default:
+					case "es":  var informacion=point.es;	
+								break;
+								
+					case "en":  var informacion=point.en;	
+								break;
+				}
+		
+				cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24">'+informacion.nombre+'</div></div>';
 
-				cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24">'+point.nombre+'</div></div>';
-			
 				cadena+='</div>';	
 				 
 			});
@@ -2205,7 +2247,8 @@ function ajax_recover_data(type, folder, values, container, params) {
 					
 			case "conoce_avila": 	
 										
-					var resultados=(data.result.items).length;
+					var resultados=0;
+					var cadena="";
 					$.each(data.result.items, function(i, fd) {
 					
 						/*if(start_count>i)
@@ -2235,6 +2278,8 @@ function ajax_recover_data(type, folder, values, container, params) {
 							cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24">'+informacion.nombre+'</div></div>';
 						
 						cadena+='</div>';
+						
+						resultados++;
 					});
 
 					if(resultados==0)
