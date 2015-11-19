@@ -1413,12 +1413,14 @@ function ajax_recover_data(type, folder, values, container, params) {
 	var file_to_load="";
 	if(typeof downloaded!="undefined" && downloaded=="yes")
 	{
-		alert("entro en yes");
 		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem)
 		//window.webkitRequestFileSystem(PERSISTENT, 0, function(fileSystem) 
 		{
 			fs=fileSystem.root;							
 							
+			alert(fs.toURL()+file_path+folder+"/"+values+".json");
+			alert(fs.toURL()+file_path+values+".json");
+			
 			if(folder!="")
 			{
 				file_to_load=fs.toURL()+file_path+folder+"/"+values+".json";
@@ -2066,6 +2068,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 						///////////////////
 						
 						//También añadimos puntos de empresas
+						var filter_points2=new Array();
 						
 						$.getJSON("../../resources/json/empresas_list.json", function(empresas) {
 															
@@ -2075,8 +2078,8 @@ function ajax_recover_data(type, folder, values, container, params) {
 								{										
 									if(empr.municipio==filter_name) 
 									{												
-										if($.inArray(empr, filter_points)==-1)					
-											filter_points.push(empr);			
+										if($.inArray(empr, filter_points2)==-1)					
+											filter_points2.push(empr);			
 									}
 								}
 			
@@ -2084,11 +2087,30 @@ function ajax_recover_data(type, folder, values, container, params) {
 																			
 							///////////////////			
 							
-							resultados=filter_points.length;
+							resultados=filter_points.length+filter_points2.length;
 		
 							$.each(filter_points, function(i, fd) {
 		
 								cadena+='<div onclick="window.location.href=\'../'+getLocalStorage('current_language')+'/points.html?id='+fd.id+'\'" >';
+		
+								cadena+='<div id="ov_box_13_1_f" class="ov_box_13" style="background-image:url(../..'+fd.imagen+');" ><img src="../../styles/images/icons/right_arrow.png" alt="menu" class="ov_image_14"/></div>';
+								
+								switch(getLocalStorage("current_language"))
+								{
+									default:
+									case "es":  cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24">'+fd.es.nombre+'</div></div>';
+												break;
+									
+									case "en":  cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24">'+fd.en.nombre+'</div></div>';
+												break;
+								}
+		
+								cadena+='</div>';
+							});
+							
+							$.each(filter_points2, function(i, fd) {
+		
+								cadena+='<div onclick="window.location.href=\'../'+getLocalStorage('current_language')+'/empresa.html?id='+fd.id+'\'" >';
 		
 								cadena+='<div id="ov_box_13_1_f" class="ov_box_13" style="background-image:url(../..'+fd.imagen+');" ><img src="../../styles/images/icons/right_arrow.png" alt="menu" class="ov_image_14"/></div>';
 								
