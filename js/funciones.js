@@ -4831,7 +4831,8 @@ function ajax_recover_extern_data(operation, container, params) {
 							cadena+='<div id="ov_zone_15" class="ov_zone_15_b">';
 							
 							$.each(data.result, function(i,d) {
-								cadena+='<div class="ov_box_09_10_a" onclick="window.location.href=\'event.html?id='+d.id_evento+'\'" >'
+								cadena+='<div onclick="window.location.href=\'event.html?id='+d.id_evento+'\'" >';
+								cadena+='<div class="ov_box_09_10_a" >'
 											+'<div class="ov_text_14">'
 											+d.titulo+'<br><span style="color:#333">'+d.fecha_ini+''+d.fecha_fin+'</span>'
 											+'</div>'
@@ -4845,6 +4846,7 @@ function ajax_recover_extern_data(operation, container, params) {
 												+'</div>'
 											+'</div>';
 								}
+								cadena+='</div>';
 							});
 							
 							/*cadena+='<div id="ov_scroller_01_guide" class="ov_scroller_01_guide">&nbsp;</div>'
