@@ -1416,6 +1416,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 	var file_to_load="";
 	if(typeof downloaded!="undefined" && downloaded=="yes")
 	{
+		alert("entro en yes");
 		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem)
 		//window.webkitRequestFileSystem(PERSISTENT, 0, function(fileSystem) 
 		{
@@ -1429,6 +1430,8 @@ function ajax_recover_data(type, folder, values, container, params) {
 			{
 				file_to_load=fs.toURL()+file_path+values+".json";
 			}
+			
+			alert("file to load "+file_to_load);
 			
 		}, onFileSystemError);   
 		
