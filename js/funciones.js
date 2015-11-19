@@ -1405,16 +1405,10 @@ function ajax_recover_data(type, folder, values, container, params) {
 			}
 			if(params[i][0]=="downloaded")
 			{
-				alert("P0 "+params[i][0]);
-				alert("P1 "+params[i][1]);
-				
-				var downloaded=parseInt(params[i][1]);
+				var downloaded=params[i][1];
 			}
 		}
 	}
-	
-	alert(typeof downloaded);
-	alert(downloaded);
 	
 	var file_to_load="";
 	if(typeof downloaded!="undefined" && downloaded=="yes")
@@ -2190,7 +2184,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 						});
 						
 						filter_points.sort(SortByLangName);
-						
+
 						resultados=filter_points.length;
 						
 						$.each(filter_points, function(i, fd) {
@@ -2226,7 +2220,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 						
 						if(resultados==0)
 						{
-							cadena+="<p>"+TEXTOS[0]+"</p>";
+							cadena+="<p id='resultados_filter'>"+TEXTOS[0]+"</p>";
 						}
 						
 						cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
@@ -2252,65 +2246,6 @@ function ajax_recover_data(type, folder, values, container, params) {
 
 						});
 									
-					break;
-					
-			case "conoce_avila": 	
-										
-					var resultados=0;
-					var cadena="";
-					$.each(data.result.items, function(i, fd) {
-					
-						/*if(start_count>i)
-						{
-							return true;
-						}
-						else
-							start_count++;
-							
-						if(start_count>start+limit)
-							return false;*/
-						
-						cadena+='<div onclick="window.location.href=\'../'+getLocalStorage('current_language')+'/'+element+'.html?id='+fd.id+'\'" >';
-
-							cadena+='<div id="ov_box_13_1_f" class="ov_box_13" style="background-image:url(../..'+fd.imagen+');" ><img src="../../styles/images/icons/right_arrow.png" alt="menu" class="ov_image_14"/></div>';
-														
-							switch(getLocalStorage("current_language"))
-							{
-								default:
-								case "es":  var informacion=fd.es;	
-											break;
-											
-								case "en":  var informacion=fd.en;	
-											break;
-							}
-					
-							cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24">'+informacion.nombre+'</div></div>';
-						
-						cadena+='</div>';
-						
-						resultados++;
-					});
-
-					if(resultados==0)
-					{
-						cadena+="<p>"+TEXTOS[0]+"</p>";
-					}
-					
-					cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
-					
-					/*if(start-limit>=0)
-						cadena+="<a class='verpagina' href='filter_list.html?id="+filter_id+"&start="+(start-limit)+"&limit="+limit+"' style='float:left'>"+TEXTOS[27]+"</a>";
-					
-					if(start+limit<resultados)
-						cadena+="<a class='verpagina' href='filter_list.html?id="+filter_id+"&start="+(start+limit)+"&limit="+limit+"' style='float:right'>"+TEXTOS[26]+"</a>";*/
-					
-					cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
-					
-					$("#"+container).html(cadena);
-					
-					///////////////////
-						
-					
 					break;
 					
 			case "filter_list_e": 	
@@ -2402,6 +2337,11 @@ function ajax_recover_data(type, folder, values, container, params) {
 							cadena+='</div>';
 						});
 						
+						if(resultados!=0)
+						{
+							$("#resultados_filter").html("");
+						}
+						
 						cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
 						
 						/*if(start-limit>=0)
@@ -2412,8 +2352,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 						
 						cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
 						
-						$("#"+container).append(cadena);
-						
+						$("#"+container).append(cadena);						
 						
 						///////////////////
 						
@@ -2425,6 +2364,65 @@ function ajax_recover_data(type, folder, values, container, params) {
 
 						});
 									
+					break;
+					
+			case "conoce_avila": 	
+										
+					var resultados=0;
+					var cadena="";
+					$.each(data.result.items, function(i, fd) {
+					
+						/*if(start_count>i)
+						{
+							return true;
+						}
+						else
+							start_count++;
+							
+						if(start_count>start+limit)
+							return false;*/
+						
+						cadena+='<div onclick="window.location.href=\'../'+getLocalStorage('current_language')+'/'+element+'.html?id='+fd.id+'\'" >';
+
+							cadena+='<div id="ov_box_13_1_f" class="ov_box_13" style="background-image:url(../..'+fd.imagen+');" ><img src="../../styles/images/icons/right_arrow.png" alt="menu" class="ov_image_14"/></div>';
+														
+							switch(getLocalStorage("current_language"))
+							{
+								default:
+								case "es":  var informacion=fd.es;	
+											break;
+											
+								case "en":  var informacion=fd.en;	
+											break;
+							}
+					
+							cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24">'+informacion.nombre+'</div></div>';
+						
+						cadena+='</div>';
+						
+						resultados++;
+					});
+
+					if(resultados==0)
+					{
+						cadena+="<p>"+TEXTOS[0]+"</p>";
+					}
+					
+					cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
+					
+					/*if(start-limit>=0)
+						cadena+="<a class='verpagina' href='filter_list.html?id="+filter_id+"&start="+(start-limit)+"&limit="+limit+"' style='float:left'>"+TEXTOS[27]+"</a>";
+					
+					if(start+limit<resultados)
+						cadena+="<a class='verpagina' href='filter_list.html?id="+filter_id+"&start="+(start+limit)+"&limit="+limit+"' style='float:right'>"+TEXTOS[26]+"</a>";*/
+					
+					cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
+					
+					$("#"+container).html(cadena);
+					
+					///////////////////
+						
+					
 					break;
 					
 			case "category_list": 			
