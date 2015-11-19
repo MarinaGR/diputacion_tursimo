@@ -1405,7 +1405,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 			}
 			if(params[i][0]=="downloaded")
 			{
-				var downloaded=params[i][1];
+				var downloaded=parseInt(params[i][1]);
 			}
 		}
 	}
@@ -1418,8 +1418,8 @@ function ajax_recover_data(type, folder, values, container, params) {
 		{
 			fs=fileSystem.root;							
 							
-			alert(fs.toURL()+file_path+folder+"/"+values+".json");
-			alert(fs.toURL()+file_path+values+".json");
+			//alert(fs.toURL()+file_path+folder+"/"+values+".json");
+			//alert(fs.toURL()+file_path+values+".json");
 			
 			if(folder!="")
 			{
@@ -1430,7 +1430,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 				file_to_load=fs.toURL()+file_path+values+".json";
 			}
 			
-			alert("file to load "+file_to_load);
+			//alert("file to load "+file_to_load);
 			
 		}, onFileSystemError);   
 		
