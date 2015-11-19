@@ -1405,13 +1405,16 @@ function ajax_recover_data(type, folder, values, container, params) {
 			}
 			if(params[i][0]=="downloaded")
 			{
+				alert("P0 "+params[i][0]);
+				alert("P1 "+params[i][1]);
+				
 				var downloaded=parseInt(params[i][1]);
 			}
-			
-			alert("P0 "+params[i][0]);
-			alert("P1 "+params[i][1]);
 		}
 	}
+	
+	alert(typeof downloaded);
+	alert(downloaded);
 	
 	var file_to_load="";
 	if(typeof downloaded!="undefined" && downloaded=="yes")
