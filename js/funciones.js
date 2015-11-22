@@ -1418,20 +1418,15 @@ function ajax_recover_data(type, folder, values, container, params) {
 		{
 			fs=fileSystem.root;		
 			setFilePath();			
-							
-			alert(fs.toURL()+file_path+folder+"/"+values+".json");
-			alert(fs.toURL()+file_path+values+".json");
 			
 			if(folder!="")
 			{
-				file_to_load=fs.toURL()+file_path+folder+"/"+values+".json";
+				file_to_load=fs.toURL()+file_path+"/"+folder+"/"+values+".json";
 			}
 			else
 			{
-				file_to_load=fs.toURL()+file_path+values+".json";
+				file_to_load=fs.toURL()+file_path+"/"+values+".json";
 			}
-			
-			alert("file to load "+file_to_load);
 			
 		}, onFileSystemError);   
 		
