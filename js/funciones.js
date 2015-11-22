@@ -1416,10 +1416,11 @@ function ajax_recover_data(type, folder, values, container, params) {
 		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem)
 		//window.webkitRequestFileSystem(PERSISTENT, 0, function(fileSystem) 
 		{
-			fs=fileSystem.root;							
+			fs=fileSystem.root;		
+			setFilePath();			
 							
-			//alert(fs.toURL()+file_path+folder+"/"+values+".json");
-			//alert(fs.toURL()+file_path+values+".json");
+			alert(fs.toURL()+file_path+folder+"/"+values+".json");
+			alert(fs.toURL()+file_path+values+".json");
 			
 			if(folder!="")
 			{
@@ -1430,7 +1431,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 				file_to_load=fs.toURL()+file_path+values+".json";
 			}
 			
-			//alert("file to load "+file_to_load);
+			alert("file to load "+file_to_load);
 			
 		}, onFileSystemError);   
 		
