@@ -1428,6 +1428,14 @@ function ajax_recover_data(type, folder, values, container, params) {
 				file_to_load=fs.toURL()+file_path+"/"+values+".json";
 			}
 			
+			var objajax=$.getJSON(file_to_load, f_success)
+				.fail(function(jqXHR, textStatus, errorThrown) {
+					//alert('Error: "+textStatus+"  "+errorThrown);	
+					
+					 $("#"+container).html(TEXTOS[6]+"<br>Error: "+file_to_load+" - "+textStatus+"  "+errorThrown);
+
+				});
+			
 		}, onFileSystemError);   
 		
 	}
@@ -1441,15 +1449,15 @@ function ajax_recover_data(type, folder, values, container, params) {
 		{
 			file_to_load=local_url+values+".json";
 		}		
-	}
-	
-	var objajax=$.getJSON(file_to_load, f_success)
+		
+		var objajax=$.getJSON(file_to_load, f_success)
 		.fail(function(jqXHR, textStatus, errorThrown) {
 			//alert('Error: "+textStatus+"  "+errorThrown);	
 			
 			 $("#"+container).html(TEXTOS[6]+"<br>Error: "+file_to_load+" - "+textStatus+"  "+errorThrown);
 
 		});
+	}
 
 	function f_success(data) {
 
