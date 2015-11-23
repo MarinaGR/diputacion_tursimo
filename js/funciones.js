@@ -1421,11 +1421,11 @@ function ajax_recover_data(type, folder, values, container, params) {
 			
 			if(folder!="")
 			{
-				file_to_load=fs.toURL()+file_path+"/"+folder+"/"+values+".json";
+				file_to_load=fs.toURL()+file_path+"/json/"+folder+"/"+values+".json";
 			}
 			else
 			{
-				file_to_load=fs.toURL()+file_path+"/"+values+".json";
+				file_to_load=fs.toURL()+file_path+"/json/"+values+".json";
 			}
 			
 			var objajax=$.getJSON(file_to_load, f_success)
