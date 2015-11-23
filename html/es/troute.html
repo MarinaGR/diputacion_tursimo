@@ -36,6 +36,10 @@
 			
 		});
 		
+		document.addEventListener("backbutton", function() {
+			go_to_page('trekking_routes', 'void&downloaded='+downloaded);
+		}, false);
+		
 		$(window).load(function() {
 		
 			setTimeout(function() {

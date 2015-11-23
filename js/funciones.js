@@ -1431,8 +1431,8 @@ function ajax_recover_data(type, folder, values, container, params) {
 			var objajax=$.getJSON(file_to_load, f_success)
 				.fail(function(jqXHR, textStatus, errorThrown) {
 					//alert('Error: "+textStatus+"  "+errorThrown);	
-					
-					 $("#"+container).html(TEXTOS[6]+"<br>Error: "+file_to_load+" - "+textStatus+"  "+errorThrown);
+					//$("#"+container).html(TEXTOS[6]+"<br>Error: "+file_to_load+" - "+textStatus+"  "+errorThrown);
+					 $("#"+container).html(TEXTOS[6]+"<br>Error: "+textStatus+"  "+errorThrown);
 
 				});
 			
