@@ -3682,13 +3682,50 @@ function ajax_paint_routes(type, folder, values, container, params) {
 							if(e.id.search(id)!=-1)
 							{
 								if(typeof downloaded!="undefined" && downloaded=="yes")
-								{
-									var la_imagen=e.src_image.split("../../");
-									src_image=fs.toURL()+file_path+"/images/maps/"+la_imagen[1];  
+								{									
+									window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem)
+									//window.webkitRequestFileSystem(PERSISTENT, 0, function(fileSystem) 
+									{
+										fs=fileSystem.root;		
+
+										var la_imagen=e.src_image.split("../../resources/");
+										src_image=fs.toURL()+file_path+la_imagen[1];
+
+										if(src_image=="")
+										{
+											 $("#"+container).append(TEXTOS[7]);
+											 return; 									 
+										}
+									
+										var d=data.Result;
+										draw_canvas(container, src_image, fs.toURL()+file_path+'/routes/'+gpx+".gpx", id, canvas_number); 
+										
+										if(canvas_number==1)
+										{
+											//$("#"+container).css("height",height);
+											$("#datos_geo").append("<div id='datos_geo_position'></div>");
+										}		
+										
+									},onFileSystemError);   
 								}
 								else
 								{
 									src_image=e.src_image;  
+									
+									if(src_image=="")
+									{
+										 $("#"+container).append(TEXTOS[7]);
+										 return; 									 
+									}
+								
+									var d=data.Result;
+									draw_canvas(container,src_image, '../../resources/routes/'+gpx+".gpx", id, canvas_number); 
+									
+									if(canvas_number==1)
+									{
+										//$("#"+container).css("height",height);
+										$("#datos_geo").append("<div id='datos_geo_position'></div>");
+									}
 								}
 								
 								coord_image_ppal=e.coord_image_ppal;
@@ -3696,20 +3733,7 @@ function ajax_paint_routes(type, folder, values, container, params) {
 							}
 						});
 
-						if(src_image=="")
-						{
-							 $("#"+container).append(TEXTOS[7]);
-							 return; 									 
-						}
-					
-						var d=data.Result;
-						draw_canvas(container,src_image, '../../resources/routes/'+gpx+".gpx", id, canvas_number); 
 						
-						if(canvas_number==1)
-						{
-							//$("#"+container).css("height",height);
-							$("#datos_geo").append("<div id='datos_geo_position'></div>");
-						}
 												
 						break;
 					}
@@ -3718,12 +3742,12 @@ function ajax_paint_routes(type, folder, values, container, params) {
 
 					cadena+="<h2>"+d.titulo+"</h2>";
 					
-					var imagen=d.Image; 
+					/*var imagen=d.Image; 
 					if(imagen!=null) 
 					{
 						var imagen_local="../../resources/images/mapas/"+imagen;					
 						cadena+="<img src='"+imagen_local+"' alt='Imagen de la ruta' />";
-					}
+					}*/
 
 					cadena+=d.texto;
 
