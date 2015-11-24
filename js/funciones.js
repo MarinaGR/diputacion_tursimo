@@ -243,6 +243,7 @@ function search_string(value, container) {
 	var sorted_points=new Array();
 	var sorted_empr=new Array();
 	var sorted_avaut=new Array();
+	var sorted_conoce=new Array();
 	
 	if(value!="")
 	{		
@@ -575,18 +576,81 @@ function search_string(value, container) {
 
 					});
 					
-					cad_result+=cadena;
-					
-					if(cadena=="")
-					{		
-						cad_result="<p>"+TEXTOS[0]+"</p>";
-					}
-					cad_result+='<div class="ov_clear_floats_01">&nbsp;</div>';
-					$('#'+container).html(cad_result);		
-					
-					$('#cargador').hide();
-		
+					/*CONOCE ÁVILA*/
+					$.getJSON('../../resources/json/conoceavila_list.json', function (data4) {
+
+						 $.each(data4.result.items, function (ind, conoce) {			
+							
+							switch(getLocalStorage("current_language"))
+							{
+								default:
+								case "es":  if(conoce.es.nombre.search(regex) != -1) {	
+												if($.inArray(conoce, sorted_conoce)==-1)				
+													sorted_conoce.push(conoce);		
+											}
+											
+											var name_avaut_sin_tildes=devolver_sin_tildes(conoce.es.nombre);
+											if(name_avaut_sin_tildes.search(regex) != -1) {
+												if($.inArray(conoce, sorted_conoce)==-1)				
+													sorted_conoce.push(conoce);	
+											}
+
+											break;
+								
+								case "en":  if(conoce.en.nombre.search(regex) != -1) {
+												if($.inArray(conoce, sorted_conoce)==-1)				
+													sorted_conoce.push(conoce);		
+											}
+											
+											var name_avaut_sin_tildes=devolver_sin_tildes(conoce.en.nombre);
+											if(name_avaut_sin_tildes.search(regex) != -1) {
+												if($.inArray(conoce, sorted_conoce)==-1)				
+													sorted_conoce.push(conoce);	
+											}
+											
+											break;
+							}
+							 
+						});
+											
+						sorted_conoce.sort(SortByLangName);
 						
+						$.each(sorted_conoce, function(index, conoce) {
+					
+							cadena+='<div onclick="window.location.href=\'../'+getLocalStorage('current_language')+'/conoce.html?id='+conoce.id+'\'" >';
+									
+							cadena+='<div id="ov_box_13_1_f" class="ov_box_13" style="background-image:url(../..'+conoce.imagen+');" ><img src="../../styles/images/icons/right_arrow.png" alt="menu" class="ov_image_14"/></div>';
+							
+							switch(getLocalStorage("current_language"))
+							{
+								default:
+								case "es":  var informacion=conoce.es;	
+											break;
+											
+								case "en":  var informacion=conoce.en;	
+											break;
+							}
+					
+							cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24">'+informacion.nombre+'</div></div>';
+
+							cadena+='</div>';	
+
+						});
+						
+						cad_result+=cadena;
+					
+						if(cadena=="")
+						{		
+							cad_result="<p>"+TEXTOS[0]+"</p>";
+						}
+						cad_result+='<div class="ov_clear_floats_01">&nbsp;</div>';
+						$('#'+container).html(cad_result);		
+						
+						$('#cargador').hide();
+			
+							
+					});
+					
 				});
 					
 			});
@@ -1432,7 +1496,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 				.fail(function(jqXHR, textStatus, errorThrown) {
 					//alert('Error: "+textStatus+"  "+errorThrown);	
 					//$("#"+container).html(TEXTOS[6]+"<br>Error: "+file_to_load+" - "+textStatus+"  "+errorThrown);
-					 $("#"+container).html(TEXTOS[6]+"<br>Error: "+textStatus+"  "+errorThrown);
+					 $("#"+container).html(TEXTOS[6]);
 
 				});
 			
@@ -1454,7 +1518,8 @@ function ajax_recover_data(type, folder, values, container, params) {
 		.fail(function(jqXHR, textStatus, errorThrown) {
 			//alert('Error: "+textStatus+"  "+errorThrown);	
 			
-			 $("#"+container).html(TEXTOS[6]+"<br>Error: "+file_to_load+" - "+textStatus+"  "+errorThrown);
+			 //$("#"+container).html(TEXTOS[6]+"<br>Error: "+file_to_load+" - "+textStatus+"  "+errorThrown);
+			 $("#"+container).html(TEXTOS[6]);
 
 		});
 	}
@@ -3638,8 +3703,8 @@ function ajax_paint_routes(type, folder, values, container, params) {
 			var objajax=$.getJSON(file_to_load, f_success)
 				.fail(function(jqXHR, textStatus, errorThrown) {
 					//alert('Error: "+textStatus+"  "+errorThrown);	
-					$("#"+container).html(TEXTOS[6]+"<br>Error: "+file_to_load+" - "+textStatus+"  "+errorThrown);
-					 //$("#"+container).html(TEXTOS[6]+"<br>Error: "+textStatus+"  "+errorThrown);
+					//$("#"+container).html(TEXTOS[6]+"<br>Error: "+file_to_load+" - "+textStatus+"  "+errorThrown);
+					$("#"+container).html(TEXTOS[6]);
 
 				});
 			
@@ -3661,7 +3726,9 @@ function ajax_paint_routes(type, folder, values, container, params) {
 		.fail(function(jqXHR, textStatus, errorThrown) {
 			//alert('Error: "+textStatus+"  "+errorThrown);	
 			
-			$("#"+container).html(TEXTOS[6]+"<br>Error: "+local_url+folder+"/"+values+".json"+" - "+textStatus+"  "+errorThrown);
+			//$("#"+container).html(TEXTOS[6]+"<br>Error: "+local_url+folder+"/"+values+".json"+" - "+textStatus+"  "+errorThrown);
+			
+			$("#"+container).html(TEXTOS[6]);
 
 		});	
 		
