@@ -3763,18 +3763,11 @@ function ajax_paint_routes(type, folder, values, container, params) {
 									window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem)
 									//window.webkitRequestFileSystem(PERSISTENT, 0, function(fileSystem) 
 									{
-										alert(file_path);
-										
 										fs=fileSystem.root;		
-										setFilePath();	
-										
-										alert(file_path);
 
 										var la_imagen=e.src_image.split("../../resources/");
-										src_image=fs.toURL()+file_path+"/images/maps/"+la_imagen[1];
+										src_image=fs.toURL()+file_path+la_imagen[1];
 										
-										alert(src_image);
-
 										if(src_image=="")
 										{
 											 $("#"+container).append(TEXTOS[7]);
@@ -3989,6 +3982,8 @@ function draw_canvas(container, src_image, src_gpx, id, canvas_number)
 	
 		width=$(window).width(); 
 		height=$(window).height();
+		
+		alert(src_image);
 		
 		if(canvas_number==1)
 		{
