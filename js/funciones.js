@@ -6577,7 +6577,8 @@ function downloadRoutesToDir(d) {
 			console.log(dlPath);
 	
 			ft.download(extern_url+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json" , dlPath, function() {
-					$("#descarga").append("/json/routes/"+ID_ROUTE_DOWNLOAD+".json"+" .... OK<br>");
+					$("#descarga").append("DATA"+" .... OK<br>");
+					//$("#descarga").append("/json/routes/"+ID_ROUTE_DOWNLOAD+".json"+" .... OK<br>");
 					//cargar_barra("barra_carga", 100);	
 					
 					
@@ -6593,7 +6594,8 @@ function downloadRoutesToDir(d) {
 								var dlPath = fs.toURL()+file_path+"/routes/"+dat.gpx+".gpx"; 	
 							
 								ft.download(extern_url+"/routes/"+dat.gpx+".gpx" , dlPath, function() {
-									$("#descarga").append("/routes/"+dat.gpx+".gpx"+" .... OK<br>");
+									$("#descarga").append("GPX"+" .... OK<br>");
+									//$("#descarga").append("/routes/"+dat.gpx+".gpx"+" .... OK<br>");
 									//cargar_barra("barra_carga", 100);
 								}, 
 								function(error){
@@ -6606,27 +6608,32 @@ function downloadRoutesToDir(d) {
 							console.log(dlPath);
 
 						},function(error){
-							$("#descarga").append("Get File "+fs.toURL()+file_path+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json fail " + error.message+"<br>");
+							//$("#descarga").append("Get File "+fs.toURL()+file_path+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json fail " + error.message+"<br>");
+							$("#descarga").append("Get File "+ID_ROUTE_DOWNLOAD+".json fail " + error.message+"<br>");
 						});
 						
 					}
 					,function(error) {
-						$("#descarga").append("Get Directory "+fs.toURL()+file_path+"/json/"+". FAIL: " + error.message+"<br>");
+						//$("#descarga").append("Get Directory "+fs.toURL()+file_path+"/json/"+". FAIL: " + error.message+"<br>");
+						$("#descarga").append("Get Directory json FAIL: " + error.message+"<br>");
 					});
 	
 				}, 
 				function(error){
-					$("#descarga").append("json/routes/"+ID_ROUTE_DOWNLOAD+".json"+" .... KO "+error.message+"<br>");
+					//$("#descarga").append("json/routes/"+ID_ROUTE_DOWNLOAD+".json"+" .... KO "+error.message+"<br>");
+					$("#descarga").append(ID_ROUTE_DOWNLOAD+".json"+" .... KO "+error.message+"<br>");
 				});
 				
 		}
 		,function(error) {
-			$("#descarga").append("Get Directory "+fs.toURL()+file_path+"/json/routes/"+". FAIL: " + error.message+"<br>");
+			//$("#descarga").append("Get Directory "+fs.toURL()+file_path+"/json/routes/"+". FAIL: " + error.message+"<br>");
+			$("#descarga").append("Get Directory routes FAIL: " + error.message+"<br>");
 		});
 
 	}
 	,function(error) {
-		$("#descarga").append("Get Directory "+fs.toURL()+file_path+"/json/"+". FAIL: " + error.message+"<br>");
+		//$("#descarga").append("Get Directory "+fs.toURL()+file_path+"/json/"+". FAIL: " + error.message+"<br>");
+		$("#descarga").append("Get Directory json FAIL: " + error.message+"<br>");
 	});
 
 	
@@ -6654,11 +6661,13 @@ function downloadRoutesToDir(d) {
 				});
 					
 			},function(error){
-				$("#descarga").append("Get Directory "+file_path+"/images/maps fail " + error.code+"<br>");
+				//$("#descarga").append("Get Directory "+file_path+"/images/maps fail " + error.code+"<br>");
+				$("#descarga").append("Get Directory maps fail " + error.code+"<br>");
 			});
 			
 		},function(error){
-			$("#descarga").append("Get Directory "+file_path+"/images fail " + error.code+"<br>");
+			//$("#descarga").append("Get Directory "+file_path+"/images fail " + error.code+"<br>");
+			$("#descarga").append("Get Directory images fail " + error.code+"<br>");
 		});
 			
 	}, 1000);
@@ -6675,7 +6684,8 @@ function downloadImages(imagenes, i, total, path) {
 	try {	
 		ft.download(extern_url+"/"+imagen_local[1], dlPath, function() {
 		
-				$("#descarga").append(imagen_local[1]+" .... OK<br>");	
+				//$("#descarga").append(imagen_local[1]+" .... OK<br>");	
+				$("#descarga").append("IMAGEN .... OK<br>");	
 				i++;			
 				if(i<total)
 					downloadImages(imagenes, i, total, path);
@@ -6698,10 +6708,10 @@ function downloadImages(imagenes, i, total, path) {
 	
 	if(i>=total-1)
 	{
-		$("#descarga").append("<p>Completado</p>");
+		$("#descarga").append("<p>"+TEXTOS[58]+"</p>");
 		setTimeout(function() {
-			$("#descarga").html("<p>Descarga finalizada</p>");		
-		}, 500);
+			$("#descarga").html("<h3>"+TEXTOS[59]+"</h3><p>"+TEXTOS[60]+"</p>");		
+		}, 1000);
 	}		
 }
 
