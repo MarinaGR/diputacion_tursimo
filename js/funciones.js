@@ -3581,8 +3581,6 @@ function ajax_recover_data(type, folder, values, container, params) {
 }
 
 function ajax_paint_routes(type, folder, values, container, params) {
-
-	var file_to_load="";
 			
 	if(params)
 	{
@@ -3619,23 +3617,33 @@ function ajax_paint_routes(type, folder, values, container, params) {
 		}
 	}
 	
+	var file_to_load="";
 	if(typeof downloaded!="undefined" && downloaded=="yes")
 	{
 		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem)
 		//window.webkitRequestFileSystem(PERSISTENT, 0, function(fileSystem) 
 		{
-			fs=fileSystem.root;							
-							
+			fs=fileSystem.root;		
+			setFilePath();			
+			
 			if(folder!="")
 			{
-				file_to_load=fs.toURL()+file_path+folder+"/"+values+".json";
+				file_to_load=fs.toURL()+file_path+"/json/"+folder+"/"+values+".json";
 			}
 			else
 			{
-				file_to_load=fs.toURL()+file_path+values+".json";
+				file_to_load=fs.toURL()+file_path+"/json/"+values+".json";
 			}
 			
-		},onFileSystemError);   
+			var objajax=$.getJSON(file_to_load, f_success)
+				.fail(function(jqXHR, textStatus, errorThrown) {
+					//alert('Error: "+textStatus+"  "+errorThrown);	
+					$("#"+container).html(TEXTOS[6]+"<br>Error: "+file_to_load+" - "+textStatus+"  "+errorThrown);
+					 //$("#"+container).html(TEXTOS[6]+"<br>Error: "+textStatus+"  "+errorThrown);
+
+				});
+			
+		}, onFileSystemError);   
 		
 	}
 	else
@@ -3647,17 +3655,19 @@ function ajax_paint_routes(type, folder, values, container, params) {
 		else
 		{
 			file_to_load=local_url+values+".json";
-		}		
-	}
-	
-	var objajax=$.getJSON(file_to_load, f_success)
+		}
+
+		var objajax=$.getJSON(file_to_load, f_success)
 		.fail(function(jqXHR, textStatus, errorThrown) {
 			//alert('Error: "+textStatus+"  "+errorThrown);	
 			
 			$("#"+container).html(TEXTOS[6]+"<br>Error: "+local_url+folder+"/"+values+".json"+" - "+textStatus+"  "+errorThrown);
 
 		});	
-
+		
+	}
+	
+	
 	function f_success(data) {
 
 		if(data.length==0) {
