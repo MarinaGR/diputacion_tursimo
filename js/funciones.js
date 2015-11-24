@@ -3612,7 +3612,7 @@ function ajax_paint_routes(type, folder, values, container, params) {
 			}
 			if(params[i][0]=="downloaded")
 			{
-				var downloaded=parseInt(params[i][1]);
+				var downloaded=params[i][1];
 			}
 		}
 	}
