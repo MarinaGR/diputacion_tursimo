@@ -3766,7 +3766,9 @@ function ajax_paint_routes(type, folder, values, container, params) {
 										fs=fileSystem.root;		
 
 										var la_imagen=e.src_image.split("../../resources/");
-										src_image=fs.toURL()+file_path+la_imagen[1];
+										src_image=fs.toURL()+file_path+"/"+la_imagen[1];
+										
+										 $("#"+container).append("<img src="+src_image+" />");
 										
 										if(src_image=="")
 										{
@@ -3815,20 +3817,20 @@ function ajax_paint_routes(type, folder, values, container, params) {
 						break;
 					}
 					
-					var d=data.result;
+					/*var d=data.result;
 
 					cadena+="<h2>"+d.titulo+"</h2>";
 					
-					/*var imagen=d.Image; 
+					var imagen=d.Image; 
 					if(imagen!=null) 
 					{
 						var imagen_local="../../resources/images/mapas/"+imagen;					
 						cadena+="<img src='"+imagen_local+"' alt='Imagen de la ruta' />";
-					}*/
+					}
 
 					cadena+=d.texto;
 
-					cadena+="<p><a class='vermas' href='canvas.html?id="+id+"'>Ver ruta con geolocalizaci&oacute;n</a></p>";				
+					cadena+="<p><a class='vermas' href='canvas.html?id="+id+"'>Ver ruta con geolocalizaci&oacute;n</a></p>";*/				
 					
 					$("#"+container).append(cadena);
 					
@@ -3984,6 +3986,7 @@ function draw_canvas(container, src_image, src_gpx, id, canvas_number)
 		height=$(window).height();
 		
 		alert(src_image);
+		$("#mapa_canvas").append("<img src="+src_image+"/>");
 		
 		if(canvas_number==1)
 		{
