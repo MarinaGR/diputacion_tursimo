@@ -36,13 +36,7 @@
 					window.location.href="canvas2.html?id="+get_var_url("id")+"&gpx="+gpx_file+"&json="+json_file+"&downloaded="+downloaded;
 				}, false);	
 				
-				document.addEventListener("backbutton", function() {
-					window.location.href="troute.html?id="+ json_file+"&downloaded="+downloaded;
-				}, false);
-				
-				document.getElementById("boton_atras").addEventListener("click", function() {
-					window.location.href="troute.html?id="+ json_file+"&downloaded="+downloaded;
-				}, false);	
+				document.getElementById("boton_atras").addEventListener("click", onBackKeyDown, false);	
 				
 				document.getElementById("boton_masinfo").addEventListener("click", function() {
 
@@ -53,6 +47,11 @@
 				}, false);	
 								
 			});
+			
+			function onBackKeyDown()
+			{
+				window.location.href="troute.html?id="+ json_file+"&downloaded="+downloaded;
+			}
 
 		</script>
 	</head>

@@ -619,7 +619,7 @@ function search_string(value, container) {
 					
 							cadena+='<div onclick="window.location.href=\'../'+getLocalStorage('current_language')+'/conoce.html?id='+conoce.id+'\'" >';
 									
-							cadena+='<div id="ov_box_13_1_f" class="ov_box_13" style="background-image:url(../..'+conoce.imagen+');" ><img src="../../styles/images/icons/right_arrow.png" alt="menu" class="ov_image_14"/></div>';
+							cadena+='<div id="ov_box_13_1_f" class="ov_box_13" style="background-image:url(../..'+conoce.imagen+');" ><i class="fa fa-cutlery fa" style="font-size: 0.75em;"></i> </div>';
 							
 							switch(getLocalStorage("current_language"))
 							{
@@ -1242,7 +1242,7 @@ function search_string_in_av(value, container, type) {
 				
 				cadena+='<div onclick="window.location.href=\'../'+getLocalStorage('current_language')+'/conoce.html?id='+point.id+'\'" >';
 									
-				cadena+='<div id="ov_box_13_1_f" class="ov_box_13" style="background-image:url(../..'+point.imagen+');" ><img src="../../styles/images/icons/right_arrow.png" alt="menu" class="ov_image_14"/></div>';
+				cadena+='<div id="ov_box_13_1_f" class="ov_box_13" style="background-image:url(../..'+point.imagen+');" ><i class="fa fa-cutlery fa" style="font-size: 0.75em;"></i> </div>';
 				
 				switch(getLocalStorage("current_language"))
 				{
@@ -2461,6 +2461,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 										
 					var resultados=0;
 					var cadena="";
+					
 					$.each(data.result.items, function(i, fd) {
 					
 						/*if(start_count>i)
@@ -2548,15 +2549,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 					cadena+='</div>';
 					
 					cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
-					cadena+='<div class="ov_vertical_space_01">&nbsp;</div>';
-					
-					cadena+='<div onclick="window.location.href=\'../'+getLocalStorage('current_language')+'/services_list.html\'" >';
-					cadena+='<div id="ov_box_13_1_f" class="ov_box_13" ><img src="../../styles/images/icons/right_arrow.png" alt="menu" class="ov_image_14"/></div>';
-					cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24">'+TEXTOS[50]+'</div></div>';
-					cadena+='</div>';
-					
-					cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
-					cadena+='<div class="ov_vertical_space_02">&nbsp;</div>';					
+					cadena+='<div class="ov_vertical_space_02">&nbsp;</div>';				
 					
 
 					categ_list=JSON.parse(getLocalStorage("categ_list"));
@@ -2580,6 +2573,14 @@ function ajax_recover_data(type, folder, values, container, params) {
 						cadena+='</div>';
 							
 					});
+					
+					cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
+					cadena+='<div class="ov_vertical_space_02">&nbsp;</div>';
+					
+					cadena+='<div onclick="window.location.href=\'../'+getLocalStorage('current_language')+'/services_list.html\'" >';
+					cadena+='<div id="ov_box_13_1_f" class="ov_box_13" ><img src="../../styles/images/icons/right_arrow.png" alt="menu" class="ov_image_14"/></div>';
+					cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24">'+TEXTOS[50]+'</div></div>';
+					cadena+='</div>';
 					
 					cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
 					
@@ -3768,8 +3769,6 @@ function ajax_paint_routes(type, folder, values, container, params) {
 										var la_imagen=e.src_image.split("../../resources/");
 										src_image=fs.toURL()+file_path+"/"+la_imagen[1];
 										
-										 $("#"+container).append("<img src="+src_image+" />");
-										
 										if(src_image=="")
 										{
 											 $("#"+container).append(TEXTOS[7]);
@@ -3984,9 +3983,6 @@ function draw_canvas(container, src_image, src_gpx, id, canvas_number)
 	
 		width=$(window).width(); 
 		height=$(window).height();
-		
-		alert(src_image);
-		$("#mapa_canvas").append("<img src="+src_image+"/>");
 		
 		if(canvas_number==1)
 		{
@@ -4668,7 +4664,7 @@ function show_localstorage_data(type, container, params) {
 
 					if(getLocalStorage("routes_list")==null || typeof JSON.parse(getLocalStorage("routes_list"))=="undefined")
 					{
-						$("#"+container).html("<p>"+TEXTOS[35]+"<br>"+TEXTOS[55]+"</p><div class='ov_button_03' style='font-size:1.2em' onclick='go_to_page(\"points_list\");' >"+TEXTOS[56]+"</div>");
+						$("#"+container).html("<div class='ov_zone_15'><p>"+TEXTOS[35]+"<br>"+TEXTOS[55]+"</p><div class='ov_button_03' style='font-size:1.2em' onclick='go_to_page(\"points_list\");' >"+TEXTOS[56]+"</div></div>");
 					}					
 					else
 					{

@@ -763,7 +763,12 @@ div.alto_mini table{
 
 }
 
-@media only screen and (max-width: 320px), only screen and (max-device-width: 320px)
+@media only screen and (max-width: 480px), only screen and (max-device-width: 480px)
+{
+	.ov_text_23 {font-size:1em;}
+}
+
+@media only screen and (max-width: 325px), only screen and (max-device-width: 325px)
 {
 	.menu_principal{
 		font-size: 1.8em;
@@ -866,15 +871,15 @@ div.alto_mini table{
 	.ov_box_09{float:left;width:50%;background-color:#f7f7f8;text-align: center;padding-top:20px;padding-bottom:20px;height:100px;overflow:hidden;}
 	.ov_box_10{float:right;width:50%;background-color:#f7f7f8;text-align: center;padding-top:20px;padding-bottom:20px;height:100px;	overflow:hidden;}	
 
-	.ov_box_11{float:left;width:25%;height:60px;background-color:#8AA900;padding-top:20px;cursor:pointer; text-indent: -9999px;}
-	.ov_box_11_active{float:left;width:25%;height:60px;background-color:#8AA900;padding-top:20px;cursor:pointer;box-shadow:0px 0px 4px 1px #444;z-index:15;position:relative;text-indent: -9999px;}		
+	.ov_box_11{float:left;width:25%;height:60px;padding-top:20px;cursor:pointer; text-indent: -9999px;}
+	.ov_box_11_active{float:left;width:25%;height:60px;padding-top:20px;cursor:pointer;box-shadow:0px 0px 4px 1px #444;z-index:15;position:relative;text-indent: -9999px;}		
 	
-	.ov_box_11_b{float:left;width:20%;height:60px;background-color:#8AA900;padding-top:20px;cursor:pointer; text-indent: -9999px;}
-	.ov_box_11_b_active{float:left;width:20%;height:60px;background-color:#8AA900;padding-top:20px;cursor:pointer;box-shadow:0px 0px 4px 1px #444;z-index:15;position:relative;text-indent: -9999px;}				
+	.ov_box_11_b{float:left;width:20%;height:60px;padding-top:20px;cursor:pointer; text-indent: -9999px;}
+	.ov_box_11_b_active{float:left;width:20%;height:60px;padding-top:20px;cursor:pointer;z-index:15;position:relative;text-indent: -9999px;}				
 			
-	.ov_box_12{float:left;width:25%;height:60px;background-color:#4D802B;padding-top:20px;cursor:pointer;text-indent: -9999px;}
+	.ov_box_12{float:left;width:25%;height:60px;padding-top:20px;cursor:pointer;text-indent: -9999px;}
 	
-	.ov_box_12_b{float:left;width:20%;height:60px;background-color:#4D802B;padding-top:20px;cursor:pointer;text-indent: -9999px;}
+	.ov_box_12_b{float:left;width:20%;height:60px;padding-top:20px;cursor:pointer;text-indent: -9999px;}
 	
 	.ov_box_13{float:left;width:20%;height:25px;border-bottom:1px solid #000;padding-top:15px;padding-bottom:15px;cursor:pointer;background-image:url();background-position:center center;background-repeat:no-repeat;background-size:cover;}
 	.ov_box_14{float:left;width:80%;height:55px;background-color:#4A3933;border-bottom:1px solid #000;cursor:pointer}

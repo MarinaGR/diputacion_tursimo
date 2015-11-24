@@ -34,14 +34,15 @@
 					window.location.href="canvas.html?id="+get_var_url("id")+"&gpx="+gpx_file+"&json="+json_file+"&downloaded="+downloaded;
 				}, false);	
 				
-				document.getElementById("boton_atras").addEventListener("click", function() {
-					window.location.href="canvas.html?id="+get_var_url("id")+"&gpx="+gpx_file+"&json="+json_file+"&downloaded="+downloaded;
-				}, false);	
+				document.getElementById("boton_atras").addEventListener("click", onBackKeyDown, false);	
 				
-				document.addEventListener("backbutton", function() {
-					window.location.href="canvas.html?id="+get_var_url("id")+"&gpx="+gpx_file+"&json="+json_file+"&downloaded="+downloaded;
-				}, false);
+				document.addEventListener("backbutton", onBackKeyDown, false);
 			});
+			
+			function onBackKeyDown()
+			{
+				window.location.href="canvas.html?id="+get_var_url("id")+"&gpx="+gpx_file+"&json="+json_file+"&downloaded="+downloaded;
+			}
 
 		</script>
 	</head>

@@ -27,8 +27,17 @@
 				$("#ov_view_container_01").show();
 			}, 100);
 			
-			//Mostrar categorías
-			ajax_recover_data("category_list", "", "category_list", "ov_zone_21_categories");
+			//Mostrar listado de búsqueda si hay valor en el cuadro, si no mostrar categorías
+			if($("#search_point_list").val()!="")
+			{
+				search_string($("#search_point_list").val(), 'ov_zone_21_search');
+				$('.ov_box_11_b_active').attr("class","ov_box_12_b");
+			}
+			else
+			{
+				//Mostrar categorías
+				ajax_recover_data("category_list", "", "category_list", "ov_zone_21_categories");
+			}
 			
 			//Mostrar favoritos 
 			show_localstorage_data("fav_list", "ov_zone_21_featured");
@@ -97,6 +106,7 @@
 						$(this).attr("class","ov_box_11_active");			
 						$('.ov_zone_21').attr("class","ov_zone_21_b");
 						$('#ov_zone_21_categories').attr("class","ov_zone_21");			
+						ajax_recover_data("category_list", "", "category_list", "ov_zone_21_categories");
 					});		
 				</script>
 				<div id="ov_box_12_1" class="ov_box_12">
