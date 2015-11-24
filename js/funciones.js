@@ -3763,10 +3763,17 @@ function ajax_paint_routes(type, folder, values, container, params) {
 									window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem)
 									//window.webkitRequestFileSystem(PERSISTENT, 0, function(fileSystem) 
 									{
+										alert(file_path);
+										
 										fs=fileSystem.root;		
+										setFilePath();	
+										
+										alert(file_path);
 
 										var la_imagen=e.src_image.split("../../resources/");
-										src_image=fs.toURL()+file_path+la_imagen[1];
+										src_image=fs.toURL()+file_path+"/images/maps/"+la_imagen[1];
+										
+										alert(src_image);
 
 										if(src_image=="")
 										{
@@ -6626,7 +6633,7 @@ function downloadRoutesToDir(d) {
 	//$("body").prepend("<div id='descarga' onclick='$(this).hide()'><div id='descarga_close'>CERRAR</div></div>");
 	$("#ov_download_routes").prepend("<div id='descarga'></div>");
 		
-	$("#descarga").append("<p>DESCARGANDO ARCHIVOS...</p>");
+	$("#descarga").html("<p>DESCARGANDO ARCHIVOS...</p>");
 	$("#descarga").append("<p>Esta acci&oacute;n puede tardar algunos minutos.</p>");
 	
 	//$("#descarga").append('<progress id="barra_carga" max="98" value="1"></progress>');		
