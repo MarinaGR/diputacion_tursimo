@@ -6319,7 +6319,7 @@ function recover_extern_list(operation, params, container) {
 		  crossDomain: true, 
 		  success: function(data) 
 		  		   {
-					   if(operation=="trekking_routes_list")
+					  // if(operation=="trekking_routes_list")
 					   {
 							var cadena="";
 																				
@@ -6327,7 +6327,7 @@ function recover_extern_list(operation, params, container) {
 							{								
 								cadena+='<div onclick="donwload_files(\''+route.id+'\')" >';
 									
-								if(typeof getLocalStorage("troute_download")!="undefined" && getLocalStorage("troute_download")==route.id)
+								if(getLocalStorage("troute_download")!=null && getLocalStorage("troute_download")==route.id)
 								{
 									cadena+='<div id="ov_box_13_1_f" class="ov_box_13"><i class="fa fa-check fa" style="font-size: 0.75em;"></i> </div>';
 								}
@@ -6355,6 +6355,7 @@ function recover_extern_list(operation, params, container) {
 		  			},
 		  error: function(jqXHR, textStatus, errorThrown) {
 		  				console.log("Error ajax"); 
+						
 						$("#"+container).html("<p>"+TEXTOS[10]+"</p>");
 		  		 },
 		  async:false,
