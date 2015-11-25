@@ -34,11 +34,11 @@
 
 			ajax_recover_data("troute", "routes", identificador, "ov_info_route", [["downloaded",downloaded]]);
 			
+			document.addEventListener("backbutton", function() {
+				go_to_page('trekking_routes', 'void&downloaded='+downloaded);
+			}, false);
+			
 		});
-		
-		document.addEventListener("backbutton", function() {
-			go_to_page('trekking_routes', 'void&downloaded='+downloaded);
-		}, false);
 		
 		$(window).load(function() {
 		
@@ -47,6 +47,11 @@
 			}, 250);
 			
 		});
+		
+		function onBackKeyDown()
+		{
+			go_to_page('trekking_routes', 'void&downloaded='+downloaded);
+		}
 		</script>		
 	</head>
 

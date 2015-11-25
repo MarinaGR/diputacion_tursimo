@@ -2583,6 +2583,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 					cadena+='</div>';
 					
 					cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
+					cadena+='<div class="ov_vertical_space_02">&nbsp;</div>';				
 					
 					$("#"+container).html(cadena);
 									
@@ -3110,230 +3111,10 @@ function ajax_recover_data(type, folder, values, container, params) {
 								
 				
 				},onFileSystemError);   	
-				
-					/**************************/
-					/* DESCOMENTAR HASTA AQUÍ */
-					/**************************/
-	
-						
-						/******************
-	
-						fs.getDirectory("DiputacionAvila",{create:true, exclusive:false},function() {
-							
-							fs.getDirectory(file_path,{create:true, exclusive:false},function() {
-								
-								fs.getDirectory(file_path+"/json/",{create:true, exclusive:false},function() {
-		
-									fs.getDirectory(file_path+"/json/routes",{create:true, exclusive:false},function(dirEntry) {
-									
-										
-										  var dirReader = dirEntry.createReader();
-																	  
-										  var readEntries = function() {
-											
-											  dirReader.readEntries(function(entries) {
-												
-												for(var i = 0; i < entries.length; i++) {
-												  var entry = entries[i];
-												  if (entry.isDirectory){
-													console.log('Directory: ' + entry.fullPath);
-												  }
-												  else if (entry.isFile){
-													console.log('File: ' + entry.fullPath);
-													
-													fs.root.getFile(entry.fullPath, {}, function(fileEntry) {
 
-														// Get a File object representing the file,
-														// then use FileReader to read its contents.
-														fileEntry.file(function(file) {
-														   var reader = new FileReader();
-													
-														   reader.onloadend = function(e) {
-															
-																cadena+='<div onclick="go_to_page(\'troute\',\''+this.id+'\');" >';
-																cadena+='<div id="ov_box_13_1_f" class="ov_box_13" ><img src="../../styles/images/icons/right_arrow.png" alt="menu" class="ov_image_14" /></div>';
-																			
-																switch(getLocalStorage("current_language"))
-																{
-																	default:
-																	case "es":  cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24" onclick="$(\'#'+indice+'_puntos\').toggle();">'+this.es.nombre+'</div></div>';	
-																				break;
-																				
-																	case "en":  cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24" onclick="$(\'#'+indice+'_puntos\').toggle();">'+this.es.nombre+'</div></div>';	
-																				break;
-																}
-																	
-																cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
-																cadena+='</div>';
-																
-																indice++;
-																
-														   };
-													
-														   reader.readAsText(file);
-														   
-														}, function(jqXHR, textStatus, errorThrown) {		
-										
-															console.log("Error reader: No se ha cargado el archivo");
-													
-															});
-													
-													  }, function(jqXHR, textStatus, errorThrown) {		
-										
-															console.log("Error getFile: No se ha cargado el archivo");
-													
-														});
-													  
-												  }
-												}
-											
-											  }, function(jqXHR, textStatus, errorThrown) {		
-										
-													console.log("Error ReadEntries: No se ha cargado el directorio "+fs.toURL()+file_path+"/json/routes/");
-											
-											});
-											
-										}, function(jqXHR, textStatus, errorThrown) {		
-										
-												console.log("Error ReadEntries: No se ha cargado el directorio "+fs.toURL()+file_path+"/json/routes/");
-										
-										});
-								  
-									}, function(jqXHR, textStatus, errorThrown) {		
-										
-											console.log("Error ReadEntries: No se ha cargado el directorio "+fs.toURL()+file_path+"/json/routes/");
-									
-									});
-								};
-						
-						  readEntries(); // Start reading dirs.
-						  
-						}, function(jqXHR, textStatus, errorThrown) {		
-						
-									console.log("Error getDirectory: No se ha cargado el directorio "+fs.toURL()+file_path+"/json/routes/");
-						});
-						
-								
-							},onError);
-						},onError);   						
-						
-						**************************/
-						
-						/**************************
-						
-						var dirReader = fs.createReader();
-						var entries = [];
-						
-						  // Call the reader.readEntries() until no more results are returned.
-						  var readEntries = function() {
-						     dirReader.readEntries (function(results) {
-						     	
-						     	console.log(results);
-						     	
-						      if (!results.length) {
-						        
-								entries.sort();
-														        
-						        //entries.forEach(function(entry, i) {
-						        $.each(entries, function(index, rutas) {
-						        	
-						        	console.log(rutas);
-						        	
-								    cadena+='<div onclick="go_to_page(\'troute\',\''+rutas.id+'\');" >';
-									cadena+='<div id="ov_box_13_1_f" class="ov_box_13" ><img src="../../styles/images/icons/right_arrow.png" alt="menu" class="ov_image_14" /></div>';
-												
-									switch(getLocalStorage("current_language"))
-									{
-										default:
-										case "es":  cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24" onclick="$(\'#'+indice+'_puntos\').toggle();">'+rutas.es.nombre+'</div></div>';	
-													break;
-													
-										case "en":  cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24" onclick="$(\'#'+indice+'_puntos\').toggle();">'+rutas.es.nombre+'</div></div>';	
-													break;
-									}
-										
-									cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
-									cadena+='</div>';
-									
-									indice++;
-								  });
-								
-						  
-						      } else {
-						        //entries = entries.concat(toArray(results));
-						        entries = entries.concat(Array.prototype.slice.call(results || [], 0));
-						        
-						        readEntries();
-						      }
-						    }, function(jqXHR, textStatus, errorThrown) {		
-						
-									console.log("No se ha cargado el archivo "+fs.toURL()+file_path+"/json/route"+id+".json");
+				$("#"+container).html(cadena);						
 							
-								});
-						  };
-						
-						  readEntries(); // Start reading dirs.
-							
-						
-								
-						/*var objajax=$.getJSON(fs.toURL()+file_path+"/json/routes"+id+".json", f_success)
-						.fail(function(jqXHR, textStatus, errorThrown) {		
-						
-							console.log("No se ha cargado el archivo "+fs.toURL()+file_path+"/json/route"+id+".json");
-							
-						});*/
-
-					//});
-					
-					
-					/*
-					 
-					 function toArray(list) {
-						  return Array.prototype.slice.call(list || [], 0);
-						}
-						
-						function listResults(entries) {
-						  // Document fragments can improve performance since they're only appended
-						  // to the DOM once. Only one browser reflow occurs.
-						  var fragment = document.createDocumentFragment();
-						
-						  entries.forEach(function(entry, i) {
-						    var img = entry.isDirectory ? '<img src="folder-icon.gif">' :
-						                                  '<img src="file-icon.gif">';
-						    var li = document.createElement('li');
-						    li.innerHTML = [img, '<span>', entry.name, '</span>'].join('');
-						    fragment.appendChild(li);
-						  });
-						
-						  document.querySelector('#filelist').appendChild(fragment);
-						}
-						
-						function onInitFs(fs) {
-						
-						  var dirReader = fs.root.createReader();
-						  var entries = [];
-						
-						  // Call the reader.readEntries() until no more results are returned.
-						  var readEntries = function() {
-						     dirReader.readEntries (function(results) {
-						      if (!results.length) {
-						        listResults(entries.sort());
-						      } else {
-						        entries = entries.concat(toArray(results));
-						        readEntries();
-						      }
-						    }, errorHandler);
-						  };
-						
-						  readEntries(); // Start reading dirs.
-						
-						} 
-					 
-					 */
-					
-					$("#"+container).html(cadena);						
-								
-					break;
+				break;
 					
 					
 			case "trekking_route_info": 			
@@ -6538,30 +6319,39 @@ function recover_extern_list(operation, params, container) {
 		  crossDomain: true, 
 		  success: function(data) 
 		  		   {
-		  		   		var cadena="";
-		  		   				  		   		
-			  			$.each(data.result.routes, function(ind, route)  
-						{								
-							cadena+='<div onclick="donwload_files(\''+route.id+'\')" >';
+					   if(operation=="trekking_routes_list")
+					   {
+							var cadena="";
+																				
+							$.each(data.result.routes, function(ind, route)  
+							{								
+								cadena+='<div onclick="donwload_files(\''+route.id+'\')" >';
 									
-							cadena+='<div id="ov_box_13_1_f" class="ov_box_13"><img src="../../styles/images/icons/grey2_triangle.png" alt="menu" class="ov_image_14"/></div>';
-										
-							switch(getLocalStorage("current_language"))
-							{
-								default:
-								case "es":  cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24">'+route.es.nombre+'</div></div>';											
-											break;
-								
-								case "en":  cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24">'+route.en.nombre+'</div></div>';
-											break;
-							}	
-						
-							cadena+='</div>';
+								if(typeof getLocalStorage("troute_download")!="undefined" && getLocalStorage("troute_download")==route.id)
+								{
+									cadena+='<div id="ov_box_13_1_f" class="ov_box_13"><i class="fa fa-check fa" style="font-size: 0.75em;"></i> </div>';
+								}
+								else
+								{
+									cadena+='<div id="ov_box_13_1_f" class="ov_box_13"><img src="../../styles/images/icons/grey2_triangle.png" alt="menu" class="ov_image_14"/></div>';
+								}
+									
+								switch(getLocalStorage("current_language"))
+								{
+									default:
+									case "es":  cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24">'+route.es.nombre+'</div></div>';											
+												break;
+									
+									case "en":  cadena+='<div id="ov_box_14_1_f" class="ov_box_14"><div id="ov_text_24_1_f" class="ov_text_24">'+route.en.nombre+'</div></div>';
+												break;
+								}	
+							
+								cadena+='</div>';
 
-						});
-						
-						$("#"+container).html(cadena);
-	
+							});
+							
+							$("#"+container).html(cadena);
+					   }
 		  			},
 		  error: function(jqXHR, textStatus, errorThrown) {
 		  				console.log("Error ajax"); 
@@ -6778,7 +6568,8 @@ function downloadImages(imagenes, i, total, path) {
 	{
 		$("#descarga").append("<p>"+TEXTOS[58]+"</p>");
 		setTimeout(function() {
-			$("#descarga").html("<h3>"+TEXTOS[59]+"</h3><p>"+TEXTOS[60]+"</p>");		
+			$("#descarga").html("<h3>"+TEXTOS[59]+" ("+ID_ROUTE_DOWNLOAD+")</h3><p>"+TEXTOS[60]+"</p>");	
+			setLocalStorage("troute_download",ID_ROUTE_DOWNLOAD);			
 		}, 1000);
 	}		
 }
