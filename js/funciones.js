@@ -6339,7 +6339,7 @@ function recover_extern_list(operation, params, container) {
 								if(getLocalStorage("troute_download")!=null && typeof JSON.parse(getLocalStorage("troute_download"))!="undefined")
 								{
 									var troute_download=JSON.parse(getLocalStorage("troute_download"));
-									var encuentro = troute_download[route.id];					
+									var encuentro = troute_download[route.id];	
 													
 									if (encuentro != "undefined") {
 										cadena+='<div id="ov_box_13_1_f" class="ov_box_13"><i class="fa fa-check fa" style="font-size: 0.75em;"></i> </div>';
@@ -6436,7 +6436,7 @@ function downloadRoutesToDir(d) {
 	//$("body").prepend("<div id='descarga' onclick='$(this).hide()'><div id='descarga_close'>CERRAR</div></div>");
 	$("#ov_download_routes").prepend("<div id='descarga'></div>");
 		
-	$("#descarga").html("<p>DESCARGANDO ARCHIVOS...<p id='porcentaje'> </p></p>");
+	$("#descarga").html("<p>DESCARGANDO ARCHIVOS...<span id='porcentaje'> </span></p>");
 	$("#descarga").append("<p>Esta acci&oacute;n puede tardar algunos minutos.</p>");
 	
 	//$("#descarga").append('<progress id="barra_carga" max="98" value="1"></progress>');		
@@ -6585,7 +6585,7 @@ function downloadImages(imagenes, i, total, path) {
 	   $("#descarga_close").show();
 	}
 	
-	if(i>=total)
+	if(i>=total-1)
 	{
 		$("#descarga").append("<p>"+TEXTOS[58]+"</p>");
 		setTimeout(function() {
