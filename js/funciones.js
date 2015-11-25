@@ -10,6 +10,7 @@ var RADIO_DESDE_USER_MAPA_LOCATION=100; //km
 var DATOS, FILTRO, NOMBRE_FILTRO, CONTENEDOR, ES_MUNICIPIO, ES_SERVICIO;
 
 var fav_list=new Object();
+var troute_download=new Object();
 var routes_list=new Object();
 var trekking_routes=new Object();
 var categ_list=new Object();
@@ -2982,8 +2983,9 @@ function ajax_recover_data(type, folder, values, container, params) {
 				
 					var cadena="";
 					
-					console.log(data.result);
-					
+					cadena+="<div class='ov_zone_15'><h3>"+TEXTOS[61]+"</h3>";
+					cadena+="<p>"+TEXTOS[62]+"</p></div>";
+										
 					var indice=0;
 					$.each(data.result.routes, function(index, rutas) 
 					{   		
@@ -6340,6 +6342,8 @@ function recover_extern_list(operation, params, container) {
 								{
 									var troute_download=JSON.parse(getLocalStorage("troute_download"));
 									var encuentro = troute_download[route.id];	
+									
+									alert(encuentro);
 													
 									if (encuentro != "undefined") {
 										cadena+='<div id="ov_box_13_1_f" class="ov_box_13"><i class="fa fa-check fa" style="font-size: 0.75em;"></i> </div>';
@@ -6589,7 +6593,7 @@ function downloadImages(imagenes, i, total, path) {
 	{
 		$("#descarga").append("<p>"+TEXTOS[58]+"</p>");
 		setTimeout(function() {
-			$("#descarga").html("<h3>"+TEXTOS[59]+" ("+ID_ROUTE_DOWNLOAD+")</h3><p>"+TEXTOS[60]+"<br></p>");	
+			$("#descarga").html("<h3>"+TEXTOS[59]+" ("+ID_ROUTE_DOWNLOAD+")</h3><h4>"+TEXTOS[60]+"<br></h4>");	
 			
 			var troute_download=JSON.parse(getLocalStorage("troute_download"));
 		
