@@ -6342,8 +6342,6 @@ function recover_extern_list(operation, params, container) {
 								{
 									var troute_download=JSON.parse(getLocalStorage("troute_download"));
 									var encuentro = troute_download[route.id];	
-									
-									alert(encuentro);
 													
 									if (encuentro != "undefined") {
 										cadena+='<div id="ov_box_13_1_f" class="ov_box_13"><i class="fa fa-check fa" style="font-size: 0.75em;"></i> </div>';
@@ -6648,7 +6646,7 @@ function success_getFile(parent) {
     console.log("Nombre del padre: " + parent.name);
 }
 function fail_getFile(error) {
-    alert("Ocurrió un error recuperando el fichero: " + error.message);
+    alert("Error recuperando el fichero: " + error.message);
 }
 function onError(e){
 	$("#descarga_close").show();

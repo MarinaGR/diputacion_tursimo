@@ -6,7 +6,7 @@
 		<!-- ios new version 1.0.1: delete reference other mobile plataforms -->
 		<!-- ios new version 1.0.2: cambio de imagen -->
 		<!-- all new version 1.0.3: download and new informations // version not yet upload in ios -->
-		<!-- all new version 1.0.4: dproblem route canvas image // version not yet upload in ios -->
+		<!-- all new version 1.0.4: problem route canvas image // version not yet upload in ios -->
 
     <name>Diputación de Ávila - Turismo</name>
 
@@ -27,7 +27,7 @@
     <!-- Personalización -->
     <preference name="phonegap-version"           value="3.7.0" />          <!-- all: current version of PhoneGap -->
 	
-    <preference name="orientation"                value="default" />        <!-- all: default means both landscape and portrait are enabled -->
+    <preference name="orientation"                value="portrait" />        <!-- all: default means both landscape and portrait are enabled -->
     <preference name="target-device"              value="universal" />      <!-- all: possible values handset, tablet, or universal -->
     <preference name="fullscreen"                 value="true" />          <!-- all: hides the status bar at the top of the screen -->
     <preference name="prerendered-icon"           value="true" />           <!-- ios: if icon is prerendered, iOS will not apply it's gloss to the app's icon on the user's home screen -->
