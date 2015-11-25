@@ -18,13 +18,13 @@
 		<script src="../../cordova.js"></script>
 		
 		<script>		
+			var identificador=get_var_url("id");
+			var gpx_file=get_var_url("gpx");
+			var json_file=get_var_url("json");
+			var downloaded=get_var_url("downloaded"); 
+				
 			document.addEventListener("deviceready", function() {
 			//$(document).ready(function() {
-			
-				var identificador=get_var_url("id");
-				var gpx_file=get_var_url("gpx");
-				var json_file=get_var_url("json");
-				var downloaded=get_var_url("downloaded"); 
 				
 				$("#ov_body_01").css("background-color","#F2F2F3");
 
@@ -34,9 +34,14 @@
 					window.location.href="canvas.html?id="+get_var_url("id")+"&gpx="+gpx_file+"&json="+json_file+"&downloaded="+downloaded;
 				}, false);	
 				
-				document.getElementById("boton_atras").addEventListener("click", onBackKeyDown, false);	
+				document.getElementById("boton_atras").addEventListener("click", function() {
+					window.location.href="canvas.html?id="+get_var_url("id")+"&gpx="+gpx_file+"&json="+json_file+"&downloaded="+downloaded;
+				}, false);	
 				
-				document.addEventListener("backbutton", onBackKeyDown, false);
+				document.addEventListener("backbutton", function() {
+					window.location.href="canvas.html?id="+get_var_url("id")+"&gpx="+gpx_file+"&json="+json_file+"&downloaded="+downloaded;
+				}, false);
+				
 			});
 			
 			function onBackKeyDown()
