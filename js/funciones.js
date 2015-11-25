@@ -197,6 +197,8 @@ function view_presentation_or_menu()
 {
 	$('#ov_curtain_1_1').show('fade',500);
 	$("#ov_view_container_01").hide('drop',500,function(){
+	
+		setLocalStorage("first_time","NO");
 
 		if(localStorage.getItem("skip_presentation")=="1")
 		{
@@ -4861,11 +4863,18 @@ function ajax_recover_extern_data(operation, container, params) {
 							
 			case "moreinfo": 		
 							var cadena='';
+							var d=data.result;
 							
-							cadena+=TEXTOS[7];
+							if(d=="")
+							{
+								cadena+=TEXTOS[7];
+							}
+							else
+							{
+								cadena+=d;
+							}
 									
-							/*var d=data.result;
-							
+							/*							
 							cadena+='<div class="" onclick="window.open('+data.url_web+', \'_system\', \'location=yes\');" >'
 										+'<div class="ov_text_08">'
 										+d.titulo+'<br><span class="ov_text_32">'+d.fecha_ini+''+d.fecha_fin+'</span>'
@@ -6327,21 +6336,19 @@ function recover_extern_list(operation, params, container) {
 							{								
 								cadena+='<div onclick="donwload_files(\''+route.id+'\')" >';
 								
-								/*
 								if(getLocalStorage("troute_download")!=null && typeof JSON.parse(getLocalStorage("troute_download"))!="undefined")
 								{
-									$.each(JSON.parse(getLocalStorage("troute_download")), function(index, data) {
-									
-										$.each(data, function(i, d) {
-										});
-									
-									});
-								
-								*/
-									
-								if(getLocalStorage("troute_download")!=null && getLocalStorage("troute_download")==route.id)
-								{
-									cadena+='<div id="ov_box_13_1_f" class="ov_box_13"><i class="fa fa-check fa" style="font-size: 0.75em;"></i> </div>';
+									var encuentro = $.grep(JSON.parse(getLocalStorage("troute_download")), function(e) { 
+														return e.id == route.id; 
+													});						
+													
+									if (encuentro.length == 1) {
+										cadena+='<div id="ov_box_13_1_f" class="ov_box_13"><i class="fa fa-check fa" style="font-size: 0.75em;"></i> </div>';
+									}
+									else
+									{
+										cadena+='<div id="ov_box_13_1_f" class="ov_box_13"><img src="../../styles/images/icons/grey2_triangle.png" alt="menu" class="ov_image_14"/></div>';
+									}
 								}
 								else
 								{
@@ -6430,11 +6437,11 @@ function downloadRoutesToDir(d) {
 	//$("body").prepend("<div id='descarga' onclick='$(this).hide()'><div id='descarga_close'>CERRAR</div></div>");
 	$("#ov_download_routes").prepend("<div id='descarga'></div>");
 		
-	$("#descarga").html("<p>DESCARGANDO ARCHIVOS...</p>");
+	$("#descarga").html("<p>DESCARGANDO ARCHIVOS...<p id='porcentaje'> </p></p>");
 	$("#descarga").append("<p>Esta acci&oacute;n puede tardar algunos minutos.</p>");
 	
 	//$("#descarga").append('<progress id="barra_carga" max="98" value="1"></progress>');		
-	$("#descarga").append('<p id="porcentaje"> </p>');
+	//$("#descarga").append('<p id="porcentaje"> </p>');
 	
 	//DESCARGA FICHERO JSON
 	fs.getDirectory(file_path+"/json/",{create:true, exclusive:false},function() {
@@ -6673,7 +6680,7 @@ function get_var_url(variable){
 
 function getFirstTime()   
 {
-	if(getLocalStorage("first_time")==null || getLocalStorage("first_time")!="NO")
+	if(getLocalStorage("first_time")!=null && getLocalStorage("first_time")=="NO")
 	{
 		window.location.href='./html/'+getLocalStorage("current_language")+'/main_menu.html';
 	}
