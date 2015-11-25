@@ -6312,7 +6312,7 @@ function SortByLangName(a, b){
 }
 
 function recover_extern_list(operation, params, container) {
-	
+								
 	$.ajax({
 
 		  url: api_url,
@@ -6335,14 +6335,13 @@ function recover_extern_list(operation, params, container) {
 							$.each(data.result.routes, function(ind, route)  
 							{								
 								cadena+='<div onclick="donwload_files(\''+route.id+'\')" >';
-								
+																
 								if(getLocalStorage("troute_download")!=null && typeof JSON.parse(getLocalStorage("troute_download"))!="undefined")
 								{
-									var encuentro = $.grep(JSON.parse(getLocalStorage("troute_download")), function(e) { 
-														return e.id == route.id; 
-													});						
+									var troute_download=JSON.parse(getLocalStorage("troute_download"));
+									var encuentro = troute_download[route.id];					
 													
-									if (encuentro.length == 1) {
+									if (encuentro != "undefined") {
 										cadena+='<div id="ov_box_13_1_f" class="ov_box_13"><i class="fa fa-check fa" style="font-size: 0.75em;"></i> </div>';
 									}
 									else
@@ -6605,7 +6604,8 @@ function downloadImages(imagenes, i, total, path) {
 			);		
 			setLocalStorage("troute_download", JSON.stringify(troute_download));
 		
-			setLocalStorage("troute_download",ID_ROUTE_DOWNLOAD);			
+			//setLocalStorage("troute_download",ID_ROUTE_DOWNLOAD);			
+			
 		}, 1000);
 	}		
 }
