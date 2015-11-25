@@ -6326,6 +6326,18 @@ function recover_extern_list(operation, params, container) {
 							$.each(data.result.routes, function(ind, route)  
 							{								
 								cadena+='<div onclick="donwload_files(\''+route.id+'\')" >';
+								
+								/*
+								if(getLocalStorage("troute_download")!=null && typeof JSON.parse(getLocalStorage("troute_download"))!="undefined")
+								{
+									$.each(JSON.parse(getLocalStorage("troute_download")), function(index, data) {
+									
+										$.each(data, function(i, d) {
+										});
+									
+									});
+								
+								*/
 									
 								if(getLocalStorage("troute_download")!=null && getLocalStorage("troute_download")==route.id)
 								{
@@ -6436,7 +6448,7 @@ function downloadRoutesToDir(d) {
 			console.log(dlPath);
 	
 			ft.download(extern_url+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json" , dlPath, function() {
-					$("#descarga").append("DATA"+" .... OK<br>");
+					$("#porcentaje").append(".");
 					//$("#descarga").append("/json/routes/"+ID_ROUTE_DOWNLOAD+".json"+" .... OK<br>");
 					//cargar_barra("barra_carga", 100);	
 					
@@ -6453,12 +6465,13 @@ function downloadRoutesToDir(d) {
 								var dlPath = fs.toURL()+file_path+"/routes/"+dat.gpx+".gpx"; 	
 							
 								ft.download(extern_url+"/routes/"+dat.gpx+".gpx" , dlPath, function() {
-									$("#descarga").append("GPX"+" .... OK<br>");
+									$("#porcentaje").append(".");
 									//$("#descarga").append("/routes/"+dat.gpx+".gpx"+" .... OK<br>");
 									//cargar_barra("barra_carga", 100);
 								}, 
 								function(error){
-									$("#descarga").append("routes/"+dat.gpx+".gpx"+" .... KO "+error.message+"<br>");
+									//$("#descarga").append("routes/"+dat.gpx+".gpx"+" .... KO "+error.message+"<br>");
+									$("#descarga").append("GPX .... KO "+error.message+"<br>");
 								});	
 									
 								
@@ -6468,7 +6481,8 @@ function downloadRoutesToDir(d) {
 
 						},function(error){
 							//$("#descarga").append("Get File "+fs.toURL()+file_path+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json fail " + error.message+"<br>");
-							$("#descarga").append("Get File "+ID_ROUTE_DOWNLOAD+".json fail " + error.message+"<br>");
+							//$("#descarga").append("Get File "+ID_ROUTE_DOWNLOAD+".json fail " + error.message+"<br>");
+							$("#descarga").append("JSON .... KO "+error.message+"<br>");
 						});
 						
 					}
@@ -6516,7 +6530,7 @@ function downloadRoutesToDir(d) {
 					}	
 					
 				}).fail(function(jqXHR, textStatus, errorThrown) {							
-					console.log("Error al recoger la ruta "+fs.toURL()+file_path+"/json/routes/"+ID_ROUTE_DOWNLOAD+".json");											
+					console.log("Error ruta json/routes/"+ID_ROUTE_DOWNLOAD+".json");											
 				});
 					
 			},function(error){
@@ -6544,7 +6558,7 @@ function downloadImages(imagenes, i, total, path) {
 		ft.download(extern_url+"/"+imagen_local[1], dlPath, function() {
 		
 				//$("#descarga").append(imagen_local[1]+" .... OK<br>");	
-				$("#descarga").append("IMAGEN .... OK<br>");	
+				$("#porcentaje").append(".");	
 				i++;			
 				if(i<total)
 					downloadImages(imagenes, i, total, path);
@@ -6565,11 +6579,25 @@ function downloadImages(imagenes, i, total, path) {
 	   $("#descarga_close").show();
 	}
 	
-	if(i>=total-1)
+	if(i>=total)
 	{
 		$("#descarga").append("<p>"+TEXTOS[58]+"</p>");
 		setTimeout(function() {
-			$("#descarga").html("<h3>"+TEXTOS[59]+" ("+ID_ROUTE_DOWNLOAD+")</h3><p>"+TEXTOS[60]+"</p>");	
+			$("#descarga").html("<h3>"+TEXTOS[59]+" ("+ID_ROUTE_DOWNLOAD+")</h3><p>"+TEXTOS[60]+"<br></p>");	
+			
+			var troute_download=JSON.parse(getLocalStorage("troute_download"));
+		
+			if(troute_download==null)
+				troute_download=new Object();
+		
+			troute_download[id]=new Array();
+			troute_download[id].push(
+				{
+					id:ID_ROUTE_DOWNLOAD
+				}
+			);		
+			setLocalStorage("troute_download", JSON.stringify(troute_download));
+		
 			setLocalStorage("troute_download",ID_ROUTE_DOWNLOAD);			
 		}, 1000);
 	}		
