@@ -650,6 +650,18 @@ function search_string(value, container) {
 						$('#'+container).html(cad_result);		
 						
 						$('#cargador').hide();
+						
+						$("a").on("click", function(e) {
+			
+							var url = $(this).attr('href');
+							var containsHttp = new RegExp('http\\b'); 
+
+							if(containsHttp.test(url)) { 
+								e.preventDefault(); 
+								window.open(url, "_system", "location=yes"); // For iOS
+								//navigator.app.loadUrl(url, {openExternal: true}); //For Android
+							}
+						});	
 			
 							
 					});
@@ -827,7 +839,19 @@ function search_string_in_avaut(value, container, type) {
 			$('#'+container).html(cadena);		
 			$('.ov_zone_21').attr("class","ov_zone_21_b");
 			$('#'+container).attr("class","ov_zone_21");	
-			$('.ov_box_11_active').attr("class","ov_box_12");		
+			$('.ov_box_11_active').attr("class","ov_box_12");	
+
+			$("a").on("click", function(e) {
+			
+				var url = $(this).attr('href');
+				var containsHttp = new RegExp('http\\b'); 
+
+				if(containsHttp.test(url)) { 
+					e.preventDefault(); 
+					window.open(url, "_system", "location=yes"); // For iOS
+					//navigator.app.loadUrl(url, {openExternal: true}); //For Android
+				}
+			});	
 					
 		});
 
@@ -3414,19 +3438,28 @@ function ajax_recover_data(type, folder, values, container, params) {
 					break;
 			
 		}
-			
-		$("a").on("click", function(e) {
-			
+					
+		$("body").on("click", "a", function(event) {
+		//$("a").on("click", function(e) {
 			var url = $(this).attr('href');
 			var containsHttp = new RegExp('http\\b'); 
+			var containsHttps = new RegExp('https\\b'); 
 
 			if(containsHttp.test(url)) { 
+			
+				alert(url);
+				
+				e.preventDefault(); 
+				window.open(url, "_system", "location=yes"); // For iOS
+				//navigator.app.loadUrl(url, {openExternal: true}); //For Android
+			}
+			else if(containsHttps.test(url)) { 
 				e.preventDefault(); 
 				window.open(url, "_system", "location=yes"); // For iOS
 				//navigator.app.loadUrl(url, {openExternal: true}); //For Android
 			}
 		});	
-	
+		
 	}
 	
 }
