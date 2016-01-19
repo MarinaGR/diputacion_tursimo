@@ -3447,7 +3447,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 
 			if(containsHttp.test(url)) { 
 			
-				alert(url);
+				//alert(url);
 				
 				e.preventDefault(); 
 				window.open(url, "_system", "location=yes"); // For iOS
@@ -6622,9 +6622,12 @@ function downloadImages(imagenes, i, total, path) {
 	
 	if(i>=total-1)
 	{
-		$("#descarga").append("<p>"+TEXTOS[58]+"</p>");
+		$("#descarga").prepend("<p>"+TEXTOS[58]+"</p>");
 		setTimeout(function() {
-			$("#descarga").html("<h3>"+TEXTOS[59]+" ("+ID_ROUTE_DOWNLOAD+")</h3><h4>"+TEXTOS[60]+"<br></h4>");	
+			
+			$("#descarga").html("<h3>"+TEXTOS[59]+" ("+ID_ROUTE_DOWNLOAD+")</h3><h4>"+TEXTOS[60]+"<br><br></h4>");	
+			
+			$("html,body").animate({scrollTop:0},500);
 			
 			var troute_download=JSON.parse(getLocalStorage("troute_download"));
 		
