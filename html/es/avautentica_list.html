@@ -30,7 +30,8 @@
 		if(limit==false)
 			limit=16;
 		
-		$(document).ready(function() {
+		document.addEventListener("deviceready", function()  {
+		//$(document).ready(function() {
 		
 			$("#ov_view_container_01").css("background-color","#F2F2F3");
 			$('#ov_view_container_01').css("min-height",$(window).innerHeight()+"px");

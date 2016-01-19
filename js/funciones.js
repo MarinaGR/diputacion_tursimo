@@ -3446,7 +3446,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 			var containsHttps = new RegExp('https\\b'); 
 
 			if(containsHttp.test(url)) { 
-			
+			 
 				//alert(url);
 				
 				e.preventDefault(); 
@@ -6474,6 +6474,8 @@ function downloadRoutesToDir(d) {
 	$("#descarga").html("<p>DESCARGANDO ARCHIVOS...<span id='porcentaje'> </span></p>");
 	$("#descarga").append("<p>Esta acci&oacute;n puede tardar algunos minutos.</p>");
 	
+	$("html,body").animate({scrollTop:0},500);
+	
 	//$("#descarga").append('<progress id="barra_carga" max="98" value="1"></progress>');		
 	//$("#descarga").append('<p id="porcentaje"> </p>');
 	
@@ -6626,8 +6628,6 @@ function downloadImages(imagenes, i, total, path) {
 		setTimeout(function() {
 			
 			$("#descarga").html("<h3>"+TEXTOS[59]+" ("+ID_ROUTE_DOWNLOAD+")</h3><h4>"+TEXTOS[60]+"<br><br></h4>");	
-			
-			$("html,body").animate({scrollTop:0},500);
 			
 			var troute_download=JSON.parse(getLocalStorage("troute_download"));
 		

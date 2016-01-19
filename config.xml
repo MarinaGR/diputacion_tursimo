@@ -2,11 +2,12 @@
 <widget xmlns = "http://www.w3.org/ns/widgets"
 		xmlns:gap   = "http://phonegap.com/ns/1.0"
 		id          = "com.ovnyline.diputacion"
-		version     = "1.0.4" >
+		version     = "1.0.5" >
 		<!-- ios new version 1.0.1: delete reference other mobile plataforms -->
 		<!-- ios new version 1.0.2: cambio de imagen -->
 		<!-- all new version 1.0.3: download and new informations // version not yet upload in ios -->
 		<!-- all new version 1.0.4: problem route canvas image // version not yet upload in ios -->
+		<!-- all new version 1.0.5: actualizadas algunas fichas y enlaces exteriores // version not yet upload in ios -->
 
     <name>Diputación de Ávila - Turismo</name>
 
