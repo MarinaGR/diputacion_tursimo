@@ -651,7 +651,8 @@ function search_string(value, container) {
 						
 						$('#cargador').hide();
 						
-						$("a").on("click", function(e) {
+						$("body").on("click", "a", function(e) {
+						//$("a").on("click", function(e) {
 			
 							var url = $(this).attr('href');
 							var containsHttp = new RegExp('http\\b'); 
@@ -841,7 +842,8 @@ function search_string_in_avaut(value, container, type) {
 			$('#'+container).attr("class","ov_zone_21");	
 			$('.ov_box_11_active').attr("class","ov_box_12");	
 
-			$("a").on("click", function(e) {
+			$("body").on("click", "a", function(e) {
+			//$("a").on("click", function(e) {
 			
 				var url = $(this).attr('href');
 				var containsHttp = new RegExp('http\\b'); 
@@ -1433,7 +1435,8 @@ function search_string_in_ser(value, container, type) {
 			$('#'+container).attr("class","ov_zone_21");	
 			$('.ov_box_11_active').attr("class","ov_box_12");						
 			
-			$("a").on("click", function(e) {
+			$("body").on("click", "a", function(e) {
+			//$("a").on("click", function(e) {
 				var url = $(this).attr('href');
 				var containsHttp = new RegExp('http\\b'); 
 
@@ -3440,18 +3443,16 @@ function ajax_recover_data(type, folder, values, container, params) {
 		}
 		
 		
-//		$("body").on("click", "a", function(event) {
-		$("a").on("click", function(e) {
+		$("body").on("click", "a", function(e) {
+		//$("a").on("click", function(e) {
 			var url = $(this).attr('href');
 			var containsHttp = new RegExp('http\\b'); 
 			var containsHttps = new RegExp('https\\b'); 
 
 			if(containsHttp.test(url)) { 
-			 
-				alert(url);
-				
+
 				e.preventDefault(); 
-				window.open(url, "_system", "location=yes"); // For iOS
+				window.open(url, "_blank", "location=yes"); // For iOS
 				//navigator.app.loadUrl(url, {openExternal: true}); //For Android
 			}
 			else if(containsHttps.test(url)) { 
@@ -3656,7 +3657,8 @@ function ajax_paint_routes(type, folder, values, container, params) {
 			
 		}
 		
-		$("a").on("click", function(e) {
+		$("body").on("click", "a", function(e) {
+		//$("a").on("click", function(e) {
 			var url = $(this).attr('href');
 			var containsHttp = new RegExp('http\\b'); 
 
@@ -4941,7 +4943,8 @@ function ajax_recover_extern_data(operation, container, params) {
 					
 		}
 		
-		$("a").on("click", function(e) {
+		$("body").on("click", "a", function(e) {
+		//$("a").on("click", function(e) {
 			var url = $(this).attr('href');
 			var containsHttp = new RegExp('http\\b'); 
 			var containsHttps = new RegExp('https\\b'); 
