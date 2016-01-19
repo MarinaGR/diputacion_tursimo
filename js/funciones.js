@@ -3438,16 +3438,17 @@ function ajax_recover_data(type, folder, values, container, params) {
 					break;
 			
 		}
-					
-		$("body").on("click", "a", function(event) {
-		//$("a").on("click", function(e) {
+		
+		
+//		$("body").on("click", "a", function(event) {
+		$("a").on("click", function(e) {
 			var url = $(this).attr('href');
 			var containsHttp = new RegExp('http\\b'); 
 			var containsHttps = new RegExp('https\\b'); 
 
 			if(containsHttp.test(url)) { 
 			 
-				//alert(url);
+				alert(url);
 				
 				e.preventDefault(); 
 				window.open(url, "_system", "location=yes"); // For iOS
