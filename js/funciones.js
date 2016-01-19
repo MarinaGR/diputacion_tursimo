@@ -3452,7 +3452,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 			if(containsHttp.test(url)) { 
 
 				e.preventDefault(); 
-				window.open(url, "_blank", "location=yes"); // For iOS
+				window.open(url, "_system", "location=yes"); // For iOS
 				//navigator.app.loadUrl(url, {openExternal: true}); //For Android
 			}
 			else if(containsHttps.test(url)) { 
