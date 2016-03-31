@@ -644,6 +644,42 @@ div.alto_mini table{
 }
 /*Fin Agenda Web*/
 
+/*Notificaciones*/
+.switch label { 
+	cursor: pointer; 
+	margin: 10px auto; 
+	font-size: 1.2em;
+	position:relative; 
+}								
+.switch input { 
+	display: none; 
+}								
+.switch .enable, .switch .disable, .switch .enable span, .switch .disable span { 
+	background:#eee;  
+	display: block;  
+	max-width: 480px;
+	text-align: center;
+}																
+.switch .enable span, .switch .disable span { 
+	line-height: 30px; 
+	display: block; 
+	padding: 5px 25px; 
+}								
+.switch .disable.selected span, .switch .enable.selected span { 
+	color: #4D802B; 
+}			
+label.enable.selected::after, label.disable.selected::after  {
+	content: '✔ '; 
+	position: absolute;
+	top: 0;
+	right: 5px;
+	color: #4D802B;
+	line-height: 40px;
+	font-family: "1", sans-serif;
+	font-size: 1.2em;
+	padding: 0 5px;
+}
+/*Fin Notificaciones*/
 
 @media only screen and (max-width: 680px), only screen and (max-device-width: 680px)
 {
