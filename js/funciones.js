@@ -10,6 +10,7 @@ var uuid;
 
 //OJO CAMBIAR ESTO Y CONFIG
 var extern_siteurl_notif='http://www.turismoavila.com/app/notifications/';
+var extern_siteurl_op=extern_siteurl_notif+"push.php";
 
 var api_imgs='http://www.turismoavila.com/app/apiD.php';
 var api_url='http://www.turismoavila.com/app/apiD.php';
@@ -125,7 +126,7 @@ function onDeviceReady()
 	/* *********************************************************************** */
 	/* Comentar desde INICIO TEST NOTIFICACIONES hasta FIN TEST NOTIFICACIONES */
 	/* para no realizar el registro del dispositivo	al inicio		 		   */
-	/* *********************************************************************** 
+	/* *********************************************************************** */
 	
 	// INICIO TEST NOTIFICACIONES	
 	var current_url=window.location.href;
@@ -163,7 +164,7 @@ function onDeviceReady()
 		 
 	};
 	//},this);	
-	*/	
+		
 		 
 }   
 
@@ -172,7 +173,7 @@ function register_notif()
 	try 
 	{ 		
 		pushNotification = window.plugins.pushNotification;
-		//$("body").append('<br>Registrando ' + device.platform);
+		$("body").append('<br>Registrando ' + device.platform);
 		if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos' ) 
 		{
 			pushNotification.register(successHandler, errorHandler, {"senderID":senderID, "ecb":"onNotification"});			
@@ -189,7 +190,7 @@ function register_notif()
 	}
 	catch(err) 
 	{ 
-		//$("body").append("<br>Error registro notif: " + err.message); 
+		$("body").append("<br>Error registro notif: " + err.message); 
 	} 
 }
 function unregister_notif()
@@ -257,7 +258,7 @@ function config_notifications(check) {
 // Notificacion para iOS
 function onNotificationAPN(e) {
 	if (e.alert) {
-		 //$("body").append('<br>Notificaci&oacute;n: ' + e.alert);
+		 $("body").append('<br>Notificaci&oacute;n: ' + e.alert);
 		 // Alert (requiere plugin org.apache.cordova.dialogs)
 		 navigator.notification.alert(e.alert);
 	}
@@ -280,7 +281,7 @@ function onNotification(e) {
 		case 'registered':
 					if (e.regid.length > 0)
 					{
-						//$("body").append('<br>Registrado REGID:' + e.regid);
+						$("body").append('<br>Registrado REGID:' + e.regid);
 						registerOnServer(e.regid);
 					}
 					break;
@@ -344,11 +345,11 @@ function onNotification(e) {
 					break;
 		
 		case 'error':
-					//$("body").append('<br>Error:'+ e.msg);
+					$("body").append('<br>Error:'+ e.msg);
 					break;
 		
 		default:
-					//$("body").append('<br>Evento desconocido');
+					$("body").append('<br>Evento desconocido');
 					break;
 	}
 }
@@ -368,14 +369,17 @@ function registerOnServer(registrationId) {
 			},*/
 		dataType: 'json',
 		crossDomain: true, 
-        success: function() {      
-					//$("body").append('<br>Listo para notificaciones');	    	
+        success: function() { 
+		
+					$("body").append('<br>Listo para notificaciones');	    	
+					
 					setSessionStorage("regID", registrationId);	
 					setLocalStorage("notificacion","si");					
 				},
         error: function(jqXHR) {
 					if(jqXHR.status == 200) {
-						//$("body").append('<br>Listo para notificaciones');	
+						
+						$("body").append('<br>Listo para notificaciones');	
 
 						//notificar al usuario con un mensaje						
 						setSessionStorage("regID", registrationId);
@@ -413,30 +417,36 @@ function registerOnServerIOS(registrationId) {
 				},
         error: function(jqXHR) {
 					if(jqXHR.status == 200) {
-						//$("body").append('<br>Listo para notificaciones');	
+						
+						$("body").append('<br>Listo para notificaciones');	
 
 						//notificar al usuario con un mensaje						
 						setSessionStorage("regID", registrationId);
 						setLocalStorage("notificacion","si");			
 					}	
 					if(jqXHR.status == 500) {
-						//$("body").append('<br>El dispositivo no se pudo registrar para recibir notificaciones.');
+						
+						$("body").append('<br>El dispositivo no se pudo registrar para recibir notificaciones.');
+						
 					}	
 				}
 		
     });
 }
 function tokenHandler (result) {
-	//$("body").append('<br>Listo para notificaciones');
+	
+	$("body").append('<br>Listo para notificaciones');
+	
 	registerOnServerIOS(result);
 }
 
 function successHandler (result) {
-	//$("body").append('Exito: '+result);
+	
+	$("body").append('Exito: '+result);
 }
 
 function errorHandler (error) {
-	//$("body").append('Error: '+error);
+	$("body").append('Error: '+error);
 } 
 //FIN NOTIFICACIONES
  
