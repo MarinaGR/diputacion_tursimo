@@ -158,7 +158,7 @@ function onDeviceReady()
 		 {
 			case "noticia":							
 			case "evento":  
-			default:		window.location.href="../"+getLocalStorage('current_language')+"event.html?id="+datos.id;
+			default:		window.location.href="../"+getLocalStorage('current_language')+"events.html?id="+datos.id;
 							break;
 		 }
 		 
@@ -323,7 +323,15 @@ function onNotification(e) {
 							autoCancel: true
 						});		
 
-						id_notificacion++;						
+						id_notificacion++;		
+
+						switch(notif.tipo)
+						{
+							case "noticia": 
+							case "evento":   
+							default:		window.location.href="../"+getLocalStorage('current_language')+"event.html?id="+notif.id;
+											break;
+						}						
 											
 					}
 					else
@@ -337,7 +345,7 @@ function onNotification(e) {
 						{
 							case "noticia": 
 							case "evento":   
-							default:		window.location.href="../"+getLocalStorage('current_language')+"event.html?id="+datos.id;
+							default:		window.location.href="../"+getLocalStorage('current_language')+"event.html?id="+notif.id;
 											break;
 						}
 						
