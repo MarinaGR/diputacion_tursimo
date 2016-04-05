@@ -158,7 +158,7 @@ function onDeviceReady()
 		 {
 			case "noticia":							
 			case "evento":  
-			default:		window.location.href="../"+getLocalStorage('current_language')+"events.html?id="+datos.id;
+			default:		window.location.href="../"+getLocalStorage('current_language')+"/events.html?id="+datos.id;
 							break;
 		 }
 		 
@@ -329,7 +329,7 @@ function onNotification(e) {
 						{
 							case "noticia": 
 							case "evento":   
-							default:		window.location.href="../"+getLocalStorage('current_language')+"event.html?id="+notif.id;
+							default:		window.location.href="../"+getLocalStorage('current_language')+"/event.html?id="+notif.id;
 											break;
 						}						
 											
@@ -345,7 +345,7 @@ function onNotification(e) {
 						{
 							case "noticia": 
 							case "evento":   
-							default:		window.location.href="../"+getLocalStorage('current_language')+"event.html?id="+notif.id;
+							default:		window.location.href="../"+getLocalStorage('current_language')+"/event.html?id="+notif.id;
 											break;
 						}
 						
