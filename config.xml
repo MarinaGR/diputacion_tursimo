@@ -91,8 +91,8 @@
 	<gap:plugin name="cordova-plugin-whitelist" source="npm" spec="1.2.2" />
 
 	<gap:plugin name="cordova-plugin-dialogs" source="npm" version="1.2.1" />
-	<gap:plugin name="de.appplant.cordova.plugin.local-notification" version="0.8.4" />
-	<gap:plugin name="cordova-plugin-pushplugin" version="2.6.1" />
+	<gap:plugin name="de.appplant.cordova.plugin.local-notification" source="npm" version="0.8.4" />
+	<gap:plugin name="cordova-plugin-pushplugin" source="npm" version="2.6.1" />
 
 	
 	<!--text to speech-->
