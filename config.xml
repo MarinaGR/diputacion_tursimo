@@ -82,16 +82,18 @@
 	<gap:plugin name="cordova-plugin-barcodescanner" source="npm" version="0.7.0" />	
 	-->
 	
-	<gap:plugin name="cordova-plugin-file" source="npm"/>
-    <gap:plugin name="cordova-plugin-file-transfer" source="npm"/>
-	<gap:plugin name="cordova-plugin-media" source="npm"/>
-	<gap:plugin name="cordova-plugin-device" source="npm"/>
-	<gap:plugin name="cordova-plugin-geolocation" source="npm"/>
-	<gap:plugin name="cordova-plugin-inappbrowser" source="npm"/>
+	<gap:plugin name="cordova-plugin-file" source="npm" version="4.2.0" />
+    <gap:plugin name="cordova-plugin-file-transfer" source="npm" version="1.5.1" />
+	<gap:plugin name="cordova-plugin-media" source="npm" version="2.3.0" />
+	<gap:plugin name="cordova-plugin-device" source="npm" version="1.1.2" />
+	<gap:plugin name="cordova-plugin-geolocation" source="npm" version="2.2.0" />
+	<gap:plugin name="cordova-plugin-inappbrowser" source="npm" version="1.4.0" />
+	<gap:plugin name="cordova-plugin-whitelist" source="npm" spec="1.2.2" />
 
-	<gap:plugin name="cordova-plugin-dialogs" source="npm"/>
-	<!--<gap:plugin name="de.appplant.cordova.plugin.local-notification" version="0.8.1" />-->
-	<gap:plugin name="com.phonegap.plugins.pushplugin" version="2.5.0" />
+	<gap:plugin name="cordova-plugin-dialogs" source="npm" version="1.2.1" />
+	<gap:plugin name="de.appplant.cordova.plugin.local-notification" version="0.8.4" />
+	<gap:plugin name="cordova-plugin-pushplugin" version="2.6.1" />
+
 	
 	<!--text to speech-->
 	<!--<gap:plugin name="org.tt.plugin.tts" version="1" />
@@ -142,5 +144,7 @@
 
     <!-- Acceso a dominios externos -->    
     <access origin="*"/> 
+	<allow-intent href="*" />
+	<allow-navigation href="*" /> 
 
 </widget>
