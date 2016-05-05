@@ -260,6 +260,7 @@ function onNotificationAPN(e) {
 	if (e.alert) {
 		 $("body").append('<br>Notificaci&oacute;n: ' + e.alert);
 		 // Alert (requiere plugin org.apache.cordova.dialogs)
+		 alert("Notificacion IOS");
 		 navigator.notification.alert(e.alert);
 	}
 		
