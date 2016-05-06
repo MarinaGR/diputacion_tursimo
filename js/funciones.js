@@ -461,8 +461,10 @@ function errorHandler (error) {
  
 function onBackKeyDown()
 {
+	alert(window.location.href);
 	if(window.location.href.search(new RegExp("index.html$")) != -1 || window.location.href.search(new RegExp("main_menu.html$")) != -1) 
 	{		
+		alert("Salgo");
 		navigator.app.exitApp();
 		return false;
 	}
