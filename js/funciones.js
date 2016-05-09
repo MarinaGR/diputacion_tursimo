@@ -9,7 +9,8 @@ var pushNotification;
 var uuid;
 
 //OJO CAMBIAR ESTO Y CONFIG
-var extern_siteurl_notif='http://www.turismoavila.com/app/notifications/';
+//var extern_siteurl_notif='http://www.turismoavila.com/app/notifications/';
+var extern_siteurl_notif='http://www.ovnyline.es/DIPUTACION/notifications/';
 var extern_siteurl_op=extern_siteurl_notif+"push.php";
 
 var api_imgs='http://www.turismoavila.com/app/apiD.php';
@@ -151,8 +152,6 @@ function onDeviceReady()
 		 var datos=$.parseJSON(notification.data);
  	 
 		 var tipo=(notification.title).split(/\[(.*?)\]/);
-		 
-		 alert("tipo "+tipo);
 		 
 		 switch(tipo[1])
 		 {
@@ -413,7 +412,7 @@ function registerOnServerIOS(registrationId) {
     $.ajax({
         type: "POST",
         url: extern_siteurl_op,
-		data: { v: [['id', registrationId], ['uuid', getLocalStorage('uuid')], ['activo', '1']], op: 'pushandroid' },
+		data: { v: [['id', registrationId], ['uuid', getLocalStorage('uuid')], ['activo', '1']], op: 'pushios' },
 		/*headers: {
 				'Authorization': 'Basic ' + utf8_to_b64(mail+":"+api_key),
 				'X-ApiKey':'d2a3771d-f2f3-4fc7-9f9f-8ad7697c81dc'
@@ -421,7 +420,8 @@ function registerOnServerIOS(registrationId) {
 		dataType: 'json',
 		crossDomain: true, 
         success: function() {          	
-					setSessionStorage("regID", registrationId);			
+					setSessionStorage("regID", registrationId);		
+					$("body").append('<br>El dispositivo se registró para recibir notificaciones.');
 					setLocalStorage("notificacion","si");							
 				},
         error: function(jqXHR) {
@@ -461,10 +461,8 @@ function errorHandler (error) {
  
 function onBackKeyDown()
 {
-	alert(window.location.href);
 	if(window.location.href.search(new RegExp("index.html$")) != -1 || window.location.href.search(new RegExp("main_menu.html$")) != -1) 
 	{		
-		alert("Salgo");
 		navigator.app.exitApp();
 		return false;
 	}

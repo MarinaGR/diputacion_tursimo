@@ -23,6 +23,7 @@ a {color: #4D802B;}
 .ov_curtain_2{position:fixed;top:0px;left:0px;width:100%;height:100%;z-index:1200;opacity:0.95;background-color:#333;display:none;}
 .ov_popup_1 {display: none;position:absolute;left:50%;margin-left:-150px;width:260px;padding:20px;background:#fff;z-index:9999;top:50px;}
 .ov_body_01{background-color:#434142;font-size:12px;margin:0px;background-repeat:no-repeat;background-position:center center;background-attachment:fixed;font-family:"1", sans-serif;}
+.ov_body_02{background-color:#F2F2F3;font-size:12px;margin:0px;background-repeat:no-repeat;background-position:center center;background-attachment:fixed;font-family:"1", sans-serif;}
 .ov_view_container_01{width:100%;min-height:0px;position:relative;display:block;}
 .ov_vertical_space_01{height:10px;min-height:10px;max-height:10px;overflow:hidden;}
 .ov_vertical_space_02{height:30px;min-height:30px;max-height:30px;overflow:hidden;}
