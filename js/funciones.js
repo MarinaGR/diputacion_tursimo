@@ -401,17 +401,21 @@ function registerOnServer(registrationId) {
 			},*/
 		dataType: 'json',
 		crossDomain: true, 
-        success: function() { 
+        success: function(data) { 
 		
+					alert(data);
 					$("body").append('<br>Listo para notificaciones');	    	
 					
 					setSessionStorage("regID", registrationId);	
 					setLocalStorage("notificacion","si");					
 				},
         error: function(jqXHR) {
+				
+					alert("error");
+					
 					if(jqXHR.status == 200) {
 						
-						$("body").append('<br>Listo para notificaciones');	
+						$("body").append('<br>Disp. listo para notificaciones.');	
 
 						//notificar al usuario con un mensaje						
 						setSessionStorage("regID", registrationId);
@@ -485,11 +489,8 @@ function errorHandler (error) {
  
 function onBackKeyDown()
 {
-	alert(window.location.href);
-	if(window.location.href.search(new RegExp("index.html$")) != -1 || window.location.href.search(new RegExp("main_menu.html$")) != -1) 
-	{		
-		alert("SALGO "+window.location.href.search(new RegExp("main_menu.html$")));
-		
+	if(window.location.href.search(new RegExp("index.html")) != -1 || window.location.href.search(new RegExp("main_menu.html")) != -1) 
+	{				
 		navigator.app.exitApp();
 		return false;
 	}
