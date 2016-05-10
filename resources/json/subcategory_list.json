@@ -1,0 +1,18 @@
+{
+	"result":
+	{
+		"items":	
+			[
+				{"id":"subcat_1","es":"Hotel","en":"Hotel"},
+				{"id":"subcat_2","es":"Hostal", "en":"Hostal"},
+				{"id":"subcat_3","es":"Posada","en":"Posada"},
+				{"id":"subcat_4","es":"Casa Rural","en":"Casa Rural"},
+				{"id":"subcat_5","es":"Apartamento","en":"Apartamento"},
+				{"id":"subcat_6","es":"Camping","en":"Camping"},
+				{"id":"subcat_7","es":"Parador","en":"Parador"},
+				{"id":"subcat_8","es":"Balneario","en":"Balneario"},
+				{"id":"subcat_9","es":"Otros alojamientos","en":"Otros alojamientos"}
+			],
+		"total":9
+	}
+}

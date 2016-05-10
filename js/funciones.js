@@ -29,6 +29,7 @@ var troute_download=new Object();
 var routes_list=new Object();
 var trekking_routes=new Object();
 var categ_list=new Object();
+var subcateg_list=new Object();
 var cat_services_list=new Object();
 var MAX_NUMBER_ROUTES=10;
 var MAX_NUMBER_POINTS_ROUTE=8;
@@ -74,6 +75,29 @@ function onBodyLoad()
 			});				
 			setLocalStorage("categ_list", JSON.stringify(categ_list));  
 		});		
+	}
+	
+	//Cargamos las subcategorias en local storage
+	subcateg_list=JSON.parse(getLocalStorage("subcateg_list"));		
+	if(subcateg_list==null)
+	{		
+		$.getJSON(local_url+'subcategory_list.json', function (data) 
+		{
+			subcateg_list=new Object();	
+			$.each(data.result.items, function(index, d) 
+			{   		
+				subcateg_list[d.id]=new Array();
+			
+				subcateg_list[d.id].push(
+					{
+						es:d.es,
+						en:d.en
+					}
+				);	
+			});				
+			setLocalStorage("subcateg_list", JSON.stringify(subcateg_list));  
+		});	
+		
 	}
 	
 	//Cargamos los tipos de servicios en local storage
@@ -461,8 +485,11 @@ function errorHandler (error) {
  
 function onBackKeyDown()
 {
+	alert(window.location.href);
 	if(window.location.href.search(new RegExp("index.html$")) != -1 || window.location.href.search(new RegExp("main_menu.html$")) != -1) 
 	{		
+		alert("SALGO "+window.location.href.search(new RegExp("main_menu.html$")));
+		
 		navigator.app.exitApp();
 		return false;
 	}
@@ -2634,7 +2661,30 @@ function ajax_recover_data(type, folder, values, container, params) {
 						///////////////////
 						
 						var cadena="";
+						
 						cadena+="<div class='ov_zone_15'><h3>"+filter_name+"</h3><p>"+TEXTOS[1]+"</p></div>";
+
+						/*SELECTOR SUBCATEGORIAS -> Sin realizar
+						if(filter_id=="cat_5")
+						{
+							cadena+='<select id="subcat_alojamiento" class="ov_select_01" onchange="go_to_page(\'filter_list\',\''+filter_id+'&subcat='+$('#subcat_alojamiento').val()+'\')">';
+											
+							cadena+='<option value="">TODOS</option>';
+							subcateg_list=JSON.parse(getLocalStorage("subcateg_list"));
+							$.each(subcateg_list, function(i, subcat) {
+								switch(getLocalStorage("current_language"))
+								{
+									default:
+									case "es":  cadena+='<option value="'+subcat[0].es+'">'+subcat[0].es+'</option>';
+												break;
+												
+									case "en":  cadena+='<option value="'+subcat[0].en+'">'+subcat[0].en+'</option>';
+												break;
+								}
+							});
+							cadena+='</select>';
+						}
+						FIN SELECTOR SUBCATEGORIAS*/
 						
 						var filter_points=new Array();
 						var resultados=0;
@@ -3115,11 +3165,26 @@ function ajax_recover_data(type, folder, values, container, params) {
 					}
 					   
 					$("#point_name").html(informacion.nombre);
+					
 					$("#point_mini_description").html(informacion.miniDescripcion);
 					$("#point_description").html(informacion.descripcion);
 						
-					$("#container_point").css({"min-height": "60px", "height": "60px"});
+					$("#container_point").css({"min-height": "50px", "height": "50px"});
 					
+					subcateg_list=JSON.parse(getLocalStorage("subcateg_list"));
+					$("#point_mini_description").append("<div id='subcategorias'></div>");
+					$.each(d.subcategorias, function(i, subcat) {
+						switch(getLocalStorage("current_language"))
+						{
+							default:
+							case "es":  $("#subcategorias").html('<span>'+subcateg_list[subcat.id][0].es+'<br></span>');
+										break;
+										
+							case "en":  $("#subcategorias").html('<span>'+subcateg_list[subcat.id][0].en+'<br></span>');
+										break;
+						}
+					});
+										
 					var image=new Image();
 					image.src="../.."+d.imagenDestacada;
 					
@@ -3134,6 +3199,8 @@ function ajax_recover_data(type, folder, values, container, params) {
 					
 					if(d.tlfn)
 						cadena+="<i class='fa fa-phone fa-fw'> </i> "+d.tlfn+"<br>";
+					if(d.movil)
+						cadena+="<i class='fa fa-phone fa-fw'> </i> "+d.movil+"<br>";
 					if(d.fax)
 						cadena+="<i class='fa fa-fax fa-fw'> </i> "+d.fax+"<br>";
 					if(d.direccion)
@@ -3161,10 +3228,9 @@ function ajax_recover_data(type, folder, values, container, params) {
 								
 										break;
 						}
-					});
-					 
+					});					 
 					$("#categories_point").append('<div class="ov_clear_floats_01"> </div>');
-					
+
 					break;
 					
 					
