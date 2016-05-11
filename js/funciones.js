@@ -280,11 +280,23 @@ function config_notifications(check) {
 
 // Notificacion para iOS
 function onNotificationAPN(e) {
+	
+	$("body").append(JSON.stringify(e));
+	 
 	if (e.alert) {
 		 $("body").append('<br>Notificaci&oacute;n: ' + e.alert);
-		 // Alert (requiere plugin org.apache.cordova.dialogs)
 		 alert("Notificacion IOS");
+		 
+		  // Alert (requiere plugin org.apache.cordova.dialogs)
 		 navigator.notification.alert(e.alert);
+		 
+		 switch(e.category)
+		{
+			case "noticia": 
+			case "evento":   
+			default:		window.location.href="../"+getLocalStorage('current_language')+"/event.html?id="+e.id;
+							break;
+		}
 	}
 		
 	if (e.sound) {
@@ -355,7 +367,20 @@ function onNotification(e) {
 							case "evento":   
 							default:		window.location.href="../"+getLocalStorage('current_language')+"/event.html?id="+notif.id;
 											break;
-						}						
+						}	
+
+						window.plugin.notification.local.onclick = function (notification, state, json) {
+
+							switch(notif.tipo)
+							{
+								case "noticia":
+								case "evento":   
+								default:    window.location.href="../"+getLocalStorage('current_language')+"/event.html?id="+notif.id;
+											break;
+							}
+							
+						};
+				
 											
 					}
 					else
@@ -440,6 +465,8 @@ function registerOnServerIOS(registrationId) {
 	//var api_key=getLocalStorage("api-key");
 	//var mail=getLocalStorage("user_session");
 
+	alert("registroIOS");
+	
     $.ajax({
         type: "POST",
         url: extern_siteurl_op,

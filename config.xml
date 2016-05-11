@@ -20,8 +20,7 @@
 		Grupo Ovnyline Comunicación
     </author>
 
-	<preference name="permissions" value="none"/>
-	
+	<preference name="permissions" value="none"/>	
 	<!-- to enable individual permissions use the following examples -->
     <feature name="http://api.phonegap.com/1.0/file"/>
 	<feature name="http://api.phonegap.com/1.0/notification"/>
@@ -32,7 +31,7 @@
 	
     <preference name="orientation"                value="portrait" />        <!-- all: default means both landscape and portrait are enabled -->
     <preference name="target-device"              value="universal" />      <!-- all: possible values handset, tablet, or universal -->
-    <preference name="fullscreen"                 value="true" />          <!-- all: hides the status bar at the top of the screen -->
+    <preference name="fullscreen"                 value="false" />          <!-- all: hides the status bar at the top of the screen -->
     <preference name="prerendered-icon"           value="true" />           <!-- ios: if icon is prerendered, iOS will not apply it's gloss to the app's icon on the user's home screen -->
     <preference name="ios-statusbarstyle"         value="black-opaque" />   <!-- ios: black-translucent will appear black because the PhoneGap webview doesn't go beneath the status bar -->
     <preference name="detect-data-types"          value="true" />           <!-- ios: controls whether data types (such as phone no. and dates) are automatically turned into links by the system -->
@@ -94,7 +93,7 @@
 
 	<gap:plugin name="cordova-plugin-dialogs" source="npm" version="1.2.1" />
 	<gap:plugin name="de.appplant.cordova.plugin.local-notification" source="npm" version="0.8.4" />
-	<gap:plugin name="cordova-plugin-pushplugin" source="npm" version="2.6.1" />
+	<gap:plugin name="cordova-plugin-pushplugin" source="npm" version="2.4.0" />
 	<gap:plugin name="cordova-plugin-admobpro" source="npm" />
 
 	
