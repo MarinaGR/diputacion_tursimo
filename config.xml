@@ -72,7 +72,7 @@
 	<gap:plugin name="org.apache.cordova.vibration" version="0.3.11" />
 	<gap:plugin name="de.appplant.cordova.plugin.background-mode" version="0.5.0" />
 	<gap:plugin name="de.appplant.cordova.plugin.local-notification" version="0.7.5" />
-	<gap:plugin name="org.apache.cordova.media" version="0.2.13" /> -->
+	<gap:plugin name="org.apache.cordova.media" version="0.2.13" /> --> 
 	
 	<!--
 	<gap:plugin name="cordova-plugin-file" source="npm" version="3.0.0" />
@@ -93,7 +93,8 @@
 
 	<gap:plugin name="cordova-plugin-dialogs" source="npm" version="1.2.1" />
 	<gap:plugin name="de.appplant.cordova.plugin.local-notification" source="npm" version="0.8.4" />
-	<gap:plugin name="cordova-plugin-pushplugin" source="npm" version="2.4.0" />
+	<!--<gap:plugin name="cordova-plugin-pushplugin" source="npm" version="2.6.1" />-->
+	<gap:plugin name="com.phonegap.plugins.pushplugin" version="2.4.0" />
 	<gap:plugin name="cordova-plugin-admobpro" source="npm" />
 
 	
