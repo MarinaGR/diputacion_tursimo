@@ -203,6 +203,7 @@ function register_notif()
 		} 
 		else
 		{	
+			alert("register_notif");
 			pushNotification.register(tokenHandler, errorHandler, 
 				{"badge":"true",
 				"sound":"true",
@@ -428,17 +429,22 @@ function registerOnServer(registrationId) {
 		crossDomain: true, 
         success: function(data) { 
 		
-					alert(data);
-					$("body").append('<br>Listo para notificaciones');	    	
-					
-					setSessionStorage("regID", registrationId);	
-					setLocalStorage("notificacion","si");					
+					console.log(JSON.stringify(data));
+					if(data.result!="KO")
+					{
+						$("body").append('<br>Listo para notificaciones');	 
+						setSessionStorage("regID", registrationId);	
+						setLocalStorage("notificacion","si");	
+					}
+									
 				},
         error: function(jqXHR, textStatus, errorThrown) {
 				
 					alert("error");
 					$("body").append(JSON.stringify(jqXHR));	
+					$("body").append("<br>");	
 					$("body").append(textStatus);	
+					$("body").append("<br>");	
 					$("body").append(errorThrown);	
 					
 					if(jqXHR.status == 200) {
@@ -508,6 +514,8 @@ function registerOnServerIOS(registrationId) {
 }
 function tokenHandler (result) {
 	
+	alert("tokenHandler");
+	
 	$("body").append('<br>Listo para notificaciones');
 	
 	registerOnServerIOS(result);
@@ -515,7 +523,7 @@ function tokenHandler (result) {
 
 function successHandler (result) {
 	
-	$("body").append('Exito: '+result);
+	$("body").append('<br>Exito: '+result);
 }
 
 function errorHandler (error) {
