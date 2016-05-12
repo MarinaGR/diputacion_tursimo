@@ -290,7 +290,7 @@ function onNotificationAPN(e) {
 		  // Alert (requiere plugin org.apache.cordova.dialogs)
 		 navigator.notification.alert(e.alert);
 		 
-		 switch(e.category)
+		switch(e.category)
 		{
 			case "noticia": 
 			case "evento":   
@@ -360,14 +360,6 @@ function onNotification(e) {
 						});		
 
 						id_notificacion++;		
-
-						switch(notif.tipo)
-						{
-							case "noticia": 
-							case "evento":   
-							default:		window.location.href="../"+getLocalStorage('current_language')+"/event.html?id="+notif.id;
-											break;
-						}	
 
 						window.plugin.notification.local.onclick = function (notification, state, json) {
 
