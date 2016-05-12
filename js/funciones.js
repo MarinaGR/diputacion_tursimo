@@ -413,7 +413,8 @@ function registerOnServer(registrationId) {
     $.ajax({
         type: "POST",
         url: extern_siteurl_op,
-		data: { v: [['id', registrationId], ['uuid', getLocalStorage('uuid')], ['activo', '1']], op: 'pushandroid' },
+		ContentType  :  'application/json', 
+		data: { 'v': [['id', registrationId], ['uuid', getLocalStorage('uuid')], ['activo', '1']], 'op': 'pushandroid' },
 		/*headers: {
 				'Authorization': 'Basic ' + utf8_to_b64(mail+":"+api_key),
 				'X-ApiKey':'d2a3771d-f2f3-4fc7-9f9f-8ad7697c81dc'
@@ -469,7 +470,7 @@ function registerOnServerIOS(registrationId) {
     $.ajax({
         type: "POST",
         url: extern_siteurl_op,
-		data: { v: [['id', registrationId], ['uuid', getLocalStorage('uuid')], ['activo', '1']], op: 'pushios' },
+		data: { 'v': [['id', registrationId], ['uuid', getLocalStorage('uuid')], ['activo', '1']], 'op': 'pushios' },
 		/*headers: {
 				'Authorization': 'Basic ' + utf8_to_b64(mail+":"+api_key),
 				'X-ApiKey':'d2a3771d-f2f3-4fc7-9f9f-8ad7697c81dc'
