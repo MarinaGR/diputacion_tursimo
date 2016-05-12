@@ -203,7 +203,6 @@ function register_notif()
 		} 
 		else
 		{	
-			alert("register_notif");
 			pushNotification.register(tokenHandler, errorHandler, 
 				{"badge":"true",
 				"sound":"true",
@@ -417,6 +416,8 @@ function registerOnServer(registrationId) {
 	//var api_key=getLocalStorage("api-key");
 	//var mail=getLocalStorage("user_session");
 
+	$("body").append("ENVIO: "+registrationId+" *** "+getLocalStorage('uuid'));
+	
     $.ajax({
         type: "POST",
         url: extern_siteurl_op,
@@ -429,7 +430,7 @@ function registerOnServer(registrationId) {
 		crossDomain: true, 
         success: function(data) { 
 		
-					console.log(JSON.stringify(data));
+					$("body").append("<br>RECIBO: "+JSON.stringify(data));
 					if(data.result!="KO")
 					{
 						$("body").append('<br>Listo para notificaciones');	 
