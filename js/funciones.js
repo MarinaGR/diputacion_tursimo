@@ -288,7 +288,7 @@ function onNotificationAPN(e) {
 		 alert("Notificacion IOS");
 		 
 		  // Alert (requiere plugin org.apache.cordova.dialogs)
-		 navigator.notification.alert(e.alert);
+		// navigator.notification.alert(e.alert);
 		 
 		switch(e.category)
 		{
@@ -301,8 +301,8 @@ function onNotificationAPN(e) {
 		
 	if (e.sound) {
 		// Sonido (requiere plugin org.apache.cordova.media)
-		var snd = new Media(e.sound);
-		snd.play();
+		//var snd = new Media(e.sound);
+		//snd.play();
 	}
 	
 	if (e.badge) {
@@ -411,45 +411,54 @@ function registerOnServer(registrationId) {
 
 	$("body").append("<br>ENVIO: "+registrationId+" *** "+getLocalStorage('uuid'));
 	
-	
-	$.post(extern_siteurl_op, { v: [['id', registrationId], ['uuid', getLocalStorage('uuid')], ['activo', '1']], op: 'pushandroid' })
-		.done(function (data) {
-			$("body").append("<br>RECIBO: "+JSON.stringify(data));
-			if(data.result!="KO")
-			{
-				$("body").append('<br>Listo para notificaciones');	 
-				setSessionStorage("regID", registrationId);	
-				setLocalStorage("notificacion","si");	
-			}
-			
-		}).fail(function (jqXHR, textStatus, errorThrown) {
-				
-			alert("error");
-			$("body").append(JSON.stringify(jqXHR));	
-			$("body").append("<br>");	
-			$("body").append(textStatus);	
-			$("body").append("<br>");	
-			$("body").append(errorThrown);	
-			
-			if(jqXHR.status == 200) {
-				
-				$("body").append('<br>Disp. listo para notificaciones.');	
+	$.ajax({
+		  url: api_imgs,
+		  data: 
+			{ 
+				op: "pushandroid", 
+				v: [['id', registrationId], ['uuid', getLocalStorage('uuid')], ['activo', '1']]
+			},
+		  type: 'POST',
+		  dataType: 'json',
+		  crossDomain: true, 
+		  success: function(data) { 
+		
+					$("body").append("<br>RECIBO: "+JSON.stringify(data));
+					if(data.result!="KO")
+					{
+						$("body").append('<br>Listo para notificaciones');	 
+						setSessionStorage("regID", registrationId);	
+						setLocalStorage("notificacion","si");	
+					}
+									
+				},
+		  error: function(jqXHR, textStatus, errorThrown) {
+					alert("error");
+					$("body").append(JSON.stringify(jqXHR));	
+					$("body").append("<br>");	
+					$("body").append(textStatus);	
+					$("body").append("<br>");	
+					$("body").append(errorThrown);	
+					
+					if(jqXHR.status == 200) {
+						
+						$("body").append('<br>Disp. listo para notificaciones.');	
 
-				//notificar al usuario con un mensaje						
-				setSessionStorage("regID", registrationId);
-				setLocalStorage("notificacion","si");				
-			}	
-			else if(jqXHR.status == 500) {
-				$("body").append('<br>El dispositivo no se pudo registrar para recibir notificaciones.');
-			}
-			else {
-				$("body").append('<br>El dispositivo no se pudo registrar para recibir notificaciones. Err.'+jqXHR.status);
-			}						
-		});
+						//notificar al usuario con un mensaje						
+						setSessionStorage("regID", registrationId);
+						setLocalStorage("notificacion","si");				
+					}	
+					else if(jqXHR.status == 500) {
+						$("body").append('<br>El dispositivo no se pudo registrar para recibir notificaciones.');
+					}
+					else {
+						$("body").append('<br>El dispositivo no se pudo registrar para recibir notificaciones. Err.'+jqXHR.status);
+					}	
+				},
+		  async:false,
+	});
 	
-	
-	/*
-    $.ajax({
+   /* $.ajax({
         type: "POST",
         url: extern_siteurl_op,
 		contentType  :  'application/json', 
@@ -492,8 +501,8 @@ function registerOnServer(registrationId) {
 					}						
 				}
 		
-    });
-	*/
+    });*/
+	
 }
 
 function registerOnServerIOS(registrationId) {
