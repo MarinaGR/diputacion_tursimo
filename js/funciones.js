@@ -407,18 +407,53 @@ function registerOnServer(registrationId) {
 
 	//var api_key=getLocalStorage("api-key");
 	//var mail=getLocalStorage("user_session");
-
-	$("body").append("ENVIO: "+registrationId+" *** "+getLocalStorage('uuid'));
 	
+
+	$("body").append("<br>ENVIO: "+registrationId+" *** "+getLocalStorage('uuid'));
+	
+	
+	$.post(extern_siteurl_op, { v: [['id', registrationId], ['uuid', getLocalStorage('uuid')], ['activo', '1']], op: 'pushandroid' })
+		.done(function (data) {
+			$("body").append("<br>RECIBO: "+JSON.stringify(data));
+			if(data.result!="KO")
+			{
+				$("body").append('<br>Listo para notificaciones');	 
+				setSessionStorage("regID", registrationId);	
+				setLocalStorage("notificacion","si");	
+			}
+			
+		}).fail(function (jqXHR, textStatus, errorThrown) {
+				
+			alert("error");
+			$("body").append(JSON.stringify(jqXHR));	
+			$("body").append("<br>");	
+			$("body").append(textStatus);	
+			$("body").append("<br>");	
+			$("body").append(errorThrown);	
+			
+			if(jqXHR.status == 200) {
+				
+				$("body").append('<br>Disp. listo para notificaciones.');	
+
+				//notificar al usuario con un mensaje						
+				setSessionStorage("regID", registrationId);
+				setLocalStorage("notificacion","si");				
+			}	
+			else if(jqXHR.status == 500) {
+				$("body").append('<br>El dispositivo no se pudo registrar para recibir notificaciones.');
+			}
+			else {
+				$("body").append('<br>El dispositivo no se pudo registrar para recibir notificaciones. Err.'+jqXHR.status);
+			}						
+		});
+	
+	
+	/*
     $.ajax({
         type: "POST",
         url: extern_siteurl_op,
 		contentType  :  'application/json', 
-		data: { 'v': [['id', registrationId], ['uuid', getLocalStorage('uuid')], ['activo', '1']], 'op': 'pushandroid' },
-		/*headers: {
-				'Authorization': 'Basic ' + utf8_to_b64(mail+":"+api_key),
-				'X-ApiKey':'d2a3771d-f2f3-4fc7-9f9f-8ad7697c81dc'
-			},*/
+		data: { v: [['id', registrationId], ['uuid', getLocalStorage('uuid')], ['activo', '1']], op: 'pushandroid' },
 		dataType: 'json',
 		crossDomain: true, 
         success: function(data) { 
@@ -458,6 +493,7 @@ function registerOnServer(registrationId) {
 				}
 		
     });
+	*/
 }
 
 function registerOnServerIOS(registrationId) {
@@ -470,12 +506,7 @@ function registerOnServerIOS(registrationId) {
     $.ajax({
         type: "POST",
         url: extern_siteurl_op,
-		contentType  :  'application/json', 
-		data: { 'v': [['id', registrationId], ['uuid', getLocalStorage('uuid')], ['activo', '1']], 'op': 'pushios' },
-		/*headers: {
-				'Authorization': 'Basic ' + utf8_to_b64(mail+":"+api_key),
-				'X-ApiKey':'d2a3771d-f2f3-4fc7-9f9f-8ad7697c81dc'
-			},*/
+		data: { v: [['id', registrationId], ['uuid', getLocalStorage('uuid')], ['activo', '1']], op: 'pushios' },
 		dataType: 'json',
 		crossDomain: true, 
         success: function(data) {          	
