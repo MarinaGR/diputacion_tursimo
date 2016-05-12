@@ -413,7 +413,7 @@ function registerOnServer(registrationId) {
     $.ajax({
         type: "POST",
         url: extern_siteurl_op,
-		ContentType  :  'application/json', 
+		contentType  :  'application/json', 
 		data: { 'v': [['id', registrationId], ['uuid', getLocalStorage('uuid')], ['activo', '1']], 'op': 'pushandroid' },
 		/*headers: {
 				'Authorization': 'Basic ' + utf8_to_b64(mail+":"+api_key),
@@ -470,6 +470,7 @@ function registerOnServerIOS(registrationId) {
     $.ajax({
         type: "POST",
         url: extern_siteurl_op,
+		contentType  :  'application/json', 
 		data: { 'v': [['id', registrationId], ['uuid', getLocalStorage('uuid')], ['activo', '1']], 'op': 'pushios' },
 		/*headers: {
 				'Authorization': 'Basic ' + utf8_to_b64(mail+":"+api_key),
