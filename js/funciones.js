@@ -193,28 +193,80 @@ function onDeviceReady()
 
 function register_notif()
 {
-	try 
-	{ 		
-		pushNotification = window.plugins.pushNotification;
-		$("body").append('<br>Registrando ' + device.platform);
+		
+	pushNotification = window.plugins.pushNotification;
+	$("body").append('<br>Registrando ' + device.platform);
+	
+	var push = PushNotification.init({
+		android: {
+			"clearNotifications": "false",
+			"forceShow": "true",
+			"senderID": senderID
+		},
+		ios: {
+			"badge":"true",
+			"sound":"true",
+			"alert":"true"
+		},
+		windows: {}
+	});
+	
+	push.on('registration', function(data) {
+		console.log(data.registrationId);
 		if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos' ) 
 		{
-			pushNotification.register(successHandler, errorHandler, {"senderID":senderID, "ecb":"onNotification"});			
+			$("body").append('<br>Registrando REGID android:' + data.registrationId);
+			registerOnServer(data.registrationId);	
 		} 
 		else
-		{	
-			pushNotification.register(tokenHandler, errorHandler, 
-				{"badge":"true",
-				"sound":"true",
-				"alert":"true",
-				"ecb":"onNotificationAPN"}
-			);	
+		{
+			$("body").append('<br>Registrando REGID ios:' + data.registrationId);
+			registerOnServerIOS(data.registrationId);	
 		}
-	}
-	catch(err) 
-	{ 
-		$("body").append("<br>Error registro notif: " + err.message); 
+		
+		
+	});
+	
+	push.on('notification', function(data) {
+		$("body").append('<br>NOTIFICACION:<br>' + JSON.stringify(data.message));
+		// data.title,
+		// data.count,
+		// data.sound,
+		// data.image,
+		// data.additionalData
+		
+		/*switch(data.category)
+		{
+			case "noticia": 
+			case "evento":   
+			default:		window.location.href="../"+getLocalStorage('current_language')+"/event.html?id="+e.id;
+							break;
+		}*/
+		
+	});
+
+	push.on('error', function(e) {
+		$("body").append('<br>Error push:' + e.message);
+	});
+	
+	
+	/*		
+	if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos' ) 
+	{
+		pushNotification.register(successHandler, errorHandler, {"senderID":senderID, "ecb":"onNotification"});			
 	} 
+	else
+	{	
+		pushNotification.register(tokenHandler, errorHandler, 
+			{"badge":"true",
+			"sound":"true",
+			"alert":"true",
+			"ecb":"onNotificationAPN"}
+		);	
+	}
+	*/
+		
+	
 }
 function unregister_notif()
 {
@@ -409,7 +461,7 @@ function registerOnServer(registrationId) {
 	//var mail=getLocalStorage("user_session");
 	
 
-	$("body").append("<br>ENVIO: "+registrationId+" *** "+getLocalStorage('uuid'));
+	$("body").append("<br>ENVIO android: "+registrationId+" *** "+getLocalStorage('uuid'));
 	
 	$.ajax({
 		  url: api_imgs,
@@ -510,7 +562,7 @@ function registerOnServerIOS(registrationId) {
 	//var api_key=getLocalStorage("api-key");
 	//var mail=getLocalStorage("user_session");
 
-	alert("registroIOS");
+	$("body").append("<br>ENVIO ios: "+registrationId+" *** "+getLocalStorage('uuid'));
 	
     $.ajax({
         type: "POST",
