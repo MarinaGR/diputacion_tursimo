@@ -193,20 +193,19 @@ function onDeviceReady()
 
 function register_notif()
 {
-		
-	pushNotification = window.plugins.pushNotification;
 	$("body").append('<br>Registrando ' + device.platform);
+	$("body").append('pushNotification');
 	
 	var push = PushNotification.init({
 		android: {
-			"clearNotifications": "false",
-			"forceShow": "true",
-			"senderID": senderID
+			clearNotifications: "false",
+			forceShow: "true",
+			senderID: senderID
 		},
 		ios: {
-			"badge":"true",
-			"sound":"true",
-			"alert":"true"
+			badge:"true",
+			sound:"true",
+			alert:"true"
 		},
 		windows: {}
 	});
