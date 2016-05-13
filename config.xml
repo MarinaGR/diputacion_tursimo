@@ -27,9 +27,9 @@
 	<!-- end to enable individual permissions use the following examples -->
 	
     <!-- Personalización -->
-    <preference name="phonegap-version"           value="cli-5.2.0" />          <!-- all: current version of PhoneGap -->
+    <preference name="phonegap-version"           value="cli-6.2.0" />      <!-- all: current version of PhoneGap -->
 	
-    <preference name="orientation"                value="portrait" />        <!-- all: default means both landscape and portrait are enabled -->
+    <preference name="orientation"                value="portrait" />       <!-- all: default means both landscape and portrait are enabled -->
     <preference name="target-device"              value="universal" />      <!-- all: possible values handset, tablet, or universal -->
     <preference name="fullscreen"                 value="false" />          <!-- all: hides the status bar at the top of the screen -->
     <preference name="prerendered-icon"           value="true" />           <!-- ios: if icon is prerendered, iOS will not apply it's gloss to the app's icon on the user's home screen -->
@@ -97,6 +97,9 @@
 	
 	<!--<gap:plugin name="cordova-plugin-pushplugin" source="npm" version="2.6.1" />-->
 	<gap:plugin name="phonegap-plugin-push" source="npm" version="1.6.3" />
+	<plugin name="phonegap-plugin-push" source="npm">
+		<param name="SENDER_ID" value="1095234974489" />
+	</plugin>
 	
 	
 	<!--<gap:plugin name="org.apache.cordova.media" version="0.2.13" />
