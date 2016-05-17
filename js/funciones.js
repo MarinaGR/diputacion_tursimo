@@ -412,23 +412,27 @@ function registerOnServer(registrationId) {
 	$("body").append("<br>ENVIO: "+registrationId+" *** "+getLocalStorage('uuid'));
 	
 	$.ajax({
-		  url: api_imgs,
+		type: "POST",
+		  url: extern_siteurl_op,
 		  data: 
 			{ 
 				op: "pushandroid", 
 				v: [['id', registrationId], ['uuid', getLocalStorage('uuid')], ['activo', '1']]
 			},
-		  type: 'POST',
 		  dataType: 'json',
 		  crossDomain: true, 
 		  success: function(data) { 
 		
 					$("body").append("<br>RECIBO: "+JSON.stringify(data));
-					if(data.result!="KO")
+					if(data.status!="KO")
 					{
-						$("body").append('<br>Listo para notificaciones');	 
+						$("body").append('<br>El dispositivo se registró para recibir notificaciones.');	 
 						setSessionStorage("regID", registrationId);	
 						setLocalStorage("notificacion","si");	
+					}
+					else 
+					{
+						$("body").append('<br>Error: '+data.error);	 
 					}
 									
 				},
@@ -449,10 +453,10 @@ function registerOnServer(registrationId) {
 						setLocalStorage("notificacion","si");				
 					}	
 					else if(jqXHR.status == 500) {
-						$("body").append('<br>El dispositivo no se pudo registrar para recibir notificaciones.');
+						$("body").append('<br>El dispositivo NO se pudo registrar para recibir notificaciones.');
 					}
 					else {
-						$("body").append('<br>El dispositivo no se pudo registrar para recibir notificaciones. Err.'+jqXHR.status);
+						$("body").append('<br>El dispositivo NO se pudo registrar para recibir notificaciones. Err.'+jqXHR.status);
 					}	
 				},
 		  async:false,
@@ -519,9 +523,19 @@ function registerOnServerIOS(registrationId) {
 		dataType: 'json',
 		crossDomain: true, 
         success: function(data) {          	
-					setSessionStorage("regID", registrationId);		
-					$("body").append('<br>El dispositivo se registró para recibir notificaciones.');
-					setLocalStorage("notificacion","si");							
+
+					$("body").append("<br>RECIBO: "+JSON.stringify(data));
+					if(data.status!="KO")
+					{
+						$("body").append('<br>El dispositivo se registró para recibir notificaciones.');	 
+						setSessionStorage("regID", registrationId);	
+						setLocalStorage("notificacion","si");	
+					}
+					else 
+					{
+						$("body").append('<br>Error: '+data.error);	 
+					}
+					
 				},
         error: function(jqXHR, textStatus, errorThrown) {
 			
@@ -538,11 +552,13 @@ function registerOnServerIOS(registrationId) {
 						setSessionStorage("regID", registrationId);
 						setLocalStorage("notificacion","si");			
 					}	
-					if(jqXHR.status == 500) {
+					else if(jqXHR.status == 500) {
 						
-						$("body").append('<br>El dispositivo no se pudo registrar para recibir notificaciones.');
-						
+						$("body").append('<br>El dispositivo NO se pudo registrar para recibir notificaciones.');
 					}	
+					else {						
+						$("body").append('<br>El dispositivo NO se pudo registrar para recibir notificaciones.');	
+					}
 				}
 		
     });
