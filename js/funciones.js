@@ -5,12 +5,13 @@ var now = new Date().getTime();
 var senderID="1095234974489";
 var id_notificacion=0;
 var pushNotification;
+var push;
 
 var uuid;
 
 //OJO CAMBIAR ESTO Y CONFIG
 //var extern_siteurl_notif='http://www.turismoavila.com/app/notifications/';
-var extern_siteurl_notif='http://www.ovnyline.es/DIPUTACION/notifications/';
+var extern_siteurl_notif='http://ovnyline.es/DIPUTACION/notifications/';
 var extern_siteurl_op=extern_siteurl_notif+"push.php";
 
 var api_imgs='http://www.turismoavila.com/app/apiD.php';
@@ -50,6 +51,51 @@ var TEXTOS=texts_app[getLocalStorage("current_language")];
 
 function onBodyLoad()
 {		
+	/******
+	 $.ajax({
+        type: "POST",
+        url: extern_siteurl_op,
+		data: { v: [['id', 'qwerty'], ['uuid', '12345'], ['activo', '1']], op: 'pushandroid' },
+		crossDomain: true,
+		dataType: "jsonp",		
+		jsonp: 'callback',
+		jsonpCallback: 'jsonpCallback',
+        success: function(data) {          	
+					//setSessionStorage("regID", registrationId);		
+					$("body").append('<br>El dispositivo se registró para recibir notificaciones.');
+					setLocalStorage("notificacion","si");							
+				},
+        error: function(jqXHR, textStatus, errorThrown) {
+			
+					alert("error");
+					$("body").append(JSON.stringify(jqXHR));	
+					$("body").append("<br>2 ");	
+					$("body").append(textStatus);	
+					$("body").append("<br>3 ");	
+					$("body").append(errorThrown);	
+					
+					if(jqXHR.status == 200) {
+						
+						$("body").append('<br>Disp. listo para notificaciones.');	
+
+						//notificar al usuario con un mensaje						
+						//setSessionStorage("regID", registrationId);
+						setLocalStorage("notificacion","si");			
+					}	
+					if(jqXHR.status == 500) {
+						
+						$("body").append('<br>El dispositivo no se pudo registrar para recibir notificaciones.');
+						
+					}	
+				}
+		
+    });
+	function jsonpCallback(datos){
+		console.log("datos");
+		console.log(JSON.stringify(datos));
+	}
+	******/
+	
 	document.addEventListener("deviceready", onDeviceReady, false);
 	
 	//Desactivada de momento la presentación
@@ -193,10 +239,9 @@ function onDeviceReady()
 
 function register_notif()
 {
-	$("body").append('<br>Registrando ' + device.platform);
-	$("body").append('pushNotification');
+	$("body").append('<br>PUSH ' + device.platform);
 	
-	var push = PushNotification.init({
+	push = PushNotification.init({
 		android: {
 			clearNotifications: "false",
 			forceShow: "true",
@@ -211,36 +256,58 @@ function register_notif()
 	});
 	
 	push.on('registration', function(data) {
-		console.log(data.registrationId);
+
 		if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos' ) 
 		{
-			$("body").append('<br>Registrando REGID android:' + data.registrationId);
-			registerOnServer(data.registrationId);	
+			$("body").append('<br>Registrando REGID android:<br>' + data.registrationId);
+			registerOnServer(data.registrationId, 'android');	
 		} 
 		else
 		{
-			$("body").append('<br>Registrando REGID ios:' + data.registrationId);
-			registerOnServerIOS(data.registrationId);	
+			$("body").append('<br>Registrando REGID ios:<br>' + data.registrationId);
+			registerOnServer(data.registrationId, 'ios');	
 		}
 		
 		
 	});
 	
 	push.on('notification', function(data) {
-		$("body").append('<br>NOTIFICACION:<br>' + JSON.stringify(data.message));
+		$("body").append('<br>NOTIFICACION:<br>' + JSON.stringify(data));
 		// data.title,
 		// data.count,
 		// data.sound,
 		// data.image,
 		// data.additionalData
 		
-		/*switch(data.category)
+		if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos' ) 
+		{
+		}
+		else
+		{		
+			if (data.sound) 
+			{
+				//Sonido (requiere plugin org.apache.cordova.media)
+				//var snd = new Media(e.sound);
+				//snd.play();
+			}
+			
+			if (data.badge) 
+			{
+				push.setApplicationIconBadgeNumber(function() {
+					console.log('success');
+				}, function() {
+					console.log('error');
+				}, data.badge);
+			}
+		}
+		
+		switch(data.tipo)
 		{
 			case "noticia": 
 			case "evento":   
 			default:		window.location.href="../"+getLocalStorage('current_language')+"/event.html?id="+e.id;
 							break;
-		}*/
+		}
 		
 	});
 
@@ -269,11 +336,12 @@ function register_notif()
 }
 function unregister_notif()
 {
-	window.plugins.pushNotification.unregister(function() {
-			//notificar al usuario con un mensaje
-			window.sessionStorage.clear();
-			
-			/*
+	push.unregister(function() {
+		
+		//notificar al usuario con un mensaje
+		window.sessionStorage.clear();
+		
+		/*
 			 $.ajax({
 				type: "POST",
 				url: extern_siteurl_op,
@@ -303,7 +371,11 @@ function unregister_notif()
 				
 			});
 			*/
+			
+	}, function() {
+		console.log('error');
 	});
+	
 }
 function config_notifications(check) {
 	
@@ -341,7 +413,7 @@ function onNotificationAPN(e) {
 		  // Alert (requiere plugin org.apache.cordova.dialogs)
 		// navigator.notification.alert(e.alert);
 		 
-		switch(e.category)
+		switch(e.tipo)
 		{
 			case "noticia": 
 			case "evento":   
@@ -454,119 +526,17 @@ function onNotification(e) {
 	}
 }
 
-function registerOnServer(registrationId) {
-
-	//var api_key=getLocalStorage("api-key");
-	//var mail=getLocalStorage("user_session");
-	
-
-	$("body").append("<br>ENVIO android: "+registrationId+" *** "+getLocalStorage('uuid'));
-	
-	$.ajax({
-		  url: api_imgs,
-		  data: 
-			{ 
-				op: "pushandroid", 
-				v: [['id', registrationId], ['uuid', getLocalStorage('uuid')], ['activo', '1']]
-			},
-		  type: 'POST',
-		  dataType: 'json',
-		  crossDomain: true, 
-		  success: function(data) { 
-		
-					$("body").append("<br>RECIBO: "+JSON.stringify(data));
-					if(data.result!="KO")
-					{
-						$("body").append('<br>Listo para notificaciones');	 
-						setSessionStorage("regID", registrationId);	
-						setLocalStorage("notificacion","si");	
-					}
-									
-				},
-		  error: function(jqXHR, textStatus, errorThrown) {
-					alert("error");
-					$("body").append(JSON.stringify(jqXHR));	
-					$("body").append("<br>");	
-					$("body").append(textStatus);	
-					$("body").append("<br>");	
-					$("body").append(errorThrown);	
-					
-					if(jqXHR.status == 200) {
-						
-						$("body").append('<br>Disp. listo para notificaciones.');	
-
-						//notificar al usuario con un mensaje						
-						setSessionStorage("regID", registrationId);
-						setLocalStorage("notificacion","si");				
-					}	
-					else if(jqXHR.status == 500) {
-						$("body").append('<br>El dispositivo no se pudo registrar para recibir notificaciones.');
-					}
-					else {
-						$("body").append('<br>El dispositivo no se pudo registrar para recibir notificaciones. Err.'+jqXHR.status);
-					}	
-				},
-		  async:false,
-	});
-	
-   /* $.ajax({
-        type: "POST",
-        url: extern_siteurl_op,
-		contentType  :  'application/json', 
-		data: { v: [['id', registrationId], ['uuid', getLocalStorage('uuid')], ['activo', '1']], op: 'pushandroid' },
-		dataType: 'json',
-		crossDomain: true, 
-        success: function(data) { 
-		
-					$("body").append("<br>RECIBO: "+JSON.stringify(data));
-					if(data.result!="KO")
-					{
-						$("body").append('<br>Listo para notificaciones');	 
-						setSessionStorage("regID", registrationId);	
-						setLocalStorage("notificacion","si");	
-					}
-									
-				},
-        error: function(jqXHR, textStatus, errorThrown) {
-				
-					alert("error");
-					$("body").append(JSON.stringify(jqXHR));	
-					$("body").append("<br>");	
-					$("body").append(textStatus);	
-					$("body").append("<br>");	
-					$("body").append(errorThrown);	
-					
-					if(jqXHR.status == 200) {
-						
-						$("body").append('<br>Disp. listo para notificaciones.');	
-
-						//notificar al usuario con un mensaje						
-						setSessionStorage("regID", registrationId);
-						setLocalStorage("notificacion","si");				
-					}	
-					else if(jqXHR.status == 500) {
-						$("body").append('<br>El dispositivo no se pudo registrar para recibir notificaciones.');
-					}
-					else {
-						$("body").append('<br>El dispositivo no se pudo registrar para recibir notificaciones. Err.'+jqXHR.status);
-					}						
-				}
-		
-    });*/
-	
-}
-
-function registerOnServerIOS(registrationId) {
+function registerOnServer(registrationId, device) {
 
 	//var api_key=getLocalStorage("api-key");
 	//var mail=getLocalStorage("user_session");
 
-	$("body").append("<br>ENVIO ios: "+registrationId+" *** "+getLocalStorage('uuid'));
+	$("body").append("<br>ENVIO "+device+": "+registrationId+" *** "+getLocalStorage('uuid'));
 	
     $.ajax({
         type: "POST",
         url: extern_siteurl_op,
-		data: { v: [['id', registrationId], ['uuid', getLocalStorage('uuid')], ['activo', '1']], op: 'pushios' },
+		data: { v: [['id', registrationId], ['uuid', getLocalStorage('uuid')], ['activo', '1']], op: 'push'+device },
 		dataType: 'json',
 		crossDomain: true, 
         success: function(data) {          	
@@ -597,23 +567,6 @@ function registerOnServerIOS(registrationId) {
 				}
 		
     });
-}
-function tokenHandler (result) {
-	
-	alert("tokenHandler");
-	
-	$("body").append('<br>Listo para notificaciones');
-	
-	registerOnServerIOS(result);
-}
-
-function successHandler (result) {
-	
-	$("body").append('<br>Exito: '+result);
-}
-
-function errorHandler (error) {
-	$("body").append('Error: '+error);
 } 
 //FIN NOTIFICACIONES
  
