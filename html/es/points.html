@@ -17,10 +17,18 @@
 		<script src="../../js/funciones.js"></script>
 		<script src="../../cordova.js"></script>
 		
-		<script src="../../TtsPlugin.js"></script>
-		
 		<script>
 		var identificador=get_var_url("id"); 
+		var voice="es-ES";		
+		switch(getLocalStorage("current_language"))
+		{
+			default:
+			case "es":  voice="es-ES";
+						break;
+						
+			case "en":  voice="en-US";
+						break;					
+		}
 		
 		$(document).ready(function() {
 		
@@ -34,86 +42,54 @@
 			ajax_recover_data("points", "points", identificador, "ov_view_container_01");
 		
 		});
-		
+				
 		document.addEventListener("deviceready", function()  {
-		
-			var ttsPlugin = cordova.require('cordova/plugin/TtsPlugin');
-			ttsPlugin.init(function() {
+			
+			$("#ov_box_21_2").on("click",function(e) {	
 
-				var voice="es-ES";			
-				switch(getLocalStorage("current_language"))
-				{
-					default:
-					case "es":  voice="es-ES";
-								break;
-								
-					case "en":  voice="en-US";
-								break;					
-				}
+				try {
+					TTS.speak({
+						text: $('#point_description').text(),
+						locale: voice
+					}, function () {
+						alert('success');
+					}, function (reason) {
+						alert(reason);						
+					});
 				
-				ttsPlugin.setLanguage(voice);
-				
-				$("#ov_box_21_2").on("click",function(e) {	
-				
-					ttsPlugin.speak($('#point_description').text());
-					
 					$("#ov_box_21_2").hide('fade', function() {
 						$("#ov_box_21_2_1").show();
 					});
+				} catch(e) {
+					$("body").prepend('Error TTS');
+				} finally {
+					$("body").prepend(' FIN ');
+				}
+				
+				
+			});
+			
+			//Cambiar botones cuando termine de hablar
+			
+			$("#ov_box_21_2_1").on("click",function(e) {	
+		
+				TTS.speak({
+						text: "",
+						locale: voice
+					}, function () {
+						alert('success');
+					}, function (reason) {
+						alert(reason);					
+					});			
 					
+				$("#ov_box_21_2_1").hide('fade', function() {
+					$("#ov_box_21_2").show();
 				});
-				
-				$("#ov_box_21_2_1").on("click",function(e) {	
-			
-					//stop_speak(ttsPlugin); // Stop speaking
-					try {
-						ttsPlugin.stop();
-					} catch(e) {
-						alert("Error stop");
-						alert(e.message);
-						
-						ttsPlugin.getStatus(function(status){
-							//Dependiendo si está hablando o no hacer X acciones
-							alert("ESTADO "+status);
-						});
-						
-					} finally {
 
-					}
-					
-					$("#ov_box_21_2_1").hide('fade', function() {
-						$("#ov_box_21_2").show();
-					});
-										
-				});			
-				
-				//Cuando termina de hablar poner el boton "Parar audio" como "Audio-guía"
-				ttsPlugin.callbacks.finishedSpeaking = function(){
-					alert("Finished Speaking");
-				}
-
-				ttsPlugin.callbacks.startedSpeaking = function(){
-					alert("Started Speaking");
-				}
+			});
 			
-			}, function(jqXHR, textStatus, errorThrown) {
-				alert("Error: "+textStatus+" "+errorThrown);
-			}); // Init Plugin : failCallBack doesn't work yet			
-					
 		});
 		
-		function stop_speak(ttsPlugin) {
-			
-			try {
-				ttsPlugin.stopSpeaking(); 
-			} catch(e) {
-				alert("Error stop");
-				alert(e.message);
-			} finally {
-				alert("final");
-			}
-		}
-
 		</script>		
 		
 	</head>
@@ -178,7 +154,7 @@
 						</div>
 					</div>
 					
-					<!--<div class="ov_box_21" id="ov_box_21_2">
+					<div class="ov_box_21" id="ov_box_21_2">
 						<img src="../../styles/images/icons/info.png" alt="info" class="ov_image_16"/>
 						<div id="ov_text_29_2" class="ov_text_29">
 						Audio-guía
@@ -189,7 +165,7 @@
 						<div id="ov_text_29_2" class="ov_text_29">
 						Parar audio
 						</div>
-					</div>-->
+					</div>
 					
 					<div class="ov_box_21" id="ov_box_21_3" onclick="go_to_page('add_point_route',identificador)">
 						<img src="../../styles/images/icons/include_point2.png" alt="like" class="ov_image_16"/>

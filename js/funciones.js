@@ -289,14 +289,25 @@ function onNotificationAPN(e) {
 		 
 		  // Alert (requiere plugin org.apache.cordova.dialogs)
 		// navigator.notification.alert(e.alert);
-		 
-		switch(e.tipo)
-		{
-			case "noticia": 
-			case "evento":   
-			default:		window.location.href="../"+getLocalStorage('current_language')+"/event.html?id="+e.id;
-							break;
+		
+
+		navigator.notification.alert(
+			e.alert,  // message
+			alertDismissed,   // callback
+			'Notificación',   // title
+			'OK'              // buttonName
+		);
+		function alertDismissed() {
+			// do something
+			switch(e.tipo)
+			{
+				case "noticia": 
+				case "evento":   
+				default:		window.location.href="../"+getLocalStorage('current_language')+"/event.html?id="+e.id;
+								break;
+			}
 		}
+ 		
 	}
 		
 	if (e.sound) {
@@ -325,6 +336,7 @@ function onNotification(e) {
 		case 'message':
 		
 					var notif=e.payload;
+					navigator.notification.beep(1);
 		
 					// Foreground: Notificación en línea, mientras estamos en la aplicación
 					if (e.foreground)
@@ -346,10 +358,8 @@ function onNotification(e) {
 						
 						//if(notif.notId!="")
 						//	id_notificacion=notif.notId;		
-						
-						alert("tipo2 "+notif.tipo);
-						
-						window.plugin.notification.local.add({
+
+						/*window.plugin.notification.local.add({
 							id:      id_notificacion,
 							//date:    date_notif, 
 							title:   "["+notif.tipo+"] "+notif.title,
@@ -359,20 +369,26 @@ function onNotification(e) {
 							autoCancel: true
 						});		
 
-						id_notificacion++;		
-
-						window.plugin.notification.local.onclick = function (notification, state, json) {
-
-							switch(notif.tipo)
-							{
-								case "noticia":
-								case "evento":   
-								default:    window.location.href="../"+getLocalStorage('current_language')+"/event.html?id="+notif.id;
-											break;
-							}
+						id_notificacion++;	*/
+	
+						navigator.notification.confirm(notif.title, onConfirm, notif.tipo, ['Ver ahora','Omitir'] );
+						
+						function onConfirm(buttonIndex) {
 							
-						};
-				
+							alert(buttonIndex);
+							alert(notif.tipo);
+							
+							if(buttonIndex==1)
+							{
+								switch(notif.tipo)
+								{
+									case "noticia":
+									case "evento":   
+									default:    window.location.href="../"+getLocalStorage('current_language')+"/event.html?id="+notif.id;
+												break;
+								}
+							}
+						}				
 											
 					}
 					else
