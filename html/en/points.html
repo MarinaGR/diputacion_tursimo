@@ -19,6 +19,17 @@
 		
 		<script>
 		var identificador=get_var_url("id"); 
+		var voice="es-ES";		
+		switch(getLocalStorage("current_language"))
+		{
+			default:
+			case "es":  voice="es-ES";
+						break;
+						
+			case "en":  voice="en-US";
+						break;					
+		}
+		
 		$(document).ready(function() {
 			$("#ov_view_container_01").css("background-color","#F2F2F3");
 			$('#ov_view_container_01').css("min-height",$(window).innerHeight()+"px");
@@ -33,43 +44,75 @@
 		
 		document.addEventListener("deviceready", function()  {
 		
-			ttsPlugin.initTTS(function() {
+			var texto_a_leer=$('#point_description').text();
+			var caracteres_texto=$('#point_description').val().length;
+			
+			$("#ov_box_21_2").on("click",function(e) {	
 
-				var voice="es-ES";			
-				switch(getLocalStorage("current_language"))
-				{
-					default:
-					case "es":  voice="es-ES";
-								break;
-								
-					case "en":  voice="en-US";
-								break;					
-				}
+				try {
 				
-				ttsPlugin.setLanguage(voice);
-				
-				$("#ov_box_21_2").on("click",function(e) {	
-				
-					ttsPlugin.speak($('#point_description').text());
-					
 					$("#ov_box_21_2").hide('fade', function() {
 						$("#ov_box_21_2_1").show();
 					});
 					
-				});
+					TTS.speak({
+						text: texto_a_leer,
+						locale: voice
+					}, function() {
+						//terminado con exito
+						$("#ov_box_21_2_1").hide('fade', function() {
+							$("#ov_box_21_2").show();
+						});
+					}, function(reason) {
+						$("body").prepend(reason);
+					});		
+					
+				} catch(e) {
 				
-				$("#ov_box_21_2_1").on("click",function(e) {	
-			
-					ttsPlugin.stopSpeaking(); 
+					$("body").prepend('Error TTS');
 					
 					$("#ov_box_21_2_1").hide('fade', function() {
 						$("#ov_box_21_2").show();
 					});
-				});
+					
+				} finally { }
+				
+			});
 			
-			}, function(jqXHR, textStatus, errorThrown) {
-				alert("Error: "+textStatus+" "+errorThrown);
-			}); // Init Plugin : failCallBack doesn't work yet
+			//Cambiar botones cuando termine de hablar
+			
+			$("#ov_box_21_2_1").on("click",function(e) {	
+		
+				try {
+				
+					TTS.speak({
+							text: "",
+							locale: voice
+						}, function() {
+							//parado con exito
+							$("#ov_box_21_2").hide('fade', function() {
+								$("#ov_box_21_2_1").show();
+							});
+						}, function(reason) {
+							$("body").prepend(reason);
+						});			
+						
+					$("#ov_box_21_2_1").hide('fade', function() {
+						$("#ov_box_21_2").show();
+					});
+					
+				} catch(e) {
+				
+					$("body").prepend('Error TTS');
+					
+					$("#ov_box_21_2").hide('fade', function() {
+								$("#ov_box_21_2_1").show();
+							});
+					
+				} finally { }
+
+			});
+			
 
 		});
 
