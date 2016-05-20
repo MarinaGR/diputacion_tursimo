@@ -19,6 +19,7 @@
 		
 		<script>
 		var tiempo;
+		var lectura=true;
 		var MAX_CARACTERES=100;
 		var identificador=get_var_url("id"); 
 		var voice="es-ES";		
@@ -36,57 +37,60 @@
 				
 			var texto_dividido=a_leer[posicion];
 			
-			try {
-			
-				TTS.speak({
-					text: texto_dividido,
-					locale: voice
-				}, function() {
+			if(lectura)
+				try {
 				
-					if(posicion<a_leer.length)
-					{
-						leer_texto(a_leer, posicion+1) ;
-					}
-					else
-					{
+					TTS.speak({
+						text: texto_dividido,
+						locale: voice
+					}, function() {
+					
+						if(posicion<a_leer.length)
+						{
+							lectura=true;
+							leer_texto(a_leer, posicion+1) ;
+						}
+						else
+						{
+							//terminado con exito
+							lectura=false;
+							$("#ov_box_21_2_1").hide('fade', function() {
+								$("#ov_box_21_2").show();
+							});
+						}
+						
+					}, function(reason) {
+						$("#ov_box_21_2_1").hide('fade', function() {
+							$("#ov_box_21_2").show();
+							$("#ov_box_21_2").html('<p style="text-align:center">Error Play'+reason+'</p>');
+						});
+					});
+			
+				
+					/*TTS.speak({
+						text: texto_a_leer,
+						locale: voice
+					}, function() {
 						//terminado con exito
 						$("#ov_box_21_2_1").hide('fade', function() {
 							$("#ov_box_21_2").show();
 						});
-					}
+					}, function(reason) {
+						$("#ov_box_21_2_1").hide('fade', function() {
+							$("#ov_box_21_2").show();
+							$("#ov_box_21_2").html('<p style="text-align:center">Error Play'+reason+'</p>');
+						});
+					});	*/
 					
-				}, function(reason) {
+				} catch(e) {
+										
 					$("#ov_box_21_2_1").hide('fade', function() {
 						$("#ov_box_21_2").show();
-						$("#ov_box_21_2").html('<p style="text-align:center">Error Play'+reason+'</p>');
+						$("#ov_box_21_2").html('<p style="text-align:center">Error Play</p>');
 					});
-				});
-		
-			
-				/*TTS.speak({
-					text: texto_a_leer,
-					locale: voice
-				}, function() {
-					//terminado con exito
-					$("#ov_box_21_2_1").hide('fade', function() {
-						$("#ov_box_21_2").show();
-					});
-				}, function(reason) {
-					$("#ov_box_21_2_1").hide('fade', function() {
-						$("#ov_box_21_2").show();
-						$("#ov_box_21_2").html('<p style="text-align:center">Error Play'+reason+'</p>');
-					});
-				});	*/
+					
+				} finally { }
 				
-			} catch(e) {
-									
-				$("#ov_box_21_2_1").hide('fade', function() {
-					$("#ov_box_21_2").show();
-					$("#ov_box_21_2").html('<p style="text-align:center">Error Play</p>');
-				});
-				
-			} finally { }
-			
 		
 		}
 		
@@ -127,13 +131,18 @@
 
 					clearTimeout(tiempo);
 					
-					leer_texto(array_texto_a_leer, 0);
+					if(lectura)
+					{
+						leer_texto(array_texto_a_leer, 0, function() {
+						
+							//terminado
+							$("#ov_box_21_2_1").hide('fade', function() {
+								$("#ov_box_21_2").show();
+							})
+						
+						});
+					}
 					
-					//terminado
-					$("#ov_box_21_2_1").hide('fade', function() {
-						$("#ov_box_21_2").show();
-					})
-				
 				});					
 
 			});
@@ -147,7 +156,8 @@
 					
 					try {
 					
-						tiempo=setTimeout(function() { }, 1e7);
+						lectura=false;
+						tiempo=setTimeout(function() { lectura=true; }, 1e7);
 					
 					/*	
 						TTS.speak({
@@ -170,6 +180,7 @@
 					} catch(e) {
 										
 						$("#ov_box_21_2").hide('fade', function() {
+							lectura=false;
 							$("#ov_box_21_2_1").show();
 							$("#ov_box_21_2_1").html('<p style="text-align:center">Error Play</p>');
 						});
@@ -182,6 +193,44 @@
 			
 
 		});
+		
+		function stop_tts() {
+		
+			$("#ov_box_21_2_1").hide('fade', function() {
+				
+				$("#ov_box_21_2").show();
+				lectura=false;
+				
+				try {
+					
+					TTS.speak({
+							text: "",
+							locale: voice
+						}, function() {
+							//parado con exito
+							$("#ov_box_21_2").hide('fade', function() {
+								$("#ov_box_21_2_1").show();
+							});
+						}, function(reason) {
+							$("#ov_box_21_2").hide('fade', function() {
+								$("#ov_box_21_2_1").show();
+								$("#ov_box_21_2_1").html('<p style="text-align:center">Error Play'+reason+'</p>');
+							});
+						});	
+		
+					
+				} catch(e) {
+					lectura=false;		
+					$("#ov_box_21_2").hide('fade', function() {
+						$("#ov_box_21_2_1").show();
+						$("#ov_box_21_2_1").html('<p style="text-align:center">Error Play</p>');
+					});
+					
+				} finally { }
+				
+			});
+
+		}
 
 
 		</script>			
