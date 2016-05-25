@@ -336,7 +336,7 @@ function onNotification(e) {
 		case 'message':
 		
 					var notif=e.payload;
-					navigator.notification.beep(1);
+					//navigator.notification.beep(1);
 		
 					// Foreground: Notificación en línea, mientras estamos en la aplicación
 					if (e.foreground)
@@ -374,10 +374,7 @@ function onNotification(e) {
 						navigator.notification.confirm(notif.title, onConfirm, notif.tipo, ['Ver ahora','Omitir'] );
 						
 						function onConfirm(buttonIndex) {
-							
-							alert(buttonIndex);
-							alert(notif.tipo);
-							
+	
 							if(buttonIndex==1)
 							{
 								switch(notif.tipo)
@@ -395,8 +392,6 @@ function onNotification(e) {
 					{	
 						// e.coldstart: Usuario toca notificación en la barra de notificaciones
 						// Coldstart y background: Enviamos a la página requerida
-						
-						alert("tipo3 "+notif.tipo);
 						
 						switch(notif.tipo)
 						{
@@ -477,51 +472,6 @@ function registerOnServer(registrationId) {
 				},
 		  async:false,
 	});
-	
-   /* $.ajax({
-        type: "POST",
-        url: extern_siteurl_op,
-		contentType  :  'application/json', 
-		data: { v: [['id', registrationId], ['uuid', getLocalStorage('uuid')], ['activo', '1']], op: 'pushandroid' },
-		dataType: 'json',
-		crossDomain: true, 
-        success: function(data) { 
-		
-					$("body").append("<br>RECIBO: "+JSON.stringify(data));
-					if(data.result!="KO")
-					{
-						$("body").append('<br>Listo para notificaciones');	 
-						setSessionStorage("regID", registrationId);	
-						setLocalStorage("notificacion","si");	
-					}
-									
-				},
-        error: function(jqXHR, textStatus, errorThrown) {
-				
-					alert("error");
-					$("body").append(JSON.stringify(jqXHR));	
-					$("body").append("<br>");	
-					$("body").append(textStatus);	
-					$("body").append("<br>");	
-					$("body").append(errorThrown);	
-					
-					if(jqXHR.status == 200) {
-						
-						$("body").append('<br>Disp. listo para notificaciones.');	
-
-						//notificar al usuario con un mensaje						
-						setSessionStorage("regID", registrationId);
-						setLocalStorage("notificacion","si");				
-					}	
-					else if(jqXHR.status == 500) {
-						$("body").append('<br>El dispositivo no se pudo registrar para recibir notificaciones.');
-					}
-					else {
-						$("body").append('<br>El dispositivo no se pudo registrar para recibir notificaciones. Err.'+jqXHR.status);
-					}						
-				}
-		
-    });*/
 	
 }
 

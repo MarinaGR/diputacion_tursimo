@@ -18,6 +18,9 @@
 		<script src="../../cordova.js"></script>
 		
 		<script>
+		var tiempo;
+		var lectura=true;
+		var MAX_CARACTERES=100;
 		var identificador=get_var_url("id"); 
 		var voice="es-ES";		
 		switch(getLocalStorage("current_language"))
@@ -28,6 +31,67 @@
 						
 			case "en":  voice="en-US";
 						break;					
+		}
+		
+		function leer_texto(a_leer, posicion) {
+				
+			var texto_dividido=a_leer[posicion];
+			
+			if(lectura)
+				try {
+				
+					TTS.speak({
+						text: texto_dividido,
+						locale: voice
+					}, function() {
+					
+						if(posicion<a_leer.length)
+						{
+							lectura=true;
+							leer_texto(a_leer, posicion+1) ;
+						}
+						else
+						{
+							//terminado con exito
+							lectura=false;
+							$("#ov_box_21_2_1").hide('fade', function() {
+								$("#ov_box_21_2").show();
+							});
+						}
+						
+					}, function(reason) {
+						$("#ov_box_21_2_1").hide('fade', function() {
+							$("#ov_box_21_2").show();
+							$("#ov_box_21_2").html('<p style="text-align:center">Error Play'+reason+'</p>');
+						});
+					});
+			
+				
+					/*TTS.speak({
+						text: texto_a_leer,
+						locale: voice
+					}, function() {
+						//terminado con exito
+						$("#ov_box_21_2_1").hide('fade', function() {
+							$("#ov_box_21_2").show();
+						});
+					}, function(reason) {
+						$("#ov_box_21_2_1").hide('fade', function() {
+							$("#ov_box_21_2").show();
+							$("#ov_box_21_2").html('<p style="text-align:center">Error Play'+reason+'</p>');
+						});
+					});	*/
+					
+				} catch(e) {
+										
+					$("#ov_box_21_2_1").hide('fade', function() {
+						$("#ov_box_21_2").show();
+						$("#ov_box_21_2").html('<p style="text-align:center">Error Play</p>');
+					});
+					
+				} finally { }
+				
+		
 		}
 		
 		$(document).ready(function() {
@@ -43,48 +107,87 @@
 		});
 		
 		document.addEventListener("deviceready", function()  {
-		
-			var texto_a_leer=$('#point_description').text();
-			var caracteres_texto=$('#point_description').val().length;
-			
+					
 			$("#ov_box_21_2").on("click",function(e) {	
+				
+				$("#ov_box_21_2").hide('fade', function() {
+					$("#ov_box_21_2_1").show();
+					
+					var array_texto_a_leer=new Array()
+					var texto_a_leer=$('#point_description').text();
+					var num_caracteres_texto=$('#point_description').text().length;
+					
+					if(num_caracteres_texto>MAX_CARACTERES)
+					{
+						var inicio_corte=0;
+						var fin_corte=MAX_CARACTERES;
+						for(i=0;i<parseInt(num_caracteres_texto/MAX_CARACTERES)+1;i++)
+						{
+							array_texto_a_leer[i] = $('#point_description').text().substring(inicio_corte, fin_corte);
+							inicio_corte=fin_corte;
+							fin_corte+=MAX_CARACTERES;
+						}
+					}
 
-				try {
-				
-					$("#ov_box_21_2").hide('fade', function() {
-						$("#ov_box_21_2_1").show();
-					});
+					clearTimeout(tiempo);
 					
-					TTS.speak({
-						text: texto_a_leer,
-						locale: voice
-					}, function() {
-						//terminado con exito
-						$("#ov_box_21_2_1").hide('fade', function() {
-							$("#ov_box_21_2").show();
+					if(lectura)
+					{
+						leer_texto(array_texto_a_leer, 0, function() {
+						
+							//terminado
+							$("#ov_box_21_2_1").hide('fade', function() {
+								$("#ov_box_21_2").show();
+							})
+						
 						});
-					}, function(reason) {
-						$("body").prepend(reason);
-					});		
+					}
 					
-				} catch(e) {
-				
-					$("body").prepend('Error TTS');
-					
-					$("#ov_box_21_2_1").hide('fade', function() {
-						$("#ov_box_21_2").show();
-					});
-					
-				} finally { }
-				
+				});					
+
 			});
 			
 			//Cambiar botones cuando termine de hablar
 			
-			$("#ov_box_21_2_1").on("click",function(e) {	
+			$("#ov_box_21_2_1").on("click",function(e) {
+
+				stop_tts();			
 		
-				try {
+				/*$("#ov_box_21_2_1").hide('fade', function() {
+					
+					$("#ov_box_21_2").show();
+					
+					try {
+					
+						lectura=false;
+						tiempo=setTimeout(function() { lectura=true; }, 1e7);
+						
+					} catch(e) {
+										
+						$("#ov_box_21_2").hide('fade', function() {
+							lectura=false;
+							$("#ov_box_21_2_1").show();
+							$("#ov_box_21_2_1").html('<p style="text-align:center">Error Play</p>');
+						});
+						
+					} finally { }
+					
+				});*/
+
+			});
+			
+
+		});
+		
+		function stop_tts() {
+		
+			$("#ov_box_21_2_1").hide('fade', function() {
 				
+				$("#ov_box_21_2").show();
+				lectura=false;
+				
+				try {
+					
 					TTS.speak({
 							text: "",
 							locale: voice
@@ -94,27 +197,25 @@
 								$("#ov_box_21_2_1").show();
 							});
 						}, function(reason) {
-							$("body").prepend(reason);
-						});			
-						
-					$("#ov_box_21_2_1").hide('fade', function() {
-						$("#ov_box_21_2").show();
-					});
+							$("#ov_box_21_2").hide('fade', function() {
+								$("#ov_box_21_2_1").show();
+								$("#ov_box_21_2_1").html('<p style="text-align:center">Error Play'+reason+'</p>');
+							});
+						});	
+		
 					
 				} catch(e) {
-				
-					$("body").prepend('Error TTS');
-					
+					lectura=false;		
 					$("#ov_box_21_2").hide('fade', function() {
-								$("#ov_box_21_2_1").show();
-							});
+						$("#ov_box_21_2_1").show();
+						$("#ov_box_21_2_1").html('<p style="text-align:center">Error Play</p>');
+					});
 					
 				} finally { }
-
+				
 			});
-			
 
-		});
+		}
 
 
 		</script>		

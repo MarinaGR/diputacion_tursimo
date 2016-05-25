@@ -149,33 +149,18 @@
 			
 			//Cambiar botones cuando termine de hablar
 			
-			$("#ov_box_21_2_1").on("click",function(e) {	
+			$("#ov_box_21_2_1").on("click",function(e) {
+
+				stop_tts();			
 		
-				$("#ov_box_21_2_1").hide('fade', function() {
-						$("#ov_box_21_2").show();
+				/*$("#ov_box_21_2_1").hide('fade', function() {
+					
+					$("#ov_box_21_2").show();
 					
 					try {
 					
 						lectura=false;
 						tiempo=setTimeout(function() { lectura=true; }, 1e7);
-					
-					/*	
-						TTS.speak({
-								text: "",
-								locale: voice
-							}, function() {
-								//parado con exito
-								$("#ov_box_21_2").hide('fade', function() {
-									$("#ov_box_21_2_1").show();
-								});
-							}, function(reason) {
-								$("#ov_box_21_2").hide('fade', function() {
-									$("#ov_box_21_2_1").show();
-									$("#ov_box_21_2_1").html('<p style="text-align:center">Error Play'+reason+'</p>');
-								});
-							});	
-					*/
-						
 						
 					} catch(e) {
 										
@@ -187,7 +172,7 @@
 						
 					} finally { }
 					
-				});
+				});*/
 
 			});
 			
@@ -231,7 +216,6 @@
 			});
 
 		}
-
 
 		</script>			
 		

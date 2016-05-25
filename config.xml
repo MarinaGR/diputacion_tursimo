@@ -160,6 +160,6 @@
     <!-- Acceso a dominios externos -->    
 	<allow-intent href="*" />
 	<allow-navigation href="*" /> 
-	 <access origin="*"/> 
+	<access origin="*"/> 
 
 </widget>
