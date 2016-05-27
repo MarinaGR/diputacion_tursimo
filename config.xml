@@ -54,6 +54,7 @@
 	
 	-->
 	
+	<preference name="deployment-target" value="7.0" />
 	<preference name="android-build-tool" value="gradle" /> 
 
     <preference name="android-installLocation"    value="auto" />           
