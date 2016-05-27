@@ -3,6 +3,7 @@
 		xmlns:gap   = "http://phonegap.com/ns/1.0"
 		id          = "com.ovnyline.diputacion"
 		version     = "1.0.6" >
+		
 		<!-- ios new version 1.0.1: delete reference other mobile plataforms -->
 		<!-- ios new version 1.0.2: cambio de imagen -->
 		<!-- all new version 1.0.3: download and new informations // version not upload in ios -->
@@ -28,7 +29,7 @@
 	<!-- end to enable individual permissions use the following examples -->
 	
     <!-- Personalización -->
-    <preference name="phonegap-version"           value="cli-6.0.0" />      <!-- all: current version of PhoneGap -->
+    <preference name="phonegap-version"           value="cli-5.4.1" />      <!-- all: current version of PhoneGap -->
 	
     <preference name="orientation"                value="portrait" />       <!-- all: default means both landscape and portrait are enabled -->
     <preference name="target-device"              value="universal" />      <!-- all: possible values handset, tablet, or universal -->
