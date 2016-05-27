@@ -37,12 +37,16 @@
 				
 			var texto_dividido=a_leer[posicion];
 			
+			$("body").append("<br>Lectura: "+lectura);
+			$("body").append("<br>Leo texto: "+posicion);
+			
 			if(lectura)
 				try {
 				
 					TTS.speak({
 						text: texto_dividido,
-						locale: voice
+						locale: voice,
+						rate: 1.1
 					}, function() {
 					
 						if(posicion<a_leer.length)
@@ -129,7 +133,7 @@
 						}
 					}
 
-					clearTimeout(tiempo);
+					//clearTimeout(tiempo);
 					
 					if(lectura)
 					{
@@ -151,13 +155,45 @@
 			
 			$("#ov_box_21_2_1").on("click",function(e) {
 
-				stop_tts();			
+				//stop_tts();			
 		
-				/*$("#ov_box_21_2_1").hide('fade', function() {
+				$("#ov_box_21_2_1").hide('fade', function() {
 					
 					$("#ov_box_21_2").show();
 					
+					lectura=false;	
+					
+					$("body").append("<br>Lectura: "+lectura);
+					$("body").append("<br>STOP");
+					
 					try {
+					
+						TTS.speak({
+								text: "",
+								locale: voice
+							}, function() {
+								//parado con exito
+								$("#ov_box_21_2").hide('fade', function() {
+									$("#ov_box_21_2_1").show();
+								});
+							}, function(reason) {
+								$("#ov_box_21_2").hide('fade', function() {
+									$("#ov_box_21_2_1").show();
+									$("#ov_box_21_2_1").html('<p style="text-align:center">Error Play'+reason+'</p>');
+								});
+							});	
+			
+						
+					} catch(e) {
+						
+						$("#ov_box_21_2").hide('fade', function() {
+							$("#ov_box_21_2_1").show();
+							$("#ov_box_21_2_1").html('<p style="text-align:center">Error Play</p>');
+						});
+						
+					} finally { }
+					
+					/*try {
 					
 						lectura=false;
 						tiempo=setTimeout(function() { lectura=true; }, 1e7);
@@ -171,7 +207,7 @@
 						});
 						
 					} finally { }
-					
+			
 				});*/
 
 			});
