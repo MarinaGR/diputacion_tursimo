@@ -196,13 +196,15 @@ function register_notif()
 	try 
 	{ 		
 		pushNotification = window.plugins.pushNotification;
-		$("body").append('<br>Registrando ' + device.platform);
+		
 		if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos' ) 
 		{
 			pushNotification.register(successHandler, errorHandler, {"senderID":senderID, "ecb":"onNotification"});			
 		} 
 		else
 		{	
+			$("body").append('<br>Registrando ' + device.platform);
+			
 			pushNotification.register(tokenHandler, errorHandler, 
 				{"badge":"true",
 				"sound":"true",
@@ -533,7 +535,7 @@ function tokenHandler (result) {
 
 function successHandler (result) {
 	
-	$("body").append('<br>Exito: '+result);
+	//$("body").append('<br>Exito: '+result);
 }
 
 function errorHandler (error) {
