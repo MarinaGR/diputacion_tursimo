@@ -17,10 +17,10 @@
 		<script src="../../js/funciones.js"></script>
 		<script src="../../cordova.js"></script>
 		
-		<script>
+				<script>
 		var tiempo;
 		var lectura=true;
-		var MAX_CARACTERES=100;
+		var MAX_CARACTERES=3500;
 		var identificador=get_var_url("id"); 
 		var voice="es-ES";		
 		switch(getLocalStorage("current_language"))
@@ -37,21 +37,19 @@
 				
 			var texto_dividido=a_leer[posicion];
 			
-			$("body").append("<br>Lectura: "+lectura);
-			$("body").append("<br>Leo texto: "+posicion);
-			
-			if(lectura)
+			if(lectura==true)
+			{
 				try {
 				
 					TTS.speak({
 						text: texto_dividido,
 						locale: voice,
-						rate: 1.1
+						rate: 1.2
 					}, function() {
 					
 						if(posicion<a_leer.length)
 						{
-							lectura=true;
+							//lectura=true;
 							leer_texto(a_leer, posicion+1) ;
 						}
 						else
@@ -95,7 +93,9 @@
 					
 				} finally { }
 				
-		
+			}
+			else
+				return false;
 		}
 		
 		$(document).ready(function() {
@@ -113,6 +113,8 @@
 		document.addEventListener("deviceready", function()  {
 					
 			$("#ov_box_21_2").on("click",function(e) {	
+				
+				lectura=true;
 				
 				$("#ov_box_21_2").hide('fade', function() {
 					$("#ov_box_21_2_1").show();
@@ -153,19 +155,14 @@
 			
 			//Cambiar botones cuando termine de hablar
 			
-			$("#ov_box_21_2_1").on("click",function(e) {
-
-				//stop_tts();			
+			$("#ov_box_21_2_1").on("click",function(e) {	
 		
 				$("#ov_box_21_2_1").hide('fade', function() {
 					
 					$("#ov_box_21_2").show();
 					
 					lectura=false;	
-					
-					$("body").append("<br>Lectura: "+lectura);
-					$("body").append("<br>STOP");
-					
+										
 					try {
 					
 						TTS.speak({
@@ -173,9 +170,10 @@
 								locale: voice
 							}, function() {
 								//parado con exito
-								$("#ov_box_21_2").hide('fade', function() {
+								/*$("#ov_box_21_2").hide('fade', function() {
 									$("#ov_box_21_2_1").show();
-								});
+								});*/
+								
 							}, function(reason) {
 								$("#ov_box_21_2").hide('fade', function() {
 									$("#ov_box_21_2_1").show();
@@ -193,69 +191,13 @@
 						
 					} finally { }
 					
-					/*
-					try {
-					
-						lectura=false;
-						tiempo=setTimeout(function() { lectura=true; }, 1e7);
-						
-					} catch(e) {
-										
-						$("#ov_box_21_2").hide('fade', function() {
-							lectura=false;
-							$("#ov_box_21_2_1").show();
-							$("#ov_box_21_2_1").html('<p style="text-align:center">Error Play</p>');
-						});
-						
-					} finally { }
-					*/
-			
 				});
 
 			});
 			
 		});
 
-		
-		function stop_tts() {
-		
-			$("#ov_box_21_2_1").hide('fade', function() {
-				
-				$("#ov_box_21_2").show();
-				lectura=false;
-				
-				try {
-					
-					TTS.speak({
-							text: "",
-							locale: voice
-						}, function() {
-							//parado con exito
-							$("#ov_box_21_2").hide('fade', function() {
-								$("#ov_box_21_2_1").show();
-							});
-						}, function(reason) {
-							$("#ov_box_21_2").hide('fade', function() {
-								$("#ov_box_21_2_1").show();
-								$("#ov_box_21_2_1").html('<p style="text-align:center">Error Play'+reason+'</p>');
-							});
-						});	
-		
-					
-				} catch(e) {
-					lectura=false;		
-					$("#ov_box_21_2").hide('fade', function() {
-						$("#ov_box_21_2_1").show();
-						$("#ov_box_21_2_1").html('<p style="text-align:center">Error Play</p>');
-					});
-					
-				} finally { }
-				
-			});
-
-		}
-
-		</script>		
+		</script>	
 		
 	</head>
 
