@@ -328,7 +328,6 @@ function onNotification(e) {
 		case 'registered':
 					if (e.regid.length > 0)
 					{
-						$("body").append('<br>Registrado REGID:' + e.regid);
 						registerOnServer(e.regid);
 					}
 					break;
@@ -419,9 +418,6 @@ function registerOnServer(registrationId) {
 	//var api_key=getLocalStorage("api-key");
 	//var mail=getLocalStorage("user_session");
 	
-
-	$("body").append("<br>ENVIO: "+registrationId+" *** "+getLocalStorage('uuid'));
-	
 	$.ajax({
 		type: "POST",
 		  url: extern_siteurl_op,
@@ -433,11 +429,8 @@ function registerOnServer(registrationId) {
 		  dataType: 'json',
 		  crossDomain: true, 
 		  success: function(data) { 
-		
-					$("body").append("<br>RECIBO: "+JSON.stringify(data));
 					if(data.status!="KO")
-					{
-						$("body").append('<br>El dispositivo se registró para recibir notificaciones.');	 
+					{	 
 						setSessionStorage("regID", registrationId);	
 						setLocalStorage("notificacion","si");	
 					}
@@ -448,12 +441,12 @@ function registerOnServer(registrationId) {
 									
 				},
 		  error: function(jqXHR, textStatus, errorThrown) {
-					alert("error");
+					/*alert("error");
 					$("body").append(JSON.stringify(jqXHR));	
 					$("body").append("<br>");	
 					$("body").append(textStatus);	
 					$("body").append("<br>");	
-					$("body").append(errorThrown);	
+					$("body").append(errorThrown);	*/
 					
 					if(jqXHR.status == 200) {
 						
