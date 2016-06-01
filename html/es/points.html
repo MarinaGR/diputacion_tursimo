@@ -40,18 +40,19 @@
 			$("body").append("<br>Lectura: "+lectura);
 			$("body").append("<br>Leo texto: "+posicion);
 			
-			if(lectura)
+			if(lectura==true)
+			{
 				try {
 				
 					TTS.speak({
 						text: texto_dividido,
 						locale: voice,
-						rate: 1.1
+						rate: 1.2
 					}, function() {
 					
 						if(posicion<a_leer.length)
 						{
-							lectura=true;
+							//lectura=true;
 							leer_texto(a_leer, posicion+1) ;
 						}
 						else
@@ -95,7 +96,9 @@
 					
 				} finally { }
 				
-		
+			}
+			else
+				return false;
 		}
 		
 		$(document).ready(function() {
