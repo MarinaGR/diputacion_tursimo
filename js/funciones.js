@@ -1297,7 +1297,7 @@ function search_string_in_avaut(value, container, type) {
 	}
 }
 
-function search_string_in_cat(value, container, type) {
+function search_string_in_cat(value, container, type, subtype) {
 	
 	var cadena="";
 	var cad_result="<p>"+TEXTOS[28]+"</p>";
@@ -1351,6 +1351,9 @@ function search_string_in_cat(value, container, type) {
 			
 		var q2 = type,
 			regex2 = new RegExp(q2, "i");
+			
+		var q3 = subtype,
+			regex3 = new RegExp(q3, "i");
 		
 		$.getJSON('../../resources/json/point_list.json', function (data) {
 			
@@ -1429,8 +1432,44 @@ function search_string_in_cat(value, container, type) {
 			
 			/*EMPRESAS*/
 			$.getJSON('../../resources/json/empresas_list.json', function (data2) {
+				
+				var filter_points2=new Array();
+			
+				$.each(data.result.items, function (ind, d) {
+					$.each(d.categoria, function(i, cat) {
+						if(cat.id.search(regex2) != -1) 
+						{			
+							if($.inArray(d, filter_points)==-1)				
+								filter_points.push(d);			
+						}
+					});
+				});
 	
-				 $.each(data2.result.items, function (ind, empr) {
+				$.each(data2.result.items, function (ind, empr) {
+
+					$.each(empr.categoria, function(i2, cat2) {
+						if(cat2.id.search(regex2) != -1) 
+						{	
+							if(subtype!="" && empr.subcategorias)
+							{
+								$.each(empr.subcategorias, function(i, subcat) {
+									if(subcat.id.search(regex3) != -1) 
+									{
+										if($.inArray(empr, filter_points2)==-1)				
+											filter_points2.push(empr);	
+									}
+								});
+							}
+							else
+							{
+								if($.inArray(empr, filter_points2)==-1)				
+									filter_points2.push(empr);			
+							}						
+						}
+					});
+				});
+
+				$.each(filter_points2, function (ind, empr) {
 					
 					if(empr.activo=="si")
 					{
@@ -1701,9 +1740,7 @@ function search_string_in_av(value, container, type) {
 			});
 			
 			filter_points.sort(SortByLangName);
-			
-			console.log(filter_points);
-	
+
 			$.each(filter_points, function (ind, point) {
 				
 				cadena+='<div onclick="window.location.href=\'../'+getLocalStorage('current_language')+'/conoce.html?id='+point.id+'\'" >';
@@ -1889,6 +1926,7 @@ function search_string_in_ser(value, container, type) {
 		
 	}
 }
+
 
 function show_info_map_services(id, direccion) {
 
@@ -2721,28 +2759,6 @@ function ajax_recover_data(type, folder, values, container, params) {
 						
 						cadena+="<div class='ov_zone_15'><h3>"+filter_name+"</h3><p>"+TEXTOS[1]+"</p></div>";
 
-						/*SELECTOR SUBCATEGORIAS -> Sin realizar
-						if(filter_id=="cat_5")
-						{
-							cadena+='<select id="subcat_alojamiento" class="ov_select_01" onchange="go_to_page(\'filter_list\',\''+filter_id+'&subcat='+$('#subcat_alojamiento').val()+'\')">';
-											
-							cadena+='<option value="">TODOS</option>';
-							subcateg_list=JSON.parse(getLocalStorage("subcateg_list"));
-							$.each(subcateg_list, function(i, subcat) {
-								switch(getLocalStorage("current_language"))
-								{
-									default:
-									case "es":  cadena+='<option value="'+subcat[0].es+'">'+subcat[0].es+'</option>';
-												break;
-												
-									case "en":  cadena+='<option value="'+subcat[0].en+'">'+subcat[0].en+'</option>';
-												break;
-								}
-							});
-							cadena+='</select>';
-						}
-						FIN SELECTOR SUBCATEGORIAS*/
-						
 						var filter_points=new Array();
 						var resultados=0;
 						
@@ -2832,7 +2848,9 @@ function ajax_recover_data(type, folder, values, container, params) {
 			case "filter_list_e": 	
 					
 					/*Habría que comprobar folder para ver si es point o empresa (o cualquier otro elemento) y en función de eso redirigir donde fuese necesario.*/
-					
+
+					var subcat_alojamiento=get_var_url("subcat");
+										
 					var objajax=$.getJSON("../../resources/json/category_list.json", function(categorias) {
 						
 						var filter_name="";
@@ -2859,6 +2877,36 @@ function ajax_recover_data(type, folder, values, container, params) {
 						
 						var cadena="";
 						
+						//SELECTOR SUBCATEGORIAS -> Sin realizar
+						if(filter_id=="cat_5")
+						{
+							var subcat="";
+							cadena+='<select id="subcat_alojamiento" class="ov_select_01" onchange="show_subcat_alojamiento(\''+filter_id+'\')">';
+																		
+							cadena+='<option value="">TODOS</option>';
+							subcateg_list=JSON.parse(getLocalStorage("subcateg_list"));
+							$.each(subcateg_list, function(id, subcat) {
+								switch(getLocalStorage("current_language"))
+								{
+									default:
+									case "es":  cadena+='<option value="'+id+'">'+subcat[0].es+'</option>';
+												break;
+												
+									case "en":  cadena+='<option value="'+id+'">'+subcat[0].en+'</option>';
+												break;
+								}
+							});
+							cadena+='</select>';
+						}
+						if(filter_id=="cat_5" && subcat_alojamiento && subcat_alojamiento!="") 
+						{
+							var filter_name2="";
+									
+							var q2 = subcat_alojamiento,
+								regex2 = new RegExp(q2, "i");																
+						}
+						//FIN SELECTOR SUBCATEGORIAS
+						
 						var filter_points=new Array();
 						var resultados=0;
 						
@@ -2874,9 +2922,22 @@ function ajax_recover_data(type, folder, values, container, params) {
 								
 								$.each(d.categoria, function(i, cat) {
 									if(cat.id.search(regex) != -1) 
-									{							
-										if($.inArray(d, filter_points)==-1)
-											filter_points.push(d);			
+									{		
+										if(d.subcategorias)
+										{
+											$.each(d.subcategorias, function(i2, subcat) {
+												if(subcat.id.search(regex2) != -1) 
+												{							
+													if($.inArray(d, filter_points)==-1)
+														filter_points.push(d);			
+												}
+											});
+										}
+										else
+										{
+											if($.inArray(d, filter_points)==-1)
+												filter_points.push(d);	
+										}							
 									}
 								});
 							}
@@ -2933,17 +2994,19 @@ function ajax_recover_data(type, folder, values, container, params) {
 						
 						cadena+='<div class="ov_clear_floats_01">&nbsp;</div>';
 						
-						$("#"+container).append(cadena);						
+						$("#"+container).append(cadena);	
+
+						$("#subcat_alojamiento").val(subcat_alojamiento);						
 						
 						///////////////////
 						
 					})
-						.fail(function(jqXHR, textStatus, errorThrown) {
-							//alert('Error: "+textStatus+"  "+errorThrown);	
-							
-							$("#"+container).html("<p>"+TEXTOS[6]+"<br>Error: category_list.json - "+textStatus+"  "+errorThrown+"</p>");
+					.fail(function(jqXHR, textStatus, errorThrown) {
+						//alert('Error: "+textStatus+"  "+errorThrown);	
+						
+						$("#"+container).html("<p>"+TEXTOS[6]+"<br>Error: category_list.json - "+textStatus+"  "+errorThrown+"</p>");
 
-						});
+					});
 									
 					break;
 					
@@ -3225,6 +3288,8 @@ function ajax_recover_data(type, folder, values, container, params) {
 					
 					$("#point_mini_description").html(informacion.miniDescripcion);
 					$("#point_description").html(informacion.descripcion);
+					$("#point_description").append(informacion.caracteristica);
+					$("#point_description").append("<br><br>");
 						
 					$("#container_point").css({"min-height": "50px", "height": "50px"});
 					
@@ -3430,7 +3495,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 												},		
 										  
 											  callback: function(results){
-											  	console.log("dentro");
+											  	
 											      if (!results) return;
 											      $(this).gmap3({
 											        map:{
@@ -3940,6 +4005,11 @@ function ajax_recover_data(type, folder, values, container, params) {
 		
 	}
 	
+}
+
+function show_subcat_alojamiento(filter_id)
+{
+	go_to_page('filter_list', filter_id+'&subcat='+$('#subcat_alojamiento').val());
 }
 
 function ajax_paint_routes(type, folder, values, container, params) {

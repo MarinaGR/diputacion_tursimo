@@ -17,12 +17,14 @@
 		<script src="../../js/funciones.js"></script>
 		<script src="../../cordova.js"></script>
 		
-				<script>
+		<script>
 		var tiempo;
 		var lectura=true;
 		var MAX_CARACTERES=3500;
 		var identificador=get_var_url("id"); 
 		var voice="es-ES";		
+		var velocidad=1.2;
+		
 		switch(getLocalStorage("current_language"))
 		{
 			default:
@@ -44,7 +46,7 @@
 					TTS.speak({
 						text: texto_dividido,
 						locale: voice,
-						rate: 1.2
+						rate: velocidad
 					}, function() {
 					
 						if(posicion<a_leer.length)
@@ -56,39 +58,23 @@
 						{
 							//terminado con exito
 							lectura=false;
-							$("#ov_box_21_2_1").hide('fade', function() {
-								$("#ov_box_21_2").show();
+							$("#stop_audioguia").hide('fade', function() {
+								$("#play_audioguia").show();
 							});
 						}
 						
 					}, function(reason) {
-						$("#ov_box_21_2_1").hide('fade', function() {
-							$("#ov_box_21_2").show();
-							$("#ov_box_21_2").html('<p style="text-align:center">Error Play'+reason+'</p>');
+						$("#stop_audioguia").hide('fade', function() {
+							$("#play_audioguia").show();
+							$("#play_audioguia").html('<p style="text-align:center">Error Play'+reason+'</p>');
 						});
 					});
-			
-				
-					/*TTS.speak({
-						text: texto_a_leer,
-						locale: voice
-					}, function() {
-						//terminado con exito
-						$("#ov_box_21_2_1").hide('fade', function() {
-							$("#ov_box_21_2").show();
-						});
-					}, function(reason) {
-						$("#ov_box_21_2_1").hide('fade', function() {
-							$("#ov_box_21_2").show();
-							$("#ov_box_21_2").html('<p style="text-align:center">Error Play'+reason+'</p>');
-						});
-					});	*/
-					
+								
 				} catch(e) {
 										
-					$("#ov_box_21_2_1").hide('fade', function() {
-						$("#ov_box_21_2").show();
-						$("#ov_box_21_2").html('<p style="text-align:center">Error Play</p>');
+					$("#stop_audioguia").hide('fade', function() {
+						$("#play_audioguia").show();
+						$("#play_audioguia").html('<p style="text-align:center">Error Play</p>');
 					});
 					
 				} finally { }
@@ -111,13 +97,22 @@
 		});
 		
 		document.addEventListener("deviceready", function()  {
+		
+			if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos' ) 
+			{
+				velocidad=1.1;
+			}
+			else
+			{
+				velocidad=1.5;
+			}
 					
-			$("#ov_box_21_2").on("click",function(e) {	
+			$("#play_audioguia").on("click",function(e) {	
 				
 				lectura=true;
 				
-				$("#ov_box_21_2").hide('fade', function() {
-					$("#ov_box_21_2_1").show();
+				$("#play_audioguia").hide('fade', function() {
+					$("#stop_audioguia").show();
 					
 					var array_texto_a_leer=new Array()
 					var texto_a_leer=$('#point_description').text();
@@ -142,8 +137,8 @@
 						leer_texto(array_texto_a_leer, 0, function() {
 						
 							//terminado
-							$("#ov_box_21_2_1").hide('fade', function() {
-								$("#ov_box_21_2").show();
+							$("#stop_audioguia").hide('fade', function() {
+								$("#play_audioguia").show();
 							})
 						
 						});
@@ -155,11 +150,11 @@
 			
 			//Cambiar botones cuando termine de hablar
 			
-			$("#ov_box_21_2_1").on("click",function(e) {	
+			$("#stop_audioguia").on("click",function(e) {	
 		
-				$("#ov_box_21_2_1").hide('fade', function() {
+				$("#stop_audioguia").hide('fade', function() {
 					
-					$("#ov_box_21_2").show();
+					$("#play_audioguia").show();
 					
 					lectura=false;	
 										
@@ -170,23 +165,23 @@
 								locale: voice
 							}, function() {
 								//parado con exito
-								/*$("#ov_box_21_2").hide('fade', function() {
-									$("#ov_box_21_2_1").show();
+								/*$("#play_audioguia").hide('fade', function() {
+									$("#stop_audioguia").show();
 								});*/
 								
 							}, function(reason) {
-								$("#ov_box_21_2").hide('fade', function() {
-									$("#ov_box_21_2_1").show();
-									$("#ov_box_21_2_1").html('<p style="text-align:center">Error Play'+reason+'</p>');
+								$("#play_audioguia").hide('fade', function() {
+									$("#stop_audioguia").show();
+									$("#stop_audioguia").html('<p style="text-align:center">Error Play'+reason+'</p>');
 								});
 							});	
 			
 						
 					} catch(e) {
 						
-						$("#ov_box_21_2").hide('fade', function() {
-							$("#ov_box_21_2_1").show();
-							$("#ov_box_21_2_1").html('<p style="text-align:center">Error Play</p>');
+						$("#play_audioguia").hide('fade', function() {
+							$("#stop_audioguia").show();
+							$("#stop_audioguia").html('<p style="text-align:center">Error Play</p>');
 						});
 						
 					} finally { }
@@ -197,7 +192,7 @@
 			
 		});
 
-		</script>	
+		</script>
 		
 	</head>
 
@@ -261,13 +256,13 @@
 						</div>
 					</div>
 					
-					<div class="ov_box_21" id="ov_box_21_2">
+					<div class="ov_box_21" id="play_audioguia">
 						<img src="../../styles/images/icons/info.png" alt="info" class="ov_image_16"/>
 						<div id="ov_text_29_2" class="ov_text_29">
 						Audio-guide
 						</div>
 					</div>
-					<div class="ov_box_21" id="ov_box_21_2_1" style="display:none">
+					<div class="ov_box_21" id="stop_audioguia" style="display:none">
 						<img src="../../styles/images/icons/info.png" alt="info" class="ov_image_16"/>
 						<div id="ov_text_29_2" class="ov_text_29">
 						Stop audio

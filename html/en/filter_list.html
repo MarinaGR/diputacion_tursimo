@@ -21,6 +21,8 @@
 		var identificador=get_var_url("id"); 
 		var tipo=get_var_url("tipo"); 
 		
+		var subcategoria=get_var_url("subcat");
+		
 		var start=get_var_url("start"); 
 		var limit=get_var_url("limit"); 
 		
@@ -41,12 +43,12 @@
 			//Mostrar listado de búsqueda si hay valor en el cuadro, si no mostrar listado general
 			if($("#search_filter_list").val()!="")
 			{
-				search_string_in_cat($("#search_filter_list").val(), 'ov_zone_21_search', identificador);
+				search_string_in_cat($("#search_filter_list").val(), 'ov_zone_21_search', identificador, subcategoria);
 				$('.ov_box_11_b_active').attr("class","ov_box_12_b");
 			}
 			else
 			{
-				ajax_recover_data("filter_list_p", "", "point_list", "ov_zone_21_all", [['id',identificador],['start',start],['limit',limit], ['element','points']]);
+				ajax_recover_data("filter_list_p", "", "point_list", "ov_zone_21_all", [['id',identificador],['start',start],['limit',limit], ['element','points'], ['subcat',subcategoria]]);
 			}
 			
 			//Mostrar favoritos 
@@ -61,7 +63,7 @@
 			   
 					if($(this).val()!="")
 					{
-						search_string_in_cat($(this).val(), 'ov_zone_21_search', identificador);
+						search_string_in_cat($(this).val(), 'ov_zone_21_search', identificador, subcategoria);
 						$('.ov_box_11_b_active').attr("class","ov_box_12_b");			
 					}
 					
