@@ -115,12 +115,11 @@
 						$(this).attr("class","ov_box_11_b_active");			
 						$('.ov_zone_21').attr("class","ov_zone_21_b");
 						$('#ov_zone_21_all').attr("class","ov_zone_21");	
+	
 						if($("#search_filter_list").val()!="")
 						{
-							ajax_recover_data("filter_list", "", "point_list", "ov_zone_21_all", [['id',identificador],['start',start],['limit',limit]]);						
-						
-							$("#search_filter_list").val("");						
-						}								
+							ajax_recover_data("filter_list_p", "", "point_list", "ov_zone_21_all", [['id',identificador],['start',start],['limit',limit],['element','points'], ['subcat',subcategoria]]);
+						}						
 					});		
 				</script>
 				<div id="ov_box_11_2" class="ov_box_12_b">

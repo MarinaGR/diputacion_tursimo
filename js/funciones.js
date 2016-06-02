@@ -203,7 +203,7 @@ function register_notif()
 		} 
 		else
 		{	
-			$("body").append('<br>Registrando ' + device.platform);
+			//$("body").append('<br>Registrando ' + device.platform);
 			
 			pushNotification.register(tokenHandler, errorHandler, 
 				{"badge":"true",
@@ -215,7 +215,7 @@ function register_notif()
 	}
 	catch(err) 
 	{ 
-		$("body").append("<br>Error registro notif: " + err.message); 
+		$("body").append("<br>Error registro: " + err.message); 
 	} 
 }
 function unregister_notif()
@@ -283,11 +283,11 @@ function config_notifications(check) {
 // Notificacion para iOS
 function onNotificationAPN(e) {
 	
-	$("body").append(JSON.stringify(e));
+	//$("body").append(JSON.stringify(e));
 	 
 	if (e.alert) {
-		 $("body").append('<br>Notificaci&oacute;n: ' + e.alert);
-		 alert("Notificacion IOS");
+		 //$("body").append('<br>Notificaci&oacute;n: ' + e.alert);
+		// alert("Notificacion IOS");
 		 
 		  // Alert (requiere plugin org.apache.cordova.dialogs)
 		// navigator.notification.alert(e.alert);
@@ -452,14 +452,14 @@ function registerOnServer(registrationId) {
 					
 					if(jqXHR.status == 200) {
 						
-						$("body").append('<br>Disp. listo para notificaciones.');	
+						//$("body").append('<br>Disp. listo para notificaciones.');	
 
 						//notificar al usuario con un mensaje						
 						setSessionStorage("regID", registrationId);
 						setLocalStorage("notificacion","si");				
 					}	
 					else if(jqXHR.status == 500) {
-						$("body").append('<br>El dispositivo NO se pudo registrar para recibir notificaciones.');
+						//$("body").append('<br>El dispositivo NO se pudo registrar para recibir notificaciones.');
 					}
 					else {
 						$("body").append('<br>El dispositivo NO se pudo registrar para recibir notificaciones. Err.'+jqXHR.status);
@@ -475,7 +475,7 @@ function registerOnServerIOS(registrationId) {
 	//var api_key=getLocalStorage("api-key");
 	//var mail=getLocalStorage("user_session");
 
-	alert("registroIOS");
+	//alert("registroIOS");
 	
     $.ajax({
         type: "POST",
@@ -485,10 +485,10 @@ function registerOnServerIOS(registrationId) {
 		crossDomain: true, 
         success: function(data) {          	
 
-					$("body").append("<br>RECIBO: "+JSON.stringify(data));
+					//$("body").append("<br>RECIBO: "+JSON.stringify(data));
 					if(data.status!="KO")
 					{
-						$("body").append('<br>El dispositivo se registró para recibir notificaciones.');	 
+						//$("body").append('<br>El dispositivo se registró para recibir notificaciones.');	 
 						setSessionStorage("regID", registrationId);	
 						setLocalStorage("notificacion","si");	
 					}
@@ -500,14 +500,14 @@ function registerOnServerIOS(registrationId) {
 				},
         error: function(jqXHR, textStatus, errorThrown) {
 			
-					alert("error");
+					/*alert("error");
 					$("body").append(JSON.stringify(jqXHR));	
 					$("body").append(textStatus);	
-					$("body").append(errorThrown);	
+					$("body").append(errorThrown);	*/
 					
 					if(jqXHR.status == 200) {
 						
-						$("body").append('<br>Disp. listo para notificaciones.');	
+						//$("body").append('<br>Disp. listo para notificaciones.');	
 
 						//notificar al usuario con un mensaje						
 						setSessionStorage("regID", registrationId);
@@ -526,9 +526,9 @@ function registerOnServerIOS(registrationId) {
 }
 function tokenHandler (result) {
 	
-	alert("tokenHandler");
+	//alert("tokenHandler");
 	
-	$("body").append('<br>Listo para notificaciones');
+	//$("body").append('<br>Listo para notificaciones');
 	
 	registerOnServerIOS(result);
 }
@@ -2877,7 +2877,7 @@ function ajax_recover_data(type, folder, values, container, params) {
 						
 						var cadena="";
 						
-						//SELECTOR SUBCATEGORIAS -> Sin realizar
+						//SELECTOR SUBCATEGORIAS 
 						if(filter_id=="cat_5")
 						{
 							var subcat="";
@@ -2996,7 +2996,10 @@ function ajax_recover_data(type, folder, values, container, params) {
 						
 						$("#"+container).append(cadena);	
 
-						$("#subcat_alojamiento").val(subcat_alojamiento);						
+						if(!subcat_alojamiento)
+							subcat_alojamiento="";
+						
+						$("#subcat_alojamiento").val(subcat_alojamiento);				
 						
 						///////////////////
 						

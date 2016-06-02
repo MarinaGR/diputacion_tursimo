@@ -66,7 +66,7 @@
 					}, function(reason) {
 						$("#stop_audioguia").hide('fade', function() {
 							$("#play_audioguia").show();
-							$("#play_audioguia").html('<p style="text-align:center">Error Play'+reason+'</p>');
+
 						});
 					});
 								
@@ -74,7 +74,7 @@
 										
 					$("#stop_audioguia").hide('fade', function() {
 						$("#play_audioguia").show();
-						$("#play_audioguia").html('<p style="text-align:center">Error Play</p>');
+						//$("#play_audioguia").html('<p style="text-align:center">Error Play</p>');
 					});
 					
 				} finally { }
@@ -172,7 +172,7 @@
 							}, function(reason) {
 								$("#play_audioguia").hide('fade', function() {
 									$("#stop_audioguia").show();
-									$("#stop_audioguia").html('<p style="text-align:center">Error Play'+reason+'</p>');
+									//$("#stop_audioguia").html('<p style="text-align:center">Error Play'+reason+'</p>');
 								});
 							});	
 			
