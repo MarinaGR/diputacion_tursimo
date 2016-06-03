@@ -2,14 +2,15 @@
 <widget xmlns = "http://www.w3.org/ns/widgets"
 		xmlns:gap   = "http://phonegap.com/ns/1.0"
 		id          = "com.ovnyline.diputacion"
-		version     = "1.0.6" >
+		version     = "1.0.7" >
 		
 		<!-- ios new version 1.0.1: delete reference other mobile plataforms -->
 		<!-- ios new version 1.0.2: cambio de imagen -->
 		<!-- all new version 1.0.3: download and new informations // version not upload in ios -->
 		<!-- all new version 1.0.4: problem route canvas image // version not upload in ios -->
 		<!-- all new version 1.0.5: actualizadas algunas fichas y enlaces exteriores // upload in ios -->
-		<!-- all new version 1.0.6: actualización información, división por tipo de alojamiento, audio tts y notificaciones push -->
+		<!-- android new version 1.0.6: actualización información, división por tipo de alojamiento, audio tts y notificaciones push // version not upload in ios-->
+		<!-- android new version 1.0.7: actualización información (categorías empresas) // version not upload in ios-->
 
     <name>Diputación de Ávila - Turismo</name>
 
@@ -40,52 +41,21 @@
     <preference name="exit-on-suspend"            value="false" />          <!-- ios: if set to true, app will terminate when home button is pressed -->
     <preference name="auto-hide-splash-screen"    value="true" />           <!-- ios: if set to false, the splash screen must be hidden using a JavaScript API -->
     <preference name="disable-cursor"             value="false" />          <!-- blackberry: prevents a mouse-icon/cursor from being displayed on the app -->
-    <preference name="android-minSdkVersion"      value="15" />             <!-- android: MIN SDK version supported on the target device. MAX version is blank by default. -->
+    <preference name="android-minSdkVersion"      value="15" />             <!-- android: MIN SDK version supported on the target device. MAX version is blank by default. 
 	
-	<!--
-	
-	android-minSdkVersion:
-	
+	android-minSdkVersion:	
 	14: Android 4.0
 	15: Android 4.0.3
 	16: Android 4.1
 	17: Android 4.2
-	18: Android 4.3
-	19: Android 4.4	
-	
+	18: Android 4.3	
 	-->
 	
 	<preference name="deployment-target" value="7.0" />
 	<preference name="android-build-tool" value="gradle" /> 
 
     <preference name="android-installLocation"    value="auto" />           
-	<!-- android: app install location. 'auto' will choose. 'internalOnly' is device memory. 'preferExternal' is SDCard. -->
-
-     <!-- Pplugins -->
-	<!--<gap:plugin name="org.apache.cordova.battery-status" version="0.2.11" />
-	<gap:plugin name="org.apache.cordova.camera" version="0.3.2" />
-	<gap:plugin name="org.apache.cordova.console" version="0.2.11" />
-	<gap:plugin name="org.apache.cordova.contacts" version="0.2.13" />
-	<gap:plugin name="org.apache.cordova.device-motion" version="0.2.10" />
-	<gap:plugin name="org.apache.cordova.device-orientation" version="0.3.9" />
-	<gap:plugin name="org.apache.cordova.dialogs" version="0.2.10" />
-	<gap:plugin name="org.apache.cordova.globalization" version="0.3.1" />
-	<gap:plugin name="org.apache.cordova.media-capture" version="0.3.3" />
-	<gap:plugin name="org.apache.cordova.network-information" version="0.2.12" />
-	<gap:plugin name="org.apache.cordova.splashscreen" version="0.3.4" />
-	<gap:plugin name="org.apache.cordova.vibration" version="0.3.11" />
-	<gap:plugin name="de.appplant.cordova.plugin.background-mode" version="0.5.0" />
-	<gap:plugin name="de.appplant.cordova.plugin.local-notification" version="0.7.5" />
-	<gap:plugin name="org.apache.cordova.media" version="0.2.13" /> --> 
 	
-	<!--
-	<gap:plugin name="cordova-plugin-file" source="npm" version="3.0.0" />
-	<gap:plugin name="cordova-plugin-file-transfer" source="npm" version="1.3.0" />
-	<gap:plugin name="cordova-plugin-device" source="npm" version="1.0.1" />
-	<gap:plugin name="cordova-plugin-geolocation" source="npm" version="1.0.1" />
-	<gap:plugin name="cordova-plugin-inappbrowser" source="npm" version="1.0.1" />
-	<gap:plugin name="cordova-plugin-barcodescanner" source="npm" version="0.7.0" />	
-	-->
 	
 	<gap:plugin name="cordova-plugin-file" source="npm" version="4.2.0" />
     <gap:plugin name="cordova-plugin-file-transfer" source="npm" version="1.5.1" />
@@ -99,27 +69,8 @@
 	<gap:plugin name="de.appplant.cordova.plugin.local-notification" source="npm" version="0.8.4" />
 	
 	<gap:plugin name="cordova-plugin-pushplugin" source="npm" version="2.6.1" /> 
-	<!--<gap:plugin name="cordova-push-notifications" source="npm" version="1.2.0" />-->
-	<!--<plugin name="phonegap-plugin-push" source="npm" version="1.6.3">
-		<param name="SENDER_ID" value="1095234974489" />
-	</plugin>-->
+	
 	<gap:plugin name="cordova-plugin-tts" source="npm" version="0.2.3" />	
-	
-	<!--
-	<gap:plugin name="org.apache.cordova.media" version="0.2.13" />
-	<gap:plugin name="org.apache.cordova.dialogs" version="0.2.10" />	
-	<gap:plugin name="com.phonegap.plugins.pushplugin" version="2.5.0" />
-	-->
-	
-	<!--<gap:plugin name="cordova-plugin-admobpro" source="npm" />-->
-
-	<!--text to speech-->
-	<!--<gap:plugin name="org.tt.plugin.tts" version="1" />
-	<gap:plugin name="com.lefortsoftware.ttsplugin" version="0.1.0" />		
-	<feature name="TtsPlugin" >
-		<param name="android-package" value="nz.co.beweb.ttsplugin"/> 
-		<param name="ios-package" value="TtsPlugin" /> 
-	</feature>-->		
 	
 	<!-- Ocultar barra ios, a partir de ios7-->
 	<gap:plugin name="de.appplant.cordova.plugin.hidden-statusbar-overlay" source="pgb" version="1.2.0" />
