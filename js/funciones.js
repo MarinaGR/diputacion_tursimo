@@ -42,6 +42,8 @@ var zoom=1.02;
 
 var intentos=0;
 
+var lectura;
+
 var default_language='es';
 
 var lang_available=[['es','Castellano'],['en','English']];
@@ -2114,6 +2116,12 @@ function ajax_recover_data(type, folder, values, container, params) {
 		if(data.length==0) {
 			
 			$("#"+container).html("<p>"+TEXTOS[7]+"</p>");
+			return;
+		}
+		
+		if(data.status=="KO") {
+			
+			$("#"+container).html("<p>"+TEXTOS[7]+"</p><p>"+data.errir+"</p>");
 			return;
 		}
 		

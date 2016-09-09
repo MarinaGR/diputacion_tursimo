@@ -19,11 +19,12 @@
 		
 		<script>
 		var tiempo;
-		var lectura=true;
 		var MAX_CARACTERES=3500;
 		var identificador=get_var_url("id"); 
 		var voice="es-ES";		
 		var velocidad=1.2;
+		
+		lectura=true;
 		
 		switch(getLocalStorage("current_language"))
 		{
@@ -198,6 +199,7 @@
 		
 		function onBackKeyDown()
 		{
+			lectura=false;	
 			try {					
 				TTS.speak({
 						text: "",
@@ -213,6 +215,7 @@
 		}
 		function onOutKeyDown()
 		{
+			lectura=false;	
 			try {					
 				TTS.speak({
 						text: "",
