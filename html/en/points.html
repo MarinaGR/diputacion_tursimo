@@ -195,6 +195,37 @@
 			});
 			
 		});
+		
+		function onBackKeyDown()
+		{
+			try {					
+				TTS.speak({
+						text: "",
+						locale: voice
+					}, function() {
+						window.history.back();						
+					}, function(reason) {
+						window.history.back();
+					});						
+			} catch(e) {				
+				 window.history.back();				
+			} finally { }		
+		}
+		function onOutKeyDown()
+		{
+			try {					
+				TTS.speak({
+						text: "",
+						locale: voice
+					}, function() {
+						navigator.app.exitApp();	
+					}, function(reason) {
+						navigator.app.exitApp();
+					});						
+			} catch(e) {				
+				 navigator.app.exitApp();		
+			} finally { }		
+		}
 
 		</script>
 		
@@ -208,7 +239,7 @@
 
 			<div id="container_point" class="ov_zone_22">
 				<div class="ov_box_15" id="ov_box_15">
-					<div class="ov_box_16" id="ov_box_16_1" onclick="window.history.back();" >
+					<div class="ov_box_16" id="ov_box_16_1" onclick="onBackKeyDown();" >
 						<img src="../../styles/images/icons/back.png" alt="back" class="ov_image_15"/>
 						<div id="ov_text_26_1" class="ov_text_26">
 						Back

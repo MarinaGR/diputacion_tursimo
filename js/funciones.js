@@ -292,8 +292,37 @@ function onNotificationAPN(e) {
 		  // Alert (requiere plugin org.apache.cordova.dialogs)
 		// navigator.notification.alert(e.alert);
 		
-
-		navigator.notification.alert(
+		
+		switch(notif.tipo)
+		{
+			case "noticia":
+			case "evento":   
+						navigator.notification.confirm(e.alert, onConfirm, e.tipo, ['Ver ahora','Omitir'] );						
+						function onConfirm(buttonIndex) {					
+							if(buttonIndex==1)
+							{
+								window.location.href="../"+getLocalStorage('current_language')+"/event.html?id="+notif.id;
+							}
+						}
+						
+						break;
+						
+			case "mensaje":
+			default:
+						navigator.notification.alert(
+							e.alert,  		// message
+							alertDismissed,   // callback
+							'Notificación',   // title
+							'OK'              // buttonName
+						);
+						function alertDismissed() {	
+						}
+		
+						break;
+						
+		}
+		
+		/*navigator.notification.alert(
 			e.alert,  // message
 			alertDismissed,   // callback
 			'Notificación',   // title
@@ -308,7 +337,7 @@ function onNotificationAPN(e) {
 				default:		window.location.href="../"+getLocalStorage('current_language')+"/event.html?id="+e.id;
 								break;
 			}
-		}
+		}*/
  		
 	}
 		
@@ -372,7 +401,36 @@ function onNotification(e) {
 
 						id_notificacion++;	*/
 	
-						navigator.notification.confirm(notif.title, onConfirm, notif.tipo, ['Ver ahora','Omitir'] );
+						switch(notif.tipo)
+						{
+							case "noticia":
+							case "evento":   
+										navigator.notification.confirm(notif.title, onConfirm, notif.tipo, ['Ver ahora','Omitir'] );						
+										function onConfirm(buttonIndex) {					
+											if(buttonIndex==1)
+											{
+												window.location.href="../"+getLocalStorage('current_language')+"/event.html?id="+notif.id;
+											}
+										}
+										
+										break;
+										
+							case "mensaje":
+							default:
+										navigator.notification.alert(
+											notif.title,  		// message
+											alertDismissed,   // callback
+											'Notificación',   // title
+											'OK'              // buttonName
+										);
+										function alertDismissed() {	
+										}
+						
+										break;
+										
+						}
+		
+						/*navigator.notification.confirm(notif.title, onConfirm, notif.tipo, ['Ver ahora','Omitir'] );
 						
 						function onConfirm(buttonIndex) {
 	
@@ -386,21 +444,43 @@ function onNotification(e) {
 												break;
 								}
 							}
-						}				
+						}*/				
 											
 					}
 					else
 					{	
 						// e.coldstart: Usuario toca notificación en la barra de notificaciones
 						// Coldstart y background: Enviamos a la página requerida
-						
+												
 						switch(notif.tipo)
+						{
+							case "noticia":
+							case "evento":   
+										window.location.href="../"+getLocalStorage('current_language')+"/event.html?id="+notif.id;
+										break;
+										
+							case "mensaje":
+							default:
+										navigator.notification.alert(
+											notif.title,  		// message
+											alertDismissed,   // callback
+											'Notificación',   // title
+											'OK'              // buttonName
+										);
+										function alertDismissed() {	
+										}
+						
+										break;
+										
+						}
+						
+						/*switch(notif.tipo)
 						{
 							case "noticia": 
 							case "evento":   
 							default:		window.location.href="../"+getLocalStorage('current_language')+"/event.html?id="+notif.id;
 											break;
-						}
+						}*/
 						
 					}					
 					break;
