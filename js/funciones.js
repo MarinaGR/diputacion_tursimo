@@ -149,7 +149,8 @@ function onDeviceReady()
 
 	document.addEventListener("backbutton", onBackKeyDown, false);
 	document.addEventListener("menubutton", onMenuKeyDown, false);
-	
+	document.addEventListener("pause", onPause, false);
+		
 	/* *********************************************************************** */
 	/* Comentar desde INICIO TEST NOTIFICACIONES hasta FIN TEST NOTIFICACIONES */
 	/* para no realizar el registro del dispositivo	al inicio		 		   */
@@ -642,6 +643,9 @@ function onOutKeyDown()
 {
 	navigator.app.exitApp();
 	return false;
+}
+function onPause() {
+    lectura=false;
 }
 function onOnline()
 {

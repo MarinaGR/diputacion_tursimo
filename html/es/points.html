@@ -229,6 +229,21 @@
 				 navigator.app.exitApp();		
 			} finally { }		
 		}
+		function onPause() {
+			lectura=false;	
+			try {					
+				TTS.speak({
+						text: "",
+						locale: voice
+					}, function() {
+						
+					}, function(reason) {
+						
+					});						
+			} catch(e) {				
+				 
+			} finally { }	
+		}
 
 		</script>			
 		
