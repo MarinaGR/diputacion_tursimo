@@ -43,6 +43,7 @@ var zoom=1.02;
 var intentos=0;
 
 var lectura;
+var lectura_ant=lectura;
 
 var default_language='es';
 
@@ -150,6 +151,7 @@ function onDeviceReady()
 	document.addEventListener("backbutton", onBackKeyDown, false);
 	document.addEventListener("menubutton", onMenuKeyDown, false);
 	document.addEventListener("pause", onPause, false);
+	document.addEventListener("resume", onResume, false);
 		
 	/* *********************************************************************** */
 	/* Comentar desde INICIO TEST NOTIFICACIONES hasta FIN TEST NOTIFICACIONES */
@@ -645,7 +647,11 @@ function onOutKeyDown()
 	return false;
 }
 function onPause() {
+	lectura_ant=lectura;
     lectura=false;
+}
+function onResume() {
+    lectura=lectura_ant;
 }
 function onOnline()
 {

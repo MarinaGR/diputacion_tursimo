@@ -112,44 +112,7 @@
 				
 				lectura=true;
 				
-				$("#play_audioguia").hide('fade', function() {
-					$("#stop_audioguia").show();
-					
-					var array_texto_a_leer=new Array()
-					var texto_a_leer=$('#point_description').text();
-					var num_caracteres_texto=$('#point_description').text().length;
-					
-					if(num_caracteres_texto>MAX_CARACTERES)
-					{
-						var inicio_corte=0;
-						var fin_corte=MAX_CARACTERES;
-						for(i=0;i<parseInt(num_caracteres_texto/MAX_CARACTERES)+1;i++)
-						{
-							array_texto_a_leer[i] = $('#point_description').text().substring(inicio_corte, fin_corte);
-							inicio_corte=fin_corte;
-							fin_corte+=MAX_CARACTERES;
-						}
-					}
-					else
-					{
-						array_texto_a_leer[0] = $('#point_description').text();
-					}
-
-					//clearTimeout(tiempo);
-					
-					if(lectura)
-					{
-						leer_texto(array_texto_a_leer, 0, function() {
-						
-							//terminado
-							$("#stop_audioguia").hide('fade', function() {
-								$("#play_audioguia").show();
-							})
-						
-						});
-					}
-					
-				});					
+				play();				
 
 			});
 			
@@ -157,45 +120,92 @@
 			
 			$("#stop_audioguia").on("click",function(e) {	
 		
-				$("#stop_audioguia").hide('fade', function() {
-					
-					$("#play_audioguia").show();
-					
-					lectura=false;	
-										
-					try {
-					
-						TTS.speak({
-								text: "",
-								locale: voice
-							}, function() {
-								//parado con exito
-								/*$("#play_audioguia").hide('fade', function() {
-									$("#stop_audioguia").show();
-								});*/
-								
-							}, function(reason) {
-								$("#play_audioguia").hide('fade', function() {
-									$("#stop_audioguia").show();
-									//$("#stop_audioguia").html('<p style="text-align:center">Error Play'+reason+'</p>');
-								});
-							});	
-			
-						
-					} catch(e) {
-						
-						$("#play_audioguia").hide('fade', function() {
-							$("#stop_audioguia").show();
-							$("#stop_audioguia").html('<p style="text-align:center">Error Play</p>');
-						});
-						
-					} finally { }
-					
-				});
+				stop();
 
 			});
 			
 		});
+		
+		function stop() {
+		
+			lectura=false;	
+			
+			$("#stop_audioguia").hide('fade', function() {
+					
+				$("#play_audioguia").show();			
+							
+				try {
+				
+					TTS.speak({
+							text: "",
+							locale: voice
+						}, function() {
+							//parado con exito
+							/*$("#play_audioguia").hide('fade', function() {
+								$("#stop_audioguia").show();
+							});*/
+							
+						}, function(reason) {
+							$("#play_audioguia").hide('fade', function() {
+								$("#stop_audioguia").show();
+								//$("#stop_audioguia").html('<p style="text-align:center">Error Play'+reason+'</p>');
+							});
+						});	
+		
+					
+				} catch(e) {
+					
+					$("#play_audioguia").hide('fade', function() {
+						$("#stop_audioguia").show();
+						$("#stop_audioguia").html('<p style="text-align:center">Error Play</p>');
+					});
+					
+				} finally { }
+								
+			});	
+		}
+		
+		function play() {
+		
+			$("#play_audioguia").hide('fade', function() {
+				$("#stop_audioguia").show();
+				
+				var array_texto_a_leer=new Array()
+				var texto_a_leer=$('#point_description').text();
+				var num_caracteres_texto=$('#point_description').text().length;
+				
+				if(num_caracteres_texto>MAX_CARACTERES)
+				{
+					var inicio_corte=0;
+					var fin_corte=MAX_CARACTERES;
+					for(i=0;i<parseInt(num_caracteres_texto/MAX_CARACTERES)+1;i++)
+					{
+						array_texto_a_leer[i] = $('#point_description').text().substring(inicio_corte, fin_corte);
+						inicio_corte=fin_corte;
+						fin_corte+=MAX_CARACTERES;
+					}
+				}
+				else
+				{
+					array_texto_a_leer[0] = $('#point_description').text();
+				}
+
+				//clearTimeout(tiempo);
+				
+				if(lectura)
+				{
+					leer_texto(array_texto_a_leer, 0, function() {
+					
+						//terminado
+						$("#stop_audioguia").hide('fade', function() {
+							$("#play_audioguia").show();
+						})
+					
+					});
+				}
+				
+			});	
+		}
 		
 		function onBackKeyDown()
 		{
@@ -230,19 +240,14 @@
 			} finally { }		
 		}
 		function onPause() {
-			lectura=false;	
-			try {					
-				TTS.speak({
-						text: "",
-						locale: voice
-					}, function() {
-						
-					}, function(reason) {
-						
-					});						
-			} catch(e) {				
-				 
-			} finally { }	
+			lectura_ant=lectura;
+			stop();
+		}
+		function onResume() {
+			lectura=lectura_ant;
+			$("#stop_audioguia").hide('fade', function() {
+				$("#play_audioguia").show();
+			})
 		}
 
 		</script>			
