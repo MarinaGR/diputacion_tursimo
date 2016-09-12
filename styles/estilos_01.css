@@ -498,7 +498,7 @@ a {color: #4D802B;}
 .cuadrorutas1 {
 	float: left;
 	width: 47%;
-	height: 70px;
+	height: 75px;
 	line-height: 30px;
 	padding: 10px 1%;
 	margin-right: 1%;
@@ -511,7 +511,7 @@ a {color: #4D802B;}
 .cuadrorutas2 {
 	float: right;
 	width: 47%;
-	height: 70px;
+	height: 75px;
 	line-height: 30px;
 	padding: 10px 1%;
 	margin-left: 1%;
@@ -537,7 +537,7 @@ a {color: #4D802B;}
 .cuadroagenda {
 	float: left;
 	width: 47%;
-	height: 70px;
+	height: 75px;
 	line-height: 30px;
 	padding: 10px 1%;
 	margin-right: 1%;
@@ -550,7 +550,7 @@ a {color: #4D802B;}
 .cuadroblog {
 	float: right;
 	width: 47%;
-	height: 70px;
+	height: 75px;
 	line-height: 30px;
 	padding: 10px 1%;
 	margin-left: 1%;
