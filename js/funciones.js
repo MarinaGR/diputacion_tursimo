@@ -5405,16 +5405,16 @@ function ajax_recover_extern_data(operation, container, params) {
 							cadena+='<div id="ov_zone_15" class="ov_zone_15_b">';
 							
 							$.each(data.result, function(i,d) {
-								cadena+='<div onclick="window.location.href=\'event.html?id='+d.id_evento+'\'" >';
-								cadena+='<div class="ov_box_09_10_a" >'
-											+'<div class="ov_text_14">'
+								cadena+='<div class="eventos_agenda" onclick="window.location.href=\'event.html?id='+d.id_evento+'\'" >';
+								cadena+='<div class="ov_box_20" >'
+											+'<div class="ov_text_19">'
 											+d.titulo+'<br><span style="color:#333">'+d.fecha_ini+''+d.fecha_fin+'</span>'
 											+'</div>'
 										+'</div>';
 										
 								if(d.descripcion!="" && d.descripcion!="&nbsp;")
 								{
-									cadena+='<div class="ov_box_07_08_a">'
+									cadena+='<div class="ov_box_08">'
 												+'<div class="ov_text_15">'
 												+d.descripcion
 												+'</div>'
@@ -5422,85 +5422,7 @@ function ajax_recover_extern_data(operation, container, params) {
 								}
 								cadena+='</div>';
 							});
-							
-							/*cadena+='<div id="ov_scroller_01_guide" class="ov_scroller_01_guide">&nbsp;</div>'
-									+'<div id="ov_scroller_01" class="ov_scroller_01">'
-										+'<img src="../../styles/images/icons/up_arrow.png" alt="up" class="ov_image_10"/>'
-										+'<div class="ov_vertical_space_02">&nbsp;</div>'
-										+'<img src="../../styles/images/icons/down_arrow.png" alt="down" class="ov_image_10"/>'
-									+'</div>';*/
-									
-							/*var indice=0;
-							$.each(data.result, function(i,d) {
-								//onclick="window.open('+d.url+', \'_system\', \'location=yes\');"
-								if(indice%2)
-								{
-									
-									/*cadena+='<div class="ov_box_09" onclick="window.location.href=\'event.html?id='+d.id_evento+'\'" >'
-												+'<div id="ov_text_14_1" class="ov_text_14">'
-												+d.titulo+'<br><span style="color:#C0615F">'+d.fecha_ini+''+d.fecha_fin+'</span>'
-												+'</div>'
-											+'</div>';
-											
-									cadena+='<div class="ov_box_10">'
-												+'<div id="ov_text_15_1" class="ov_text_15">'
-												+d.descripcion
-												+'</div>'
-											+'</div>';*/
-											
-									
-									
-									/*cadena+='<div class="ov_box_09_10_a" onclick="window.location.href=\'event.html?id='+d.id_evento+'\'" >'
-												+'<div class="ov_text_14_a">'
-												+d.titulo+'<br><span style="color:#333">'+d.fecha_ini+''+d.fecha_fin+'</span>'
-												+'</div>'
-											+'</div>';
-											
-									if(d.descripcion!="" && d.descripcion!="&nbsp;")
-									{
-										cadena+='<div class="ov_box_09_10_b">'
-													+'<div class="ov_text_15_a">'
-													+d.descripcion
-													+'</div>'
-												+'</div>';
-									}
-											
-								}
-								else
-								{
-									
-									/*cadena+='<div class="ov_box_07_a" onclick="window.location.href=\'event.html?id='+d.id_evento+'\'" >'
-											+'<div class="ov_text_12">'
-											+d.titulo+'<br><span style="color:#333">'+d.fecha_ini+''+d.fecha_fin+'</span>'
-											+'</div>'
-										+'</div>'
-									cadena+='<div class="ov_box_08_a">'
-											+'<div class="ov_text_13">'
-											+d.descripcion
-											+'</div>'
-										+'</div>';*/
-									
-									
-									/*cadena+='<div class="ov_box_07_08_a" onclick="window.location.href=\'event.html?id='+d.id_evento+'\'" >'
-												+'<div class="ov_text_12_a">'
-												+d.titulo+'<br><span style="color:#333">'+d.fecha_ini+''+d.fecha_fin+'</span>'
-												+'</div>'
-											+'</div>';
-									
-									if(d.descripcion!="" && d.descripcion!="&nbsp;")
-									{									
-										cadena+='<div class="ov_box_07_08_b">'
-													+'<div class="ov_text_13_a">'
-													+d.descripcion
-													+'</div>'
-												+'</div>';
-									}
-									
-								}
-								
-								indice++;
-								
-							});*/
+			
 							cadena+='</div>';
 							
 							$("#"+container).html(cadena);			
@@ -5514,8 +5436,7 @@ function ajax_recover_extern_data(operation, container, params) {
 								var actual_top=ui.position.top;
 								var new_position=-1*parseInt(actual_top/1.5);
 
-								$("#ov_zone_15").css("top",new_position+"px");
-								
+								$("#ov_zone_15").css("top",new_position+"px");								
 							}
 	
 							$( "#ov_scroller_01" ).draggable({ axis: "y", containment: "parent", drag: function(event,ui){ov_manage_scroll_01(event,ui);},revert: false });
@@ -5533,6 +5454,8 @@ function ajax_recover_extern_data(operation, container, params) {
 										+d.titulo+'<br><span class="ov_text_32">'+d.fecha_ini+''+d.fecha_fin+'</span>'
 										+'</div>'
 									+'</div>';
+									
+							cadena+='<div class="clear_02"></div>';
 									
 							cadena+='<div class="ov_box_22">'
 										+'<div class="ov_text_09">'

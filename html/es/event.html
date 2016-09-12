@@ -42,15 +42,51 @@
 		
 		<div id="ov_view_container_01" class="ov_view_container_01">
 
-			<div class="ov_zone_15">
-			
-				<div class="ov_box_18" onclick="go_to_page('events','')">
-					<img src="../../styles/images/icons/back.png" alt="back" class="ov_image_15">
-					<div class="ov_text_26">
-					Volver
+			<div class="ov_vertical_space_01">&nbsp;</div>
+
+			<div id="ov_zone_20" class="ov_zone_20" >
+				<div id="ov_box_11_1" class="ov_box_12" onclick="go_to_page('main_menu', '');"  >
+					<img src="../../styles/images/icons/menu.png" alt="menu" class="ov_image_13"/>
+					<div id="ov_text_23_1" class="ov_text_23">
+						Ir a menú
+					</div>		
+				</div>
+				<div class="ov_box_12" id="ov_box_12" onclick="go_to_page('events', '');" >
+					<img src="../../styles/images/icons/back.png" alt="back" class="ov_image_15"/>
+					<div id="ov_text_26_1" class="ov_text_26">
+						Volver
 					</div>
 				</div>
-		
+				
+				<div id="ov_box_12_2" class="ov_box_12" onclick="go_to_page('events', '');" >
+					<img src="../../styles/images/icons/events_calendar.png" alt="events" class="ov_image_13"/>
+					<div id="ov_text_23_3" class="ov_text_23">
+						Agenda
+					</div>
+				</div>
+				
+				<div id="ov_box_12_1" class="ov_box_11_active">
+					<img src="../../styles/images/icons/info_event.png" alt="events" class="ov_image_13"/>
+					<div id="ov_text_23_2" class="ov_text_23">
+						Evento
+					</div>
+				</div>
+				<script>
+					$('#ov_box_12_1').click(function(e){
+						$('.ov_box_11_active').attr("class","ov_box_12");
+						$(this).attr("class","ov_box_11_active");			
+						$('.ov_zone_21').attr("class","ov_zone_21_b");
+						$('#event_info').attr("class","ov_zone_21");			
+					});		
+				</script>
+				
+				<div class="ov_clear_floats_01">&nbsp;</div>
+			</div>
+			
+			<div class="ov_vertical_space_01">&nbsp;</div>
+			
+			<div class="ov_zone_15">
+			
 				<div class="ov_clear_floats_01">&nbsp;</div>
 				
 				<div id="event_info" class="ov_zone_05">

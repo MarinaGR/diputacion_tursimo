@@ -360,6 +360,10 @@ a {color: #4D802B;}
 .clear_01 {
 	clear: both;
 }
+.clear_02 {
+	clear: both;
+	margin-top: 10px;
+}
 .menu_principal{
 	margin:auto;
 	width:98%;
@@ -457,6 +461,7 @@ a {color: #4D802B;}
 	text-align:center;
 	font-size: 1.5em;
 	color: #444;
+	border-radius: 5px;
 	border-top: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
 	background: #EEE url("./images/general/mapa.jpg") no-repeat center / 100%;
@@ -470,6 +475,7 @@ a {color: #4D802B;}
 	text-align:center;
 	font-size: 1.2em;
 	color: #EEE;
+	border-radius: 5px;
 	border-top: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
 	background: #39AA33; /* url("./images/general/mapa.jpg") no-repeat center / 100%;*/
@@ -516,15 +522,17 @@ a {color: #4D802B;}
 	border-radius: 5px;
 }
 .cuadroavilaautentica {
-	width: 98%;
-	height: 70px;
+	width: 100%;
+	height: 90px;
 	line-height: 30px;
 	padding: 5px 1%;
-	margin-bottom: 10px;	
-	text-align:center;
+	margin-bottom: 10px;
+	text-align: center;
 	color: #444;
 	background-color: #FFF;
 	border-radius: 5px;
+	border: 1px solid #68B800;
+	box-sizing: border-box;
 }
 .cuadroagenda {
 	float: left;
@@ -642,6 +650,42 @@ a {color: #4D802B;}
 /*Estilos Agenda Web*/
 div.alto_mini table{
 	width: 100%;
+}
+
+.eventos_agenda {
+    margin-bottom: 15px;
+    padding: 10px;
+    background: #fff;
+    border-bottom: 2px solid rgb(221, 221, 221);
+    position: relative;
+}
+.eventos_agenda:hover {
+	cursor: pointer;
+	background: #fbfbfb;
+}
+.eventos_agenda::after {
+    content: '+';
+    position: absolute;
+    text-align: right;
+    font-size: 2em;
+    color: rgb(122, 145, 76);
+    bottom: 5px;
+    right: 10px;
+    font-family: Arial;
+}
+.eventos_agenda .ov_text_19 {
+	font-size: 2.4em;
+	line-height: 1.1em;
+	color: rgb(122, 145, 76);
+}
+.eventos_agenda .ov_text_19 span{
+	font-size: 0.8em;
+	color: rgb(122, 145, 76);
+	text-decoration: none;
+}
+.eventos_agenda .ov_box_08 {
+	padding: 10px;
+	border-top: 3px solid rgb(122, 145, 76);
 }
 /*Fin Agenda Web*/
 
