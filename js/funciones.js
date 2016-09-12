@@ -5451,11 +5451,11 @@ function ajax_recover_extern_data(operation, container, params) {
 							//onclick="window.open('+d.url+', \'_system\', \'location=yes\');"
 							cadena+='<div class="" onclick="window.open('+data.url_web+', \'_system\', \'location=yes\');" >'
 										+'<div class="ov_text_08">'
-										+d.titulo+'<br><span class="ov_text_32">'+d.fecha_ini+''+d.fecha_fin+'</span>'
+										+d.titulo+'<br><span class="ov_text_32" style="font-size:0.7em;">'+d.fecha_ini+''+d.fecha_fin+'</span>'
 										+'</div>'
 									+'</div>';
 									
-							cadena+='<div class="clear_02"></div>';
+							cadena+='<div class="clear_02"></div><div class="clear_02"></div>';
 									
 							cadena+='<div class="ov_box_22">'
 										+'<div class="ov_text_09">'
