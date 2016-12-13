@@ -5620,7 +5620,7 @@ function ajax_recover_extern_data(operation, container, params) {
 							var texto_compartir="¿Te interesa este evento? "+titulo_compartir+" - LUGAR: "+lugar_compartir+" - (*) Descarga la aplicación ·Diputación de Ávila - Turismo· desde Google Play para Android o desde App Store para Iphone y mantente informado."
 						
 							cadena+='<div class="" id="compartir" onclick="window.plugins.socialsharing.share(\''+texto_compartir+'\', \''+titulo_compartir+'\', \'\', null)" >'+
-								'<div class="ov_text_23"><i class="fa fa-share-alt fa-fw fa-lg"> </i> COMPARTIR ESTE EVENTO</div></div>';
+								'<div class="ov_zone_25"><div id="ov_text_30" class="ov_text_30"><i class="fa fa-share-alt fa-fw fa-lg"> </i> COMPARTIR ESTE EVENTO</div></div></div>';
 														
 							cadena+='<div class="ov_clear_floats_01"> </div>';
 
