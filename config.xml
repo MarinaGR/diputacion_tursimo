@@ -2,7 +2,7 @@
 <widget xmlns = "http://www.w3.org/ns/widgets"
 		xmlns:gap   = "http://phonegap.com/ns/1.0"
 		id          = "com.ovnyline.diputacion"
-		version     = "1.0.8" >
+		version     = "1.0.9" >
 		
 		<!-- ios new version 1.0.1: delete reference other mobile plataforms -->
 		<!-- ios new version 1.0.2: cambio de imagen -->
@@ -11,7 +11,9 @@
 		<!-- all new version 1.0.5: actualizadas algunas fichas y enlaces exteriores // upload in ios -->
 		<!-- android new version 1.0.6: actualización información, división por tipo de alojamiento, audio tts y notificaciones push // version not upload in ios-->
 		<!-- android new version 1.0.7: actualización información (categorías empresas) // version not upload in ios-->
-		<!-- android new version 1.0.8: Actualización de puntos de interés y empresas. Añadida la opción de enviar notificaciones distintas a eventos, que muestran una alerta en la app. Corrección de la incidencia con la audio guía al volver atrás o salir de la app // version not upload in ios-->
+		<!-- android new version 1.0.8: Actualización de puntos de interés y empresas. Añadida la opción de enviar notificaciones distintas a eventos, que muestran una alerta en la app. Corrección de la incidencia con la audio guía al volver atrás o salir de la app // upload in ios-->
+		
+		<!-- android new version 1.0.9: AUN NO REALIZADA. Cambio version de cli520 a cli630. Implementación correcta de la recepción de los mensajes de notificaciones push personalizados. Compartir eventos en redes. Traducción de 12 puntos de interés. Incorporación de 2 nuevas empresas.   // version not upload in ios-->
 
     <name>Diputación de Ávila - Turismo</name>
 
@@ -31,7 +33,7 @@
 	<!-- end to enable individual permissions use the following examples -->
 	
     <!-- Personalización -->
-    <preference name="phonegap-version"           value="cli-5.2.0" />      <!-- all: current version of PhoneGap -->
+    <preference name="phonegap-version"           value="cli-6.3.0" />      <!-- all: current version of PhoneGap -->
 	
     <preference name="orientation"                value="portrait" />       <!-- all: default means both landscape and portrait are enabled -->
     <preference name="target-device"              value="universal" />      <!-- all: possible values handset, tablet, or universal -->
@@ -63,6 +65,7 @@
 	<gap:plugin name="cordova-plugin-media" source="npm" version="2.3.0" />
 	<gap:plugin name="cordova-plugin-device" source="npm" version="1.1.2" />
 	<gap:plugin name="cordova-plugin-geolocation" source="npm" version="2.2.0" />
+	<gap:plugin name="cordova-plugin-x-socialsharing" source="npm" version="5.1.1" />
 	<gap:plugin name="cordova-plugin-inappbrowser" source="npm" version="1.4.0" />
 	<gap:plugin name="cordova-plugin-whitelist" source="npm" spec="1.2.2" />
 
@@ -74,8 +77,7 @@
 	<gap:plugin name="cordova-plugin-tts" source="npm" version="0.2.3" />	
 	
 	<!-- Ocultar barra ios, a partir de ios7-->
-	<gap:plugin name="de.appplant.cordova.plugin.hidden-statusbar-overlay" source="pgb" version="1.2.0" />
-
+	<gap:plugin name="cordova-plugin-statusbar" source="npm" spec="2.2.0" />
 	<gap:config-file platform="ios" parent="UIStatusBarHidden">
 		<true/>
 	</gap:config-file>

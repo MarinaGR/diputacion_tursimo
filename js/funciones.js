@@ -317,7 +317,7 @@ function onNotificationAPN(e) {
 						navigator.notification.alert(
 							e.alert,  		// message
 							alertDismissed,   // callback
-							'Notificación',   // title
+							'Nuevo mensaje',   // title
 							'OK'              // buttonName
 						);
 						function alertDismissed() {	
@@ -423,10 +423,10 @@ function onNotification(e) {
 							case "mensaje":
 							default:
 										navigator.notification.alert(
-											notif.title,  		// message
-											alertDismissed,   // callback
-											'Notificación',   // title
-											'OK'              // buttonName
+											notif.message,  			// message
+											alertDismissed,   			// callback
+											'Nuevo mensaje: '+notif.title,   // title
+											'OK'              			// buttonName
 										);
 										function alertDismissed() {	
 										}
@@ -467,10 +467,10 @@ function onNotification(e) {
 							case "mensaje":
 							default:
 										navigator.notification.alert(
-											notif.title,  		// message
-											alertDismissed,   // callback
-											'Notificación',   // title
-											'OK'              // buttonName
+											notif.message,  			// message
+											alertDismissed,   			// callback
+											'Nuevo mensaje: '+notif.title,   // title
+											'OK'              			// buttonName
 										);
 										function alertDismissed() {	
 										}
@@ -5404,6 +5404,156 @@ function ajax_recover_extern_data(operation, container, params) {
 							
 							cadena+='<div id="ov_zone_15" class="ov_zone_15_b">';
 							
+							/* *****************************************
+							cadena+="<div class='contenedor_flechas'>"+
+								"<a href='lecturas.html?id="+id_instalacion+"&fecha="+fecha_calendario[0]+"-"+addZero(parseInt(fecha_calendario[1])-1)+"-"+addZero(parseInt(fecha_calendario[2]))+"&tipo=mes' style='float:left; width:25px; height:25px; text-align: center;'><img src='./resources/images/general/arrow_left.png' alt='Anterior' width='18' /></a>"+
+								"<a href='lecturas.html?id="+id_instalacion+"&fecha="+fecha_calendario[0]+"-"+addZero(parseInt(fecha_calendario[1])+1)+"-"+addZero(parseInt(fecha_calendario[2]))+"&tipo=mes' style='float:right; width:25px; height:25px; text-align: center;'><img src='./resources/images/general/arrow_right.png' alt='Siguiente' width='18' /></a><div class='clear_01'> </div></div>";
+						
+							cadena+='<div class="clear_01"> </div>';
+							
+							cadena+='<div id="calendario"></div>';
+							
+							cadena+="</div>";
+							
+							if(data.length==0) {
+								cadena+="No hay informaci&oacute;n.";
+							}
+							else
+							{			
+								
+								$.each(data, function(index, result) {  
+								
+									var fecha=result.Fecha;	
+									
+									var fecha_solo=fecha.toString().split("T");
+									var fecha_split=fecha_solo[0].split("-");
+								
+									var dia=parseInt(fecha_split[2]);
+									var mes=parseInt(fecha_split[1]);
+									var anio=parseInt(fecha_split[0]);			
+									
+									var fecha_formateada=addZero(dia)+"-"+addZero(mes)+"-"+anio;
+									
+									array_fechas[index]=addZero(dia);
+									array_lecturas[index]=result.Energia;
+									array_eventos[(dia-1)]=result.CantidadEventos;
+									
+									array_calendario[dia]=result.Energia;
+									
+									total_energia_mes+=parseInt(result.Energia);
+							
+								});
+								
+								var datos = {
+									labels: array_fechas.reverse(), 
+									datasets: [
+										{
+											fillColor: "rgba(129,16,72,0.5)",
+											strokeColor: "rgba(129,16,72,1)",
+											pointColor: "rgba(129,16,72,1)",
+											pointStrokeColor: "#fff",
+											pointHighlightFill: "#fff",
+											pointHighlightStroke: "rgba(129,16,72,1)",
+											data: array_lecturas.reverse()
+										}
+									]
+								};
+							}
+
+							$("#"+container).html(cadena);
+							
+							$("#total_energia_mes").html(total_energia_mes+" kWh");
+							
+							var width_canvas=$(".section_01").width(); 
+							$("#grafica_mensual").attr("width",width_canvas);
+							
+							$.datepicker.regional['es'] = {
+								closeText: 'Cerrar',
+								prevText: '<Ant',
+								nextText: 'Sig>',
+								currentText: 'Hoy',
+								monthNames: monthNames,
+								dayNamesMin: daysNamesMini,
+								weekHeader: 'Sm',
+								isRTL: false,
+								showMonthAfterYear: false,
+								yearSuffix: '',
+								inline: true,
+								firstDay: 1,
+								showOtherMonths: false,
+							};
+							$.datepicker.setDefaults($.datepicker.regional['es']);
+		
+							$('#calendario').datepicker({
+												hideIfNoPrevNext: false,
+												showButtonPanel: false,
+												defaultDate:new Date(fecha_calendario[0], fecha_calendario[1]-1, fecha_calendario[2], 0,0,0,0),
+												//defaultDate:new Date(fecha_calendario[1]+"-"+fecha_calendario[2]+"-"+fecha_calendario[0]),
+												onChangeMonthYear: function(year, month, widget) {
+																//reloadCalendar(month, year);
+															}
+											});		
+										
+							$.datepicker._selectDate = function(id, dateStr) {						
+								//No hacemos nada al seleccionar un día, la acción ya está metida en el div de energía
+								var target = $(id);
+								var inst = this._getInst(target[0]);							
+							}	
+							
+							$(".ui-datepicker-calendar .ui-state-default").each(function () {
+								//Comprueba si es el mes y año seleccionado
+								if($(".ui-datepicker-year").first().html() == fecha_calendario[0] && $(".ui-datepicker-month").first().html() == monthNames[parseInt(fecha_calendario[1])-1])
+								{
+									 //Si existe el día en el array de lecturas 
+									 if(array_fechas[parseInt($(this).html())-1])
+									 {
+										var valor=array_lecturas[parseInt($(this).html())-1];
+										
+										var eventos=array_eventos[parseInt($(this).html())-1];
+
+										 //Añadimos la energía a la celda del día
+										 var clase="";
+										 
+										 var energiaMaxima = potencia_instalacion * 0.006;
+											
+										 if(valor<energiaMaxima*0.33)
+											clase="e_baja";
+										 else if(valor<energiaMaxima*0.66)
+											clase="e_media";
+										 else 
+											clase="e_alta";
+																												 
+										// if(getLocalStorage("premium")==FLAG_PREMIUMPLUS)
+										 if(mantenedores[id_instalacion].premiumplus==true)
+										 {
+											if(eventos>0)
+											{
+												$(this).append("<div class='badge' onclick='window.location.href=\"lecturas.html?id="+valores[1]+"&fecha="+fecha_calendario[0]+"-"+fecha_calendario[1]+"-"+parseInt($(this).html())+"&tipo=dia\"'>"+eventos+"</div>");
+											}
+											
+											$(this).append("<div class='energia_02 "+clase+"' onclick='window.location.href=\"lecturas.html?id="+valores[1]+"&fecha="+fecha_calendario[0]+"-"+fecha_calendario[1]+"-"+parseInt($(this).html())+"&tipo=dia\"'>"+valor+"</div>");
+										 }
+										 //if(getLocalStorage("premium")==FLAG_PREMIUM)
+										 if(mantenedores[id_instalacion].premium==true)
+										 {
+											$(this).append("<div class='energia_02 "+clase+"'>"+valor+"</div>");
+										 }
+									 }
+									 else
+									 {
+										if(eventos>0)
+										{
+											$(this).append("<div class='badge'>!</div>");
+										}
+											
+										$(this).append("<div class='sin_datos_energia'> </div>");
+									 }
+								}
+
+							 });
+						 	
+							***************************************** */
+							
 							$.each(data.result, function(i,d) {
 								cadena+='<div class="eventos_agenda" onclick="window.location.href=\'event.html?id='+d.id_evento+'\'" >';
 								cadena+='<div class="ov_box_20" >'
@@ -5463,6 +5613,15 @@ function ajax_recover_extern_data(operation, container, params) {
 										+'</div>'
 									+'</div>';		
 
+							cadena+='<div class="ov_clear_floats_01"> </div>';
+							
+							var titulo_compartir=(d.titulo).replace(/["']/g, "");
+							var lugar_compartir=(d.lugar).replace(/["']/g, "");
+							var texto_compartir="¿Te interesa este evento? "+titulo_compartir+" - LUGAR: "+lugar_compartir+" - (*) Descarga la aplicación ·Diputación de Ávila - Turismo· desde Google Play para Android o desde App Store para Iphone y mantente informado."
+						
+							cadena+='<div class="" id="compartir" onclick="window.plugins.socialsharing.share(\''+texto_compartir+'\', \''+titulo_compartir+'\', \'\', null)" >'+
+								'<div class="ov_text_08"><i class="fa fa-share-alt fa-fw fa-lg"> </i> COMPARTIR ESTE EVENTO</div></div>';
+														
 							cadena+='<div class="ov_clear_floats_01"> </div>';
 
 							$("#"+container).html(cadena);
