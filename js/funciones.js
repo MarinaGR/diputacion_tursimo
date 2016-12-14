@@ -422,15 +422,8 @@ function onNotification(e) {
 										
 							case "mensaje":
 							default:
-										var mensaje_a_mostrar=notif.data.mensaje;
-										if(notif.data.url)
-										{
-											//mensaje_a_mostrar+="<br><a href='"+notif.data.url+"' onclick='window.open('"+url+"', '_system', 'location=yes');'>IR A URL</a>";
-											mensaje_a_mostrar+="<br>"+notif.data.url;
-										}
-										
 										navigator.notification.alert(
-											mensaje_a_mostrar,  		// message
+											notif.data.mensaje,  		// message
 											alertDismissed,   			// callback
 											notif.title,   // title
 											'OK'              			// buttonName
@@ -472,16 +465,9 @@ function onNotification(e) {
 										break;
 										
 							case "mensaje":
-							default:
-										var mensaje_a_mostrar=notif.data.mensaje;
-										if(notif.data.url)
-										{
-											//mensaje_a_mostrar+="<br><a href='"+notif.data.url+"' onclick='window.open('"+url+"', '_system', 'location=yes');'>IR A URL</a>";
-											mensaje_a_mostrar+="<br>"+notif.data.url;
-										}											
-										
+							default:	
 										navigator.notification.alert(
-											mensaje_a_mostrar,  		// message
+											notif.data.mensaje,  		// message
 											alertDismissed,   			// callback
 											notif.title,   // title
 											'OK'              			// buttonName
@@ -5614,7 +5600,7 @@ function ajax_recover_extern_data(operation, container, params) {
 							
 							//onclick="window.open('+d.url+', \'_system\', \'location=yes\');"
 							cadena+='<div class="" onclick="window.open('+data.url_web+', \'_system\', \'location=yes\');" >'
-										+'<div class="ov_text_08">'
+										+'<div class="ov_text_08" style="color:#A8252B">'
 										+d.titulo+'<br><span class="ov_text_32" style="font-size:0.7em;">'+d.fecha_ini+''+d.fecha_fin+'</span>'
 										+'</div>'
 									+'</div>';
@@ -5623,13 +5609,19 @@ function ajax_recover_extern_data(operation, container, params) {
 									
 							var titulo_compartir=(d.titulo).replace(/["']/g, "");
 							var lugar_compartir=(d.lugar).replace(/["']/g, "");
-							var texto_compartir="¿Te interesa este evento? "+titulo_compartir+" - LUGAR: "+lugar_compartir+" - (*) Descarga la aplicación ·Diputación de Ávila - Turismo· desde Google Play para Android o desde App Store para Iphone y mantente informado."
+							var texto_compartir="¿Te interesa este evento? "+titulo_compartir+" - LUGAR: "+lugar_compartir+" - (*) Descarga la aplicación ·Diputación de Ávila - Turismo· desde Google Play para Android o desde App Store para iPhone, y mantente informado."
 						
-							cadena+='<div class="" id="compartir" onclick="window.plugins.socialsharing.share(\''+texto_compartir+'\', \''+titulo_compartir+'\', \'\', null)" >'+
+							if(d.url_image!="")
+							{							
+								cadena+='<div class="" id="compartir" onclick="window.plugins.socialsharing.share(\''+texto_compartir+'\', \''+titulo_compartir+'\', \''+d.url_image+'\', null)" >'+
 								'<div class="ov_zone_25"><div id="ov_text_30" class="ov_text_30"><i class="fa fa-share-alt fa-fw fa-lg"> </i> COMPARTIR ESTE EVENTO</div></div></div>';
-														
-							cadena+='<div class="clear_02"></div><div class="clear_02"></div>';
-							
+							}
+							else
+							{
+								cadena+='<div class="" id="compartir" onclick="window.plugins.socialsharing.share(\''+texto_compartir+'\', \''+titulo_compartir+'\', \'\', null)" >'+
+								'<div class="ov_zone_25"><div id="ov_text_30" class="ov_text_30"><i class="fa fa-share-alt fa-fw fa-lg"> </i> COMPARTIR ESTE EVENTO</div></div></div>';
+							}
+						
 							cadena+='<div class="ov_box_22">'
 										+'<div class="ov_text_09">'
 										+d.descripcion

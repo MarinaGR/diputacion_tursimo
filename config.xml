@@ -13,7 +13,7 @@
 		<!-- android new version 1.0.7: actualización información (categorías empresas) // version not upload in ios-->
 		<!-- android new version 1.0.8: Actualización de puntos de interés y empresas. Añadida la opción de enviar notificaciones distintas a eventos, que muestran una alerta en la app. Corrección de la incidencia con la audio guía al volver atrás o salir de la app // upload in ios-->
 		
-		<!-- android new version 1.0.9: AUN NO REALIZADA. Cambio version de cli520 a cli630. Implementación correcta de la recepción de los mensajes de notificaciones push personalizados. Compartir eventos en redes. Traducción de 12 puntos de interés. Incorporación de 2 nuevas empresas.   // version not upload in ios-->
+		<!-- android new version 1.0.9: AUN NO REALIZADA. Cambio version de cli520 a cli610. Implementación correcta de la recepción de los mensajes de notificaciones push personalizados. Compartir eventos en redes. Traducción de 12 puntos de interés. Incorporación de 2 nuevas empresas.   // version not upload in ios-->
 
     <name>Diputación de Ávila - Turismo</name>
 
@@ -33,7 +33,7 @@
 	<!-- end to enable individual permissions use the following examples -->
 	
     <!-- Personalización -->
-    <preference name="phonegap-version"           value="cli-6.3.0" />      <!-- all: current version of PhoneGap -->
+    <preference name="phonegap-version"           value="cli-6.1.0" />      <!-- all: current version of PhoneGap -->
 	
     <preference name="orientation"                value="portrait" />       <!-- all: default means both landscape and portrait are enabled -->
     <preference name="target-device"              value="universal" />      <!-- all: possible values handset, tablet, or universal -->
