@@ -72,7 +72,8 @@
 	<gap:plugin name="cordova-plugin-dialogs" source="npm" version="1.2.1" />
 	<gap:plugin name="de.appplant.cordova.plugin.local-notification" source="npm" version="0.8.4" />
 	
-	<gap:plugin name="cordova-plugin-pushplugin" source="npm" version="2.6.1" /> 
+	<!--<gap:plugin name="cordova-plugin-pushplugin" source="npm" version="2.6.1" /> -->
+	<plugin spec="https://github.com/Telerik-Verified-Plugins/PushNotification.git#ddaa7a1548b01eccbc7f3fdd24f7356057c3931e" />
 	
 	<gap:plugin name="cordova-plugin-tts" source="npm" version="0.2.3" />	
 	
