@@ -5600,7 +5600,7 @@ function ajax_recover_extern_data(operation, container, params) {
 							
 							//onclick="window.open('+d.url+', \'_system\', \'location=yes\');"
 							cadena+='<div class="" onclick="window.open('+data.url_web+', \'_system\', \'location=yes\');" >'
-										+'<div class="ov_text_08" style="color:#A8252B">'
+										+'<div class="ov_text_08">'
 										+d.titulo+'<br><span class="ov_text_32" style="font-size:0.7em;">'+d.fecha_ini+''+d.fecha_fin+'</span>'
 										+'</div>'
 									+'</div>';
@@ -5613,7 +5613,7 @@ function ajax_recover_extern_data(operation, container, params) {
 						
 							if(d.url_image!="")
 							{							
-								cadena+='<div class="" id="compartir" onclick="window.plugins.socialsharing.share(\''+texto_compartir+'\', \''+titulo_compartir+'\', \''+d.url_image+'\', null)" >'+
+								cadena+='<div style="background:#A8252B" id="compartir" onclick="window.plugins.socialsharing.share(\''+texto_compartir+'\', \''+titulo_compartir+'\', \''+d.url_image+'\', null)" >'+
 								'<div class="ov_zone_25"><div id="ov_text_30" class="ov_text_30"><i class="fa fa-share-alt fa-fw fa-lg"> </i> COMPARTIR ESTE EVENTO</div></div></div>';
 							}
 							else
