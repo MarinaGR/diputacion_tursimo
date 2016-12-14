@@ -424,7 +424,10 @@ function onNotification(e) {
 							default:
 										var mensaje_a_mostrar=notif.data.mensaje;
 										if(notif.data.url)
-											mensaje_a_mostrar+="<br><a href='"+notif.data.url+"' onclick='window.open('"+url+"', '_system', 'location=yes');'>IR A URL</a>";
+										{
+											//mensaje_a_mostrar+="<br><a href='"+notif.data.url+"' onclick='window.open('"+url+"', '_system', 'location=yes');'>IR A URL</a>";
+											mensaje_a_mostrar+="<br>"+notif.data.url;
+										}
 										
 										navigator.notification.alert(
 											mensaje_a_mostrar,  		// message
@@ -472,7 +475,10 @@ function onNotification(e) {
 							default:
 										var mensaje_a_mostrar=notif.data.mensaje;
 										if(notif.data.url)
-											mensaje_a_mostrar+="<br><a href='"+notif.data.url+"' onclick='window.open('"+url+"', '_system', 'location=yes');'>IR A URL</a>";
+										{
+											//mensaje_a_mostrar+="<br><a href='"+notif.data.url+"' onclick='window.open('"+url+"', '_system', 'location=yes');'>IR A URL</a>";
+											mensaje_a_mostrar+="<br>"+notif.data.url;
+										}											
 										
 										navigator.notification.alert(
 											mensaje_a_mostrar,  		// message
