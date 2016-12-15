@@ -5609,18 +5609,21 @@ function ajax_recover_extern_data(operation, container, params) {
 									
 							var titulo_compartir=(d.titulo).replace(/["']/g, "");
 							var lugar_compartir=(d.lugar).replace(/["']/g, "");
-							var texto_compartir="¿Te interesa este evento? "+titulo_compartir+" - LUGAR: "+lugar_compartir+" - (*) Descarga la aplicación ·Diputación de Ávila - Turismo· desde Google Play para Android o desde App Store para iPhone, y mantente informado."
+							var texto_compartir="¿Te interesa este evento? "+titulo_compartir+" - (*)Descarga la aplicación ·Diputación de Ávila - Turismo· desde Google Play para Android o desde App Store para iPhone, y mantente informado."
 						
-							if(d.url_image!="")
+							cadena+='<div class="" id="compartir" onclick="window.plugins.socialsharing.share(\''+texto_compartir+'\', \''+titulo_compartir+'\', \'\', null)" >'+
+								'<div class="ov_zone_25" style="background:#A8252B"><div id="ov_text_30" class="ov_text_30"><i class="fa fa-share-alt fa-fw fa-lg"> </i> COMPARTIR ESTE EVENTO</div></div></div>';
+								
+							/*if(d.url_image!="")
 							{							
-								cadena+='<div style="background:#A8252B" id="compartir" onclick="window.plugins.socialsharing.share(\''+texto_compartir+'\', \''+titulo_compartir+'\', \''+d.url_image+'\', null)" >'+
-								'<div class="ov_zone_25"><div id="ov_text_30" class="ov_text_30"><i class="fa fa-share-alt fa-fw fa-lg"> </i> COMPARTIR ESTE EVENTO</div></div></div>';
+								cadena+='<div id="compartir" onclick="window.plugins.socialsharing.share(\''+texto_compartir+'\', \''+titulo_compartir+'\', \''+d.url_image+'\', null)" >'+
+								'<div style="background:#A8252B" class="ov_zone_25"><div id="ov_text_30" class="ov_text_30"><i class="fa fa-share-alt fa-fw fa-lg"> </i> COMPARTIR ESTE EVENTO</div></div></div>';
 							}
 							else
 							{
 								cadena+='<div class="" id="compartir" onclick="window.plugins.socialsharing.share(\''+texto_compartir+'\', \''+titulo_compartir+'\', \'\', null)" >'+
-								'<div class="ov_zone_25"><div id="ov_text_30" class="ov_text_30"><i class="fa fa-share-alt fa-fw fa-lg"> </i> COMPARTIR ESTE EVENTO</div></div></div>';
-							}
+								'<div class="ov_zone_25" style="background:#A8252B"><div id="ov_text_30" class="ov_text_30"><i class="fa fa-share-alt fa-fw fa-lg"> </i> COMPARTIR ESTE EVENTO</div></div></div>';
+							}*/
 						
 							cadena+='<div class="ov_box_22">'
 										+'<div class="ov_text_09">'
