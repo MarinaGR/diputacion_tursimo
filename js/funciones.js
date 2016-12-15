@@ -208,7 +208,7 @@ function register_notif()
 		} 
 		else
 		{	
-		    $("body").append('<br>Registrando ' + device.platform);
+		    //$("body").append('<br>Registrando ' + device.platform);
 			
 			pushNotification.register(tokenHandler, errorHandler, 
 				{"badge":"true",
@@ -288,10 +288,11 @@ function config_notifications(check) {
 // Notificacion para iOS
 function onNotificationAPN(e) {
 	
-	$("body").append(JSON.stringify(e));
+	//$("body").append(JSON.stringify(e));
 	 
 	if (e.alert) {
-		 $("body").append('<br>Notificaci&oacute;n: ' + e.alert);
+		
+		//$("body").append('<br>Notificaci&oacute;n: ' + e.alert);
 		// alert("Notificacion IOS");
 		 
 		  // Alert (requiere plugin org.apache.cordova.dialogs)
@@ -5614,12 +5615,11 @@ function ajax_recover_extern_data(operation, container, params) {
 							cadena+='<div class="" id="compartir" onclick="window.plugins.socialsharing.share(\''+texto_compartir+'\', \''+titulo_compartir+'\', \'\', null)" >'+
 								'<div class="ov_zone_25" style="background:#A8252B"><div id="ov_text_30" class="ov_text_30"><i class="fa fa-share-alt fa-fw fa-lg"> </i> COMPARTIR ESTE EVENTO</div></div></div>';
 								
-							alert(d.titulo);
-							alert(d.url_image);
-								
-							if(d.url_image!="")
+							data.url_image="http://www.turismoavila.com/files/fck//image/Avila%20te%20toca%20portada%20weblogo_sup_png.png";
+																
+							if(data.url_image!="")
 							{							
-								cadena+='<div id="compartir" onclick="window.plugins.socialsharing.share(\''+texto_compartir+'\', \''+titulo_compartir+'\', \''+d.url_image+'\', null)" >'+
+								cadena+='<div id="compartir" onclick="window.plugins.socialsharing.share(\''+texto_compartir+'\', \''+titulo_compartir+'\', \''+data.url_image+'\', null)" >'+
 								'<div style="background:#A8252B" class="ov_zone_25"><div id="ov_text_30" class="ov_text_30"><i class="fa fa-share-alt fa-fw fa-lg"> </i> COMPARTIR ESTE EVENTO</div></div></div>';
 							}
 							else
