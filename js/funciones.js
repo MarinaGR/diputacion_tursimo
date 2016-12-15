@@ -5614,6 +5614,8 @@ function ajax_recover_extern_data(operation, container, params) {
 							cadena+='<div class="" id="compartir" onclick="window.plugins.socialsharing.share(\''+texto_compartir+'\', \''+titulo_compartir+'\', \'\', null)" >'+
 								'<div class="ov_zone_25" style="background:#A8252B"><div id="ov_text_30" class="ov_text_30"><i class="fa fa-share-alt fa-fw fa-lg"> </i> COMPARTIR ESTE EVENTO</div></div></div>';
 								
+							alert(d.url_image);
+								
 							/*if(d.url_image!="")
 							{							
 								cadena+='<div id="compartir" onclick="window.plugins.socialsharing.share(\''+texto_compartir+'\', \''+titulo_compartir+'\', \''+d.url_image+'\', null)" >'+
