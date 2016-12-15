@@ -5610,7 +5610,7 @@ function ajax_recover_extern_data(operation, container, params) {
 									
 							var titulo_compartir=(d.titulo).replace(/["']/g, "");
 							var lugar_compartir=(d.lugar).replace(/["']/g, "");
-							var texto_compartir="¿Te interesa este evento? "+titulo_compartir+" - (*)Descarga la aplicación ·Diputación de Ávila - Turismo· desde Google Play para Android o desde App Store para iPhone, y mantente informado."
+							var texto_compartir="¿Te interesa este evento? "+titulo_compartir+" - (*)Descarga la aplicación ·Diputación de Ávila - Turismo· desde Google Play para Android o desde App Store para iPhone, y mantente informado. http://www.turismoavila.com/app/qr.php"
 																													
 							if(data.url_image!="")
 							{							
