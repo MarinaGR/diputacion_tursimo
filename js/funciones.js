@@ -282,7 +282,6 @@ function config_notifications(check) {
 					}
 					break;
 	}
-	 
 }
 
 // Notificacion para iOS
@@ -359,6 +358,8 @@ function onNotificationAPN(e) {
 }
 // GCM notificacion para Android
 function onNotification(e) {
+
+   $("body").append(JSON.stringify(e));
 
 	switch( e.event )
 	{
